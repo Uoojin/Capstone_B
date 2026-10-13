@@ -1,0 +1,85 @@
+:root {
+  --page-padding: 60px;
+  --site-header-height: 80px;
+  --font-family: 'Pretendard', Arial, Helvetica, sans-serif;
+  --color-black: #101010;
+  --color-muted: #b3b3b3;
+  --color-line: #d8d8d8;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: #fff;
+  color: #000;
+  font-family: var(--font-family);
+  font-weight: 400;
+  letter-spacing: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100%;
+  margin: 0;
+  overflow-x: clip;
+  background: #fff;
+}
+
+html,
+body {
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+}
+
+#root {
+  min-height: 100vh;
+  background: #fff;
+}
+
+.home-empty {
+  min-height: calc(100vh - var(--site-header-height));
+}
+
+.body-detail-open {
+  overflow: hidden;
+}
+
+@media (max-width: 767px) {
+  :root {
+    --page-padding: 20px;
+    --site-header-height: 74px;
+  }
+}

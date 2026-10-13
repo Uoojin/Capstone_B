@@ -1,0 +1,39 @@
+.home-page {
+  width: 100%;
+  height: calc(100vh - var(--site-header-height));
+  padding: 12px 30px 30px;
+  background: #fff;
+}
+
+.home-hero {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #fff;
+}
+
+@media (max-width: 900px) {
+  .home-page {
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+  }
+}
+
+@media (max-width: 720px) {
+  .home-page {
+    padding-right: 18px;
+    padding-left: 18px;
+    padding-bottom: 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  .home-page {
+    padding-right: 14px;
+    padding-left: 14px;
+    padding-bottom: 14px;
+  }
+}

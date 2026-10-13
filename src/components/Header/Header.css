@@ -1,0 +1,300 @@
+.site-header {
+  --header-pink: #fd00a0;
+  --header-soft-pink: #ffd2ef;
+  --header-pill-height: 46px;
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  width: 100%;
+  height: var(--site-header-height);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 35px var(--page-padding) 0;
+
+}
+
+.site-header .site-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  min-width: 154px;
+  height: var(--header-pill-height);
+  padding: 0 26px;
+  border-radius: 999px;
+  background: var(--header-pink);
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.site-header-menu {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.site-header-menu-items {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 0 0 auto;
+  width: 304px;
+  overflow: hidden;
+  transition: width 410ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.is-menu-open .site-header-menu-items {
+  width: 900px;
+}
+
+.site-header-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  min-width: 127px;
+  height:43px;
+  padding: 0 26px;
+  border-radius: 999px;
+  background: var(--header-soft-pink);
+  color: var(--header-pink);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  transition:
+    color 160ms ease,
+    margin-left 410ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 360ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 410ms cubic-bezier(0.22, 1, 0.36, 1),
+    width 410ms cubic-bezier(0.22, 1, 0.36, 1),
+    flex-basis 410ms cubic-bezier(0.22, 1, 0.36, 1),
+    min-width 410ms cubic-bezier(0.22, 1, 0.36, 1),
+    padding 410ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.site-header-pill+.site-header-pill {
+  margin-left: 2px;
+}
+
+.site-header-pill.active,
+.site-header-pill:hover {
+  color: var(--header-pink);
+}
+
+.site-header-pill.is-extra {
+  min-width: 0;
+  width: 0;
+  flex-basis: 0;
+  padding-right: 0;
+  padding-left: 0;
+  margin-left: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(18px);
+}
+
+.is-menu-open .site-header-pill.is-extra {
+  min-width: 138px;
+  width: 138px;
+  flex-basis: 138px;
+  padding-right: 26px;
+  padding-left: 26px;
+  margin-left: 2px;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+}
+
+.is-menu-open .site-header-pill.is-extra:nth-child(4) {
+  min-width: 140px;
+  width: 140px;
+  flex-basis: 140px;
+}
+
+.is-menu-open .site-header-pill.is-extra:nth-child(5) {
+  min-width: 152px;
+  width: 152px;
+  flex-basis: 152px;
+}
+
+.is-menu-open .site-header-pill.is-extra:nth-child(6) {
+  min-width: 106px;
+  width: 106px;
+  flex-basis: 106px;
+}
+
+.site-header-pill.is-disabled {
+  cursor: default;
+}
+
+.site-menu-toggle {
+  min-width: var(--header-pill-height);
+  width: var(--header-pill-height);
+  padding: 0;
+  font-size: 30px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.site-header .site-logo:focus-visible,
+.site-header-pill:focus-visible {
+  outline: 2px solid var(--header-pink);
+  outline-offset: 4px;
+}
+
+@media (max-width: 900px) {
+  .site-header {
+    gap: 14px;
+    padding-right: 22px;
+    padding-left: 22px;
+  }
+
+  .site-header .site-logo {
+    min-width: 136px;
+    padding-right: 22px;
+    padding-left: 22px;
+    font-size: 15px;
+  }
+
+  .site-header-menu {
+    justify-content: flex-start;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .site-header-menu::-webkit-scrollbar {
+    display: none;
+  }
+
+  .site-header-menu-items {
+    width: 276px;
+  }
+
+  .is-menu-open .site-header-menu-items {
+    width: 802px;
+  }
+
+  .site-header-pill {
+    min-width: 113px;
+    padding-right: 22px;
+    padding-left: 22px;
+    font-size: 14px;
+  }
+
+  .is-menu-open .site-header-pill.is-extra {
+    min-width: 122px;
+    width: 122px;
+    flex-basis: 122px;
+    padding-right: 22px;
+    padding-left: 22px;
+  }
+
+  .is-menu-open .site-header-pill.is-extra:nth-child(4) {
+    min-width: 126px;
+    width: 126px;
+    flex-basis: 126px;
+  }
+
+  .is-menu-open .site-header-pill.is-extra:nth-child(5) {
+    min-width: 136px;
+    width: 136px;
+    flex-basis: 136px;
+  }
+
+  .is-menu-open .site-header-pill.is-extra:nth-child(6) {
+    min-width: 96px;
+    width: 96px;
+    flex-basis: 96px;
+  }
+
+  .site-menu-toggle {
+    min-width: var(--header-pill-height);
+    width: var(--header-pill-height);
+    flex-basis: var(--header-pill-height);
+  }
+}
+
+@media (max-width: 600px) {
+  .site-header {
+    --header-pill-height: 38px;
+    height: var(--site-header-height);
+    gap: 10px;
+    padding-top: 16px;
+  }
+
+  .site-header .site-logo {
+    min-width: 112px;
+    padding-right: 16px;
+    padding-left: 16px;
+    font-size: 13px;
+  }
+
+  .site-header-menu-items {
+    width: 224px;
+  }
+
+  .is-menu-open .site-header-menu-items {
+    width: 630px;
+  }
+
+  .site-header-pill {
+    min-width: 91px;
+    padding-right: 14px;
+    padding-left: 14px;
+    font-size: 12px;
+  }
+
+  .is-menu-open .site-header-pill.is-extra {
+    min-width: 100px;
+    width: 100px;
+    flex-basis: 100px;
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+
+  .is-menu-open .site-header-pill.is-extra:nth-child(4) {
+    min-width: 106px;
+    width: 106px;
+    flex-basis: 106px;
+  }
+
+  .is-menu-open .site-header-pill.is-extra:nth-child(5) {
+    min-width: 116px;
+    width: 116px;
+    flex-basis: 116px;
+  }
+
+  .is-menu-open .site-header-pill.is-extra:nth-child(6) {
+    min-width: 78px;
+    width: 78px;
+    flex-basis: 78px;
+  }
+
+  .site-menu-toggle {
+    min-width: var(--header-pill-height);
+    width: var(--header-pill-height);
+    flex-basis: var(--header-pill-height);
+    font-size: 26px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .site-header-menu-items,
+  .site-header-pill {
+    transition: none;
+  }
+}

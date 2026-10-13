@@ -1,0 +1,1772 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.content-page-flow {
+  position: relative;
+  height: calc(100vh - 80px);
+  overflow: hidden;
+}
+
+.content-page-flow .archive-viewport {
+  height: 100%;
+}
+
+.content-page-flow > .content-drawing-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 900;
+  padding-top: 80px;
+  background: #16141517;
+  backdrop-filter: blur(2px);
+}
+
+.content-drawing-overlay .editor-screen {
+  height: 100%;
+  background-color: transparent;
+}
+
+/* 화면 전체 레이아웃 */
+.editor-screen {
+  height: calc(100vh - 130px);
+  overflow: hidden;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif;
+  user-select: none;
+}
+
+/* 메인 컨텐츠 */
+.content-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.title-heading {
+  width: 1120px;
+  display: grid;
+  grid-template-columns: 700px 350px;
+  column-gap: 70px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.title-text {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: start;
+  font-size: 26px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: #111827;
+  text-align: left;
+}
+
+/* 되돌리기 버튼 */
+.history-actions {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.undo-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #111827;
+  opacity: 1;
+  transition: opacity 0.15s ease, color 0.15s ease;
+}
+
+.undo-btn:disabled {
+  opacity: 0.25;
+  cursor: default;
+  pointer-events: none;
+}
+
+.main-stage {
+  display: flex;
+  align-items: flex-start;
+  gap: 70px;
+}
+
+.drawing-frame {
+  width: 700px;
+  height: 630px;
+  border: 1.5px dashed #dbdbdb;
+  border-radius: 20px;
+  position: relative;
+  background: #FFFFFF;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* 드로잉 캔버스 */
+.canvas-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: crosshair;
+  pointer-events: none;
+  touch-action: none;
+}
+
+.canvas-layer.drawing-active {
+  pointer-events: auto;
+}
+
+/* 스티커 및 이미지  */
+/* 삭제 버튼 */
+/* 우측 패널 */
+.tools-panel {
+  width: 350px;
+  height: 630px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* 아이콘 */
+.tool-icons-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 50px;
+}
+
+.circle-icon-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid #bfbfbf;
+  background: #FFFFFF;
+  color: #7d7d7d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  padding: 0;
+}
+
+.circle-icon-btn.active {
+  background: #000000;
+  color: #FFFFFF;
+}
+
+.settings-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.field-title {
+  font-size: 15px;
+  font-weight: 400;
+  color: #374151;
+  margin-bottom: 30px;
+}
+
+.slider-track-wrap {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.custom-range {
+  width: 100%;
+  -webkit-appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.custom-range:focus {
+  outline: none;
+}
+
+.custom-range::-webkit-slider-runnable-track {
+  height: 1.5px;
+  background: #111827;
+  border-radius: 1px;
+}
+
+.custom-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background: #000000;
+  margin-top: -5px;
+}
+
+/* 컬러 팔레트 */
+.palette-flex {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.palette-dot {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: transform 0.15s ease;
+  border: none;
+  padding: 0;
+}
+
+.palette-dot:hover {
+  transform: scale(1.1);
+}
+
+.palette-dot.active-dot {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}
+
+/* 스티커 */
+/* 버튼 */
+.bottom-action-wrap {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  gap: 16px;
+}
+
+.oval-btn {
+  padding: 12px 38px;
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  background: #FFFFFF;
+}
+
+.share-btn {
+  border: 1px solid #111827;
+  color: #111827;
+}
+
+.share-btn:hover {
+  background: #000000;
+  color: #FFFFFF;
+}
+
+.editor-cancel-btn {
+  border: 1px solid #CBD5E1;
+  color: #94A3B8;
+}
+
+.editor-cancel-btn:hover {
+  background: #000000;
+  color: #ffffff;
+}
+
+/* 메시지 모달 */
+.message-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.message-modal-card {
+  width: 500px;
+  background: #FFFFFF;
+  border-radius: 15px;
+  padding: 32px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-headline {
+  font-size: 19px;
+  font-weight: 500;
+  color: #0F172A;
+}
+
+.message-textarea {
+  width: 100%;
+  height: 100px;
+  margin-top: 18px;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 14px;
+  font-size: 14px;
+  line-height: 1.5;
+  resize: none;
+  outline: none;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.message-textarea:focus {
+  border-color: #29292a;
+}
+
+.char-count {
+  text-align: right;
+  font-size: 12px;
+  color: #94A3B8;
+  margin-top: 6px;
+}
+
+.modal-btn-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.cancel-modal-btn {
+  padding: 10px 20px;
+  border-radius: 9999px;
+  border: 1px solid #E2E8F0;
+  background: #FFFFFF;
+  color: #64748B;
+  font-size: 13.5px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.confirm-modal-btn {
+  padding: 10px 24px;
+  border-radius: 9999px;
+  border: none;
+  background: #0F172A;
+  color: #FFFFFF;
+  font-size: 13.5px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+/* ------------------------------ */
+@media (max-width: 1024px) {
+  .editor-screen {
+    height: calc(100vh - 130px);
+  }
+
+  .content-container {
+    overflow: hidden;
+    padding: 0 24px;
+  }
+
+  .title-heading {
+    width: calc(min(62vw, 500px) + min(30vw, 250px) + 36px);
+    grid-template-columns: min(62vw, 500px) min(30vw, 250px);
+    column-gap: 36px;
+    margin-bottom: 22px;
+  }
+
+  .title-text {
+    font-size: 23px;
+  }
+
+  .main-stage {
+    width: 100%;
+    justify-content: center;
+    gap: 36px;
+  }
+
+  .drawing-frame {
+    width: min(62vw, 500px);
+    height: min(50vw, 500px);
+  }
+
+  .canvas-layer {
+    width: 100%;
+    height: 100%;
+  }
+
+  .tools-panel {
+    width: min(30vw, 250px);
+    height: min(50vw, 500px);
+  }
+
+  .tool-icons-row {
+    gap: 12px;
+    margin-bottom: 36px;
+  }
+
+  .circle-icon-btn {
+    width: 44px;
+    height: 44px;
+  }
+
+  .palette-dot {
+    width: 28px;
+    height: 28px;
+  }
+
+  .oval-btn {
+    padding: 11px 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .content-page-flow {
+    height: 100vh;
+  }
+
+  .content-page-flow > .content-drawing-overlay {
+    padding-top: 0;
+  }
+
+  .editor-screen {
+    height: 100vh;
+  }
+
+  .content-container {
+    padding: 18px 16px;
+    justify-content: flex-start;
+  }
+
+  .title-heading {
+    width: min(100%, 600px);
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    margin-bottom: 14px;
+  }
+
+  .title-text {
+    font-size: 20px;
+  }
+
+  .main-stage {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .drawing-frame {
+    width: min(100%, 600px);
+    height: min(35vh, 500px);
+    border-radius: 16px;
+  }
+
+  .tools-panel {
+    width: min(100%, 300px);
+    height: 100px;
+    position: relative;
+    top: 5%;
+  }
+
+  .tool-icons-row {
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 22px;
+  }
+
+  .circle-icon-btn {
+    width: 42px;
+    height: 42px;
+  }
+
+  .field-title {
+    margin-bottom: 18px;
+  }
+
+  .palette-flex {
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .palette-dot {
+    width: 34px;
+    height: 34px;
+  }
+
+  .bottom-action-wrap {
+    width: 100%;
+    justify-content: center;
+    position: relative;
+    top: 60%;
+  }
+
+  .oval-btn {
+    padding: 10px 28px;
+  }
+
+  .message-modal-card {
+    width: min(100%, 500px);
+  }
+}
+
+/* Symbol brush selector — scoped to the existing tools panel */
+.symbol-field {
+  margin-bottom: 24px;
+}
+
+.symbol-field .field-title {
+  margin-bottom: 14px;
+}
+
+.symbol-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.symbol-option {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  background: #fff;
+  color: #111827;
+  border: 1px solid #bfbfbf;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.symbol-option.selected {
+  background: #111827;
+  color: #fff;
+  border-color: #111827;
+}
+
+.symbol-option svg {
+  width: 27px;
+  height: 27px;
+}
+
+@media (max-width: 767px) {
+  .symbol-option {
+    width: 38px;
+    height: 38px;
+  }
+
+  .symbol-option svg {
+    width: 23px;
+    height: 23px;
+  }
+}
+
+/* SVG file previews: inherit the original selected/unselected icon colors. */
+.symbol-option .symbol-preview {
+  display: block;
+  width: 27px;
+  height: 27px;
+  background: currentColor;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-position: center;
+  mask-size: contain;
+  -webkit-mask-size: contain;
+}
+
+@media (max-width: 767px) {
+  .symbol-option .symbol-preview {
+    width: 23px;
+    height: 23px;
+  }
+}
+
+/* Symbol selection: icons only, without rectangular backgrounds */
+.symbol-option,
+.symbol-option.selected {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  color: #111827;
+}
+
+.symbol-option.selected .symbol-preview {
+  filter: drop-shadow(0 0 1px currentColor);
+}
+
+.symbol-option:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* Size and spacing share one horizontal row */
+.brush-controls-row {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+.brush-controls-row>.field-group {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.brush-controls-row .field-title {
+  margin-bottom: 30px;
+}
+
+
+/* Updated editor arrangement — header and drawing functionality unchanged */
+.editor-screen .title-heading {
+  margin-bottom: 20px;
+}
+
+.editor-screen .drawing-frame {
+  border: 1.5px solid #dedede;
+}
+
+.editor-screen .drawing-frame .history-actions {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  z-index: 3;
+  display: flex;
+  gap: 16px;
+}
+
+.editor-screen .canvas-bottom-hint {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  z-index: 2;
+  pointer-events: none;
+  font-size: 14px;
+  color: #999;
+}
+
+.editor-screen .tools-panel {
+  gap: 0;
+}
+
+.editor-screen .tool-label {
+  font-size: 15px;
+  color: #222;
+  margin-bottom: 16px;
+}
+
+.editor-screen .tool-icons-row {
+  margin-bottom: 26px;
+  gap: 12px;
+}
+
+.editor-screen .circle-icon-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 6px;
+  border: 0;
+  background: #ededed;
+  color: #888;
+}
+
+.editor-screen .circle-icon-btn.active {
+  background: #FD00A0;
+  color: #fff;
+}
+
+.editor-screen .settings-block {
+  gap: 24px;
+}
+
+.editor-screen .symbol-field {
+  margin-bottom: 0;
+}
+
+.editor-screen .symbol-options {
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  gap: 2px;
+}
+
+.editor-screen .symbol-option {
+  width: 42px;
+  height: 42px;
+  flex: 0 1 42px;
+}
+
+.editor-screen .symbol-option .symbol-preview {
+  width: 28px;
+  height: 28px;
+}
+
+.editor-screen .symbol-option.selected .symbol-preview {
+  background: #FD00A0;
+}
+
+.editor-screen .field-title {
+  margin-bottom: 14px;
+  font-size: 15px;
+  color: #222;
+}
+
+.editor-screen .brush-controls-row {
+  gap: 20px;
+}
+
+.editor-screen .brush-controls-row .field-title {
+  margin-bottom: 24px;
+}
+
+.editor-screen .palette-flex {
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.editor-screen .palette-dot {
+  width: 38px;
+  height: 38px;
+  flex: 0 1 38px;
+}
+
+.editor-screen .editor-message-box {
+  margin-top: auto;
+  height: 185px;
+  width: 100%;
+  border: 1px solid #d6d6d6;
+  border-radius: 14px;
+  padding: 20px 22px 18px;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
+
+.editor-screen .editor-message-title {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.editor-screen .editor-message-input {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  resize: none;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #222;
+  font: inherit;
+  font-size: 13px;
+  line-height: 1.6;
+  user-select: text;
+}
+
+.editor-screen .editor-message-input::placeholder {
+  color: #aaa;
+}
+
+.editor-screen .editor-message-count {
+  align-self: flex-end;
+  font-size: 12px;
+  color: #aaa;
+}
+
+.editor-screen .bottom-action-wrap {
+  position: static;
+  width: 100%;
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.editor-screen .bottom-action-wrap .oval-btn {
+  flex: 1;
+  min-width: 0;
+  padding: 12px 8px;
+  border-radius: 6px;
+  font-size: 13px;
+  background: #fff;
+  border: 1px solid #d6d6d6;
+  color: #777;
+}
+
+.editor-screen .bottom-action-wrap .share-btn:not(:disabled):hover {
+  background: #FD00A0;
+  color: #fff;
+  border-color: #FD00A0;
+}
+
+.editor-screen .bottom-action-wrap .oval-btn:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 1024px) {
+  .editor-screen .palette-dot {
+    width: 27px;
+    height: 27px;
+  }
+
+  .editor-screen .symbol-option {
+    width: 30px;
+    height: 34px;
+  }
+
+  .editor-screen .symbol-option .symbol-preview {
+    width: 22px;
+    height: 22px;
+  }
+
+  .editor-screen .editor-message-box {
+    height: 150px;
+    padding: 12px;
+  }
+
+  .editor-screen .tools-panel {
+    height: min(50vw, 500px);
+  }
+
+  .editor-screen .settings-block {
+    gap: 14px;
+  }
+
+  .editor-screen .tool-icons-row {
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 767px) {
+  .editor-screen {
+    overflow-y: auto;
+  }
+
+  .editor-screen .content-container {
+    overflow: visible;
+  }
+
+  .editor-screen .tools-panel {
+    width: min(100%, 600px);
+    height: auto;
+    top: 0;
+    padding-bottom: 20px;
+  }
+
+  .editor-screen .tool-icons-row {
+    justify-content: flex-start;
+  }
+
+  .editor-screen .editor-message-box {
+    margin-top: 24px;
+    height: 150px;
+  }
+
+  .editor-screen .bottom-action-wrap {
+    top: auto;
+    position: static;
+  }
+
+  .editor-screen .palette-flex {
+    justify-content: flex-start;
+  }
+
+  .editor-screen .drawing-frame .history-actions {
+    bottom: 12px;
+    right: 12px;
+  }
+
+  .editor-screen .canvas-bottom-hint {
+    bottom: 14px;
+    left: 14px;
+    font-size: 11px;
+  }
+}
+
+.editor-screen .settings-block>.field-group[style] {
+  margin-top: 0 !important;
+}
+
+/* Reference layout override: presentation only, no changes to editor behavior */
+.editor-screen {
+  background: #FFFED8;
+}
+
+.content-drawing-overlay .editor-screen {
+  background: transparent;
+}
+
+.content-drawing-overlay {
+  background: rgba(255, 255, 255, 0.58);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+.editor-screen .content-container {
+  padding: 32px 24px;
+  min-height: 0;
+}
+
+.editor-screen .title-heading {
+  display: none;
+}
+
+.editor-screen .main-stage {
+  gap: 23px;
+  align-items: stretch;
+  width: min(100%, 865px);
+}
+
+.editor-screen .drawing-frame {
+  width: 532px;
+  height: 516px;
+  flex: 0 0 532px;
+  border: 1px solid #FF42B3;
+  border-radius: 20px;
+  background: #fff;
+}
+
+.editor-screen .canvas-layer {
+  width: 100%;
+  height: 100%;
+}
+
+.editor-screen .canvas-bottom-hint {
+  left: 21px;
+  bottom: 21px;
+  font-size: 12px;
+  color: #888;
+}
+
+.editor-screen .drawing-frame .history-actions {
+  right: 18px;
+  bottom: 18px;
+  gap: 10px;
+}
+
+.editor-screen .undo-btn {
+  color: #FD00A0;
+}
+
+.editor-screen .undo-btn:last-child {
+  color: #888;
+}
+
+.editor-screen .tools-panel {
+  width: 310px;
+  height: 516px;
+  flex: 0 0 310px;
+}
+
+.editor-screen .editor-tools-card {
+  height: 278px;
+  flex: 0 0 278px;
+  padding: 19px 19px 16px;
+  border: 1px solid #FF42B3;
+  border-radius: 20px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.editor-screen .tool-label,
+.editor-screen .field-title,
+.editor-screen .editor-message-title {
+  color: #FD00A0;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.editor-screen .tool-label {
+  margin-bottom: 10px;
+}
+
+.editor-screen .tool-icons-row {
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.editor-screen .circle-icon-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 5px;
+  background: #f3f3f3;
+  color: #111;
+}
+
+.editor-screen .circle-icon-btn svg {
+  width: 19px;
+  height: 19px;
+}
+
+.editor-screen .settings-block {
+  gap: 12px;
+}
+
+.editor-screen .field-title {
+  margin-bottom: 11px;
+}
+
+.editor-screen .symbol-options {
+  gap: 10px;
+}
+
+.editor-screen .symbol-option {
+  width: 27px;
+  height: 27px;
+  flex: 1 1 0;
+  border-radius: 6px;
+  background: #f4f4f4;
+}
+
+.editor-screen .symbol-option.selected {
+  background: #f4f4f4;
+}
+
+.editor-screen .symbol-option .symbol-preview {
+  width: 19px;
+  height: 19px;
+}
+
+.editor-screen .brush-controls-row {
+  gap: 35px;
+}
+
+.editor-screen .brush-controls-row .field-title {
+  margin-bottom: 14px;
+}
+
+.editor-screen .custom-range::-webkit-slider-runnable-track {
+  height: 9px;
+  border: 1px solid #FD00A0;
+  background: #ffe1f1;
+  border-radius: 20px;
+}
+
+.editor-screen .custom-range::-webkit-slider-thumb {
+  width: 20px;
+  height: 20px;
+  background: #FD00A0;
+  margin-top: -6px;
+}
+
+.editor-screen .custom-range::-moz-range-track {
+  height: 8px;
+  border: 1px solid #FD00A0;
+  background: #ffe1f1;
+  border-radius: 20px;
+}
+
+.editor-screen .custom-range::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border: none;
+  background: #FD00A0;
+  border-radius: 50%;
+}
+
+.editor-screen .settings-block>.field-group[style] {
+  margin-top: 0 !important;
+}
+
+.editor-screen .palette-flex {
+  gap: 12px;
+}
+
+.editor-screen .palette-dot {
+  width: 26px;
+  height: 26px;
+  flex: 1 1 0;
+  max-width: 26px;
+}
+
+.editor-screen .palette-dot.active-dot {
+  outline: none;
+}
+
+.editor-screen .editor-message-box {
+  margin-top: 12px;
+  height: 167px;
+  flex: 0 0 167px;
+  padding: 23px 19px 14px;
+  border: 1px solid #FF42B3;
+  border-radius: 20px;
+}
+
+.editor-screen .editor-message-title {
+  margin-bottom: 12px;
+}
+
+.editor-screen .editor-message-input {
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+.editor-screen .editor-message-count {
+  font-size: 10px;
+}
+
+.editor-screen .bottom-action-wrap {
+  margin-top: 11px;
+  gap: 13px;
+}
+
+.editor-screen .bottom-action-wrap .oval-btn {
+  height: 49px;
+  padding: 0 8px;
+  border-radius: 10px;
+  border: 1px solid #FF42B3;
+  font-size: 12px;
+}
+
+.editor-screen .bottom-action-wrap .share-btn {
+  background: #FD00A0;
+  color: #fff;
+  font-weight: 600;
+}
+
+.editor-screen .bottom-action-wrap .editor-cancel-btn {
+  background: #fff;
+  color: #777;
+}
+
+@media (max-width: 950px) and (min-width: 768px) {
+  .editor-screen .main-stage {
+    width: 100%;
+    gap: 16px;
+  }
+
+  .editor-screen .drawing-frame {
+    width: auto;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .editor-screen .tools-panel {
+    width: 290px;
+    flex: 0 0 290px;
+  }
+
+  .editor-screen .editor-tools-card {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+}
+
+@media (max-width: 767px) {
+  .editor-screen .content-container {
+    padding: 22px 16px;
+    justify-content: flex-start;
+  }
+
+  .editor-screen .main-stage {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .editor-screen .drawing-frame {
+    width: min(100%, 532px);
+    height: auto;
+    aspect-ratio: 532 / 516;
+    flex: none;
+  }
+
+  .editor-screen .tools-panel {
+    width: min(100%, 532px);
+    height: auto;
+    flex: none;
+    padding-bottom: 20px;
+  }
+
+  .editor-screen .editor-tools-card {
+    height: auto;
+    min-height: 278px;
+    flex: none;
+  }
+
+  .editor-screen .editor-message-box {
+    margin-top: 12px;
+    height: 167px;
+    flex: none;
+  }
+
+  .editor-screen .bottom-action-wrap {
+    margin-top: 11px;
+  }
+
+  .editor-screen .palette-flex {
+    justify-content: space-between;
+  }
+
+  .editor-screen .tool-icons-row {
+    justify-content: flex-start;
+  }
+}
+
+/* Size restoration only: retain the new reference layout and all interactions. */
+@media (min-width: 1025px) {
+  .editor-screen .main-stage {
+    width: min(100%, 1073px);
+    gap: 23px;
+  }
+
+  .editor-screen .drawing-frame {
+    width: 700px;
+    height: 630px;
+    flex: 0 0 700px;
+  }
+
+  .editor-screen .tools-panel {
+    width: 350px;
+    height: 630px;
+    flex: 0 0 350px;
+  }
+
+  .editor-screen .editor-tools-card {
+    height: 350px;
+    flex: 0 0 350px;
+  }
+
+  .editor-screen .editor-message-box {
+    height: 207px;
+    flex: 0 0 207px;
+  }
+
+  .editor-screen .editor-tools-card {
+    justify-content: flex-start;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .editor-screen .main-stage {
+    width: min(100%, 950px);
+    gap: 20px;
+  }
+
+  .editor-screen .drawing-frame {
+    width: auto;
+    height: min(60vw, 630px);
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .editor-screen .tools-panel {
+    width: 310px;
+    height: min(60vw, 630px);
+    flex: 0 0 310px;
+  }
+
+  .editor-screen .editor-tools-card {
+    height: 55%;
+    flex: 0 0 55%;
+  }
+
+  .editor-screen .editor-message-box {
+    height: auto;
+    flex: 1 1 auto;
+    min-height: 0;
+  }
+}
+
+/* 2026-10-09: enlarge right-side controls to match restored 700x630 canvas.
+   Visual CSS only; drawing, message, history and upload logic are untouched. */
+@media (min-width: 1025px) {
+  .editor-screen .editor-tools-card {
+    padding: 25px 25px 22px;
+  }
+
+  .editor-screen .tool-label,
+  .editor-screen .field-title,
+  .editor-screen .editor-message-title {
+    font-size: 14px;
+  }
+
+  .editor-screen .tool-label {
+    margin-bottom: 14px;
+  }
+
+  .editor-screen .tool-icons-row {
+    gap: 17px;
+    margin-bottom: 17px;
+  }
+
+  .editor-screen .circle-icon-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 7px;
+  }
+
+  .editor-screen .circle-icon-btn svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .editor-screen .settings-block {
+    gap: 17px;
+  }
+
+  .editor-screen .field-title {
+    margin-bottom: 15px;
+  }
+
+  .editor-screen .symbol-options {
+    gap: 12px;
+  }
+
+  .editor-screen .symbol-option {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+  }
+
+  .editor-screen .symbol-option .symbol-preview {
+    width: 24px;
+    height: 24px;
+  }
+
+  .editor-screen .brush-controls-row {
+    gap: 38px;
+  }
+
+  .editor-screen .brush-controls-row .field-title {
+    margin-bottom: 19px;
+  }
+
+  .editor-screen .custom-range::-webkit-slider-runnable-track {
+    height: 10px;
+  }
+
+  .editor-screen .custom-range::-webkit-slider-thumb {
+    width: 23px;
+    height: 23px;
+    margin-top: -7px;
+  }
+
+  .editor-screen .custom-range::-moz-range-track {
+    height: 10px;
+  }
+
+  .editor-screen .custom-range::-moz-range-thumb {
+    width: 23px;
+    height: 23px;
+  }
+
+  .editor-screen .palette-flex {
+    gap: 12px;
+  }
+
+  .editor-screen .palette-dot {
+    width: 31px;
+    height: 31px;
+    max-width: 31px;
+  }
+
+  .editor-screen .editor-message-box {
+    padding: 27px 25px 18px;
+  }
+
+  .editor-screen .editor-message-title {
+    margin-bottom: 17px;
+  }
+
+  .editor-screen .editor-message-input {
+    font-size: 13px;
+    line-height: 1.8;
+  }
+
+  .editor-screen .editor-message-count {
+    font-size: 11px;
+  }
+
+  .editor-screen .bottom-action-wrap .oval-btn {
+    font-size: 14px;
+  }
+}
+
+/* Final alignment: distribute the existing controls across the tools card.
+   No component logic or original PRESET_COLORS values are changed. */
+@media (min-width: 1025px) {
+  .editor-screen .editor-tools-card {
+    display: flex;
+    flex-direction: column;
+    padding: 26px 25px 26px;
+  }
+
+  .editor-screen .tool-label {
+    margin-bottom: 12px;
+  }
+
+  .editor-screen .tool-icons-row {
+    margin-bottom: 14px;
+  }
+
+  .editor-screen .settings-block {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0;
+  }
+
+  .editor-screen .settings-block>.field-group[style] {
+    margin-top: 0 !important;
+  }
+
+  .editor-screen .symbol-field .field-title {
+    margin-bottom: 12px;
+  }
+
+  .editor-screen .symbol-options {
+    gap: 9px;
+  }
+
+  .editor-screen .symbol-option {
+    width: 34px;
+    height: 34px;
+    flex: 1 1 0;
+    min-width: 0;
+    border-radius: 7px;
+  }
+
+  .editor-screen .brush-controls-row {
+    gap: 32px;
+  }
+
+  .editor-screen .brush-controls-row .field-title {
+    margin-bottom: 15px;
+  }
+
+  .editor-screen .palette-flex {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .editor-screen .palette-dot {
+    flex: 0 0 31px;
+    width: 31px;
+    height: 31px;
+    max-width: none;
+  }
+
+  .editor-screen .editor-message-box {
+    padding: 25px 25px 17px;
+  }
+}
+
+/* Modal presentation overrides are restricted to the SYNCOPATE overlay. */
+.content-page-flow > .content-drawing-overlay {
+  padding-top: 0;
+}
+
+.content-drawing-overlay .editor-screen {
+  height: 100dvh;
+  overflow-y: auto;
+}
+
+.content-drawing-overlay .editor-screen .content-container {
+  flex: 1 0 auto;
+  width: 100%;
+  min-height: 100%;
+  padding: 24px;
+  overflow: visible;
+  justify-content: center;
+  gap: 24px;
+}
+
+.content-drawing-overlay .editor-screen .main-stage {
+  width: min(1190px, 100%);
+  display: grid;
+  grid-template-columns: minmax(0, 1.59fr) minmax(0, 1fr);
+  gap: 20px;
+  padding: 20px;
+  border-radius: 24px;
+  background: #fff;
+  align-items: stretch;
+}
+
+.content-drawing-overlay .editor-screen .drawing-frame {
+  width: 100%;
+  height: 586px;
+  min-width: 0;
+  flex: none;
+  border: 0;
+  border-radius: 12px;
+  background: #f9f9f9;
+}
+
+.content-drawing-overlay .editor-screen .canvas-layer {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, calc(-50% - 22px));
+  width: min(100%, 602px);
+  height: auto;
+  aspect-ratio: 700 / 630;
+}
+
+.content-drawing-overlay .editor-screen .canvas-bottom-hint {
+  left: 20px;
+  bottom: 20px;
+  font-size: 12px;
+}
+
+.content-drawing-overlay .editor-screen .drawing-frame .history-actions {
+  right: 18px;
+  bottom: 18px;
+  gap: 12px;
+}
+
+.content-drawing-overlay .editor-screen .undo-btn {
+  color: #444;
+}
+
+.content-drawing-overlay .editor-screen .undo-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.content-drawing-overlay .editor-screen .tools-panel {
+  width: 100%;
+  height: auto;
+  min-width: 0;
+  flex: none;
+  top: auto;
+  padding: 0;
+}
+
+.content-drawing-overlay .editor-screen .editor-tools-card {
+  height: auto;
+  flex: none;
+  min-height: 0;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+}
+
+.content-drawing-overlay .editor-screen .tool-label,
+.content-drawing-overlay .editor-screen .field-title,
+.content-drawing-overlay .editor-screen .editor-message-title {
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  color: #FD00A0;
+  letter-spacing: 0;
+}
+
+.content-drawing-overlay .editor-screen .tool-icons-row {
+  gap: 16px;
+  margin-bottom: 20px;
+  justify-content: flex-start;
+}
+
+.content-drawing-overlay .editor-screen .circle-icon-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 5px;
+  background: #f9f9f9;
+  color: #FD00A0;
+}
+
+.content-drawing-overlay .editor-screen .circle-icon-btn.active {
+  background: #FD00A0;
+  color: #fff;
+}
+
+.content-drawing-overlay .editor-screen .circle-icon-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.content-drawing-overlay .editor-screen .settings-block {
+  flex: none;
+  gap: 20px;
+  justify-content: flex-start;
+}
+
+.content-drawing-overlay .editor-screen .symbol-field {
+  margin: 0;
+}
+
+.content-drawing-overlay .editor-screen .symbol-options {
+  gap: 16px;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.content-drawing-overlay .editor-screen .symbol-option {
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  border-radius: 5px;
+  background: #f0f0f0;
+}
+
+.content-drawing-overlay .editor-screen .symbol-option .symbol-preview {
+  width: 22px;
+  height: 22px;
+}
+
+.content-drawing-overlay .editor-screen .brush-controls-row {
+  gap: 10px;
+}
+
+.content-drawing-overlay .editor-screen .custom-range {
+  height: 12px;
+}
+
+.content-drawing-overlay .editor-screen .custom-range::-webkit-slider-runnable-track {
+  height: 2px;
+  border: 0;
+  background: #FD00A0;
+}
+
+.content-drawing-overlay .editor-screen .custom-range::-webkit-slider-thumb {
+  width: 12px;
+  height: 12px;
+  margin-top: -5px;
+  border: 1px solid #FD00A0;
+  background: #fff;
+}
+
+.content-drawing-overlay .editor-screen .custom-range::-moz-range-track {
+  height: 2px;
+  border: 0;
+  background: #FD00A0;
+}
+
+.content-drawing-overlay .editor-screen .custom-range::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  border: 1px solid #FD00A0;
+  background: #fff;
+}
+
+.content-drawing-overlay .editor-screen .palette-flex {
+  gap: 16px;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.content-drawing-overlay .editor-screen .palette-dot {
+  width: 32px;
+  height: 32px;
+  max-width: none;
+  flex: 0 0 32px;
+  border-radius: 5px;
+}
+
+.content-drawing-overlay .editor-screen .editor-message-box {
+  margin-top: auto;
+  height: 170px;
+  min-height: 170px;
+  flex: none;
+  padding: 20px;
+  border: 0;
+  border-radius: 12px;
+  background: #f9f9f9;
+}
+
+.content-drawing-overlay .editor-screen .editor-message-input {
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.content-drawing-overlay .editor-screen .editor-message-count {
+  font-size: 15px;
+}
+
+.content-drawing-overlay .editor-screen .bottom-action-wrap {
+  position: static;
+  top: auto;
+  margin-top: 20px;
+}
+
+.content-drawing-overlay .editor-screen .bottom-action-wrap .share-btn {
+  height: 64px;
+  border: 0;
+  border-radius: 12px;
+  font-size: 15px;
+  background: #FD00A0;
+  color: #fff;
+}
+
+.content-drawing-overlay .syncopate-modal-close:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 1050px) {
+  .content-drawing-overlay .editor-screen .main-stage {
+    grid-template-columns: minmax(0, 1fr) minmax(300px, .85fr);
+  }
+
+  .content-drawing-overlay .editor-screen .drawing-frame {
+    height: auto;
+    min-height: 586px;
+  }
+
+  .content-drawing-overlay .editor-screen .canvas-layer {
+    top: 50%;
+    transform: translate(-50%, calc(-50% - 22px));
+    width: 100%;
+    height: auto;
+  }
+
+  .content-drawing-overlay .editor-screen .symbol-options,
+  .content-drawing-overlay .editor-screen .palette-flex {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 767px) {
+  .content-drawing-overlay .editor-screen .content-container {
+    padding: 20px 12px;
+    justify-content: flex-start;
+  }
+
+  .content-drawing-overlay .editor-screen .main-stage {
+    width: min(540px, 100%);
+    grid-template-columns: minmax(0, 1fr);
+    padding: 16px;
+    border-radius: 18px;
+  }
+
+  .content-drawing-overlay .editor-screen .drawing-frame {
+    min-height: 0;
+    aspect-ratio: 700 / 730;
+  }
+
+  .content-drawing-overlay .editor-screen .canvas-layer {
+    top: 0;
+    transform: translateX(-50%);
+  }
+
+  .content-drawing-overlay .editor-screen .canvas-bottom-hint {
+    left: 12px;
+    bottom: 16px;
+    font-size: 11px;
+  }
+
+  .content-drawing-overlay .editor-screen .drawing-frame .history-actions {
+    right: 12px;
+    bottom: 14px;
+  }
+
+  .content-drawing-overlay .editor-screen .editor-message-box {
+    margin-top: 20px;
+  }
+}

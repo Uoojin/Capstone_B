@@ -1,0 +1,95 @@
+
+
+.gb-modal__dialog--message {
+  width: min(100%, 535px);
+  padding: 30px;
+  font-size: 14px;
+}
+
+.gb-message-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.gb-message-form label {
+  position: relative;
+}
+
+.gb-message-form__row label {
+  display: flex;
+  align-items: center;
+  min-height: 47px;
+  border-radius: 10px;
+  background: #fafafa;
+  color: #aaa5ac;
+  padding: 0 15px;
+}
+
+.gb-message-form input,
+.gb-message-form textarea {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  color: #1d1a1f;
+  background: transparent;
+}
+
+.gb-message-form input {
+  padding-left: 8px;
+  font-weight: 400;
+}
+
+.gb-message-form__textarea {
+  display: block;
+  height: 274px;
+  padding: 18px 18px 44px;
+  border-radius: 10px;
+  background: #fafafa;
+}
+
+.gb-message-form__textarea textarea {
+  height: 212px;
+  resize: none;
+  line-height: 24px;
+  padding: 0;
+}
+
+.gb-message-form__textarea span {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  color: #aaa5ac;
+}
+
+.gb-message-form__submit {
+  width: 100%;
+  margin-top: 18px;
+  min-height: 58px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+@media (max-width: 360px) {
+
+  .gb-message-form__row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+
+  .gb-modal__dialog--message {
+    padding: 22px;
+  }
+
+  .gb-message-form__textarea {
+    height: 250px;
+  }
+
+  .gb-message-form__textarea textarea {
+    height: 188px;
+  }
+}

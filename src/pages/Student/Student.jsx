@@ -1,0 +1,179 @@
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { students } from './studentData.js'
+import { matchesHangulName } from './hangulSearch.js'
+import './Student.css'
+
+const roles = ['ALL', 'DESIGNER', 'PLANNER', 'PROGRAMMER']
+
+export default function Student() {
+  const [activeRole, setActiveRole] = useState('ALL')
+  const [searchTerm, setSearchTerm] = useState('')
+  const [flippedCards, setFlippedCards] = useState({})
+  const [floatingY, setFloatingY] = useState(0)
+  const navigate = useNavigate()
+  const sidebarRef = useRef(null)
+  const menuRef = useRef(null)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const startThreshold = 60
+
+      if (window.scrollY <= startThreshold) {
+        setFloatingY(0)
+        return
+      }
+
+      let moveY = window.scrollY - startThreshold + 30
+
+      if (sidebarRef.current && menuRef.current) {
+        const maxMove = sidebarRef.current.offsetHeight - menuRef.current.offsetHeight
+        moveY = Math.min(moveY, Math.max(0, maxMove))
+      }
+
+      setFloatingY(moveY)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    handleScroll()
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const displayStudents = useMemo(() => {
+    const filtered = students.filter((student) => {
+      const matchesRole = activeRole === 'ALL' || student.role === activeRole
+      const matchesSearch = matchesHangulName(student.name, searchTerm)
+      return matchesRole && matchesSearch
+    })
+
+    const emptyCount = filtered.length % 4 === 0 ? 0 : 4 - (filtered.length % 4)
+    const emptySlots = Array.from({ length: emptyCount }, (_, index) => ({
+      id: `empty-student-${index}`,
+      isEmpty: true,
+    }))
+
+    return [...filtered, ...emptySlots]
+  }, [activeRole, searchTerm])
+
+  const handleCardFlip = (studentId) => {
+    setFlippedCards((current) => ({
+      ...current,
+      [studentId]: !current[studentId],
+    }))
+  }
+
+  const handleProjectClick = (event) => {
+    event.stopPropagation()
+    navigate('/project')
+  }
+
+  const handleLinkClick = (event, url) => {
+    event.stopPropagation()
+    if (url && url !== '#') {
+      window.open(url, '_blank', 'noopener,noreferrer')
+    }
+  }
+
+  return (
+    <main className="student-page">
+      <section className="student-content" aria-label="Student list">
+        <div className="student-grid">
+          {displayStudents.map((item) =>
+            item.isEmpty ? (
+              <div key={item.id} className="student-empty-card" />
+            ) : (
+              <article key={item.studentId} className="student-card">
+                <button
+                  className={`student-flipper ${flippedCards[item.studentId] ? 'flipped' : ''}`}
+                  type="button"
+                  onClick={() => handleCardFlip(item.studentId)}
+                  aria-label={`${item.name} card`}
+                >
+                  <span className="card-face card-front">
+                    <span className="student-img-placeholder" />
+                  </span>
+
+                  <span className="card-face card-back">
+                    <span className="back-interview">{item.interview}</span>
+
+                    <span className="back-meta-list">
+                      <span className="back-meta-row">
+                        <span className="back-label">Contact</span>
+                        <span className="back-value">{item.contact}</span>
+                      </span>
+                      <span className="back-meta-row">
+                        <span className="back-label">Profile</span>
+                        <span className="back-link" onClick={(event) => handleLinkClick(event, item.profileUrl)}>
+                          site &gt;
+                        </span>
+                      </span>
+                      <span className="back-meta-row">
+                        <span className="back-label">Project</span>
+                        <span className="back-link" onClick={handleProjectClick}>
+                          {item.project} &gt;
+                        </span>
+                      </span>
+                    </span>
+                  </span>
+                </button>
+
+                <div className="student-info">
+                  <h2 className="student-name">{item.name}</h2>
+                  <p className="student-meta">
+                    {item.project} | {item.role}
+                  </p>
+                </div>
+              </article>
+            ),
+          )}
+        </div>
+      </section>
+
+      <aside className="student-sidebar" ref={sidebarRef}>
+        <div
+          className="student-floating-menu"
+          ref={menuRef}
+          style={{ transform: `translateY(${floatingY}px)` }}
+        >
+          <label className="student-search-box">
+            <input
+              type="text"
+              placeholder="SEARCH"
+              value={searchTerm}
+              onChange={(event) => setSearchTerm(event.target.value)}
+              className="student-search-input"
+            />
+            <svg
+              className="search-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+          </label>
+
+          <div className="role-group" aria-label="Student role filters">
+            {roles.map((role) => (
+              <button
+                key={role}
+                className={`role-btn ${activeRole === role ? 'active' : ''}`}
+                type="button"
+                onClick={() => setActiveRole(role)}
+              >
+                {role}
+              </button>
+            ))}
+          </div>
+        </div>
+      </aside>
+    </main>
+  )
+}
