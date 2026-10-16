@@ -236,6 +236,16 @@
   }
 }
 
+@media (max-width: 767px) {
+  .site-header-pill.is-extra {
+    display: none;
+  }
+
+  .is-menu-open .site-header-menu-items {
+    width: 276px;
+  }
+}
+
 @media (max-width: 600px) {
   .site-header {
     --header-pill-height: 38px;
@@ -256,7 +266,7 @@
   }
 
   .is-menu-open .site-header-menu-items {
-    width: 630px;
+    width: 224px;
   }
 
   .site-header-pill {

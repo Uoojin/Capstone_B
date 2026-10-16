@@ -70,6 +70,8 @@ html.gb-page-scrollbar-hidden::-webkit-scrollbar {
 }
 
 .gb-hero {
+  position: relative;
+  isolation: isolate;
   --gb-hero-preferred-height: clamp(480px, 47vw, 840px);
   --gb-hero-top-gap: 28px;
   /* Content sets the minimum on very short screens, allowing page scrolling. */
@@ -83,6 +85,76 @@ html.gb-page-scrollbar-hidden::-webkit-scrollbar {
   border-radius: 32px;
   text-align: center;
   background: #f9f9f9;
+}
+
+.gb-hero__background {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.gb-hero__background svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.gb-hero__orbit-track {
+  fill: none;
+  stroke: #c5c5c5;
+  stroke-width: 0.65;
+  stroke-dasharray: 0.7 2.1;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.gb-hero__background-dot {
+  fill: #f9f9f9;
+  stroke: #aaa;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.gb-hero__orbit-group {
+  animation: gb-hero-orbit-rotation 360s linear infinite;
+}
+
+.gb-hero__orbit-satellite {
+  animation: gb-hero-satellite-orbit var(--gb-orbit-duration) linear infinite;
+}
+
+.gb-hero__floating-dot {
+  animation: gb-hero-dot-float 20s ease-in-out infinite;
+}
+
+@keyframes gb-hero-orbit-rotation {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes gb-hero-satellite-orbit {
+  from { transform: rotate(var(--gb-orbit-phase)); }
+  to { transform: rotate(calc(var(--gb-orbit-phase) + 360deg)); }
+}
+
+@keyframes gb-hero-dot-float {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(3px, -4px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gb-hero__orbit-group,
+  .gb-hero__floating-dot {
+    animation: none;
+  }
+
+  .gb-hero__orbit-satellite {
+    animation: none;
+    transform: rotate(var(--gb-orbit-phase));
+  }
 }
 
 .gb-hero__title {

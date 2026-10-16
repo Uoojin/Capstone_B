@@ -322,3 +322,64 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 767px) {
+  .student-page .student-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 12px;
+  }
+
+  .student-page .student-flipper {
+    margin-bottom: 12px;
+  }
+
+  .student-page .student-info {
+    gap: 6px;
+  }
+
+  .student-page .student-name {
+    font-size: 14px;
+    overflow-wrap: anywhere;
+  }
+
+  .student-page .student-meta {
+    overflow: visible;
+    font-size: 11px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .student-page .card-back {
+    padding: 12px 10px;
+    gap: 10px;
+    overflow-y: auto;
+  }
+
+  .student-page .back-interview {
+    font-size: clamp(10px, 2.6vw, 14px);
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+
+  .student-page .back-meta-list {
+    gap: 8px;
+  }
+
+  .student-page .back-meta-row {
+    flex-wrap: wrap;
+    gap: 2px 6px;
+    font-size: clamp(10px, 2.4vw, 13px);
+  }
+
+  .student-page .back-label {
+    width: auto;
+    flex-shrink: 0;
+  }
+
+  .student-page .back-value,
+  .student-page .back-link {
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+}

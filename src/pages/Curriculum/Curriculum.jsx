@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 import { tracks, foundation, advanced, careers, curriculumArtwork, convergenceEducation } from './curriculumData'
 import ornament from '../../assets/icon/DrawingObject.svg'
+import curriculumLogo from '../../assets/curriculum/logo.svg'
 import './Curriculum.css'
 
 function SectionTitle({ children, id }) {
@@ -8,7 +9,8 @@ function SectionTitle({ children, id }) {
 }
 
 function CurriculumHeroArtwork() {
-  const { symbolsSrc, titleSrc } = curriculumArtwork
+  const { titleSrc } = curriculumArtwork
+  const symbolsSrc = curriculumLogo
   return (
     <>
       <div className="curriculum-symbols" aria-hidden="true">

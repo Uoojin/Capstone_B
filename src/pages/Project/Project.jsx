@@ -683,6 +683,10 @@ export default function Project() {
                     onClick={() => openDetail(index)}
                   >
                     <span className="list-card-media" />
+                    <span className="list-card-caption">
+                      <span className="list-card-name">{project.name}</span>
+                      <span className="list-card-keywords">{project.tags.join(' · ')}</span>
+                    </span>
                   </button>
                 )
               })}

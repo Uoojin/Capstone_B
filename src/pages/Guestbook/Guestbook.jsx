@@ -4,9 +4,46 @@ import PhotoBooth from '../Guestbook/PhotoBooth.jsx'
 import Message from './Message.jsx'
 import { fetchGuestbookEntries, subscribeToGuestbookEntries, isSupabaseConfigured } from '../../lib/supabase02.js'
 
+function GuestbookHeroBackground() {
+  const orbitGroups = [
+    { x: 312, y: 500, radii: [198, 246, 294, 342], phases: [212, 242, 310, 16] },
+    { x: 1018, y: 38, radii: [152, 190, 226, 264], phases: [100, 158, 132, 45] },
+  ]
+  const floatingDots = [
+    [154, 119], [452, 99], [608, 143], [735, 94], [990, 128],
+    [229, 189], [278, 341], [200, 396], [437, 412], [272, 530],
+    [851, 397], [1081, 351], [1123, 457], [1007, 557], [1126, 607],
+  ]
+
+  return (
+    <div className="gb-hero__background" aria-hidden="true">
+      <svg viewBox="0 0 1264 632" preserveAspectRatio="xMidYMid slice" focusable="false">
+        {orbitGroups.map(({ x, y, radii, phases }, groupIndex) => (
+          <g key={groupIndex} className="gb-hero__orbit-group" style={{ transformOrigin: `${x}px ${y}px`, animationDirection: groupIndex ? 'reverse' : 'normal' }}>
+            {radii.map((radius, index) => (
+              <g key={radius}>
+                <circle className="gb-hero__orbit-track" cx={x} cy={y} r={radius} />
+                <g className="gb-hero__orbit-satellite" style={{ transformOrigin: `${x}px ${y}px`, '--gb-orbit-phase': `${phases[index]}deg`, '--gb-orbit-duration': `${110 + index * 23 + groupIndex * 17}s` }}>
+                  <circle className="gb-hero__background-dot" cx={x + radius} cy={y} r="3.3" />
+                </g>
+              </g>
+            ))}
+          </g>
+        ))}
+        {floatingDots.map(([x, y], index) => (
+          <g key={index} className="gb-hero__floating-dot" style={{ animationDuration: `${16 + index % 5 * 3}s`, animationDelay: `${-index * 2.7}s` }}>
+            <circle className="gb-hero__background-dot" cx={x} cy={y} r="3.3" />
+          </g>
+        ))}
+      </svg>
+    </div>
+  )
+}
+
 function GuestbookHero({ onPhotoBooth, onMessage }) {
   return (
     <section className="gb-hero" aria-labelledby="gb-hero-title">
+      <GuestbookHeroBackground />
       <h1 id="gb-hero-title" className="gb-hero__title">
         SYNC UP!
       </h1>

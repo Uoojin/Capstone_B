@@ -195,6 +195,13 @@ function captureVideoFrame(video) {
     sourceY = (video.videoHeight - sourceHeight) / 2
   }
 
+  // Canvas reads the raw video frame without the preview's CSS transform.
+  const previewTransform = getComputedStyle(video).transform
+  if (previewTransform !== 'none' && new DOMMatrixReadOnly(previewTransform).a < 0) {
+    ctx.translate(canvas.width, 0)
+    ctx.scale(-1, 1)
+  }
+
   ctx.drawImage(
     video,
     sourceX,

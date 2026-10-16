@@ -22,6 +22,21 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
     var COLOR_INK = '#0b0b0a';
     var COLOR_ACCENT = '#E2E2E2';
     var COLOR_ACCENT_STRONG = '#FD00A0';
+    var clickCursor = document.createElement('div');
+    clickCursor.className = 'type-click-cursor';
+    clickCursor.textContent = 'DRAG';
+    clickCursor.setAttribute('aria-hidden', 'true');
+    clickCursor.style.backgroundColor = COLOR_ACCENT_STRONG;
+    clickCursor.hidden = true;
+    canvas.parentElement.appendChild(clickCursor);
+    var cursorOnCanvas = false;
+    var cursorMedia = window.matchMedia('(min-width: 768px) and (hover: hover) and (pointer: fine)');
+
+    function hideClickCursor() {
+        cursorOnCanvas = false;
+        clickCursor.hidden = true;
+        canvas.style.removeProperty('cursor');
+    }
     var MAJOR_COLORS = {
         planning: '#FFE6FA',
         design: '#FFFBD2',
@@ -334,6 +349,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
     }
 
     listen(canvas, 'pointerdown', function (e) {
+        cursorOnCanvas = e.pointerType === 'mouse';
         var p = pointerPos(e);
         var w = screenToWorld(p);
         mouse.x = p.x; mouse.y = p.y; mouse.worldX = w.x; mouse.worldY = w.y; mouse.active = true;
@@ -375,6 +391,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
     });
 
     listen(canvas, 'pointermove', function (e) {
+        cursorOnCanvas = e.pointerType === 'mouse';
         var p = pointerPos(e);
         var w = screenToWorld(p);
         mouse.x = p.x; mouse.y = p.y; mouse.worldX = w.x; mouse.worldY = w.y; mouse.active = true;
@@ -463,16 +480,41 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
 
     listen(canvas, 'pointerup', endDrag);
     listen(canvas, 'pointercancel', endDrag);
-    listen(canvas, 'pointerleave', function () {
+    listen(canvas, 'pointercancel', hideClickCursor);
+    function stopPointerExploration() {
+        hideClickCursor();
         mouse.active = false;
-        // Header controls cover the canvas; leaving it must not recenter the view.
         if (!syncEvent && !syncCameraSession) {
             camera.targetX = camera.x;
             camera.targetY = camera.y;
         }
         hoveredNode = null;
         hoveredTeam = null;
+    }
+
+    listen(canvas, 'pointerleave', function (e) {
+        hideClickCursor();
+        hoveredNode = null;
+        hoveredTeam = null;
+        // The header overlays the hero; it is still part of mouse exploration.
+        if (e.pointerType === 'mouse' && e.relatedTarget?.closest?.('.site-header')) return;
+        stopPointerExploration();
     });
+    listen(window, 'pointermove', function (e) {
+        if (e.pointerType !== 'mouse' || !e.target?.closest?.('.site-header')) return;
+        var rect = canvas.getBoundingClientRect();
+        if (e.clientX < rect.left || e.clientX > rect.right || e.clientY < rect.top || e.clientY > rect.bottom) {
+            stopPointerExploration();
+            return;
+        }
+        var p = pointerPos(e);
+        var w = screenToWorld(p);
+        mouse.x = p.x; mouse.y = p.y; mouse.worldX = w.x; mouse.worldY = w.y; mouse.active = true;
+    });
+    listen(window, 'pointerout', function (e) {
+        if (!e.relatedTarget) stopPointerExploration();
+    });
+    listen(window, 'blur', stopPointerExploration);
 
     var start = performance.now();
     var last = start;
@@ -1670,6 +1712,20 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
         }
     }
 
+    function updateClickCursor() {
+        var rect = canvas.getBoundingClientRect();
+        // Hit-test the page too, so header controls win even during pointer capture.
+        var overCanvas = cursorMedia.matches && cursorOnCanvas && mouse.active && host.hasAttribute('data-hero-ready') &&
+            document.elementFromPoint(rect.left + mouse.x, rect.top + mouse.y) === host;
+        clickCursor.hidden = !overCanvas;
+        if (overCanvas) {
+            clickCursor.style.transform = 'translate3d(' + (mouse.x - 32) + 'px, ' + (mouse.y - 32) + 'px, 0)';
+            canvas.style.cursor = 'none';
+        } else {
+            canvas.style.removeProperty('cursor');
+        }
+    }
+
     function frame(now) {
         var t = (now - start) / 1000;
         var dt = Math.min(0.05, (now - last) / 1000);
@@ -1706,6 +1762,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
         labelBounds = [];
         for (i = 0; i < nodes.length; i++) drawNode(nodes[i], t);
         updateAndDrawSyncPair(t, dt);
+        updateClickCursor();
 
 
 
@@ -1749,6 +1806,8 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
     animationFrame = requestAnimationFrame(frame);
 
     return () => {
+        hideClickCursor();
+        clickCursor.remove();
         events.abort();
         observer.disconnect();
         cancelAnimationFrame(animationFrame);

@@ -339,21 +339,21 @@
   color: #111;
   font: inherit;
   text-align: center;
+  animation: curriculum-scroll-bounce 3000ms ease-in-out infinite;
 }
 .curriculum-scroll-button svg { display: block; }
-.curriculum-scroll-button path {
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
-  animation: curriculum-scroll-draw 2300ms ease-in-out infinite;
-}
-@keyframes curriculum-scroll-draw {
-  0%, 12% { stroke-dashoffset: 1; opacity: 0; }
-  42%, 65% { stroke-dashoffset: 0; opacity: 1; }
-  88%, 100% { stroke-dashoffset: 0; opacity: 0; }
+@keyframes curriculum-scroll-bounce {
+  0%, 81%, 100% { opacity: 0; transform: translateY(0); }
+  14%, 26% { opacity: 1; transform: translateY(0); }
+  34% { opacity: 1; transform: translateY(6px); animation-timing-function: ease-out; }
+  44% { opacity: 1; transform: translateY(2px); }
+  52% { opacity: 1; transform: translateY(8px); animation-timing-function: ease-out; }
+  62% { opacity: 1; transform: translateY(4px); }
+  80% { opacity: 0; transform: translateY(12px); }
 }
 .curriculum-scroll-button:focus-visible { outline: 1px solid currentColor; outline-offset: 6px; }
 @media (prefers-reduced-motion: reduce) {
-  .curriculum-scroll-button path { animation: none; stroke-dashoffset: 0; opacity: 1; }
+  .curriculum-scroll-button { animation: none; }
 }
 @media (max-height: 760px) and (min-width: 768px) {
   .curriculum-hero { padding-top: 6svh; padding-bottom: 24px; }

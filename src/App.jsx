@@ -1,4 +1,5 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { useSyncExternalStore } from 'react'
+import { BrowserRouter, Navigate, Outlet, Route, Routes } from 'react-router-dom'
 import Header from './components/Header/Header.jsx'
 import Project from './pages/Project/Project.jsx'
 import Student from './pages/Student/Student.jsx'
@@ -10,8 +11,20 @@ import Footer from './components/Footer/Footer.jsx'
 import Home from './pages/Home/Home.jsx'
 import ScrollToTop from './components/ScrollToTop.jsx'
 
+const mobileViewport = window.matchMedia('(max-width: 767px)')
+
+function subscribeToMobileViewport(onChange) {
+  mobileViewport.addEventListener('change', onChange)
+  return () => mobileViewport.removeEventListener('change', onChange)
+}
+
+function getMobileViewport() {
+  return mobileViewport.matches
+}
 
 function App() {
+  const isMobile = useSyncExternalStore(subscribeToMobileViewport, getMobileViewport)
+
   return (
     <BrowserRouter basename={import.meta.env.BASE_URL}>
       <ScrollToTop />
@@ -20,10 +33,12 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/project" element={<Project />} />
         <Route path="/student" element={<Student />} />
-        <Route path="/credit" element={<Behind />} />
-        <Route path="/curriculum" element={<Curriculum />} />
-        <Route path="/syncopate" element={<Syncopate />} />
-        <Route path="/guestbook" element={<Guestbook />} />
+        <Route element={isMobile ? <Navigate to="/" replace /> : <Outlet />}>
+          <Route path="/credit" element={<Behind />} />
+          <Route path="/curriculum" element={<Curriculum />} />
+          <Route path="/syncopate" element={<Syncopate />} />
+          <Route path="/guestbook" element={<Guestbook />} />
+        </Route>
       </Routes>
       <Footer />
     </BrowserRouter>
