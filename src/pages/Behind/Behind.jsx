@@ -1,10 +1,10 @@
 import { useEffect, useLayoutEffect, useRef } from 'react'
-import { committee, DMD, professors } from './creditData'
-import schoolLogo from '../../assets/credit/KW Logo.svg'
-import './Credit.css'
+import { committee, DMD, professors } from './behindData'
+import schoolLogo from '../../assets/behind/KW Logo.svg'
+import './Behind.css'
 
 // Set videoSrc to a 1920×1080 video URL when the background film is ready.
-function CreditBackground({ videoSrc }) {
+function BehindBackground({ videoSrc }) {
   return (
     <div className="credit-background" aria-hidden="true">
       {videoSrc && <video src={videoSrc} autoPlay muted loop playsInline />}
@@ -12,7 +12,7 @@ function CreditBackground({ videoSrc }) {
   )
 }
 
-function CreditSection({ title, data }) {
+function BehindSection({ title, data }) {
   return (
     <section className="credit-section">
       <h2>{title}</h2>
@@ -30,7 +30,7 @@ function CreditSection({ title, data }) {
   )
 }
 
-export default function Credit({ videoSrc }) {
+export default function Behind({ videoSrc }) {
   const viewportRef = useRef(null)
 
   useLayoutEffect(() => {
@@ -124,7 +124,7 @@ export default function Credit({ videoSrc }) {
 
   return (
     <main className="credit" aria-label="전시 크레딧">
-      <CreditBackground videoSrc={videoSrc} />
+      <BehindBackground videoSrc={videoSrc} />
       <div className="credit-viewport" ref={viewportRef} tabIndex={0} role="region" aria-label="크레딧 스크롤 영역">
         <div className="credit-roll">
           <section className="credit-hero" aria-label="DELIGHT INSIGHT 2026 LET’S SYNC!">
@@ -134,9 +134,9 @@ export default function Credit({ videoSrc }) {
             </div>
             <p>계원예술대학교<br />디지털미디어디자인과 졸업전시회</p>
           </section>
-          <CreditSection title="졸업준비위원회" data={committee} />
-          <CreditSection title="디지털미디어디자인과" data={DMD} />
-          <CreditSection title="교수진" data={professors} />
+          <BehindSection title="졸업준비위원회" data={committee} />
+          <BehindSection title="디지털미디어디자인과" data={DMD} />
+          <BehindSection title="교수진" data={professors} />
           <div className="credit-logo">
             <img src={schoolLogo} alt="계원예술대학교 KAYWON UNIVERSITY OF ART & DESIGN" />
           </div>

@@ -76,7 +76,6 @@
   display: block;
   font-size: clamp(34px, 3.45vw, 66px);
   line-height: 1;
-  text-shadow: 4px 0 #ffd2ef, -4px 0 #ffd2ef, 0 4px #ffd2ef, 0 -4px #ffd2ef;
 }
 
 .credit-hero p {

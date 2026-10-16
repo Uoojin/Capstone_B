@@ -58,7 +58,7 @@ export default function Header() {
             aria-controls="site-header-menu"
             onClick={() => setIsOpen((current) => !current)}
           >
-            {isOpen ? '×' : '+'}
+            <span className={isOpen ? undefined : 'site-menu-plus'}>{isOpen ? '×' : '+'}</span>
           </button>
         </div>
       </nav>

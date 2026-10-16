@@ -47,7 +47,6 @@
   line-height: 0.91;
   font-weight: 800;
   letter-spacing: -0.055em;
-  -webkit-text-stroke: clamp(8px, 1.1vw, 21px) var(--curriculum-soft-pink);
   paint-order: stroke fill;
   stroke-linejoin: round;
 }

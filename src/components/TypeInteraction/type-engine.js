@@ -32,6 +32,8 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
     var STUDENT_COUNT = 113;
     var TEAM_SIZES = [15, 14, 14, 14, 14, 14, 14, 14];
     var STUDENT_RADIUS = 4;
+    // Shared SVG extent. The animated renderRadius is retained only for existing physics.
+    var TYPOGRAPHY_SIZE = 400;
     var TEAM_INFO = ['L', 'E', 'T', 'S1', 'S2', 'Y', 'N', 'C'].map(function (letter) { return { name: letter.replace(/[12]/, ''), category: 'LETS SYNC' }; });
     var LETTER_FILES = ['L_default.svg', 'E_default.svg', 'T_default.svg', 'S1_default.svg', 'S2_default.svg', 'Y_default.svg', 'N_default.svg', 'C_default.svg'];
     var letterImages = LETTER_FILES.map(function (file) { var img = new Image(); img.src = assetMap[file] || ''; return img; });
@@ -134,6 +136,8 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
     var blobs = [];
     var camera = { x: 0, y: 0, targetX: 0, targetY: 0 };
     var syncCameraSession = null;
+    var cameraHandoff = null;
+    var separationRecovery = new Map();
     var mouse = { x: W / 2, y: H / 2, worldX: 0, worldY: 0, active: false };
     var draggingNode = null;
     var draggingBlob = null;
@@ -167,6 +171,17 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
         var g = parseInt(clean.slice(2, 4), 16);
         var b = parseInt(clean.slice(4, 6), 16);
         return 'rgba(' + r + ',' + g + ',' + b + ',' + alpha + ')';
+    }
+
+    function getTypographyOrbitRadius(teamId) {
+        var image = letterImages[teamId];
+        var width = image.naturalWidth;
+        var height = image.naturalHeight;
+        // The half-diagonal encloses the complete SVG at every artwork rotation.
+        var scale = width && height ? TYPOGRAPHY_SIZE / Math.max(width, height) : 1;
+        var artworkRadius = width && height ? Math.hypot(width * scale, height * scale) / 2 : TYPOGRAPHY_SIZE / Math.SQRT2;
+        // Include the rendered dot (minimum 6px), its scale, drift, and clear space.
+        return artworkRadius + Math.max(6, STUDENT_RADIUS * 1.16) + 18 + 6 * Math.hypot(0.45, 0.40);
     }
 
     function layout() {
@@ -203,14 +218,14 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
                     phase: seeded(t + 1, 13) * Math.PI * 2,
                     speed: 0.055 + seeded(t + 1, 14) * 0.055,
                     z: 0.65 + seeded(t + 1, 15) * 0.35,
-                    travelSpeed: 19 + seeded(t + 1, 40) * 17,
-                    velocityX: Math.cos(seeded(t + 1, 41) * Math.PI * 2) * (19 + seeded(t + 1, 40) * 17),
-                    velocityY: Math.sin(seeded(t + 1, 41) * Math.PI * 2) * (19 + seeded(t + 1, 40) * 17),
+                    travelSpeed: 6 + seeded(t + 1, 40) * 10,
+                    velocityX: Math.cos(seeded(t + 1, 41) * Math.PI * 2) * (6 + seeded(t + 1, 40) * 10),
+                    velocityY: Math.sin(seeded(t + 1, 41) * Math.PI * 2) * (6 + seeded(t + 1, 40) * 10),
                     targetX: cx,
                     targetY: cy,
                     waypointIndex: 0,
                     waypointAge: 999,
-                    waypointDuration: 30 + seeded(t + 1, 42) * 24,
+                    waypointDuration: 55 + seeded(t + 1, 42) * 35,
                     dragTargetX: null,
                     dragTargetY: null,
                     syncEnergy: 0,
@@ -237,16 +252,15 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
                 }
 
                 var team = blobs[teamIndex];
-                var memberOrdinal = i - teamCursor;
-                var minRadius = team.coreRadius + 18;
-                var maxRadius = team.outerRadius + 8;
+                var minRadius = getTypographyOrbitRadius(teamIndex);
+                var maxRadius = minRadius + (team.outerRadius + 8 - (team.coreRadius + 18));
                 var localX = 0;
                 var localY = 0;
                 var placed = false;
 
                 for (var attempt = 0; attempt < 24 && !placed; attempt++) {
-                    var angle = (memberOrdinal + seeded(i + 1, 31) * 0.18) / TEAM_SIZES[teamIndex] * Math.PI * 2 + attempt * 0.045;
-                    var distance = minRadius + (0.24 + seeded(i + 1, 32) * 0.66) * (maxRadius - minRadius);
+                    var angle = seeded(i + 1, 31 + attempt * 2) * Math.PI * 2;
+                    var distance = minRadius + seeded(i + 1, 32 + attempt * 2) * (maxRadius - minRadius);
                     localX = Math.cos(angle) * distance;
                     localY = Math.sin(angle) * distance;
                     placed = nodes.every(function (other) {
@@ -268,14 +282,14 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
                     homeLocalY: localY,
                     homeRadius: distance,
                     orbitAngle: angle,
-                    orbitSpeed: 0.15 + seeded(i + 1, 20) * 0.11,
+                    orbitSpeed: 0.09 + seeded(i + 1, 20) * 0.09,
                     orbitDirection: seeded(i + 1, 21) < 0.70 ? 1 : -1,
                     driftPhase: seeded(i + 1, 10) * Math.PI * 2,
                     driftSpeed: 0.10 + seeded(i + 1, 11) * 0.09,
                     driftAmount: 2.5 + seeded(i + 1, 18) * 3.5,
                     angularDrift: 0.016 + seeded(i + 1, 19) * 0.024,
-                    x: 34 + ((i * 0.618033988749895 + 0.19) % 1) * (WORLD_W - 68),
-                    y: 34 + ((i * 0.754877666246693 + 0.37) % 1) * (WORLD_H - 68),
+                    x: team.currentX + localX,
+                    y: team.currentY + localY,
                     scale: 1,
                     pulses: [],
                     freeDragX: null,
@@ -286,11 +300,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
                     returnVX: 0,
                     returnVY: 0,
                     syncRole: null,
-                    syncVisual: 0,
-                    // Independent screen-wide home position; team membership remains unchanged.
-                    scatterU: ((i * 0.618033988749895 + 0.19) % 1),
-                    scatterV: ((i * 0.754877666246693 + 0.37) % 1),
-                    scatterPhase: seeded(i + 1, 91) * Math.PI * 2
+                    syncVisual: 0
                 });
             }
         } else {
@@ -455,6 +465,11 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
     listen(canvas, 'pointercancel', endDrag);
     listen(canvas, 'pointerleave', function () {
         mouse.active = false;
+        // Header controls cover the canvas; leaving it must not recenter the view.
+        if (!syncEvent && !syncCameraSession) {
+            camera.targetX = camera.x;
+            camera.targetY = camera.y;
+        }
         hoveredNode = null;
         hoveredTeam = null;
     });
@@ -468,7 +483,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
             var images = [letterImages[team.id], getSyncTypographyImage(team.id, t)];
             var angle = LETTER_VISUAL_ANGLES[team.id] * Math.PI / 180;
             // Include both sides of the existing SVG crossfade at their rendered size.
-            var side = team.renderRadius * 2.48 * 0.9;
+            var side = TYPOGRAPHY_SIZE;
             images.forEach(function (image) {
                 if (!image || !image.naturalWidth || !image.naturalHeight) return;
                 var scale = Math.min(side / image.naturalWidth, side / image.naturalHeight);
@@ -509,7 +524,6 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
             var needsMove = Math.abs(target.x - camera.x) > 0.1 || Math.abs(target.y - camera.y) > 0.1;
             if (!syncCameraSession && needsMove) {
                 syncCameraSession = {
-                    returnView: { x: camera.x, y: camera.y, targetX: camera.targetX, targetY: camera.targetY },
                     serial: syncSerial, phase: 'focus', began: now, fromX: camera.x, fromY: camera.y
                 };
             }
@@ -524,6 +538,8 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
                 }
                 camera.targetX = target.x;
                 camera.targetY = target.y;
+                var previousX = camera.x;
+                var previousY = camera.y;
                 var progress = Math.min(1, (now - session.began) / 900);
                 if (progress < 1) {
                     camera.x = session.fromX + (target.x - session.fromX) * ease(progress);
@@ -532,38 +548,46 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
                     camera.x += (target.x - camera.x) * 0.032;
                     camera.y += (target.y - camera.y) * 0.032;
                 }
+                session.velocityX = camera.x - previousX;
+                session.velocityY = camera.y - previousY;
                 return;
             }
         }
 
         if (syncCameraSession) {
-            var returning = syncCameraSession;
-            if (returning.phase !== 'return') {
-                returning.phase = 'return';
-                returning.began = now;
-                returning.fromX = camera.x;
-                returning.fromY = camera.y;
-            }
-            var amount = Math.min(1, (now - returning.began) / 900);
-            var returnX = Math.max(0, Math.min(maxX, returning.returnView.x));
-            var returnY = Math.max(0, Math.min(maxY, returning.returnView.y));
-            camera.x = returning.fromX + (returnX - returning.fromX) * ease(amount);
-            camera.y = returning.fromY + (returnY - returning.fromY) * ease(amount);
-            if (amount === 1) {
-                camera.targetX = Math.max(0, Math.min(maxX, returning.returnView.targetX));
-                camera.targetY = Math.max(0, Math.min(maxY, returning.returnView.targetY));
-                syncCameraSession = null;
-            }
-            return;
+            cameraHandoff = { pointerX: mouse.x, pointerY: mouse.y, moved: false,
+                velocityX: syncCameraSession.velocityX || 0, velocityY: syncCameraSession.velocityY || 0 };
+            camera.targetX = camera.x;
+            camera.targetY = camera.y;
+            syncCameraSession = null;
         }
 
         // Preserve the original mouse exploration range and sensitivity.
         if (mouse.active && !reduceMotion) {
-            camera.targetX = Math.max(0, Math.min(maxX, (mouse.x / Math.max(1, W)) * maxX));
-            camera.targetY = Math.max(0, Math.min(maxY, (mouse.y / Math.max(1, H)) * maxY));
-        } else {
-            camera.targetX = maxX * 0.5;
-            camera.targetY = maxY * 0.5;
+            var pointerTargetX = Math.max(0, Math.min(maxX, (mouse.x / Math.max(1, W)) * maxX));
+            var pointerTargetY = Math.max(0, Math.min(maxY, (mouse.y / Math.max(1, H)) * maxY));
+            if (cameraHandoff) {
+                cameraHandoff.moved = cameraHandoff.moved || Math.hypot(mouse.x - cameraHandoff.pointerX, mouse.y - cameraHandoff.pointerY) > 1;
+                if (cameraHandoff.moved) {
+                    camera.targetX += (pointerTargetX - camera.targetX) * 0.032;
+                    camera.targetY += (pointerTargetY - camera.targetY) * 0.032;
+                }
+                camera.x = Math.max(0, Math.min(maxX, camera.x + cameraHandoff.velocityX));
+                camera.y = Math.max(0, Math.min(maxY, camera.y + cameraHandoff.velocityY));
+                cameraHandoff.velocityX *= 0.968;
+                cameraHandoff.velocityY *= 0.968;
+                if (!cameraHandoff.moved) {
+                    camera.targetX = camera.x;
+                    camera.targetY = camera.y;
+                } else if (Math.hypot(pointerTargetX - camera.targetX, pointerTargetY - camera.targetY) < 0.1) {
+                    cameraHandoff = null;
+                }
+            } else {
+                camera.targetX = pointerTargetX;
+                camera.targetY = pointerTargetY;
+            }
+        } else if (cameraHandoff) {
+            cameraHandoff.velocityX = cameraHandoff.velocityY = 0;
         }
         camera.x += (camera.targetX - camera.x) * 0.0065;
         camera.y += (camera.targetY - camera.y) * 0.0065;
@@ -614,46 +638,35 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
         node.y = team.currentY + node.homeLocalY;
     }
 
-    // Only the visible hero edge limits travel. Keep a usable portion of each
-    // rotated letter on-screen without changing artwork size or physics.
+    // Movement belongs to the world, not the camera's current viewport.
     function getTeamTravelBounds(b) {
-        var img = letterImages[b.id];
-        var maxSide = b.renderRadius * 2.48 * 0.9;
-        var imageW = img && img.naturalWidth || 1;
-        var imageH = img && img.naturalHeight || 1;
-        var scale = Math.min(maxSide / imageW, maxSide / imageH);
-        var angle = LETTER_VISUAL_ANGLES[b.id] * Math.PI / 180;
-        var halfW = (Math.abs(Math.cos(angle)) * imageW + Math.abs(Math.sin(angle)) * imageH) * scale / 2;
-        var halfH = (Math.abs(Math.sin(angle)) * imageW + Math.abs(Math.cos(angle)) * imageH) * scale / 2;
-        var visible = Math.min(48, Math.min(W, H) * 0.1);
-        var overscanX = Math.max(0, Math.min(halfW, b.renderRadius) - visible);
-        var overscanY = Math.max(0, Math.min(halfH, b.renderRadius) - visible);
-        // Automatic framing must not drag the physics boundary along with it.
-        var travelView = syncCameraSession ? syncCameraSession.returnView : camera;
-        return {
-            minX: travelView.x - overscanX, maxX: travelView.x + W + overscanX,
-            minY: travelView.y - overscanY, maxY: travelView.y + H + overscanY
-        };
-    }
-
-    function keepTeamsInHero() {
-        blobs.forEach(function (b) {
-            var bounds = getTeamTravelBounds(b);
-            b.currentX = Math.max(bounds.minX, Math.min(bounds.maxX, b.currentX));
-            b.currentY = Math.max(bounds.minY, Math.min(bounds.maxY, b.currentY));
+        var marginX = Math.min(b.outerRadius + 18, WORLD_W / 4);
+        var marginY = Math.min(b.outerRadius + 18, WORLD_H / 4);
+        var spacing = 0;
+        blobs.forEach(function (team) {
+            spacing = Math.max(spacing, getTypographyOrbitRadius(team.id) * 2 +
+                team.outerRadius + 8 - (team.coreRadius + 18) + 6 * Math.hypot(0.45, 0.40));
         });
+        var columns = Math.max(1, Math.min(TEAM_COUNT, Math.ceil(Math.sqrt(TEAM_COUNT * WORLD_W / WORLD_H))));
+        var rows = Math.ceil(TEAM_COUNT / columns);
+        // Leave room for the permitted spacing; clamping to a smaller area jams the teams.
+        // This expands only team travel, never the camera's exploration range or zoom.
+        var width = Math.max(WORLD_W - marginX * 2, spacing * (columns - 0.5));
+        var height = Math.max(WORLD_H - marginY * 2, spacing * (rows - 0.5));
+        return { minX: (WORLD_W - width) / 2, maxX: (WORLD_W + width) / 2,
+            minY: (WORLD_H - height) / 2, maxY: (WORLD_H + height) / 2 };
     }
 
     function chooseNextTeamTarget(b) {
         b.waypointIndex++;
         var bounds = getTeamTravelBounds(b);
-        var availableW = Math.max(1, bounds.maxX - bounds.minX);
-        var availableH = Math.max(1, bounds.maxY - bounds.minY);
+        var availableW = Math.max(1, bounds.maxX - bounds.minX - 48);
+        var availableH = Math.max(1, bounds.maxY - bounds.minY - 48);
         var seedIndex = (b.id + 1) * 37 + b.waypointIndex * 11;
-        b.targetX = bounds.minX + seeded(seedIndex, 51) * availableW;
-        b.targetY = bounds.minY + seeded(seedIndex, 52) * availableH;
+        b.targetX = bounds.minX + 24 + seeded(seedIndex, 51) * availableW;
+        b.targetY = bounds.minY + 24 + seeded(seedIndex, 52) * availableH;
         b.waypointAge = 0;
-        b.waypointDuration = 30 + seeded(seedIndex, 53) * 24;
+        b.waypointDuration = 55 + seeded(seedIndex, 53) * 35;
     }
 
     function updateTeamPosition(b, t, dt) {
@@ -688,16 +701,19 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
             var desiredY = targetDistance > 0.001 ? targetDY / targetDistance * b.travelSpeed : 0;
             var bounds = getTeamTravelBounds(b);
             var steerZone = b.outerRadius * 0.7 + 90;
+            // Opposite steering zones must not overlap on narrow viewports.
+            var steerX = Math.min(steerZone, (bounds.maxX - bounds.minX) / 2);
+            var steerY = Math.min(steerZone, (bounds.maxY - bounds.minY) / 2);
 
-            if (b.currentX < bounds.minX + steerZone) {
-                desiredX += (1 - Math.max(0, b.currentX - bounds.minX) / steerZone) * b.travelSpeed;
-            } else if (b.currentX > bounds.maxX - steerZone) {
-                desiredX -= (1 - Math.max(0, bounds.maxX - b.currentX) / steerZone) * b.travelSpeed;
+            if (b.currentX < bounds.minX + steerX) {
+                desiredX += (1 - Math.max(0, b.currentX - bounds.minX) / steerX) * b.travelSpeed;
+            } else if (b.currentX > bounds.maxX - steerX) {
+                desiredX -= (1 - Math.max(0, bounds.maxX - b.currentX) / steerX) * b.travelSpeed;
             }
-            if (b.currentY < bounds.minY + steerZone) {
-                desiredY += (1 - Math.max(0, b.currentY - bounds.minY) / steerZone) * b.travelSpeed;
-            } else if (b.currentY > bounds.maxY - steerZone) {
-                desiredY -= (1 - Math.max(0, bounds.maxY - b.currentY) / steerZone) * b.travelSpeed;
+            if (b.currentY < bounds.minY + steerY) {
+                desiredY += (1 - Math.max(0, b.currentY - bounds.minY) / steerY) * b.travelSpeed;
+            } else if (b.currentY > bounds.maxY - steerY) {
+                desiredY -= (1 - Math.max(0, bounds.maxY - b.currentY) / steerY) * b.travelSpeed;
             }
 
             var desiredLength = Math.hypot(desiredX, desiredY);
@@ -706,15 +722,20 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
                 desiredY = desiredY / desiredLength * b.travelSpeed;
             }
 
-            var steering = Math.min(1, dt * 0.36);
+            var steering = Math.min(1, dt * 0.24);
             b.velocityX += (desiredX - b.velocityX) * steering;
             b.velocityY += (desiredY - b.velocityY) * steering;
             var globalMotion = reduceMotion ? 0.18 : 1;
             b.currentX += b.velocityX * dt * globalMotion;
             b.currentY += b.velocityY * dt * globalMotion;
 
-            b.currentX = Math.max(bounds.minX, Math.min(bounds.maxX, b.currentX));
-            b.currentY = Math.max(bounds.minY, Math.min(bounds.maxY, b.currentY));
+            if (!b.syncResuming) {
+                b.currentX = Math.max(bounds.minX, Math.min(bounds.maxX, b.currentX));
+                b.currentY = Math.max(bounds.minY, Math.min(bounds.maxY, b.currentY));
+            } else if (b.currentX >= bounds.minX && b.currentX <= bounds.maxX &&
+                b.currentY >= bounds.minY && b.currentY <= bounds.maxY) {
+                b.syncResuming = false;
+            }
         }
 
         b.renderRadius = Math.max(b.coreRadius * 0.85, Math.min(b.coreRadius * 1.15, r));
@@ -832,8 +853,21 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
         }
     }
 
-    function separateBlobs() {
-        for (var pass = 0; pass < 2; pass++) {
+    function separateBlobs(dt) {
+        var clearances = blobs.map(function (team) {
+            var inner = getTypographyOrbitRadius(team.id);
+            var bandWidth = team.outerRadius + 8 - (team.coreRadius + 18);
+            return { inner: inner, outer: inner + bandWidth + 6 * Math.hypot(0.45, 0.40) };
+        });
+        if (!syncEvent) {
+            separationRecovery.forEach(function (recovery) {
+                recovery.age += dt;
+                recovery.distance += recovery.speed * (1 - Math.exp(-0.24 * recovery.age)) * dt;
+            });
+        }
+        // Preserve the original separation during the intentional SYNC approach.
+        for (var pass = 0; pass < (syncEvent ? 2 : 32); pass++) {
+            var largestOverlap = 0;
             for (var i = 0; i < blobs.length; i++) {
                 for (var j = i + 1; j < blobs.length; j++) {
                     var a = blobs[i];
@@ -844,6 +878,18 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
                     var orbitDistance = (a.outerRadius + b.outerRadius) * 0.72;
                     var coreDistance = (a.renderRadius + b.renderRadius) * 1.35;
                     var minDistance = Math.max(orbitDistance, coreDistance);
+                    if (!syncEvent) {
+                        // Either team's outermost dot must clear the other complete SVG.
+                        minDistance = Math.max(minDistance,
+                            clearances[i].outer + clearances[j].inner,
+                            clearances[j].outer + clearances[i].inner);
+                        var key = i + '-' + j;
+                        var recovery = separationRecovery.get(key);
+                        if (recovery) {
+                            if (recovery.distance >= minDistance) separationRecovery.delete(key);
+                            else minDistance = recovery.distance;
+                        }
+                    }
                     if (distance >= minDistance) continue;
 
                     if (distance < 0.001) {
@@ -855,6 +901,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
                     var nx = dx / distance;
                     var ny = dy / distance;
                     var overlap = minDistance - distance;
+                    largestOverlap = Math.max(largestOverlap, overlap);
                     var aPinned = draggingBlob === a || a.dragTargetX !== null;
                     var bPinned = draggingBlob === b || b.dragTargetX !== null;
 
@@ -872,6 +919,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
                     }
                 }
             }
+            if (!syncEvent && largestOverlap < 0.01) break;
         }
     }
 
@@ -1054,6 +1102,20 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
                 }
                 syncEvent.teamA.syncEnergy = 0;
                 syncEvent.teamB.syncEnergy = 0;
+                // Resume at the final world positions, with the motion actually visible at exit.
+                [syncEvent.teamA, syncEvent.teamB].forEach(function (team) {
+                    team.velocityX = team.syncExitVelocityX ?? team.velocityX;
+                    team.velocityY = team.syncExitVelocityY ?? team.velocityY;
+                    team.syncResuming = true;
+                });
+                for (var i = 0; i < blobs.length; i++) {
+                    for (var j = i + 1; j < blobs.length; j++) {
+                        separationRecovery.set(i + '-' + j, {
+                            distance: Math.hypot(blobs[i].currentX - blobs[j].currentX, blobs[i].currentY - blobs[j].currentY),
+                            speed: (blobs[i].travelSpeed + blobs[j].travelSpeed) * (reduceMotion ? 0.18 : 1), age: 0
+                        });
+                    }
+                }
                 syncEvent = null;
             }
             return;
@@ -1148,7 +1210,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
             var team = blobs[i];
             var sx = team.currentX - camera.x;
             var sy = team.currentY - camera.y;
-            var radius = team.renderRadius;
+            var radius = TYPOGRAPHY_SIZE / 2;
             if (sx < -radius * 2 || sx > W + radius * 2 || sy < -radius * 2 || sy > H + radius * 2) continue;
             var img = letterImages[i];
             if (!img || !img.complete || !img.naturalWidth) continue;
@@ -1163,7 +1225,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
             }
             function paintTypography(image, opacity) {
                 if (opacity <= 0) return;
-                var maxSide = radius * 2.48 * 0.9;
+                var maxSide = TYPOGRAPHY_SIZE;
                 var scale = Math.min(maxSide / image.naturalWidth, maxSide / image.naturalHeight);
                 var dw = image.naturalWidth * scale;
                 var dh = image.naturalHeight * scale;
@@ -1227,6 +1289,12 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
     function updateStudentMotion(n, dt, t) {
         var motionFactor = reduceMotion ? 0.12 : 1;
         var team = blobs[n.team];
+        // SVG dimensions can become available after the initial layout.
+        var minRadius = getTypographyOrbitRadius(n.team);
+        var radiusChange = minRadius - n.minRadius;
+        n.minRadius = minRadius;
+        n.maxRadius += radiusChange;
+        n.homeRadius += radiusChange;
 
         if (syncEvent && (syncEvent.a === n || syncEvent.b === n) &&
             t >= syncEvent.born && t <= syncEvent.born + syncEvent.duration) {
@@ -1254,7 +1322,6 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
         n.homeLocalY = Math.sin(n.orbitAngle) * n.homeRadius;
         var driftX = Math.sin(t * 0.14 + n.driftPhase * 2.1) * n.driftAmount * 0.45 * motionFactor;
         var driftY = Math.cos(t * 0.12 + n.driftPhase * 1.3) * n.driftAmount * 0.40 * motionFactor;
-        // Students remain attached to their own typography and orbit it.
         var targetX = team.currentX + Math.cos(angle) * radius + driftX;
         var targetY = team.currentY + Math.sin(angle) * radius + driftY;
 
@@ -1613,12 +1680,19 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
         mouse.worldY = mouse.y + camera.y;
 
         var i;
+        var syncPositions = syncEvent ? blobs.map(function (b) { return { x: b.currentX, y: b.currentY }; }) : null;
         for (i = 0; i < blobs.length; i++) updateTeamPosition(blobs[i], t, dt);
-        separateBlobs();
+        separateBlobs(dt);
         attractSyncTeams(t, dt);
+        if (syncPositions && dt > 0) {
+            [syncEvent.teamA, syncEvent.teamB].forEach(function (b) {
+                var motion = reduceMotion ? 0.18 : 1;
+                b.syncExitVelocityX = (b.currentX - syncPositions[b.id].x) / dt / motion;
+                b.syncExitVelocityY = (b.currentY - syncPositions[b.id].y) / dt / motion;
+            });
+        }
         relaxSyncRotations(dt);
         syncDraggedObject();
-        keepTeamsInHero();
         for (i = 0; i < nodes.length; i++) updateStudentMotion(nodes[i], dt, t);
         updateHover(dt);
         updateSyncInteraction(t, dt);
@@ -1632,6 +1706,8 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
         labelBounds = [];
         for (i = 0; i < nodes.length; i++) drawNode(nodes[i], t);
         updateAndDrawSyncPair(t, dt);
+
+
 
 
         animationFrame = requestAnimationFrame(frame);

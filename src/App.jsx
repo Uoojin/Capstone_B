@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Header from './components/Header/Header.jsx'
 import Project from './pages/Project/Project.jsx'
 import Student from './pages/Student/Student.jsx'
-import Credit from './pages/Credit/Credit.jsx'
+import Behind from './pages/Behind/Behind.jsx'
 import Curriculum from './pages/Curriculum/Curriculum.jsx'
 import Syncopate from './pages/Content/Syncopate.jsx'
 import Guestbook from './pages/Guestbook/Guestbook.jsx'
@@ -20,7 +20,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/project" element={<Project />} />
         <Route path="/student" element={<Student />} />
-        <Route path="/credit" element={<Credit />} />
+        <Route path="/credit" element={<Behind />} />
         <Route path="/curriculum" element={<Curriculum />} />
         <Route path="/syncopate" element={<Syncopate />} />
         <Route path="/guestbook" element={<Guestbook />} />

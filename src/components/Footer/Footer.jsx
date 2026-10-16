@@ -4,11 +4,11 @@ import youtubeIcon from '../../assets/footer/icon02.svg'
 import socialIcon from '../../assets/footer/icon03.svg'
 import './Footer.css'
 
-const footerPages = new Set(['/project', '/student', '/syncopate', '/guestbook', '/curriculum'])
+const footerPages = new Set(['/', '/project', '/student', '/guestbook', '/curriculum'])
 
 export default function Footer() {
   const { pathname } = useLocation()
-  if (!footerPages.has(pathname.replace(/\/+$/, ''))) return null
+  if (!footerPages.has(pathname.replace(/\/+$/, '') || '/')) return null
 
   return (
     <footer className="site-footer" aria-label="전시 안내 및 연락처">
