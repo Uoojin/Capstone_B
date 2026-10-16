@@ -23,6 +23,6 @@ function githubPagesRoutes() {
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/Branding/',
+  base: "/Capstone_B/",
   plugins: [react(), githubPagesRoutes()],
 })
