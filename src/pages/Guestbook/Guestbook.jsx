@@ -7,15 +7,14 @@ import { fetchGuestbookEntries, subscribeToGuestbookEntries, isSupabaseConfigure
 function GuestbookHero({ onPhotoBooth, onMessage }) {
   return (
     <section className="gb-hero" aria-labelledby="gb-hero-title">
-      <div className="gb-hero__symbols" aria-hidden="true" />
       <h1 id="gb-hero-title" className="gb-hero__title">
-        졸업하는 학생들에게
-        <br />
-        축하 메시지를 보내주세요!
+        SYNC UP!
       </h1>
 
       <p className="gb-hero__description">
-        적당히 아무 문구 넣어주면 좋을 것 같아요.
+        서로 다른 우리가 맞이할 새로운 시작에,
+        <br />
+        응원의 한마디를 남겨주세요.
       </p>
 
       <div className="gb-hero__actions" aria-label="방명록 작성 방식 선택">
@@ -23,8 +22,8 @@ function GuestbookHero({ onPhotoBooth, onMessage }) {
           className="gb-button gb-button--primary"
           onClick={onPhotoBooth}
         >
-          <span className="gb-hero__button-title">PHOTO BOOTH</span>
-          <span className="gb-hero__button-description">사진과 함께 메시지 남기기</span>
+          <span className="gb-hero__button-title">SNAP</span>
+          <span className="gb-hero__button-description">사진과 메시지 남기기</span>
         </button>
 
         <button
