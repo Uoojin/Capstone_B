@@ -23,7 +23,7 @@ function GuestbookHeroBackground() {
             {radii.map((radius, index) => (
               <g key={radius}>
                 <circle className="gb-hero__orbit-track" cx={x} cy={y} r={radius} />
-                <g className="gb-hero__orbit-satellite" style={{ transformOrigin: `${x}px ${y}px`, '--gb-orbit-phase': `${phases[index]}deg`, '--gb-orbit-duration': `${110 + index * 23 + groupIndex * 17}s` }}>
+                <g className="gb-hero__orbit-satellite" style={{ transformOrigin: `${x}px ${y}px`, '--gb-orbit-phase': `${phases[index]}deg`, '--gb-orbit-duration': `${52 + index * 9 + groupIndex * 5}s`, animationDirection: index % 2 ? 'reverse' : 'normal' }}>
                   <circle className="gb-hero__background-dot" cx={x + radius} cy={y} r="3.3" />
                 </g>
               </g>
@@ -31,7 +31,7 @@ function GuestbookHeroBackground() {
           </g>
         ))}
         {floatingDots.map(([x, y], index) => (
-          <g key={index} className="gb-hero__floating-dot" style={{ animationDuration: `${16 + index % 5 * 3}s`, animationDelay: `${-index * 2.7}s` }}>
+          <g key={index} className="gb-hero__floating-dot" style={{ animationDuration: `${26 + index * 1.1}s`, animationDirection: index % 2 ? 'reverse' : 'normal', '--gb-float-x': `${(x < 632 ? 1 : -1) * (32 + index % 4 * 8)}px`, '--gb-float-y': `${Math.min(20 + index % 4 * 5, y - 12, 620 - y)}px` }}>
             <circle className="gb-hero__background-dot" cx={x} cy={y} r="3.3" />
           </g>
         ))}

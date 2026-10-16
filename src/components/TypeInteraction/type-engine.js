@@ -29,12 +29,32 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
     clickCursor.style.backgroundColor = COLOR_ACCENT_STRONG;
     clickCursor.hidden = true;
     canvas.parentElement.appendChild(clickCursor);
+    var cursorTrails = ['#5F50D8','#009DEB',   '#00BFA3','#1D9F10', '#F7A600'].map(function (color) {
+        var element = document.createElement('div');
+        element.className = 'type-click-cursor';
+        element.setAttribute('aria-hidden', 'true');
+        element.style.backgroundColor = color;
+        element.style.willChange = 'transform';
+        element.hidden = true;
+        return { element: element, x: 0, y: 0 };
+    });
+    // Equal-sized solid layers, ordered back-to-front beneath the original cursor.
+    cursorTrails.slice().reverse().forEach(function (trail) {
+        canvas.parentElement.insertBefore(trail.element, clickCursor);
+    });
+    var cursorTrailsVisible = false;
     var cursorOnCanvas = false;
     var cursorMedia = window.matchMedia('(min-width: 768px) and (hover: hover) and (pointer: fine)');
+
+    function hideCursorTrails() {
+        cursorTrailsVisible = false;
+        cursorTrails.forEach(function (trail) { trail.element.hidden = true; });
+    }
 
     function hideClickCursor() {
         cursorOnCanvas = false;
         clickCursor.hidden = true;
+        hideCursorTrails();
         canvas.style.removeProperty('cursor');
     }
     var MAJOR_COLORS = {
@@ -1712,7 +1732,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
         }
     }
 
-    function updateClickCursor() {
+    function updateClickCursor(dt) {
         var rect = canvas.getBoundingClientRect();
         // Hit-test the page too, so header controls win even during pointer capture.
         var overCanvas = cursorMedia.matches && cursorOnCanvas && mouse.active && host.hasAttribute('data-hero-ready') &&
@@ -1720,8 +1740,38 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
         clickCursor.hidden = !overCanvas;
         if (overCanvas) {
             clickCursor.style.transform = 'translate3d(' + (mouse.x - 32) + 'px, ' + (mouse.y - 32) + 'px, 0)';
+            var leaderX = mouse.x;
+            var leaderY = mouse.y;
+            for (var trailIndex = 0; trailIndex < cursorTrails.length; trailIndex++) {
+                var trail = cursorTrails[trailIndex];
+                if (!cursorTrailsVisible || reduceMotion) {
+                    trail.x = mouse.x;
+                    trail.y = mouse.y;
+                } else {
+                    var follow = 1 - Math.exp(-(18 - trailIndex * 1.8) * dt);
+                    trail.x += (leaderX - trail.x) * follow;
+                    trail.y += (leaderY - trail.y) * follow;
+                    var dx = leaderX - trail.x;
+                    var dy = leaderY - trail.y;
+                    var distance = Math.hypot(dx, dy);
+                    // Keep adjacent layers overlapped, with at most 45px total spread.
+                    if (distance > 9) {
+                        trail.x = leaderX - dx / distance * 9;
+                        trail.y = leaderY - dy / distance * 9;
+                    } else if (distance < 0.05) {
+                        trail.x = leaderX;
+                        trail.y = leaderY;
+                    }
+                }
+                trail.element.hidden = false;
+                trail.element.style.transform = 'translate3d(' + (trail.x - 32) + 'px, ' + (trail.y - 32) + 'px, 0)';
+                leaderX = trail.x;
+                leaderY = trail.y;
+            }
+            cursorTrailsVisible = true;
             canvas.style.cursor = 'none';
         } else {
+            hideCursorTrails();
             canvas.style.removeProperty('cursor');
         }
     }
@@ -1762,7 +1812,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
         labelBounds = [];
         for (i = 0; i < nodes.length; i++) drawNode(nodes[i], t);
         updateAndDrawSyncPair(t, dt);
-        updateClickCursor();
+        updateClickCursor(dt);
 
 
 
@@ -1808,6 +1858,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
     return () => {
         hideClickCursor();
         clickCursor.remove();
+        cursorTrails.forEach(function (trail) { trail.element.remove(); });
         events.abort();
         observer.disconnect();
         cancelAnimationFrame(animationFrame);
