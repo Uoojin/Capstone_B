@@ -2,20 +2,7 @@ import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import '../Guestbook/Guestbook.css'
 import PhotoBooth from '../Guestbook/PhotoBooth.jsx'
 import Message from './Message.jsx'
-import { fetchGuestbookEntries, subscribeToGuestbookEntries, isSupabaseConfigured, stableHash } from '../../lib/supabase02.js'
-
-function getStableRotation(id) {
-  const hash = stableHash(id)
-  return ((hash % 1201) / 100 - 6).toFixed(2)
-}
-
-function getStableOffset(id) {
-  const hash = stableHash(`${id}-offset`)
-  return {
-    x: ((hash % 17) - 8) * 2,
-    y: (((hash >> 4) % 13) - 6) * 2,
-  }
-}
+import { fetchGuestbookEntries, subscribeToGuestbookEntries, isSupabaseConfigured } from '../../lib/supabase02.js'
 
 function GuestbookHero({ onPhotoBooth, onMessage }) {
   return (
@@ -53,19 +40,9 @@ function GuestbookHero({ onPhotoBooth, onMessage }) {
 }
 
 function GuestbookCard({ entry }) {
-  const rotation = getStableRotation(entry.id)
-  const offset = getStableOffset(entry.id)
-  const style = {
-    '--gb-card-color': entry.frameColor,
-    '--gb-card-rotate': `${rotation}deg`,
-    '--gb-card-x': `${offset.x}px`,
-    '--gb-card-y': `${offset.y}px`,
-    '--gb-card-scale': 0.76 + (stableHash(`${entry.id}-width`) % 23) / 100,
-  }
-
   if (entry.type === 'photo') {
     return (
-      <article className="gb-card gb-card--photo" style={style}>
+      <article className="gb-card gb-card--photo">
         {entry.imageUrl ? (
           <img className="gb-card__completed-image" src={entry.imageUrl} alt="폴라로이드 방명록" loading="lazy" />
         ) : (
@@ -76,7 +53,7 @@ function GuestbookCard({ entry }) {
   }
 
   return (
-    <article className="gb-card gb-card--message" style={style}>
+    <article className="gb-card gb-card--message">
       <p className="gb-card__name">To. {entry.toName || 'OOO'}</p>
       <p className="gb-card__message">{entry.message}</p>
       <p className="gb-card__from">From. {entry.fromName || 'OOO'}</p>
@@ -84,42 +61,8 @@ function GuestbookCard({ entry }) {
   )
 }
 
-function findBoardPosition(id, width, height, boardWidth, bounds, gap) {
-  const maxX = Math.max(2, boardWidth - width - 2)
-  const preferredX = 2 + (stableHash(`${id}-preferred`) % 10001) / 10000 * (maxX - 2)
-  const candidates = [preferredX, 2, maxX]
-  for (let index = 0; index < 32; index += 1) {
-    candidates.push(2 + (stableHash(`${id}-x-${index}`) % 10001) / 10000 * (maxX - 2))
-  }
-  const ordered = [...bounds].sort((a, b) => a.top - b.top)
-  const step = Math.max(1, Math.ceil(ordered.length / 64))
-  ordered.forEach((box, index) => {
-    if (index % step === 0) {
-      candidates.push(box.right + gap, box.left - width - gap)
-    }
-  })
-
-  const startY = 24 + stableHash(`${id}-start-y`) % 89
-  const extraGap = stableHash(`${id}-vertical-gap`) % 19
-  let best = null
-  for (const x of candidates) {
-    if (x < 2 || x > maxX) continue
-    let y = startY
-    for (const box of ordered) {
-      if (x < box.right + gap && x + width + gap > box.left
-        && y < box.bottom + gap && y + height + gap > box.top) {
-        y = box.bottom + gap + extraGap
-      }
-    }
-    const score = y + Math.abs(x - preferredX) * 0.06
-    if (!best || score < best.score) best = { left: x, top: y, right: x + width, bottom: y + height, score }
-  }
-  return best
-}
-
 function GuestbookArchive({ entries, status, error }) {
   const boardRef = useRef(null)
-  const placementRef = useRef({ width: 0, cards: new Map() })
   const [layout, setLayout] = useState({ height: 0, positions: {} })
 
   useLayoutEffect(() => {
@@ -129,49 +72,20 @@ function GuestbookArchive({ entries, status, error }) {
     function arrangeCards() {
       const width = board.clientWidth
       if (!width) return
-      const gap = width < 560 ? 24 : 30
-      const bounds = []
+      const columns = Number(getComputedStyle(board).getPropertyValue('--gb-columns')) || 4
+      const gap = parseFloat(getComputedStyle(board).getPropertyValue('--gb-gap')) || 20
+      const cardWidth = (width - gap * (columns - 1)) / columns
+      const heights = Array(columns).fill(0)
       const positions = {}
-      const byId = new Map(entries.map((entry) => [entry.id, entry]))
-      const measured = Array.from(board.children).map((slot) => {
-        const card = slot.firstElementChild
-        const id = slot.dataset.entryId
-        const rect = card.getBoundingClientRect()
-        const cardStyle = getComputedStyle(card)
-        return {
-          id, width: rect.width, height: rect.height,
-          cardWidth: parseFloat(cardStyle.width), cardHeight: parseFloat(cardStyle.height)
+      for (const slot of board.children) {
+        const column = heights.indexOf(Math.min(...heights))
+        positions[slot.dataset.entryId] = {
+          left: column * (cardWidth + gap),
+          top: heights[column],
         }
-      })
-      const cached = placementRef.current
-      const canReuse = cached.width === width && measured.every((card) => {
-        const previous = cached.cards.get(card.id)
-        return !previous || (Math.abs(previous.width - card.width) < 0.1
-          && Math.abs(previous.height - card.height) < 0.1)
-      })
-      const nextCards = new Map()
-      // Chronological packing also preserves previous positions after a reload.
-      measured.sort((a, b) => (Date.parse(byId.get(a.id).createdAt) || 0)
-        - (Date.parse(byId.get(b.id).createdAt) || 0) || a.id.localeCompare(b.id))
-      const place = (card, box) => {
-        positions[card.id] = {
-          left: box.left + (card.width - card.cardWidth) / 2,
-          top: box.top + (card.height - card.cardHeight) / 2,
-        }
-        bounds.push(box)
-        nextCards.set(card.id, { ...card, box })
+        heights[column] += slot.getBoundingClientRect().height + gap
       }
-      for (const card of measured) {
-        const previous = canReuse && cached.cards.get(card.id)
-        if (previous) place(card, previous.box)
-      }
-      for (const card of measured) {
-        if (!nextCards.has(card.id)) {
-          place(card, findBoardPosition(card.id, card.width, card.height, width, bounds, gap))
-        }
-      }
-      placementRef.current = { width, cards: nextCards }
-      const next = { height: Math.max(24, ...bounds.map((box) => box.bottom)) + 32, positions }
+      const next = { height: Math.max(0, ...heights) - gap, positions }
       setLayout((current) => JSON.stringify(current) === JSON.stringify(next) ? current : next)
     }
 

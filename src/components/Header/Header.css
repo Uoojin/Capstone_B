@@ -65,7 +65,8 @@
   height:43px;
   padding: 0 26px;
   border-radius: 999px;
-  background: var(--header-soft-pink);
+  background: #fff;
+  border: 1px solid var(--header-pink);
   color: var(--header-pink);
   font-size: 16px;
   font-weight: 500;
@@ -95,6 +96,7 @@
 }
 
 .site-header-pill.is-extra {
+  border-width: 0;
   min-width: 0;
   width: 0;
   flex-basis: 0;
@@ -107,6 +109,7 @@
 }
 
 .is-menu-open .site-header-pill.is-extra {
+  border-width: 1px;
   min-width: 138px;
   width: 138px;
   flex-basis: 138px;

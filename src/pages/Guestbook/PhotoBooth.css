@@ -111,8 +111,11 @@
 
 .gb-polaroid {
   width: 100%;
-  border: 1.5px solid var(--gb-border-pink);
-  background: var(--gb-polaroid-color);
+  border: 1.5px solid transparent;
+  outline: 1px solid #e5e5e5;
+  outline-offset: -1px;
+  background: #ffffff;
+  /* 프레임 컬러 선택 재활성화 시: background: var(--gb-polaroid-color); */
 }
 
 .gb-editor .gb-polaroid {
@@ -126,6 +129,7 @@
 }
 
 .gb-polaroid__photo {
+  position: relative;
   display: grid;
   width: calc(100% - 32px);
   aspect-ratio: 1.25 / 1;
@@ -426,3 +430,24 @@
     overflow-y: auto;
   }
 }
+
+/* Photo composition stays inside the existing, unchanged photo window. */
+.gb-adjustable-photo,
+.gb-adjustable-photo__surface {
+  position: absolute;
+  inset: 0;
+}
+
+/* Clip the photograph without creating an internal scroll position. */
+.gb-adjustable-photo { overflow: clip; background: #fff; }
+.gb-adjustable-photo__surface { touch-action: none; cursor: grab; }
+.gb-adjustable-photo__surface:active { cursor: grabbing; }
+.gb-polaroid__photo .gb-adjustable-photo__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+}
+

@@ -3,20 +3,38 @@ import { supabase } from '../../lib/supabase.js';
 import DrawingEditor from './DrawingEditor.jsx';
 import './Syncopate.css';
 
-async function incrementSyncInDB(id) {
-  if (!id) return;
-  try {
-    const { error } = await supabase.rpc('increment_artifact_sync', { artifact_id: id });
-    if (error) throw error;
-  } catch (rpcErr) {
-    try {
-      const { data } = await supabase.from('artifacts').select('sync_count').eq('id', id).single();
-      const current = data?.sync_count || 0;
-      await supabase.from('artifacts').update({ sync_count: current + 1 }).eq('id', id);
-    } catch (updateErr) {
-      console.warn('Sync update failed:', rpcErr || updateErr);
+const ARTIFACT_ID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+const pendingSyncWrites = new Map();
+
+function incrementSyncInDB(id) {
+  // Persisted artifacts use UUIDs; the installed RPC expects bigint.
+  // Keep display IDs intact and reuse the table write path for valid database IDs.
+  if (typeof id !== 'string' || !ARTIFACT_ID.test(id)) return Promise.resolve();
+  const databaseId = id.toLowerCase();
+  const previous = pendingSyncWrites.get(databaseId) || Promise.resolve();
+  const write = previous.then(async () => {
+    // Retry only if another visitor changed the count between our read and write.
+    for (let attempt = 0; attempt < 3; attempt++) {
+      const { data, error } = await supabase.from('artifacts').select('sync_count').eq('id', databaseId).single();
+      if (error) throw error;
+      if (!data) throw new Error('Artifact not found');
+      const current = data.sync_count ?? 0;
+      if (!Number.isSafeInteger(current) || current < 0) throw new Error('Invalid sync count');
+      let update = supabase.from('artifacts').update({ sync_count: current + 1 }).eq('id', databaseId);
+      update = data.sync_count === null ? update.is('sync_count', null) : update.eq('sync_count', current);
+      const result = await update.select('id').maybeSingle();
+      if (result.error) throw result.error;
+      if (result.data) return;
     }
-  }
+    throw new Error('Sync count changed concurrently; update was not applied');
+  }).catch((error) => {
+    console.warn('Sync update failed:', error);
+  });
+  pendingSyncWrites.set(databaseId, write);
+  void write.then(() => {
+    if (pendingSyncWrites.get(databaseId) === write) pendingSyncWrites.delete(databaseId);
+  });
+  return write;
 }
 
 function formatSyncCount(count) {
@@ -465,6 +483,7 @@ export default function Syncopate({ onOpenDrawing }) {
   };
 
   useEffect(() => {
+    let disposed = false;
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
 
@@ -531,7 +550,7 @@ export default function Syncopate({ onOpenDrawing }) {
 
     const loadArtifacts = async () => {
       const { data, error } = await supabase.from('artifacts').select('*').limit(28);
-      if (error) return;
+      if (error || disposed) return;
 
       data.forEach((row) => {
         const img = new Image();
@@ -539,6 +558,7 @@ export default function Syncopate({ onOpenDrawing }) {
         img.src = row.image_url;
 
         img.onload = () => {
+          if (disposed || artifactsRef.current.some((item) => item.id === row.id)) return;
           const { x, y } = getSpreadPosition();
           artifactsRef.current.push(
             new Artifact(row.id, x, y, img, row.dominant_color, row.message, row.created_at, row.sync_count)
@@ -561,6 +581,7 @@ export default function Syncopate({ onOpenDrawing }) {
           img.src = row.image_url;
 
           img.onload = () => {
+            if (disposed || artifactsRef.current.some((item) => item.id === row.id)) return;
             const { x, y } = getSpreadPosition();
             artifactsRef.current.push(
               new Artifact(row.id, x, y, img, row.dominant_color, row.message, row.created_at, row.sync_count)
@@ -834,7 +855,7 @@ export default function Syncopate({ onOpenDrawing }) {
         const JOIN_INTERVAL = 125;
         const currentGroup = [draggedArtifact, ...dragState.connected];
 
-        if (currentTime - dragState.lastConnectTime > JOIN_INTERVAL) {
+        if (dragState.moved && currentTime - dragState.lastConnectTime > JOIN_INTERVAL) {
           let bestCandidate = null;
           let bestParent = null;
           let bestDistance = Infinity;
@@ -1134,6 +1155,7 @@ export default function Syncopate({ onOpenDrawing }) {
     animationId = requestAnimationFrame(loop);
 
     return () => {
+      disposed = true;
       cancelAnimationFrame(animationId);
       window.removeEventListener('resize', handleResize);
       supabase.removeChannel(subscription);
@@ -1262,11 +1284,11 @@ export default function Syncopate({ onOpenDrawing }) {
       dragState.dragVX = 0;
       dragState.dragVY = 0;
 
-      if (!wasDragged && dragged.message) {
+      if (!wasDragged) {
         setSelectedMessage({
           id: dragged.id,
           polaroidColor: POLAROID_COLORS[Math.floor(Math.random() * POLAROID_COLORS.length)],
-          text: dragged.message,
+          text: dragged.message || '',
           color: dragged.color,
           imageSrc: getCroppedImageUrl(dragged.imgElement),
           createdAt: dragged.createdAt,
@@ -1335,11 +1357,11 @@ export default function Syncopate({ onOpenDrawing }) {
         return Math.hypot(it.x - clickWorldX, it.y - clickWorldY) <= it.radius;
       });
 
-      if (clicked && clicked.message) {
+      if (clicked) {
         setSelectedMessage({
           id: clicked.id,
           polaroidColor: POLAROID_COLORS[Math.floor(Math.random() * POLAROID_COLORS.length)],
-          text: clicked.message,
+          text: clicked.message || '',
           color: clicked.color,
           imageSrc: getCroppedImageUrl(clicked.imgElement),
           createdAt: clicked.createdAt,

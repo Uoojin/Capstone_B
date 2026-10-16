@@ -7,12 +7,16 @@ html.gb-page-scrollbar-hidden::-webkit-scrollbar {
   display: none;
 }
 
-.gb-page {
+.gb-page,
+.gb-modal {
   --gb-pink: #ff0099;
   --gb-border-pink: #ff2aa6;
   --gb-text: #2e2930;
   --gb-muted: #9f9ba1;
   --gb-soft: #f7f7f7;
+}
+
+.gb-page {
   min-height: 100vh;
   overflow-x: hidden;
   color: var(--gb-text);
@@ -268,27 +272,25 @@ html.gb-page-scrollbar-hidden::-webkit-scrollbar {
 }
 
 .gb-archive__masonry {
-  --gb-card-base-width: clamp(240px, 22%, 340px);
+  --gb-columns: 4;
+  --gb-gap: 20px;
   position: relative;
-  max-width: 1920px;
-  margin: 0 60px;
+  max-width: 1800px;
+  margin: 0 auto;
+  width: calc(100% - 120px);
 }
 
 .gb-archive__slot {
   position: absolute;
-  width: min(100%, var(--gb-card-base-width));
+  width: calc((100% - (var(--gb-columns) - 1) * var(--gb-gap)) / var(--gb-columns));
 }
 
 .gb-card {
-  display: inline-block;
-  width: calc(100% * var(--gb-card-scale));
+  display: block;
+  width: 100%;
   margin: 0;
-  break-inside: avoid;
   border: 1.5px solid var(--gb-border-pink);
-  background: var(--gb-card-color);
-  transform:
-    rotate(var(--gb-card-rotate));
-  transform-origin: center center;
+  background: #fff;
 }
 
 .gb-card--photo {
@@ -299,6 +301,8 @@ html.gb-page-scrollbar-hidden::-webkit-scrollbar {
   display: block;
   width: 100%;
   height: auto;
+  outline: 1px solid #e5e5e5;
+  outline-offset: -1px;
 }
 
 .gb-card--message {
@@ -354,7 +358,9 @@ html.gb-page-scrollbar-hidden::-webkit-scrollbar {
 .gb-modal {
   position: fixed;
   inset: 0;
-  z-index: 50;
+  color: var(--gb-text);
+  /* Portaled to body, immediately above the header layer (90). */
+  z-index: 100;
   display: grid;
   place-items: center;
   grid-template-rows: minmax(0, 1fr) auto minmax(0, 1fr);
@@ -406,7 +412,7 @@ html.gb-page-scrollbar-hidden::-webkit-scrollbar {
 
 @media (max-width: 1180px) {
   .gb-archive__masonry {
-    --gb-card-base-width: clamp(220px, 28%, 310px);
+    --gb-columns: 3;
   }
 }
 
@@ -424,7 +430,8 @@ html.gb-page-scrollbar-hidden::-webkit-scrollbar {
   }
 
   .gb-archive__masonry {
-    --gb-card-base-width: clamp(200px, 43%, 300px);
+    --gb-columns: 2;
+    width: 100%;
   }
 
   .gb-card {
@@ -447,11 +454,10 @@ html.gb-page-scrollbar-hidden::-webkit-scrollbar {
 
 @media (max-width: 560px) {
   .gb-archive__masonry {
-    --gb-card-base-width: 100%;
+    --gb-columns: 1;
   }
 
   .gb-card {
-    width: 94%;
-    transform: rotate(calc(var(--gb-card-rotate) * 0.35));
+    width: 100%;
   }
 }

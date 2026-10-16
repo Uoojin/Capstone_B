@@ -1,33 +1,11 @@
 import { useMemo, useState } from 'react'
 import { GuestbookModal } from '../Guestbook/PhotoBooth.jsx'
-import { createGuestbookEntry, PASTEL_COLORS, stableHash, supabase } from '../../lib/supabase02.js'
+import { createGuestbookEntry } from '../../lib/supabase02.js'
 import '../Guestbook/Message.css'
 
 
 const MAX_TEXT_MESSAGE = 250
 const MIN_TEXT_MESSAGE = 10
-
-async function getNextMessageColor() {
-  if (!supabase) throw new Error('Supabase 환경 변수가 설정되지 않았습니다.')
-  const { data, count, error } = await supabase
-    .from('guestbook_entries')
-    .select('frame_color', { count: 'exact' })
-    .eq('type', 'message')
-    .order('created_at', { ascending: false })
-    .order('id', { ascending: false })
-    .limit(7)
-  if (error) throw error
-
-  const phase = count % PASTEL_COLORS.length
-  const cycle = Math.floor(count / PASTEL_COLORS.length)
-  const colors = [...PASTEL_COLORS].sort((a, b) =>
-    stableHash(`${cycle}-${a.name}`) - stableHash(`${cycle}-${b.name}`))
-  // Keep the cycle boundary different from the previous cycle's last color.
-  if (colors[0].value === data[phase]?.frame_color) {
-    [colors[0], colors[1]] = [colors[1], colors[0]]
-  }
-  return colors[phase].value
-}
 
 function Message({ onClose, onSubmit }) {
   const [toName, setToName] = useState('')
@@ -52,7 +30,7 @@ function Message({ onClose, onSubmit }) {
     setError('')
 
     try {
-      const frameColor = await getNextMessageColor()
+      const frameColor = '#FFFFFF'
       const entry = await createGuestbookEntry({
         type: 'message',
         toName: toName.trim(),

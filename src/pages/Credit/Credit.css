@@ -1,181 +1,191 @@
-/* Credit.css */
-
 .credit {
-    width: 100%;
-    background: #fff;
-    color: #111;
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  height: calc(100svh - var(--site-header-height));
+  overflow: hidden;
+  color: #111;
+  background: #e5e5e5;
 }
 
+.credit-background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: #e5e5e5;
+}
 
+.credit-background video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 16 / 9;
+}
+
+.credit-viewport {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scroll-behavior: auto;
+  overflow-anchor: none;
+  scrollbar-width: none;
+}
+
+.credit-viewport::-webkit-scrollbar { display: none; }
+
+.credit-roll {
+  width: 100%;
+}
+
+/* Lets the last logo travel fully through the fixed viewport. */
+.credit-scroll-tail {
+  height: 100%;
+  pointer-events: none;
+}
 
 .credit-hero {
-    width: 100%;
-    min-height: 500px;
-    padding: 60px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+  height: calc(100svh - var(--site-header-height));
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 60px;
 }
 
-.credit-hero-image {
-    width: 100%;
-    flex: 1;
+.credit-wordmark {
+  color: #ff0099;
+  font-weight: 800;
+  letter-spacing: -0.04em;
 }
 
-.credit-hero span {
-    display: block;
+.credit-wordmark,
+.credit-hero > p {
+  transform: translateY(var(--credit-opening-offset, 0px));
 }
 
+.credit-wordmark span {
+  display: block;
+  font-size: clamp(18px, 1.75vw, 34px);
+  line-height: 1.1;
+}
 
+.credit-wordmark strong {
+  display: block;
+  font-size: clamp(34px, 3.45vw, 66px);
+  line-height: 1;
+  text-shadow: 4px 0 #ffd2ef, -4px 0 #ffd2ef, 0 4px #ffd2ef, 0 -4px #ffd2ef;
+}
+
+.credit-hero p {
+  font-size: clamp(12px, 1.25vw, 24px);
+  font-weight: 700;
+  line-height: 1.6;
+  text-align: right;
+}
 
 .credit-section {
-
-    width: 100%;
-    padding: 100px 60px;
+  padding: 200px 24px 0;
 }
 
-.credit-section-title {
-    margin: 0 0 60px;
-
-    text-align: center;
-
-    font-size: 32px;
-    font-weight: 600;
-    line-height: 1.2;
-    letter-spacing: -3%;
+.credit-section h2 {
+  margin: 0 0 60px;
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.03em;
 }
-
-
 
 .credit-list {
-    width: 100%;
-    max-width: 650px;
-
-    margin: 0 auto;
-    padding: 0;
-
-    list-style: none;
+  width: min(100%, 540px);
+  margin: 0 auto;
+  list-style: none;
 }
 
-
-
 .credit-row {
-    display: grid;
-    grid-template-columns: 180px 1fr;
-    align-items: start;
-
-    margin-bottom: 32px;
+  display: grid;
+  grid-template-columns: 112px 1fr;
+  align-items: start;
+  gap: 0;
+  margin-bottom: 32px;
+  font-size: 14px;
+  line-height: 1.7;
 }
 
 .credit-row:last-child {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
-
-
-
 
 .credit-label {
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 1.5;
-    letter-spacing: -3%;
+  font-weight: 600;
 }
-
-
-
 
 .credit-members {
-    display: flex;
-    flex-wrap: wrap;
-
-    column-gap: 24px;
-    row-gap: 15px;
-
-    margin: 0;
-    padding: 0;
-
-    list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 12px;
+  list-style: none;
 }
 
-.credit-member {
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.5;
-    letter-spacing: -3%;
-    white-space: nowrap;
+.credit-members li {
+  white-space: nowrap;
 }
 
 .credit-logo {
+  padding: 700px 24px 160px;
+  text-align: center;
+}
+
+.credit-logo img {
+  display: block;
+  width: 210px;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+@media (max-width: 767px) {
+  .credit-hero {
+    padding: 32px 24px;
+    gap: 16px;
+  }
+
+  .credit-section {
+    padding-top: 120px;
+  }
+
+  .credit-section h2 {
+    margin-bottom: 48px;
+    font-size: 26px;
+  }
+
+  .credit-row {
+    grid-template-columns: 90px 1fr;
+    font-size: 12px;
+    margin-bottom: 24px;
+  }
+
+  .credit-members {
+    gap: 12px;
+  }
+
+  .credit-logo {
+    padding-top: 320px;
+  }
+}
+
+@media (max-width: 440px) {
+  .credit-hero {
+    flex-wrap: wrap;
+    align-content: flex-end;
+    justify-content: flex-start;
+  }
+
+  .credit-hero p {
     width: 100%;
-    height: 100px;
-    background-image: url('../../assets/credit/KW\ Logo.svg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    margin-top: 60px;
-}
-
-
-@media (max-width: 1024px) {
-    .credit-section {
-        padding: 100px 40px;
-    }
-
-    .credit-section-title {
-        margin-bottom: 64px;
-        font-size: 32px;
-    }
-
-    .credit-list {
-        max-width: 900px;
-    }
-
-    .credit-row {
-        grid-template-columns: 140px 1fr;
-        margin-bottom: 28px;
-    }
-
-    .credit-members {
-        column-gap: 22px;
-    }
-}
-
-
-@media (max-width: 600px) {
-    .credit-hero {
-        padding: 24px;
-    }
-
-    .credit-section {
-        padding: 80px 24px;
-    }
-
-    .credit-section-title {
-        margin-bottom: 48px;
-
-        font-size: 26px;
-        text-align: left;
-    }
-
-    .credit-row {
-        display: block;
-        margin-bottom: 32px;
-    }
-
-    .credit-label {
-        display: block;
-        margin-bottom: 12px;
-
-        font-size: 14px;
-        letter-spacing: -3%;
-    }
-
-    .credit-members {
-        column-gap: 18px;
-        row-gap: 8px;
-    }
-
-    .credit-member {
-        font-size: 14px;
-    }
+    text-align: right;
+  }
 }

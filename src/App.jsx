@@ -8,11 +8,13 @@ import Syncopate from './pages/Content/Syncopate.jsx'
 import Guestbook from './pages/Guestbook/Guestbook.jsx'
 import Footer from './components/Footer/Footer.jsx'
 import Home from './pages/Home/Home.jsx'
+import ScrollToTop from './components/ScrollToTop.jsx'
 
 
 function App() {
   return (
     <BrowserRouter basename={import.meta.env.BASE_URL}>
+      <ScrollToTop />
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />

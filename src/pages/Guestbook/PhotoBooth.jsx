@@ -1,8 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import QRCode from 'qrcode'
 import { Camera, Upload } from 'lucide-react'
-import { toBlob } from 'html-to-image'
-import { createGuestbookEntry, uploadGuestbookImage, PASTEL_COLORS } from '../../lib/supabase02.js'
+import { toCanvas } from 'html-to-image'
+import AdjustablePhoto from './AdjustablePhoto.jsx'
+import { createGuestbookEntry, uploadGuestbookImage } from '../../lib/supabase02.js'
+// Restore this import, the palette UI, and the CSS color variable to re-enable frame colors.
+// import { PASTEL_COLORS } from '../../lib/supabase02.js'
 import '../Guestbook/Guestbook.css'
 import '../Guestbook/PhotoBooth.css'
 
@@ -10,7 +14,8 @@ const DEFAULT_PHOTO_FORM = {
   toName: '',
   fromName: '',
   message: '',
-  frameColor: PASTEL_COLORS[0].value,
+  frameColor: '#FFFFFF',
+  // frameColor: PASTEL_COLORS[0].value,
 }
 
 const MAX_UPLOAD_SIZE = 8 * 1024 * 1024
@@ -21,6 +26,13 @@ async function renderPolaroidToBlob(element) {
   for (const image of element.querySelectorAll('img')) await image.decode()
 
   const rect = element.getBoundingClientRect()
+  // Keep the live editor's viewport coordinates before creating any export DOM.
+  const photos = [...element.querySelectorAll('.gb-adjustable-photo__image')].map((image) => ({
+    image,
+    window: image.closest('.gb-adjustable-photo').getBoundingClientRect(),
+    box: image.getBoundingClientRect(),
+    position: getComputedStyle(image).objectPosition.split(' ').map((value) => parseFloat(value) / 100),
+  }))
   const clone = element.cloneNode(true)
   clone.setAttribute('aria-hidden', 'true')
   const originals = [element, ...element.querySelectorAll('*')]
@@ -31,6 +43,11 @@ async function renderPolaroidToBlob(element) {
       copies[index].style.setProperty(property, computed.getPropertyValue(property))
     }
   })
+
+  // Export only the frame/text here; photo placement must never be reflowed in a clone.
+  for (const { image } of photos) {
+    copies[originals.indexOf(image)].remove()
+  }
 
   // Freeze the editor geometry, replacing controls with their actual values only.
   for (const original of element.querySelectorAll('input, textarea')) {
@@ -57,13 +74,37 @@ async function renderPolaroidToBlob(element) {
   })
   document.body.appendChild(clone)
   try {
-    const blob = await toBlob(clone, {
+    const canvas = await toCanvas(clone, {
       width: rect.width, height: rect.height, pixelRatio: 3,
       includeStyleProperties: [],
       style: { position: 'relative', left: '0', top: '0' },
     })
+    const context = canvas.getContext('2d')
+    context.save()
+    context.scale(canvas.width / rect.width, canvas.height / rect.height)
+    for (const { image, window: area, box, position: [positionX, positionY] } of photos) {
+      // The measured image box includes its displayed scale/translation and origin.
+      const cover = Math.max(box.width / image.naturalWidth, box.height / image.naturalHeight)
+      const width = image.naturalWidth * cover
+      const height = image.naturalHeight * cover
+      context.save()
+      context.beginPath()
+      context.rect(area.left - rect.left, area.top - rect.top, area.width, area.height)
+      context.clip()
+      context.beginPath()
+      context.rect(box.left - rect.left, box.top - rect.top, box.width, box.height)
+      context.clip()
+      context.drawImage(image,
+        box.left - rect.left + (box.width - width) * positionX,
+        box.top - rect.top + (box.height - height) * positionY,
+        width, height,
+      )
+      context.restore()
+    }
+    context.restore()
+    const blob = await new Promise((resolve) => canvas.toBlob(resolve, 'image/png'))
     if (!blob) throw new Error('완성 이미지를 생성하지 못했습니다.')
-    return blob
+    return { blob, aspectRatio: rect.width / rect.height }
   } finally {
     clone.remove()
   }
@@ -71,26 +112,46 @@ async function renderPolaroidToBlob(element) {
 
 function GuestbookModal({ children, onClose, className = '', labelledBy }) {
   const closeRef = useRef(null)
+  const modalRef = useRef(null)
 
   useEffect(() => {
     const previousOverflow = document.body.style.overflow
+    const previousFocus = document.activeElement
+    const pageRoot = document.getElementById('root')
+    const wasInert = pageRoot?.inert
+    if (pageRoot) pageRoot.inert = true
     document.body.style.overflow = 'hidden'
     closeRef.current?.focus()
 
     function handleKeyDown(event) {
       if (event.key === 'Escape') onClose()
+      if (event.key === 'Tab') {
+        const controls = [...modalRef.current.querySelectorAll('button, input, textarea, [tabindex]')]
+          .filter((element) => !element.disabled && element.tabIndex >= 0 && element.getClientRects().length)
+        const first = controls[0]
+        const last = controls[controls.length - 1]
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault()
+          last?.focus()
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault()
+          first?.focus()
+        }
+      }
     }
 
     window.addEventListener('keydown', handleKeyDown)
 
     return () => {
       document.body.style.overflow = previousOverflow
+      if (pageRoot) pageRoot.inert = wasInert
+      previousFocus?.focus()
       window.removeEventListener('keydown', handleKeyDown)
     }
   }, [onClose])
 
-  return (
-    <div className="gb-modal" role="presentation">
+  return createPortal(
+    <div className="gb-modal" role="presentation" ref={modalRef}>
       <div className="gb-modal__overlay" aria-hidden="true" />
       <div
         aria-labelledby={labelledBy}
@@ -109,7 +170,8 @@ function GuestbookModal({ children, onClose, className = '', labelledBy }) {
       >
         ×
       </button>
-    </div>
+    </div>,
+    document.body,
   )
 }
 
@@ -296,7 +358,7 @@ function PolaroidPreview({
   return (
     <div className="gb-polaroid" ref={frameRef} style={{ '--gb-polaroid-color': frameColor }}>
       <div className="gb-polaroid__photo">
-        {imageSrc ? <img src={imageSrc} alt="" /> : <span>PHOTO</span>}
+        {imageSrc ? (editable ? <AdjustablePhoto key={imageSrc} src={imageSrc} /> : <img src={imageSrc} alt="" />) : <span>PHOTO</span>}
       </div>
       <div className="gb-polaroid__text">
         <label className="gb-polaroid__field gb-polaroid__field--to">
@@ -361,6 +423,7 @@ function PolaroidEditor({
           onChange={onChange}
           toName={form.toName}
         />
+        {/* 프레임 컬러 선택 비활성화: UI와 onChange 이벤트를 함께 보존합니다.
         <div className="gb-palette" aria-label="프레임 색상 선택">
           <span className="gb-palette__top" aria-hidden="true">
             ⌄
@@ -380,6 +443,7 @@ function PolaroidEditor({
             />
           ))}
         </div>
+        */}
       </div>
       <div className="gb-editor-actions">
         <button className="gb-button gb-button--muted" onClick={onBack}>
@@ -458,6 +522,7 @@ function PhotoBooth({ onClose, onCreated }) {
   const [error, setError] = useState('')
   const [publicImageUrl, setPublicImageUrl] = useState('')
   const [resultUrl, setResultUrl] = useState('')
+  const [resultAspectRatio, setResultAspectRatio] = useState(undefined)
 
   useEffect(() => () => {
     if (resultRef.current) URL.revokeObjectURL(resultRef.current.url)
@@ -467,6 +532,7 @@ function PhotoBooth({ onClose, onCreated }) {
     if (resultRef.current) URL.revokeObjectURL(resultRef.current.url)
     resultRef.current = null
     setResultUrl('')
+    setResultAspectRatio(undefined)
     setImageSrc(nextImage)
     setForm(DEFAULT_PHOTO_FORM)
     setPublicImageUrl('')
@@ -483,12 +549,13 @@ function PhotoBooth({ onClose, onCreated }) {
     renderingRef.current = true
     setError('')
     try {
-      const blob = await renderPolaroidToBlob(frameRef.current)
+      const { blob, aspectRatio } = await renderPolaroidToBlob(frameRef.current)
       if (!frameRef.current) return
       if (resultRef.current) URL.revokeObjectURL(resultRef.current.url)
       const url = URL.createObjectURL(blob)
       resultRef.current = { blob, url, uploaded: null, uploading: null }
       setResultUrl(url)
+      setResultAspectRatio(aspectRatio)
       setStep('preview')
     } catch (requestError) {
       setError(requestError.message)
@@ -595,7 +662,7 @@ function PhotoBooth({ onClose, onCreated }) {
 
       {step === 'preview' && (
         <>
-          <img className="gb-polaroid-result" src={resultUrl} alt="완성된 폴라로이드" />
+          <img className="gb-polaroid-result" src={resultUrl} style={{ aspectRatio: resultAspectRatio }} alt="완성된 폴라로이드" />
           <div className="gb-preview-actions">
             <button
               className="gb-button gb-button--primary"

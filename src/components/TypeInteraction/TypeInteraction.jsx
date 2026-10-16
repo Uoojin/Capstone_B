@@ -1,5 +1,6 @@
-import { useMemo } from 'react'
-import typeSource from './type-source.html?raw'
+import { useLayoutEffect, useRef } from 'react'
+import startTypeEngine from './type-engine.js'
+import sceneStyles from './type-scene.css?inline'
 import './TypeInteraction.css'
 
 const typeAssets = import.meta.glob('../../assets/type/**/*.svg', {
@@ -7,49 +8,54 @@ const typeAssets = import.meta.glob('../../assets/type/**/*.svg', {
   import: 'default',
   query: '?url',
 })
+const assetMap = Object.fromEntries(
+  Object.entries(typeAssets).map(([path, url]) => [path.split('/assets/type/')[1], url]),
+)
+const introLetters = ['L', 'E', 'T', 'S1', 'S2', 'Y', 'N', 'C']
 
-function buildAssetMap() {
-  return Object.fromEntries(
-    Object.entries(typeAssets).map(([path, url]) => {
-      const [, assetPath] = path.split('/assets/type/')
-      return [assetPath, url]
-    }),
-  )
-}
+// -------------------- TYPE INTERACTION --------------------
+export default function TypeInteraction({ playIntro, onIntroComplete }) {
+  const hostRef = useRef(null)
+  const onIntroCompleteRef = useRef(onIntroComplete)
 
-function buildSourceDoc(assetMap) {
-  const sourceWithResolvedStaticAssets = typeSource.replace(
-    /src="assets\/([^"]+)"/g,
-    (_, assetPath) => `src="${assetMap[assetPath] || ''}"`,
-  )
+  useLayoutEffect(() => {
+    onIntroCompleteRef.current = onIntroComplete
+  }, [onIntroComplete])
 
-  const sourceWithResolvedRuntimeAssets = sourceWithResolvedStaticAssets
-    .replace(
-      "img.src = 'assets/' + file; return img;",
-      "img.src = window.__TYPE_ASSET_URLS__[file] || ''; return img;",
-    )
-    .replace(
-      "img.src = 'assets/' + file.slice(file.lastIndexOf('_') + 1, -4) + '/' + file;\n                    return img;",
-      "var pairPath = file.slice(file.lastIndexOf('_') + 1, -4) + '/' + file;\n                    img.src = window.__TYPE_ASSET_URLS__[pairPath] || '';\n                    return img;",
-    )
+  useLayoutEffect(() => {
+    const host = hostRef.current
+    // Keep the iframe's style isolation without a second document or script evaluation.
+    const root = host.shadowRoot || host.attachShadow({ mode: 'open' })
+    const style = document.createElement('style')
+    style.textContent = sceneStyles
+    const scene = document.createElement('div')
+    scene.className = 'type-scene'
+    scene.innerHTML = `
+      <div class="stage-wrap"><canvas id="scene"></canvas></div>
+      <div class="vignette"></div>
+      <div id="intro" aria-label="LETS SYNC">
+        <div class="intro-title">${[0, 4].map(offset => `
+          <div class="intro-line">${introLetters.slice(offset, offset + 4).map(letter =>
+            `<img src="${assetMap[`${letter}_default.svg`]}" alt="${letter.replace(/[12]/, '')}">`,
+          ).join('')}</div>`).join('')}
+        </div>
+      </div>`
+    host.toggleAttribute('data-hero-ready', !playIntro)
+    host.toggleAttribute('data-skip-intro', !playIntro)
+    root.replaceChildren(style, scene)
+    const stop = startTypeEngine({
+      host,
+      canvas: root.getElementById('scene'),
+      intro: root.getElementById('intro'),
+      assetMap,
+      playIntro,
+      onIntroComplete: () => onIntroCompleteRef.current?.(),
+    })
+    return () => {
+      stop()
+      root.replaceChildren()
+    }
+  }, [playIntro])
 
-  return sourceWithResolvedRuntimeAssets.replace(
-    '<script>',
-    `<script>window.__TYPE_ASSET_URLS__ = ${JSON.stringify(assetMap)};</script>\n    <script>`,
-  )
-}
-
-const assetMap = buildAssetMap()
-
-export default function TypeInteraction() {
-  const sourceDoc = useMemo(() => buildSourceDoc(assetMap), [])
-
-  return (
-    <iframe
-      className="type-interaction"
-      srcDoc={sourceDoc}
-      title="TYPE interaction"
-      aria-label="TYPE interaction"
-    />
-  )
+  return <div className="type-interaction" ref={hostRef} role="group" aria-label="TYPE interaction" />
 }
