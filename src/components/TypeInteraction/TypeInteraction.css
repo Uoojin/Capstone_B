@@ -18,17 +18,17 @@
 
 .type-cursor-layer .type-click-cursor {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 10.5px;
+    left: 10.5px;
     z-index: 1;
     display: grid;
     place-items: center;
-    width: 76px;
-    height: 76px;
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
     color: #fff;
     font-family: var(--font-family, 'Pretendard', Arial, Helvetica, sans-serif);
-    font-size: 13px;
+    font-size: 9.4px;
     font-weight: 600;
     line-height: 1;
     pointer-events: none;
