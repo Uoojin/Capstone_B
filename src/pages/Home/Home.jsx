@@ -1,6 +1,7 @@
 import { useCallback, useLayoutEffect, useRef, useState } from 'react'
 import TypeInteraction from '../../components/TypeInteraction/TypeInteraction.jsx'
 import heroTitle from '../../assets/heroTitle.svg'
+import HomeSections from './HomeSections.jsx'
 import './Home.css'
 
 // Module lifetime follows the document, so internal navigation never replays the intro.
@@ -68,6 +69,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <HomeSections />
     </main>
   )
 }
