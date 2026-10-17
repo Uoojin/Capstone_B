@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import './Header.css'
 
 const menuItems = [
@@ -12,7 +12,16 @@ const menuItems = [
 ]
 
 export default function Header() {
-  const [isOpen, setIsOpen] = useState(false)
+  const { pathname } = useLocation()
+  const isDetailPage = menuItems.some((item) => item.isExtra &&
+    (pathname === item.path || pathname.startsWith(`${item.path}/`)))
+  const [isOpen, setIsOpen] = useState(isDetailPage)
+  const [previousPathname, setPreviousPathname] = useState(pathname)
+
+  if (previousPathname !== pathname) {
+    setPreviousPathname(pathname)
+    setIsOpen(isDetailPage)
+  }
 
   return (
     <header
@@ -35,9 +44,9 @@ export default function Header() {
                 to={item.path}
                 aria-hidden={!isOpen && item.isExtra ? true : undefined}
                 tabIndex={!isOpen && item.isExtra ? -1 : undefined}
-                onClick={() => setIsOpen(false)}
+                onClick={() => setIsOpen(Boolean(item.isExtra))}
               >
-                {item.label}
+                <span className="site-header-menu-label">{item.label}</span>
               </NavLink>
             ) : (
               <span
@@ -58,7 +67,7 @@ export default function Header() {
             aria-controls="site-header-menu"
             onClick={() => setIsOpen((current) => !current)}
           >
-            <span className={isOpen ? undefined : 'site-menu-plus'}>{isOpen ? '×' : '+'}</span>
+            <span className="site-menu-plus" aria-hidden="true"><span>+</span></span>
           </button>
         </div>
       </nav>

@@ -53,28 +53,6 @@ canvas#scene {
 
 }
 
-.type-click-cursor {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    display: grid;
-    place-items: center;
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    color: #fff;
-    font-family: var(--font-family, 'Pretendard', Arial, Helvetica, sans-serif);
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 1;
-    pointer-events: none;
-}
-
-.type-click-cursor[hidden] {
-    display: none;
-}
-
 #intro {
     position: absolute;
     inset: 0;

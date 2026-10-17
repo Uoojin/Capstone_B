@@ -1414,7 +1414,7 @@ export default function Syncopate({ onOpenDrawing }) {
   };
 
   return (
-    <div className="content-page-flow">
+    <div className="content-page-flow syncopate-page">
       <div className="archive-viewport">
         <button className="archive-drawing-btn" onClick={handleOpenDrawing}>
           오브젝트 추가하기

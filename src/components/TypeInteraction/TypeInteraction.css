@@ -7,3 +7,33 @@
   border: 0;
   background: #fff;
 }
+
+/* Keep only the pointer artwork outside the clipped hero scene. */
+.type-cursor-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  pointer-events: none;
+}
+
+.type-cursor-layer .type-click-cursor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    color: #fff;
+    font-family: var(--font-family, 'Pretendard', Arial, Helvetica, sans-serif);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1;
+    pointer-events: none;
+}
+
+.type-cursor-layer .type-click-cursor[hidden] {
+    display: none;
+}

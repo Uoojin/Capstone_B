@@ -1,6 +1,6 @@
-/* eslint-disable no-unused-vars, no-unreachable, no-empty, no-prototype-builtins -- Preserve the legacy engine and intentionally disabled drawing paths during integration. */
+/* eslint-disable no-unused-vars, no-unreachable, no-empty -- Preserve the legacy engine and intentionally disabled drawing paths during integration. */
 // Legacy engine retained verbatim apart from its host, assets, and lifecycle adapters.
-export default function startTypeEngine({ host, canvas, intro, assetMap, playIntro, onIntroComplete }) {
+export default function startTypeEngine({ host, canvas, intro, assetMap, playIntro, onIntroComplete, placementSeed }) {
     const events = new AbortController();
     const timers = new Set();
     let animationFrame;
@@ -22,13 +22,17 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
     var COLOR_INK = '#0b0b0a';
     var COLOR_ACCENT = '#E2E2E2';
     var COLOR_ACCENT_STRONG = '#FD00A0';
+    var cursorLayer = document.createElement('div');
+    cursorLayer.className = 'type-cursor-layer';
+    cursorLayer.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(cursorLayer);
     var clickCursor = document.createElement('div');
     clickCursor.className = 'type-click-cursor';
-    clickCursor.textContent = 'DRAG';
+    clickCursor.textContent = 'DRAG!';
     clickCursor.setAttribute('aria-hidden', 'true');
     clickCursor.style.backgroundColor = COLOR_ACCENT_STRONG;
     clickCursor.hidden = true;
-    canvas.parentElement.appendChild(clickCursor);
+    cursorLayer.appendChild(clickCursor);
     var cursorTrails = ['#5F50D8','#009DEB',   '#00BFA3','#1D9F10', '#F7A600'].map(function (color) {
         var element = document.createElement('div');
         element.className = 'type-click-cursor';
@@ -40,7 +44,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
     });
     // Equal-sized solid layers, ordered back-to-front beneath the original cursor.
     cursorTrails.slice().reverse().forEach(function (trail) {
-        canvas.parentElement.insertBefore(trail.element, clickCursor);
+        cursorLayer.insertBefore(trail.element, clickCursor);
     });
     var cursorTrailsVisible = false;
     var cursorOnCanvas = false;
@@ -57,16 +61,11 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
         hideCursorTrails();
         canvas.style.removeProperty('cursor');
     }
-    var MAJOR_COLORS = {
-        planning: '#FFE6FA',
-        design: '#FFFBD2',
-        programming: '#EBE6FF'
-    };
-    var MAJORS = ['planning', 'design', 'programming'];
     var TEAM_COUNT = 8;
-    var STUDENT_COUNT = 113;
+    // Graphic nodes orbit the eight typography groups; these values preserve their distribution.
+    var NODE_COUNT = 113;
     var TEAM_SIZES = [15, 14, 14, 14, 14, 14, 14, 14];
-    var STUDENT_RADIUS = 4;
+    var NODE_RADIUS = 4;
     // Shared SVG extent. The animated renderRadius is retained only for existing physics.
     var TYPOGRAPHY_SIZE = 400;
     var TEAM_INFO = ['L', 'E', 'T', 'S1', 'S2', 'Y', 'N', 'C'].map(function (letter) { return { name: letter.replace(/[12]/, ''), category: 'LETS SYNC' }; });
@@ -216,17 +215,69 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
         var scale = width && height ? TYPOGRAPHY_SIZE / Math.max(width, height) : 1;
         var artworkRadius = width && height ? Math.hypot(width * scale, height * scale) / 2 : TYPOGRAPHY_SIZE / Math.SQRT2;
         // Include the rendered dot (minimum 6px), its scale, drift, and clear space.
-        return artworkRadius + Math.max(6, STUDENT_RADIUS * 1.16) + 18 + 6 * Math.hypot(0.45, 0.40);
+        return artworkRadius + Math.max(6, NODE_RADIUS * 1.16) + 18 + 6 * Math.hypot(0.45, 0.40);
+    }
+
+    function createInitialTypographyPositions() {
+        var visiblePositions = [[-0.16, 0.12], [0.83, -0.16], [0.25, 0.40], [1.15, 0.43], [-0.18, 0.91], [0.70, 0.91], [0.23, 1.21], [1.15, 1.14]];
+        var margin = 24;
+        var bases = visiblePositions.map(function (position) {
+            return {
+                x: Math.max(margin, Math.min(WORLD_W - margin, (WORLD_W - W) * .5 + W * (0.5 + (position[0] - 0.5) * 1.10))),
+                y: Math.max(margin, Math.min(WORLD_H - margin, (WORLD_H - H) * .5 + H * (0.5 + (position[1] - 0.5) * 1.10)))
+            };
+        });
+        for (var pass = 0; pass < 16; pass++) {
+            var positions = [];
+            var complete = true;
+            bases.forEach(function (base, index) {
+                var candidate = null;
+                for (var attempt = 0; attempt < 24; attempt++) {
+                    var salt = placementSeed * 997 + 101 + pass * 53 + attempt * 2;
+                    var rangeX = Math.min(190, W * 0.14);
+                    var rangeY = Math.min(150, H * 0.18);
+                    var minX = Math.max(margin, base.x - rangeX);
+                    var maxX = Math.min(WORLD_W - margin, base.x + rangeX);
+                    var minY = Math.max(margin, base.y - rangeY);
+                    var maxY = Math.min(WORLD_H - margin, base.y + rangeY);
+                    var x = minX + seeded(index + 1, salt) * (maxX - minX);
+                    var y = minY + seeded(index + 1, salt + 1) * (maxY - minY);
+                    if (Math.hypot(x - base.x, y - base.y) < Math.min(70, W * 0.04, H * 0.06)) continue;
+                    var clear = positions.every(function (other, otherIndex) {
+                        var previousDistance = Math.hypot(base.x - bases[otherIndex].x, base.y - bases[otherIndex].y);
+                        return Math.hypot(x - other.x, y - other.y) >= Math.min(TYPOGRAPHY_SIZE, previousDistance) * 0.9;
+                    });
+                    if (clear) {
+                        candidate = { x: x, y: y };
+                        break;
+                    }
+                }
+                if (!candidate) complete = false;
+                positions.push(candidate || base);
+            });
+            if (complete) return positions;
+        }
+        // Dense viewports still need a new entry layout if candidate placement fails.
+        // A shared bounded adjustment preserves at least 92% of every base separation.
+        var scaleX = 0.92 + seeded(9, placementSeed * 997 + 77) * 0.06;
+        var scaleY = 0.92 + seeded(9, placementSeed * 997 + 78) * 0.06;
+        var offsetX = seeded(9, placementSeed * 997 + 79) * (WORLD_W - margin * 2) * (1 - scaleX);
+        var offsetY = seeded(9, placementSeed * 997 + 80) * (WORLD_H - margin * 2) * (1 - scaleY);
+        return bases.map(function (base) {
+            return { x: margin + (base.x - margin) * scaleX + offsetX,
+                y: margin + (base.y - margin) * scaleY + offsetY };
+        });
     }
 
     function layout() {
         if (nodes.length === 0) {
+            // Only initial creation samples this entry's seed; resize and interaction never do.
+            var initialPositions = createInitialTypographyPositions();
             blobs = [];
             for (var t = 0; t < TEAM_COUNT; t++) {
                 var anchor = BLOB_ANCHORS[t];
-                var visiblePositions = [[-0.16, 0.12], [0.83, -0.16], [0.25, 0.40], [1.15, 0.43], [-0.18, 0.91], [0.70, 0.91], [0.23, 1.21], [1.15, 1.14]];
-                var cx = (WORLD_W - W) * .5 + W * (0.5 + (visiblePositions[t][0] - 0.5) * 1.10);
-                var cy = (WORLD_H - H) * .5 + H * (0.5 + (visiblePositions[t][1] - 0.5) * 1.10);
+                var cx = initialPositions[t].x;
+                var cy = initialPositions[t].y;
                 var coreRadius = 160 + (t % 4) * 7 + seeded(t + 1, 12) * 18;
                 var orbitGap = 23 + seeded(t + 1, 16) * 5;
                 var ellipseScale = 0.97 + seeded(t + 1, 17) * 0.05;
@@ -247,7 +298,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
                     coreRadius: coreRadius,
                     renderRadius: coreRadius,
                     orbitRadii: orbitRadii,
-                    outerRadius: Math.max(orbitRadii[2].x, orbitRadii[2].y) + STUDENT_RADIUS,
+                    outerRadius: Math.max(orbitRadii[2].x, orbitRadii[2].y) + NODE_RADIUS,
                     info: TEAM_INFO[t],
                     hoverAmount: 0,
                     phase: seeded(t + 1, 13) * Math.PI * 2,
@@ -280,7 +331,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
             var teamCursor = 0;
             nodes = [];
 
-            for (var i = 0; i < STUDENT_COUNT; i++) {
+            for (var i = 0; i < NODE_COUNT; i++) {
                 while (i >= teamCursor + TEAM_SIZES[teamIndex]) {
                     teamCursor += TEAM_SIZES[teamIndex];
                     teamIndex++;
@@ -300,7 +351,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
                     localY = Math.sin(angle) * distance;
                     placed = nodes.every(function (other) {
                         if (other.team !== teamIndex) return true;
-                        return Math.hypot(localX - other.homeLocalX, localY - other.homeLocalY) > STUDENT_RADIUS * 3.4;
+                        return Math.hypot(localX - other.homeLocalX, localY - other.homeLocalY) > NODE_RADIUS * 3.4;
                     });
                 }
 
@@ -308,8 +359,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
                     idx: i,
                     id: i + 1,
                     team: teamIndex,
-                    major: MAJORS[i % MAJORS.length],
-                    r: STUDENT_RADIUS,
+                    r: NODE_RADIUS,
                     z: 0.55 + seeded(i + 1, 7) * 0.45,
                     minRadius: minRadius,
                     maxRadius: maxRadius,
@@ -820,7 +870,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
         var distance = Math.hypot(dx, dy);
         if (distance < 0.001) return;
 
-        // Start pulling shortly after the student circles connect,
+        // Start pulling shortly after the graphic nodes connect,
         // then smoothly release near the end of the SYNC.
         var pullIn = Math.min(1, Math.max(0, (age - 0.10) / 0.65));
         var pullOut = Math.min(1, Math.max(0, (syncEvent.duration - age) / 0.70));
@@ -881,7 +931,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
             b.currentY += (targetBY - b.currentY) * orbitFollow;
         }
 
-        // Keep the orbit/student layout itself stable: the visible rotation now comes
+        // Keep the orbit/node layout itself stable: the visible rotation now comes
         // from the TWO complete team systems revolving around each other.
         a.syncRotation = 0;
         b.syncRotation = 0;
@@ -1003,7 +1053,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
             team.syncEnergy = 1;
         }
 
-        // Pattern motion must NOT appear before the students have visibly connected.
+        // Pattern motion must NOT appear before the nodes have visibly connected.
         // Store the randomized responses now, but activate them later in updateAndDrawSyncPair.
         function prepareRandomPhenomenon(team) {
             team.syncStyle = Math.floor(Math.random() * 12) % 12;
@@ -1041,7 +1091,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
 
     function updateSyncInteraction(t, dt) {
         for (var bi = 0; bi < blobs.length; bi++) {
-            // Team-core visuals are activated explicitly AFTER the A/B student connection phase.
+            // Team-core visuals are activated explicitly AFTER the A/B node connection phase.
             if (!(syncEvent && syncEvent.patternStarted &&
                 (syncEvent.teamA === blobs[bi] || syncEvent.teamB === blobs[bi]))) {
                 blobs[bi].syncEnergy = Math.max(0, blobs[bi].syncEnergy - dt * 1.8);
@@ -1153,7 +1203,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
                 var pair = [syncEvent.a, syncEvent.b];
                 for (var ii = 0; ii < pair.length; ii++) {
                     var n = pair[ii];
-                    // Restore the ORIGINAL student-circle appearance.
+                    // Restore the ORIGINAL node-circle appearance.
                     n.syncRole = null;
                     n.syncVisual = 0;
                     n.returning = true;
@@ -1196,7 +1246,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
             syncEvent.patternStarted = false;
         }
 
-        // PHASE 1: students connect and revolve at B's position.
+        // PHASE 1: nodes connect and revolve at B's position.
         var theta = syncEvent.startAngle + age * 5.2 * syncEvent.spin;
         var r = syncEvent.pairRadius, cx = syncEvent.cx, cy = syncEvent.cy;
         var ax = cx + Math.cos(theta) * r, ay = cy + Math.sin(theta) * r;
@@ -1212,8 +1262,8 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
             b.y += (by - b.y) * Math.min(1, dt * 20 * settle);
         }
 
-        // BOTH student circles visibly react while they revolve around one another.
-        // The effect remains strictly inside each existing student circle.
+        // BOTH graphic nodes visibly react while they revolve around one another.
+        // The effect remains strictly inside each existing graphic node.
         var pairFadeIn = Math.min(1, age / .12);
         var pairFadeOut = Math.min(1, (syncEvent.duration - age) / .45);
         var pairVisual = Math.max(0, Math.min(pairFadeIn, pairFadeOut));
@@ -1304,16 +1354,6 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
         }
     }
 
-    function getTeamMajorDistribution(teamId) {
-        var counts = { planning: 0, design: 0, programming: 0 };
-        for (var i = 0; i < nodes.length; i++) {
-            if (nodes[i].team === teamId && counts.hasOwnProperty(nodes[i].major)) {
-                counts[nodes[i].major]++;
-            }
-        }
-        return '기획' + counts.planning + ' · 디자인' + counts.design + ' · 프로그래밍' + counts.programming;
-    }
-
     function drawTeamInfo() {
         return; // Typography hover labels disabled
 
@@ -1343,12 +1383,11 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
 
             ctx.fillStyle = 'rgba(11,11,10,0.62)';
             ctx.font = '400 12px "JetBrains Mono", ui-monospace, sans-serif';
-            ctx.fillText(getTeamMajorDistribution(team.id), sx, textY + 25);
             ctx.restore();
         }
     }
 
-    function updateStudentMotion(n, dt, t) {
+    function updateNodeMotion(n, dt, t) {
         var motionFactor = reduceMotion ? 0.12 : 1;
         var team = blobs[n.team];
         // SVG dimensions can become available after the initial layout.
@@ -1364,7 +1403,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
             return;
         }
 
-        // While one student is dragged, every student in that team moves with it.
+        // While one node is dragged, every node in that team moves with it.
         if (draggingNode && n.team === draggingNode.team) {
             if (n.freeDragX !== null) {
                 n.x = n.freeDragX;
@@ -1388,7 +1427,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
         var targetY = team.currentY + Math.sin(angle) * radius + driftY;
 
         if (n.returning) {
-            // Spring back to the student's original moving orbit after SYNC/release.
+            // Spring back to the node's original moving orbit after SYNC/release.
             var spring = 34;
             var damping = 8.4;
             var dx = targetX - n.returnX;
@@ -1641,7 +1680,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
         var isHovered = (hoveredNode === n);
         var isActiveTeam = (!!draggingNode && n.team === draggingNode.team) ||
             (!!draggingBlob && n.team === draggingBlob.team);
-        var useMajorColor = isDragging || isHovered;
+        var isEmphasized = isDragging || isHovered;
         if (sx < -rr - 30 || sx > W + rr + 30 || sy < -rr - 30 || sy > H + rr + 30) return;
 
         for (var i = n.pulses.length - 1; i >= 0; i--) {
@@ -1694,13 +1733,13 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
         }
         ctx.fill();
 
-        // Keep synced student circles solid pink; no interior pattern.
+        // Keep synced graphic nodes solid pink; no interior pattern.
 
         ctx.strokeStyle = sv > 0
             ? (n.syncRole === 'source' ? COLOR_ACCENT_STRONG : COLOR_ACCENT_STRONG)
-            : (useMajorColor ? hexToRgba(COLOR_ACCENT_STRONG, 0.92) :
+            : (isEmphasized ? hexToRgba(COLOR_ACCENT_STRONG, 0.92) :
                 (isActiveTeam ? COLOR_ACCENT_STRONG : COLOR_ACCENT));
-        ctx.lineWidth = sv > 0 ? 1.5 : (useMajorColor ? 1.1 : 0.8);
+        ctx.lineWidth = sv > 0 ? 1.5 : (isEmphasized ? 1.1 : 0.8);
         ctx.stroke();
         ctx.restore();
 
@@ -1739,7 +1778,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
             document.elementFromPoint(rect.left + mouse.x, rect.top + mouse.y) === host;
         clickCursor.hidden = !overCanvas;
         if (overCanvas) {
-            clickCursor.style.transform = 'translate3d(' + (mouse.x - 32) + 'px, ' + (mouse.y - 32) + 'px, 0)';
+            clickCursor.style.transform = 'translate3d(' + (rect.left + mouse.x - 38) + 'px, ' + (rect.top + mouse.y - 38) + 'px, 0)';
             var leaderX = mouse.x;
             var leaderY = mouse.y;
             for (var trailIndex = 0; trailIndex < cursorTrails.length; trailIndex++) {
@@ -1764,7 +1803,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
                     }
                 }
                 trail.element.hidden = false;
-                trail.element.style.transform = 'translate3d(' + (trail.x - 32) + 'px, ' + (trail.y - 32) + 'px, 0)';
+                trail.element.style.transform = 'translate3d(' + (rect.left + trail.x - 38) + 'px, ' + (rect.top + trail.y - 38) + 'px, 0)';
                 leaderX = trail.x;
                 leaderY = trail.y;
             }
@@ -1799,13 +1838,13 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
         }
         relaxSyncRotations(dt);
         syncDraggedObject();
-        for (i = 0; i < nodes.length; i++) updateStudentMotion(nodes[i], dt, t);
+        for (i = 0; i < nodes.length; i++) updateNodeMotion(nodes[i], dt, t);
         updateHover(dt);
         updateSyncInteraction(t, dt);
 
         ctx.clearRect(0, 0, W, H);
         drawSyncBackground(t);
-        // Orbit guide lines hidden; student movement remains unchanged.
+        // Orbit guide lines hidden; node movement remains unchanged.
         drawEdges(t, dt);
         drawTeamCores(t);
         drawTeamInfo();
@@ -1857,8 +1896,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
 
     return () => {
         hideClickCursor();
-        clickCursor.remove();
-        cursorTrails.forEach(function (trail) { trail.element.remove(); });
+        cursorLayer.remove();
         events.abort();
         observer.disconnect();
         cancelAnimationFrame(animationFrame);

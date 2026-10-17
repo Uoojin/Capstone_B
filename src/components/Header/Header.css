@@ -35,6 +35,8 @@
 }
 
 .site-header-menu {
+  padding-left: 16px;
+  margin-left: -16px;
   display: flex;
   justify-content: flex-end;
   flex: 1 1 auto;
@@ -43,6 +45,9 @@
 }
 
 .site-header-menu-items {
+  box-sizing: content-box;
+  padding-left: 16px;
+  margin-left: -16px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -62,7 +67,7 @@
   justify-content: center;
   flex: 0 0 auto;
   min-width: 127px;
-  height:43px;
+  height: 43px;
   padding: 0 26px;
   border-radius: 999px;
   background: #fff;
@@ -76,9 +81,11 @@
   white-space: nowrap;
   overflow: hidden;
   transition:
-    color 160ms ease,
+
+    background-color 250ms ease-in-out,
+    color 250ms ease-in-out,
     margin-left 410ms cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 360ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 200ms ease-in-out,
     transform 410ms cubic-bezier(0.22, 1, 0.36, 1),
     width 410ms cubic-bezier(0.22, 1, 0.36, 1),
     flex-basis 410ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -90,9 +97,33 @@
   margin-left: 2px;
 }
 
-.site-header-pill.active,
-.site-header-pill:hover {
+.site-header-pill.active {
   color: var(--header-pink);
+}
+
+.site-header-pill[aria-current="page"] .site-header-menu-label {
+  position: relative;
+  flex-shrink: 0;
+  padding-left: 12px;
+}
+
+.site-header-pill[aria-current="page"] .site-header-menu-label::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: currentColor;
+  transform: translateY(-50%);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .site-header-pill:hover {
+    background-color: var(--header-pink);
+    color: #fff;
+  }
 }
 
 .site-header-pill.is-extra {
@@ -144,6 +175,7 @@
 }
 
 .site-menu-toggle {
+  position: relative;
   min-width: var(--header-pill-height);
   width: var(--header-pill-height);
   padding: 0;
@@ -152,10 +184,23 @@
   line-height: 1;
 }
 
-.site-menu-plus,
-.is-menu-open .site-menu-toggle > span {
+.site-menu-plus {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  transform: rotate(0deg);
+  transform-origin: center;
+  transition: transform 300ms ease-in-out;
+}
+
+.site-menu-plus>span {
   display: block;
   transform: translateY(-2px);
+}
+
+.is-menu-open .site-menu-plus {
+  transform: rotate(45deg);
 }
 
 .site-header .site-logo:focus-visible,
@@ -313,7 +358,8 @@
 @media (prefers-reduced-motion: reduce) {
 
   .site-header-menu-items,
-  .site-header-pill {
+  .site-header-pill,
+  .site-menu-plus {
     transition: none;
   }
 }

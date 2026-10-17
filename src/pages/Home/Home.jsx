@@ -1,5 +1,6 @@
 import { useCallback, useLayoutEffect, useRef, useState } from 'react'
 import TypeInteraction from '../../components/TypeInteraction/TypeInteraction.jsx'
+import heroTitle from '../../assets/heroTitle.svg'
 import './Home.css'
 
 // Module lifetime follows the document, so internal navigation never replays the intro.
@@ -39,6 +40,33 @@ export default function Home() {
     <main className="home-page" aria-label="Home">
       <section className="home-hero" aria-label="TYPE interaction">
         <TypeInteraction playIntro={playIntro} onIntroComplete={handleIntroComplete} />
+        <div className="home-hero-overlay">
+          <img
+            className="home-hero-title"
+            src={heroTitle}
+            alt="LET’S SYNC! LET’S SPARK!"
+            width="530"
+            height="202"
+            draggable="false"
+          />
+          <div className="home-hero-info">
+            <div className="home-hero-summary">
+              <p className="home-hero-info-heading">제33회 계원조형예술제</p>
+              <p>2026 Delight Insight : LET’S SYNC!</p>
+              <p>계원예술대학교 디지털미디어디자인과 졸업전시회</p>
+            </div>
+            <div className="home-hero-schedule">
+              <p className="home-hero-info-heading">Let’s Exhibit!</p>
+              <p>11. 20. ( FRI ) - 22. ( SUN )</p>
+              <p>계원예술대학교 디자인관 5층</p>
+            </div>
+            <div className="home-hero-schedule">
+              <p className="home-hero-info-heading">Let’s Open!</p>
+              <p>11. 20. ( FRI ) PM 4:00</p>
+              <p>계원예술대학교 디자인관 5층</p>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
   )

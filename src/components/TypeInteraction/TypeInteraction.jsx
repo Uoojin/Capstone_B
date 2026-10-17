@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from 'react'
+import { useLayoutEffect, useRef, useState } from 'react'
 import startTypeEngine from './type-engine.js'
 import sceneStyles from './type-scene.css?inline'
 import './TypeInteraction.css'
@@ -16,6 +16,7 @@ const introLetters = ['L', 'E', 'T', 'S1', 'S2', 'Y', 'N', 'C']
 // -------------------- TYPE INTERACTION --------------------
 export default function TypeInteraction({ playIntro, onIntroComplete }) {
   const hostRef = useRef(null)
+  const [placementSeed] = useState(() => Math.random())
   const onIntroCompleteRef = useRef(onIntroComplete)
 
   useLayoutEffect(() => {
@@ -48,6 +49,7 @@ export default function TypeInteraction({ playIntro, onIntroComplete }) {
       canvas: root.getElementById('scene'),
       intro: root.getElementById('intro'),
       assetMap,
+      placementSeed,
       playIntro,
       onIntroComplete: () => onIntroCompleteRef.current?.(),
     })
@@ -55,7 +57,7 @@ export default function TypeInteraction({ playIntro, onIntroComplete }) {
       stop()
       root.replaceChildren()
     }
-  }, [playIntro])
+  }, [playIntro, placementSeed])
 
   return <div className="type-interaction" ref={hostRef} role="group" aria-label="TYPE interaction" />
 }

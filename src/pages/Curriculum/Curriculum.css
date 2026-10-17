@@ -90,7 +90,15 @@
   letter-spacing: -0.035em;
 }
 
-.curriculum-title span { color: var(--curriculum-pink); }
+.curriculum-title span { position: relative; color: transparent; }
+
+.curriculum-title span img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
 
 .curriculum-convergence {
   margin-top: calc(220 / 19.2 * var(--curriculum-scale));

@@ -72,10 +72,9 @@ html.gb-page-scrollbar-hidden::-webkit-scrollbar {
 .gb-hero {
   position: relative;
   isolation: isolate;
-  --gb-hero-preferred-height: clamp(480px, 47vw, 840px);
-  --gb-hero-top-gap: 28px;
+  --gb-hero-top-gap: 50px;
   /* Content sets the minimum on very short screens, allowing page scrolling. */
-  min-height: min(var(--gb-hero-preferred-height), calc(100dvh - var(--site-header-height) - var(--gb-hero-top-gap) - 24px));
+  min-height: calc(100dvh - var(--site-header-height) - var(--gb-hero-top-gap) - 55px);
   margin: var(--gb-hero-top-gap) var(--page-padding) 0;
   padding: clamp(20px, calc(16dvh - 64px), 64px) 24px;
   display: flex;
@@ -442,7 +441,6 @@ html.gb-page-scrollbar-hidden::-webkit-scrollbar {
 
 @media (max-width: 767px) {
   .gb-hero {
-    --gb-hero-preferred-height: 440px;
     --gb-hero-top-gap: 24px;
     padding: clamp(20px, calc(16dvh - 64px), 56px) 20px;
     border-radius: 24px;

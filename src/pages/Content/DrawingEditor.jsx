@@ -1,20 +1,18 @@
 import { useState, useRef, useEffect } from 'react';
 import { supabase } from '../../lib/supabase.js';
 import './DrawingEditor.css';
-import drawingObjectSvg from '../../assets/icon/DrawingObject.svg';
+import symbol1 from '../../assets/symbol/symbol_1.svg';
+import symbol2 from '../../assets/symbol/symbol_2.svg';
+import symbol3 from '../../assets/symbol/symbol_3.svg';
+import symbol4 from '../../assets/symbol/symbol_4.svg';
 
 const PRESET_COLORS = ['#FD00A0', '#5F50D8', '#009DEB', '#8223A5', '#F7A600', '#00BFA4', '#1D9F10'];
 
-// Seven independent slots. Replace each `src` with its own imported SVG later.
-// All seven intentionally use the existing DrawingObject.svg for now.
 const SYMBOLS = [
-  { id: 'symbol-1', label: 'Symbol 1', src: drawingObjectSvg },
-  { id: 'symbol-2', label: 'Symbol 2', src: drawingObjectSvg },
-  { id: 'symbol-3', label: 'Symbol 3', src: drawingObjectSvg },
-  { id: 'symbol-4', label: 'Symbol 4', src: drawingObjectSvg },
-  { id: 'symbol-5', label: 'Symbol 5', src: drawingObjectSvg },
-  { id: 'symbol-6', label: 'Symbol 6', src: drawingObjectSvg },
-  { id: 'symbol-7', label: 'Symbol 7', src: drawingObjectSvg },
+  { id: 'symbol-1', label: 'Symbol 1', src: symbol1 },
+  { id: 'symbol-2', label: 'Symbol 2', src: symbol2 },
+  { id: 'symbol-3', label: 'Symbol 3', src: symbol3 },
+  { id: 'symbol-4', label: 'Symbol 4', src: symbol4 },
 ];
 
 const SYMBOL_IMAGES = SYMBOLS.map((symbol) => {
@@ -117,7 +115,10 @@ export default function DrawingEditor({ onShareComplete, onCancel }) {
     mask.width = Math.ceil(size * 2);
     mask.height = Math.ceil(size * 2);
     const maskCtx = mask.getContext('2d');
-    maskCtx.drawImage(symbol.image, size / 2, size / 2, size, size);
+    const scale = size / Math.max(symbol.image.naturalWidth, symbol.image.naturalHeight);
+    const width = symbol.image.naturalWidth * scale;
+    const height = symbol.image.naturalHeight * scale;
+    maskCtx.drawImage(symbol.image, size - width / 2, size - height / 2, width, height);
     maskCtx.globalCompositeOperation = 'source-in';
     maskCtx.fillStyle = penColor;
     maskCtx.fillRect(0, 0, mask.width, mask.height);

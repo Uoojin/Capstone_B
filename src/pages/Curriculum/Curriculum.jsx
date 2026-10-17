@@ -2,10 +2,13 @@ import { useRef, useState } from 'react'
 import { tracks, foundation, advanced, careers, curriculumArtwork, convergenceEducation } from './curriculumData'
 import ornament from '../../assets/icon/DrawingObject.svg'
 import curriculumLogo from '../../assets/curriculum/logo.svg'
+import symbol1 from '../../assets/symbol/symbol_1.svg'
+import symbol2 from '../../assets/symbol/symbol_2.svg'
+import symbol3 from '../../assets/symbol/symbol_3.svg'
 import './Curriculum.css'
 
-function SectionTitle({ children, id }) {
-  return <h2 className="curriculum-title" id={id}><span aria-hidden="true">✳</span> {children} <span aria-hidden="true">✳</span></h2>
+function SectionTitle({ children, id, symbol }) {
+  return <h2 className="curriculum-title" id={id}><span aria-hidden="true">✳<img src={symbol} alt="" /></span> {children} <span aria-hidden="true">✳<img src={symbol} alt="" /></span></h2>
 }
 
 function CurriculumHeroArtwork() {
@@ -174,15 +177,15 @@ export default function Curriculum() {
         <ScrollCue nextSectionRef={nextSectionRef} />
       </section>
       <section className="curriculum-convergence" ref={nextSectionRef} aria-labelledby="curriculum-convergence-title">
-        <SectionTitle id="curriculum-convergence-title">CONVERGENCE EDUCATION</SectionTitle>
+        <SectionTitle id="curriculum-convergence-title" symbol={symbol1}>CONVERGENCE EDUCATION</SectionTitle>
         <ConvergenceDiagram />
       </section>
       <section className="curriculum-program" aria-labelledby="curriculum-program-title">
-        <SectionTitle id="curriculum-program-title">CURRICULUM</SectionTitle>
+        <SectionTitle id="curriculum-program-title" symbol={symbol2}>CURRICULUM</SectionTitle>
         <CurriculumChart />
       </section>
       <section className="curriculum-career" aria-labelledby="curriculum-career-title">
-        <SectionTitle id="curriculum-career-title">CAREER</SectionTitle>
+        <SectionTitle id="curriculum-career-title" symbol={symbol3}>CAREER</SectionTitle>
         <div className="curriculum-career-grid">
           {careers.map(({ title, jobs }) => (
             <section className="curriculum-career-column" key={title}>
