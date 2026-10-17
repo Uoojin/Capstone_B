@@ -49,12 +49,20 @@
   color: #fd00a0;
   font-family: 'Helvetica Neue', var(--font-family);
   font-size: 15px;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 22px;
 }
 
 .home-hero-info-heading {
   font-weight: 600;
+}
+
+.home-hero-summary .home-hero-info-heading {
+  font-weight: 700;
+}
+
+.home-hero-info-korean {
+  font-weight: 500;
 }
 
 .home-hero-info p > span {
