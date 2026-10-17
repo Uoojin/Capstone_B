@@ -28,7 +28,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
     document.body.appendChild(cursorLayer);
     var clickCursor = document.createElement('div');
     clickCursor.className = 'type-click-cursor';
-    clickCursor.textContent = 'DRAG!';
+    clickCursor.textContent = 'CLICK!';
     clickCursor.setAttribute('aria-hidden', 'true');
     clickCursor.style.backgroundColor = COLOR_ACCENT_STRONG;
     clickCursor.hidden = true;
@@ -49,6 +49,10 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
     var cursorTrailsVisible = false;
     var cursorOnCanvas = false;
     var cursorMedia = window.matchMedia('(min-width: 768px) and (hover: hover) and (pointer: fine)');
+
+    function resetCursorLabel() {
+        clickCursor.textContent = 'CLICK!';
+    }
 
     function hideCursorTrails() {
         cursorTrailsVisible = false;
@@ -419,6 +423,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
     }
 
     listen(canvas, 'pointerdown', function (e) {
+        resetCursorLabel();
         cursorOnCanvas = e.pointerType === 'mouse';
         var p = pointerPos(e);
         var w = screenToWorld(p);
@@ -436,6 +441,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
 
         if (hit) {
             draggingNode = hit;
+            clickCursor.textContent = 'DRAG!';
             canvas.setPointerCapture(e.pointerId);
             return;
         }
@@ -499,6 +505,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
     });
 
     function endDrag(e) {
+        resetCursorLabel();
         if (draggingNode) {
             var n = draggingNode;
             n.pulses.push({ t: 0 });
@@ -551,6 +558,10 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
     listen(canvas, 'pointerup', endDrag);
     listen(canvas, 'pointercancel', endDrag);
     listen(canvas, 'pointercancel', hideClickCursor);
+    listen(window, 'pointerup', resetCursorLabel);
+    listen(window, 'pointercancel', resetCursorLabel);
+    listen(window, 'blur', resetCursorLabel);
+    listen(canvas, 'lostpointercapture', resetCursorLabel);
     function stopPointerExploration() {
         hideClickCursor();
         mouse.active = false;

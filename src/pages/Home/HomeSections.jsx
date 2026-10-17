@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import letsSync from "../../assets/let'ssync.svg"
 import exhibitionFilm from '../../assets/sync_story.webm'
 import empathy from '../../assets/symbol/symbol_1.svg'
@@ -24,6 +24,35 @@ function Symbol({ asset, className = '' }) {
 
 export default function HomeSections() {
   const [activeTheme, setActiveTheme] = useState(null)
+  const filmRef = useRef(null)
+
+  useEffect(() => {
+    const video = filmRef.current
+    let inside = false
+    const observer = new IntersectionObserver(entries => {
+      for (const entry of entries) {
+        // Measure against the available height when the film is taller than the viewport.
+        const visibleHeight = Math.min(entry.boundingClientRect.height, entry.rootBounds?.height ?? window.innerHeight)
+        const visibility = visibleHeight > 0 ? entry.intersectionRect.height / visibleHeight : 0
+
+        if (!entry.isIntersecting || visibility <= 0.15) {
+          inside = false
+          video.pause()
+        } else if (!inside && visibility >= 0.6) {
+          // Stay inside after playback ends, preserving its last frame until the next entry.
+          inside = true
+          video.currentTime = 0
+          video.play().catch(() => {})
+        }
+      }
+    }, { threshold: Array.from({ length: 21 }, (_, index) => index / 20) })
+
+    observer.observe(video)
+    return () => {
+      observer.disconnect()
+      video.pause()
+    }
+  }, [])
 
   return (
     <>
@@ -43,7 +72,7 @@ export default function HomeSections() {
       </section>
 
       <section className="home-film" aria-label="LET’S SYNC! 전시 영상">
-        <video src={exhibitionFilm} autoPlay muted loop playsInline preload="metadata" />
+        <video ref={filmRef} src={exhibitionFilm} muted playsInline preload="metadata" />
       </section>
 
       <section className="home-themes" aria-label="생성적 연결: 공감, 몰입, 발견, 성장">

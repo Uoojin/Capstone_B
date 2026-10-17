@@ -38,6 +38,7 @@
 
 .home-hero-info {
   position: absolute;
+  z-index: 1;
   right: var(--page-padding);
   bottom: 50px;
   left: var(--page-padding);
@@ -56,11 +57,23 @@
   font-weight: 600;
 }
 
+.home-hero-info p > span {
+  padding: 3px 7px;
+  /* Keep the text anchors and wrapping unchanged while extending the background. */
+  margin-inline: -7px;
+  background: #fff;
+  border-radius: 7px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
 .home-hero-summary {
+  justify-self: start;
   text-align: left;
 }
 
 .home-hero-schedule {
+  justify-self: end;
   text-align: right;
   white-space: nowrap;
 }

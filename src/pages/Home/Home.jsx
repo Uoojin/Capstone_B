@@ -52,19 +52,19 @@ export default function Home() {
           />
           <div className="home-hero-info">
             <div className="home-hero-summary">
-              <p className="home-hero-info-heading">제33회 계원조형예술제</p>
-              <p>2026 Delight Insight : LET’S SYNC!</p>
-              <p>계원예술대학교 디지털미디어디자인과 졸업전시회</p>
+              <p className="home-hero-info-heading"><span>제33회 계원조형예술제</span></p>
+              <p><span>2026 Delight Insight : LET’S SYNC!</span></p>
+              <p><span>계원예술대학교 디지털미디어디자인과 졸업전시회</span></p>
             </div>
             <div className="home-hero-schedule">
-              <p className="home-hero-info-heading">Let’s Exhibit!</p>
-              <p>11. 20. ( FRI ) - 22. ( SUN )</p>
-              <p>계원예술대학교 디자인관 5층</p>
+              <p className="home-hero-info-heading"><span>Let’s Exhibit!</span></p>
+              <p><span>11. 20. ( FRI ) - 22. ( SUN )</span></p>
+              <p><span>계원예술대학교 디자인관 5층</span></p>
             </div>
             <div className="home-hero-schedule">
-              <p className="home-hero-info-heading">Let’s Open!</p>
-              <p>11. 20. ( FRI ) PM 4:00</p>
-              <p>계원예술대학교 디자인관 5층</p>
+              <p className="home-hero-info-heading"><span>Let’s Open!</span></p>
+              <p><span>11. 20. ( FRI ) PM 4:00</span></p>
+              <p><span>계원예술대학교 디자인관 5층</span></p>
             </div>
           </div>
         </div>
