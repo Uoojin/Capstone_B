@@ -22,6 +22,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
     var COLOR_INK = '#0b0b0a';
     var COLOR_ACCENT = '#E2E2E2';
     var COLOR_ACCENT_STRONG = '#FD00A0';
+    var CURSOR_RADIUS = 6;
     var cursorLayer = document.createElement('div');
     cursorLayer.className = 'type-cursor-layer';
     cursorLayer.setAttribute('aria-hidden', 'true');
@@ -46,6 +47,11 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
     cursorTrails.slice().reverse().forEach(function (trail) {
         cursorLayer.insertBefore(trail.element, clickCursor);
     });
+    var nodeHint = document.createElement('span');
+    nodeHint.className = 'type-node-hint';
+    nodeHint.textContent = '점을 움직여 SYNC를 경험해 보세요.';
+    nodeHint.dataset.visible = 'false';
+    cursorLayer.appendChild(nodeHint);
     var cursorTrailsVisible = false;
     var cursorOnCanvas = false;
     var cursorMedia = window.matchMedia('(min-width: 768px) and (hover: hover) and (pointer: fine)');
@@ -62,6 +68,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
     function hideClickCursor() {
         cursorOnCanvas = false;
         clickCursor.hidden = true;
+        nodeHint.dataset.visible = 'false';
         hideCursorTrails();
         canvas.style.removeProperty('cursor');
     }
@@ -184,6 +191,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
     var draggingTeamLastY = 0;
     var dragOffset = { x: 0, y: 0 };
     var hoveredNode = null;
+    var hoverPausedNode = null;
     var hoveredTeam = null;
     var labelBounds = [];
     var connections = new Map();
@@ -440,6 +448,9 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
         }
 
         if (hit) {
+            if (hoverPausedNode) releaseNodeHoverPause(hoverPausedNode, hoverPausedNode !== hit);
+            hit.hoverResume = null;
+            hit.hoverResumePending = false;
             draggingNode = hit;
             clickCursor.textContent = 'DRAG!';
             canvas.setPointerCapture(e.pointerId);
@@ -540,6 +551,11 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
             try { canvas.releasePointerCapture(e.pointerId); } catch (err) { }
             draggingNode = null;
             draggingTeamNodes = null;
+            if (isPointerOverCanvas(canvas.getBoundingClientRect()) &&
+                Math.hypot(mouse.worldX - n.x, mouse.worldY - n.y) < n.r + 10) {
+                startNodeHoverPause(n);
+                hoveredNode = n;
+            }
         }
 
         if (draggingBlob) {
@@ -563,6 +579,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
     listen(window, 'blur', resetCursorLabel);
     listen(canvas, 'lostpointercapture', resetCursorLabel);
     function stopPointerExploration() {
+        if (hoverPausedNode) releaseNodeHoverPause(hoverPausedNode, true);
         hideClickCursor();
         mouse.active = false;
         if (!syncEvent && !syncCameraSession) {
@@ -1264,11 +1281,11 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
         var bx = cx + Math.cos(theta + Math.PI) * r, by = cy + Math.sin(theta + Math.PI) * r;
         var settle = Math.min(1, age / .18);
 
-        if (draggingNode !== a) {
+        if (draggingNode !== a && !a.hoverPause) {
             a.x += (ax - a.x) * Math.min(1, dt * 20 * settle);
             a.y += (ay - a.y) * Math.min(1, dt * 20 * settle);
         }
-        if (draggingNode !== b) {
+        if (draggingNode !== b && !b.hoverPause) {
             b.x += (bx - b.x) * Math.min(1, dt * 20 * settle);
             b.y += (by - b.y) * Math.min(1, dt * 20 * settle);
         }
@@ -1399,7 +1416,19 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
     }
 
     function updateNodeMotion(n, dt, t) {
+        if (n.hoverPause && draggingNode !== n) {
+            n.hoverTimeOffset = (n.hoverTimeOffset || 0) + dt;
+            // Pin only this dot on screen, even while the camera/team keeps moving.
+            n.x = n.hoverPause.screenX + camera.x;
+            n.y = n.hoverPause.screenY + camera.y;
+            if (n.returning) {
+                n.returnX = n.x;
+                n.returnY = n.y;
+            }
+            return;
+        }
         var motionFactor = reduceMotion ? 0.12 : 1;
+        var motionTime = t - (n.hoverTimeOffset || 0);
         var team = blobs[n.team];
         // SVG dimensions can become available after the initial layout.
         var minRadius = getTypographyOrbitRadius(n.team);
@@ -1426,16 +1455,37 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
 
         // Compute the moving home/orbit target first.
         n.orbitAngle += n.orbitSpeed * n.orbitDirection * dt * motionFactor;
-        var angularOffset = Math.sin(t * n.driftSpeed + n.driftPhase) * n.angularDrift * motionFactor;
-        var radialOffset = Math.sin(t * (n.driftSpeed * 0.73) + n.driftPhase * 1.7) * n.driftAmount * motionFactor;
+        var angularOffset = Math.sin(motionTime * n.driftSpeed + n.driftPhase) * n.angularDrift * motionFactor;
+        var radialOffset = Math.sin(motionTime * (n.driftSpeed * 0.73) + n.driftPhase * 1.7) * n.driftAmount * motionFactor;
         var radius = Math.max(n.minRadius, Math.min(n.maxRadius, n.homeRadius + radialOffset));
         var angle = n.orbitAngle + angularOffset;
         n.homeLocalX = Math.cos(n.orbitAngle) * n.homeRadius;
         n.homeLocalY = Math.sin(n.orbitAngle) * n.homeRadius;
-        var driftX = Math.sin(t * 0.14 + n.driftPhase * 2.1) * n.driftAmount * 0.45 * motionFactor;
-        var driftY = Math.cos(t * 0.12 + n.driftPhase * 1.3) * n.driftAmount * 0.40 * motionFactor;
+        var driftX = Math.sin(motionTime * 0.14 + n.driftPhase * 2.1) * n.driftAmount * 0.45 * motionFactor;
+        var driftY = Math.cos(motionTime * 0.12 + n.driftPhase * 1.3) * n.driftAmount * 0.40 * motionFactor;
         var targetX = team.currentX + Math.cos(angle) * radius + driftX;
         var targetY = team.currentY + Math.sin(angle) * radius + driftY;
+
+        if (n.hoverResumePending) {
+            n.hoverResumePending = false;
+            if (!n.returning) {
+                var offsetX = n.x - targetX, offsetY = n.y - targetY;
+                var speed = Math.max(24, n.orbitSpeed * n.homeRadius + Math.hypot(team.velocityX, team.velocityY));
+                n.hoverResume = {
+                    x: offsetX, y: offsetY, age: -dt,
+                    duration: Math.max(1.2, Math.hypot(offsetX, offsetY) / speed)
+                };
+            }
+        }
+        if (n.hoverResume) {
+            n.hoverResume.age += dt;
+            var progress = Math.min(1, n.hoverResume.age / n.hoverResume.duration);
+            // Zero initial slope preserves the resumed orbit's direction/speed.
+            var blend = progress * progress * progress * (progress * (progress * 6 - 15) + 10);
+            targetX += n.hoverResume.x * (1 - blend);
+            targetY += n.hoverResume.y * (1 - blend);
+            if (progress === 1) n.hoverResume = null;
+        }
 
         if (n.returning) {
             // Spring back to the node's original moving orbit after SYNC/release.
@@ -1463,7 +1513,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
             n.y = targetY;
         }
 
-        n.scale = 1 + Math.sin(t * 0.52 + n.idx * 0.81) * 0.035 * motionFactor;
+        n.scale = 1 + Math.sin(motionTime * 0.52 + n.idx * 0.81) * 0.035 * motionFactor;
     }
 
     function findCandidate(candidates, nodeIndex) {
@@ -1762,6 +1812,9 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
 
         if (draggingBlob) {
             hoveredTeam = null;
+        } else if (mouse.active && hoverPausedNode &&
+            Math.hypot(mouse.worldX - hoverPausedNode.x, mouse.worldY - hoverPausedNode.y) < hoverPausedNode.r + 10) {
+            hoveredNode = hoverPausedNode;
         } else if (mouse.active) {
             var best = 1e9;
             for (var i = 0; i < nodes.length; i++) {
@@ -1782,14 +1835,61 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
         }
     }
 
+    function isPointerOverCanvas(rect) {
+        return cursorMedia.matches && cursorOnCanvas && mouse.active && host.hasAttribute('data-hero-ready') &&
+            document.elementFromPoint(rect.left + mouse.x, rect.top + mouse.y) === host;
+    }
+
+    function startNodeHoverPause(node) {
+        node.hoverPause = { screenX: node.x - camera.x, screenY: node.y - camera.y };
+        node.hoverResume = null;
+        node.hoverResumePending = false;
+        hoverPausedNode = node;
+    }
+
+    function releaseNodeHoverPause(node, resume) {
+        node.hoverPause = null;
+        node.hoverResumePending = resume;
+        if (hoverPausedNode === node) hoverPausedNode = null;
+    }
+
+    function updateNodeHoverPause() {
+        var node = !draggingNode && !draggingBlob && isPointerOverCanvas(canvas.getBoundingClientRect())
+            ? hoveredNode : null;
+        if (hoverPausedNode && hoverPausedNode !== node) releaseNodeHoverPause(hoverPausedNode, true);
+        if (node && node !== hoverPausedNode) startNodeHoverPause(node);
+    }
+
+    function updateNodeHint(overCanvas, rect) {
+        // Reuse the draggable nodes' existing hover test, never typography hits.
+        var node = hoveredNode;
+        var radius = node ? Math.max(6, node.r * (node.scale || 1)) : 0;
+        var visible = overCanvas && !!node;
+        nodeHint.dataset.visible = visible ? 'true' : 'false';
+        if (!visible) return;
+
+        var nodeX = rect.left + node.x - camera.x;
+        var nodeY = rect.top + node.y - camera.y;
+        var gap = radius + 12;
+        var width = nodeHint.offsetWidth;
+        var height = nodeHint.offsetHeight;
+        var x = nodeX + gap;
+        var y = nodeY + gap;
+        // Flip beside edge nodes while keeping the hint anchored to that node.
+        if (x + width > rect.right - 8) x = nodeX - width - gap;
+        if (y + height > rect.bottom - 8) y = nodeY - height - gap;
+        x = Math.max(rect.left + 8, Math.min(x, rect.right - width - 8));
+        y = Math.max(rect.top + 8, Math.min(y, rect.bottom - height - 8));
+        nodeHint.style.transform = 'translate3d(' + x + 'px, ' + y + 'px, 0)';
+    }
+
     function updateClickCursor(dt) {
         var rect = canvas.getBoundingClientRect();
         // Hit-test the page too, so header controls win even during pointer capture.
-        var overCanvas = cursorMedia.matches && cursorOnCanvas && mouse.active && host.hasAttribute('data-hero-ready') &&
-            document.elementFromPoint(rect.left + mouse.x, rect.top + mouse.y) === host;
+        var overCanvas = isPointerOverCanvas(rect);
         clickCursor.hidden = !overCanvas;
         if (overCanvas) {
-            clickCursor.style.transform = 'translate3d(' + (rect.left + mouse.x - 38) + 'px, ' + (rect.top + mouse.y - 38) + 'px, 0)';
+            clickCursor.style.transform = 'translate3d(' + (rect.left + mouse.x - CURSOR_RADIUS) + 'px, ' + (rect.top + mouse.y - CURSOR_RADIUS) + 'px, 0)';
             var leaderX = mouse.x;
             var leaderY = mouse.y;
             for (var trailIndex = 0; trailIndex < cursorTrails.length; trailIndex++) {
@@ -1814,7 +1914,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
                     }
                 }
                 trail.element.hidden = false;
-                trail.element.style.transform = 'translate3d(' + (rect.left + trail.x - 38) + 'px, ' + (rect.top + trail.y - 38) + 'px, 0)';
+                trail.element.style.transform = 'translate3d(' + (rect.left + trail.x - CURSOR_RADIUS) + 'px, ' + (rect.top + trail.y - CURSOR_RADIUS) + 'px, 0)';
                 leaderX = trail.x;
                 leaderY = trail.y;
             }
@@ -1824,6 +1924,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
             hideCursorTrails();
             canvas.style.removeProperty('cursor');
         }
+        updateNodeHint(overCanvas, rect);
     }
 
     function frame(now) {
@@ -1831,6 +1932,9 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
         var dt = Math.min(0.05, (now - last) / 1000);
         last = now;
 
+        // Acquire/release against the last rendered position before any automatic motion.
+        updateHover(0);
+        updateNodeHoverPause();
         updateCamera();
         mouse.worldX = mouse.x + camera.x;
         mouse.worldY = mouse.y + camera.y;

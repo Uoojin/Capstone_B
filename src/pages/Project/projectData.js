@@ -27,7 +27,16 @@ export const projects = Array.from({ length: 17 }, (_, index) => {
     slogan: '슬로건 내용이 들어가는 영역입니다.',
     desc: '프로젝트에 대한 설명이 들어가는 영역입니다. 간단한 기획 의도와 주요 특징을 소개하며 사용자가 프로젝트를 이해할 수 있도록  작성됩니다. 프로젝트에 대한 설명이 들어가는 영역입니다.  간단한 기획 의도와 주요 특징을 소개하며 사용자가 프로젝트를  이해할 수 있도록 작성됩니다.',
     tags: [media, subject, target],
-    link: '#',
+    media,
+    subject,
+    target,
+    // Import each project's asset above and replace null with its URL.
+    // Keep absent images empty; the detail layout reserves their space.
+    image: null,
+    teamImage: null,
+    handwritingImage: null,
+    handwritingAlt: '',
+    link: index === 0 ? 'https://example.com' : '#',
     members: placeholderMembers,
   }
 })

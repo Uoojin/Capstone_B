@@ -291,6 +291,8 @@ html.gb-page-scrollbar-hidden::-webkit-scrollbar {
   display: block;
   width: 100%;
   height: auto;
+  /* Hide the outline baked into older PNGs without resizing their contents. */
+  clip-path: inset(1.5px);
 }
 
 .gb-card--message {

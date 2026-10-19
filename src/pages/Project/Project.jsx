@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react'
 import { categories, projects } from './projectData.js'
 import './Project.css'
 
@@ -8,13 +8,22 @@ const FOCUS_RANGE = 92
 const LOGICAL_ANGLE_STEP = 360 / DISPLAY_CARD_COUNT
 const WHEEL_RADIUS_CARD_MULTIPLIER = 2.7
 const CARD_GAP_RATIO = 0.18
-const DETAIL_SECTION_DURATION = 1100
-const DETAIL_WHEEL_THRESHOLD = 12
+const mobileProjectViewport = window.matchMedia('(max-width: 767px)')
+
+function subscribeToMobileViewport(onChange) {
+  mobileProjectViewport.addEventListener('change', onChange)
+  return () => mobileProjectViewport.removeEventListener('change', onChange)
+}
+
+function getMobileViewport() {
+  return mobileProjectViewport.matches
+}
 
 const clamp = (value, min, max) => Math.min(Math.max(value, min), max)
 const signedAngleDistance = (from, to = TOP_FOCUS_ANGLE) => ((from - to + 540) % 360) - 180
 
 export default function Project() {
+  const isMobile = useSyncExternalStore(subscribeToMobileViewport, getMobileViewport)
   const [selectedFilters, setSelectedFilters] = useState([])
   const [openFilter, setOpenFilter] = useState(null)
   const [activeDetailIndex, setActiveDetailIndex] = useState(null)
@@ -29,7 +38,8 @@ export default function Project() {
   const indexFloatRef = useRef(null)
   const detailViewRef = useRef(null)
   const detailScrollerRef = useRef(null)
-  const detailSectionRefs = useRef([])
+  const detailTeamMediaRef = useRef(null)
+  const detailHandwritingRef = useRef(null)
   const carouselRef = useRef({
     angle: LOGICAL_ANGLE_STEP,
     orbitalAngleStep: 0,
@@ -52,7 +62,6 @@ export default function Project() {
     wheelInteracting: false,
     pressedCardIndex: null,
   })
-  const detailStateRef = useRef({ section: 0, moving: false, raf: null })
   const scrollStateRef = useRef({ raf: null, landingGuard: false, lastWheelAt: 0, gestureDelta: 0, gestureTime: 0 })
 
   const reducedMotion = useMemo(
@@ -75,6 +84,27 @@ export default function Project() {
   }, [filteredProjects])
 
   const activeDetail = activeDetailIndex === null ? null : projects[activeDetailIndex]
+  const projectLink = activeDetail?.link?.trim() || ''
+  const hasProjectLink = /^https?:\/\/\S+$/i.test(projectLink)
+
+  useLayoutEffect(() => {
+    if (!isMobile || activeDetailIndex === null) return undefined
+    const teamMedia = detailTeamMediaRef.current
+    const handwriting = detailHandwritingRef.current
+    if (!teamMedia || !handwriting) return undefined
+
+    const matchTeamHeight = () => {
+      handwriting.style.setProperty('--detail-team-image-height', `${teamMedia.getBoundingClientRect().height}px`)
+    }
+    // Follow the existing photo size, including image loading and viewport changes.
+    const observer = new ResizeObserver(matchTeamHeight)
+    observer.observe(teamMedia)
+    matchTeamHeight()
+    return () => {
+      observer.disconnect()
+      handwriting.style.removeProperty('--detail-team-image-height')
+    }
+  }, [activeDetailIndex, isMobile])
 
   const getOrbitalTheta = useCallback((index) => {
     const state = carouselRef.current
@@ -217,62 +247,95 @@ export default function Project() {
   )
 
   const openDetail = useCallback((index) => {
-    const detailState = detailStateRef.current
-    if (detailState.raf) {
-      cancelAnimationFrame(detailState.raf)
-      detailState.raf = null
-    }
-    detailState.section = 0
-    detailState.moving = false
+    // Stop an in-flight list transition before preserving its current position.
+    const scrollState = scrollStateRef.current
+    if (scrollState.raf) cancelAnimationFrame(scrollState.raf)
+    scrollState.raf = null
+    scrollState.landingGuard = false
     setActiveDetailIndex(index)
-    document.body.classList.add('body-detail-open')
-    requestAnimationFrame(() => {
-      if (detailScrollerRef.current) detailScrollerRef.current.scrollTop = 0
-    })
   }, [])
 
   const closeDetail = useCallback(() => {
-    const detailState = detailStateRef.current
-    if (detailState.raf) cancelAnimationFrame(detailState.raf)
-    detailState.raf = null
-    detailState.section = 0
-    detailState.moving = false
     setActiveDetailIndex(null)
-    document.body.classList.remove('body-detail-open')
   }, [])
 
-  const moveDetailToSection = useCallback((nextSection) => {
-    const detailState = detailStateRef.current
+  useEffect(() => {
+    if (activeDetailIndex === null) return undefined
+
+    const dialog = detailViewRef.current
+    const root = document.documentElement
+    const previousOverflow = root.style.overflow
+    const scrollX = window.scrollX
+    const scrollY = window.scrollY
+    document.body.classList.add('body-detail-open')
+    root.style.overflow = 'hidden'
+    dialog.showModal()
+    detailScrollerRef.current.scrollTop = 0
+
+    return () => {
+      dialog.close()
+      root.style.overflow = previousOverflow
+      document.body.classList.remove('body-detail-open')
+      window.scrollTo(scrollX, scrollY)
+    }
+  }, [activeDetailIndex])
+
+  useEffect(() => {
+    if (isMobile || reducedMotion || activeDetailIndex === null) return undefined
     const scroller = detailScrollerRef.current
-    const sections = detailSectionRefs.current
-    if (detailState.moving || !scroller || !sections.length) return
+    let frameId = null
+    let target = scroller.scrollTop
+    let lastFrame = 0
 
-    const targetSection = clamp(nextSection, 0, sections.length - 1)
-    if (targetSection === detailState.section) return
-
-    detailState.moving = true
-    const start = scroller.scrollTop
-    const target = sections[targetSection].offsetTop
-    const distance = target - start
-    const startTime = performance.now()
-    const easeInOutCubic = (time) => (time < 0.5 ? 4 * time * time * time : 1 - Math.pow(-2 * time + 2, 3) / 2)
-
-    const animateSectionScroll = (currentTime) => {
-      const progress = Math.min((currentTime - startTime) / DETAIL_SECTION_DURATION, 1)
-      scroller.scrollTop = start + distance * easeInOutCubic(progress)
-
-      if (progress < 1) {
-        detailState.raf = requestAnimationFrame(animateSectionScroll)
-      } else {
+    const stop = () => {
+      if (frameId !== null) cancelAnimationFrame(frameId)
+      frameId = null
+      target = scroller.scrollTop
+    }
+    const advance = (now) => {
+      const elapsed = Math.min(now - lastFrame, 32)
+      lastFrame = now
+      target = clamp(target, 0, Math.max(0, scroller.scrollHeight - scroller.clientHeight))
+      const remaining = target - scroller.scrollTop
+      // A short, frame-rate-independent tail without increasing wheel distance.
+      if (Math.abs(remaining) < 0.75) {
         scroller.scrollTop = target
-        detailState.section = targetSection
-        detailState.moving = false
-        detailState.raf = null
+        frameId = null
+        return
+      }
+      scroller.scrollTop += remaining * (1 - Math.exp(-elapsed / 55))
+      frameId = requestAnimationFrame(advance)
+    }
+    const handleWheel = (event) => {
+      if (mobileProjectViewport.matches || event.ctrlKey || event.metaKey || event.shiftKey ||
+        !event.cancelable || Math.abs(event.deltaX) > Math.abs(event.deltaY) || !event.deltaY) {
+        stop()
+        return
+      }
+      const unit = event.deltaMode === 1
+        ? parseFloat(getComputedStyle(scroller).lineHeight) || 16
+        : event.deltaMode === 2 ? scroller.clientHeight : 1
+      if (frameId === null) target = scroller.scrollTop
+      // Reversing the wheel responds immediately instead of exhausting the old tail.
+      if ((target - scroller.scrollTop) * event.deltaY < 0) target = scroller.scrollTop
+      target = clamp(target + event.deltaY * unit, 0, Math.max(0, scroller.scrollHeight - scroller.clientHeight))
+      event.preventDefault()
+      if (frameId === null) {
+        lastFrame = performance.now()
+        frameId = requestAnimationFrame(advance)
       }
     }
 
-    detailState.raf = requestAnimationFrame(animateSectionScroll)
-  }, [])
+    scroller.addEventListener('wheel', handleWheel, { passive: false })
+    scroller.addEventListener('pointerdown', stop, { passive: true })
+    scroller.addEventListener('keydown', stop)
+    return () => {
+      stop()
+      scroller.removeEventListener('wheel', handleWheel)
+      scroller.removeEventListener('pointerdown', stop)
+      scroller.removeEventListener('keydown', stop)
+    }
+  }, [activeDetailIndex, isMobile, reducedMotion])
 
   const cancelPageScroll = useCallback(() => {
     const scrollState = scrollStateRef.current
@@ -283,11 +346,16 @@ export default function Project() {
 
   const smoothScrollTo = useCallback(
     (target, duration = 1000) => {
+      if (mobileProjectViewport.matches) return
       const scrollState = scrollStateRef.current
       cancelPageScroll()
       const start = window.scrollY
       const startTime = performance.now()
       const move = (now) => {
+        if (mobileProjectViewport.matches) {
+          cancelPageScroll()
+          return
+        }
         const time = reducedMotion ? 1 : Math.min((now - startTime) / duration, 1)
         const ease = time < 0.5 ? 4 * time * time * time : 1 - Math.pow(-2 * time + 2, 3) / 2
         window.scrollTo(0, start + (target - start) * ease)
@@ -325,13 +393,16 @@ export default function Project() {
   }, [])
 
   useEffect(() => {
+    if (isMobile) return
     cardRefs.current = cardRefs.current.slice(0, displayProjects.length)
     carouselRef.current.angle = displayProjects.length > 0 ? LOGICAL_ANGLE_STEP : 0
     calcRadius()
     updateCarousel()
-  }, [calcRadius, displayProjects, updateCarousel])
+  }, [calcRadius, displayProjects, isMobile, updateCarousel])
 
   useEffect(() => {
+    if (isMobile) return undefined
+    const carouselState = carouselRef.current
     let animationId
     const animate = (now) => {
       const state = carouselRef.current
@@ -365,10 +436,14 @@ export default function Project() {
     }
 
     animationId = requestAnimationFrame(animate)
-    return () => cancelAnimationFrame(animationId)
-  }, [clearHoveredCard, findHoveredImageAtPoint, updateCarousel])
+    return () => {
+      cancelAnimationFrame(animationId)
+      carouselState.lastFrame = 0
+    }
+  }, [clearHoveredCard, findHoveredImageAtPoint, isMobile, updateCarousel])
 
   useEffect(() => {
+    if (isMobile) return undefined
     const handleResize = () => {
       calcRadius()
       updateCarousel()
@@ -376,9 +451,10 @@ export default function Project() {
 
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
-  }, [calcRadius, updateCarousel])
+  }, [calcRadius, isMobile, updateCarousel])
 
   useEffect(() => {
+    if (isMobile) return undefined
     const projectList = projectListRef.current
     if (!projectList) return undefined
 
@@ -390,7 +466,7 @@ export default function Project() {
     )
     observer.observe(projectList)
     return () => observer.disconnect()
-  }, [])
+  }, [isMobile])
 
   useEffect(() => {
     if (!gridUpdating) return undefined
@@ -399,6 +475,7 @@ export default function Project() {
   }, [gridUpdating])
 
   useEffect(() => {
+    if (isMobile) return undefined
     let frameId
     const floatIndex = () => {
       const aside = indexAsideRef.current
@@ -426,7 +503,7 @@ export default function Project() {
 
     frameId = requestAnimationFrame(floatIndex)
     return () => cancelAnimationFrame(frameId)
-  }, [reducedMotion])
+  }, [isMobile, reducedMotion])
 
   useEffect(() => {
     const handleClick = (event) => {
@@ -443,21 +520,27 @@ export default function Project() {
 
     document.addEventListener('click', handleClick)
     document.addEventListener('keydown', handleKeydown)
-    window.addEventListener('pointerdown', cancelPageScroll)
     return () => {
       document.removeEventListener('click', handleClick)
       document.removeEventListener('keydown', handleKeydown)
-      window.removeEventListener('pointerdown', cancelPageScroll)
       document.body.classList.remove('body-detail-open')
     }
   }, [cancelPageScroll, closeDetail])
 
   useEffect(() => {
+    if (isMobile) return undefined
+    window.addEventListener('pointerdown', cancelPageScroll)
+    return () => window.removeEventListener('pointerdown', cancelPageScroll)
+  }, [cancelPageScroll, isMobile])
+
+  useEffect(() => {
+    // Mobile keeps the browser's native scrolling and has no wheel interceptor.
+    if (isMobile) return undefined
+    const scrollState = scrollStateRef.current
     const handleWheel = (event) => {
-      if (activeDetailIndex !== null) return
+      if (mobileProjectViewport.matches || activeDetailIndex !== null) return
       if (Math.abs(event.deltaX) > Math.abs(event.deltaY) || event.deltaY === 0 || event.ctrlKey) return
 
-      const scrollState = scrollStateRef.current
       const projectList = projectListRef.current
       if (!projectList) return
 
@@ -500,8 +583,14 @@ export default function Project() {
     }
 
     window.addEventListener('wheel', handleWheel, { passive: false })
-    return () => window.removeEventListener('wheel', handleWheel)
-  }, [activeDetailIndex, getListScrollTarget, smoothScrollTo])
+    return () => {
+      window.removeEventListener('wheel', handleWheel)
+      cancelPageScroll()
+      scrollState.gestureDelta = 0
+      scrollState.gestureTime = 0
+      scrollState.lastWheelAt = 0
+    }
+  }, [activeDetailIndex, cancelPageScroll, getListScrollTarget, isMobile, smoothScrollTo])
 
   const handlePointerDown = (event) => {
     const state = carouselRef.current
@@ -550,13 +639,6 @@ export default function Project() {
       const originalIndex = displayProjects[clickedCardIndex]?.originalIndex
       if (originalIndex !== undefined) openDetail(originalIndex)
     }
-  }
-
-  const handleDetailWheel = (event) => {
-    if (activeDetailIndex === null) return
-    event.preventDefault()
-    if (detailStateRef.current.moving || Math.abs(event.deltaY) < DETAIL_WHEEL_THRESHOLD) return
-    moveDetailToSection(detailStateRef.current.section + (event.deltaY > 0 ? 1 : -1))
   }
 
   const moveToList = () => {
@@ -712,65 +794,82 @@ export default function Project() {
         </div>
       </section>
 
-      <section
-        className={`detail-view ${activeDetail ? 'is-open' : ''}`}
+      <dialog
+        className="detail-view"
         ref={detailViewRef}
-        aria-hidden={!activeDetail}
+        aria-labelledby="detail-title"
+        onCancel={(event) => {
+          event.preventDefault()
+          closeDetail()
+        }}
       >
-        <div className="detail-bg" aria-hidden="true" />
-        <button className="close-detail" type="button" aria-label="Close project detail" onClick={closeDetail}>
-          ×
+        <button className="close-detail" type="button" aria-label="프로젝트 상세 닫기" onClick={closeDetail} autoFocus>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m5 5 14 14M19 5 5 19" />
+          </svg>
         </button>
-        <div className="detail-scroller" ref={detailScrollerRef} onWheel={handleDetailWheel}>
-          <article
-            className="detail-hero"
-            ref={(element) => {
-              detailSectionRefs.current[0] = element
-            }}
-          >
-            <div className="detail-intro">
-              <div className="project-link-row">
-                <h1 className="detail-title">{activeDetail?.name || 'Project Name'}</h1>
-                <a className="site-link" href={activeDetail?.link || '#'} aria-label="Open project site">
-                  →
-                </a>
-              </div>
-              <p className="detail-slogan">{activeDetail?.slogan || '슬로건 내용이 들어가는 영역입니다.'}</p>
-              <p className="detail-desc">{activeDetail?.desc || '프로젝트 설명 내용이 들어가는 영역입니다.'}</p>
-              <div className="detail-tags">
-                {(activeDetail?.tags || []).map((tag) => (
-                  <span key={tag}>{tag}</span>
-                ))}
-              </div>
-            </div>
-          </article>
-
-          <article
-            className="detail-content"
-            ref={(element) => {
-              detailSectionRefs.current[1] = element
-            }}
-          >
-            <section className="detail-left">
-              <div className="detail-image-left" aria-label="Project image placeholder" />
-              <div className="team-block">
-                <h2 className="team-title">{activeDetail?.team || 'TEAM.000'}</h2>
-                <div className="members">
-                  {(activeDetail?.members || []).map(([name, role], index) => (
-                    <div key={`${name}-${role}-${index}`}>
-                      <p className="member-name">{name}</p>
-                      <p className="member-role">{role}</p>
-                    </div>
-                  ))}
+        <div className="detail-scroller" ref={detailScrollerRef} tabIndex={0} aria-label="프로젝트 상세 콘텐츠">
+          {activeDetail && (
+            <>
+              <article className="detail-section detail-hero">
+                <div className="detail-media">
+                  {activeDetail.image && <img src={activeDetail.image} alt={`${activeDetail.name} 대표 이미지`} />}
                 </div>
-              </div>
-            </section>
-            <section className="detail-right">
-              <div className="detail-image-right" aria-label="Project content image placeholder" />
-            </section>
-          </article>
+                <div className="detail-intro">
+                  <div className="project-link-row">
+                    <h1 className="detail-title" id="detail-title">{activeDetail.name}</h1>
+                    {hasProjectLink && (
+                      <a className="site-link" href={projectLink} target="_blank" rel="noopener noreferrer" aria-label={`${activeDetail.name} 외부 사이트 새 탭에서 열기`}>
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                          <path d="M6 18 18 6M6 6h12v12" />
+                        </svg>
+                      </a>
+                    )}
+                  </div>
+                  {activeDetail.slogan && <p className="detail-slogan">{activeDetail.slogan}</p>}
+                  {activeDetail.desc && <p className="detail-desc">{activeDetail.desc}</p>}
+                  <dl className="detail-metadata">
+                    {['media', 'subject', 'target'].map((key) => activeDetail[key] && (
+                      <div key={key}>
+                        <dt>{key.toUpperCase()}</dt>
+                        <dd>{Array.isArray(activeDetail[key]) ? activeDetail[key].join(', ') : activeDetail[key]}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
+                <div className="detail-scroll-hint" aria-hidden="true">
+                  <span>SCROLL DOWN</span>
+                  <svg viewBox="0 0 24 16"><path d="m5 4 7 7 7-7" /></svg>
+                </div>
+              </article>
+
+              <article className="detail-section detail-team" aria-label="팀 소개">
+                <div className="detail-media detail-team-media" ref={detailTeamMediaRef}>
+                  {activeDetail.teamImage && <img src={activeDetail.teamImage} alt={`${activeDetail.team || activeDetail.name} 팀 사진`} />}
+                </div>
+                <div className="detail-team-info">
+                  <div className={`detail-handwriting${activeDetail.handwritingImage ? ' has-image' : ''}`} ref={detailHandwritingRef}>
+                    {activeDetail.handwritingImage && (
+                      <img src={activeDetail.handwritingImage} alt={activeDetail.handwritingAlt || '팀 손글씨'} />
+                    )}
+                  </div>
+                  <div className="team-block">
+                    {activeDetail.team && <h2 className="team-title"><span>TEAM.</span>{activeDetail.team}</h2>}
+                    <div className="members">
+                      {(activeDetail.members || []).map(([name, role], index) => (
+                        <div key={`${name}-${role}-${index}`}>
+                          {name && <p className="member-name">{name}</p>}
+                          {role && <p className="member-role">{role}</p>}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </>
+          )}
         </div>
-      </section>
+      </dialog>
     </main>
   )
 }

@@ -68,6 +68,7 @@
 }
 
 .gb-upload-button {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -87,6 +88,58 @@
   width: 1px;
   height: 1px;
   opacity: 0;
+}
+
+.gb-upload-tooltip {
+  position: absolute;
+  z-index: 3;
+  right: clamp(-54px, calc(400px - 50vw), 0px);
+  bottom: calc(100% + 5px);
+  width: 184px;
+  padding: 14px 12px 15px;
+  border-radius: 24px;
+  background: #fd00a0;
+  color: #fff;
+  font-family: var(--font-family);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  text-align: center;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.gb-upload-tooltip strong {
+  display: block;
+  margin-bottom: 7px;
+  font-weight: 600;
+}
+
+.gb-upload-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 22px;
+  width: 18px;
+  height: 11px;
+  background: #fd00a0;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .gb-upload-button:hover .gb-upload-tooltip {
+    opacity: 1;
+  }
+}
+
+/* Keep the bubble inside the existing scrolling dialog on smaller screens. */
+@media (max-width: 820px), (max-height: 500px) {
+  .gb-upload-tooltip {
+    right: 0;
+  }
 }
 
 .gb-photo-hint {

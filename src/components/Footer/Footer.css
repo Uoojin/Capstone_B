@@ -90,27 +90,63 @@
 
 @media (max-width: 767px) {
   .site-footer {
-    grid-template-columns: minmax(0, 1fr) auto;
-    grid-template-areas:
-      'brand socials'
-      'address address'
-      'about-heading about-heading'
-      'about about'
-      'contact-heading contact-heading'
-      'contact contact';
-    gap: 18px 16px;
-  }
-
-  .site-footer__brand { font-size: 26px; }
-  .site-footer__heading { margin-top: 10px; }
-  .site-footer__socials { gap: 12px; }
-}
-
-@media (max-width: 359px) {
-  .site-footer {
     grid-template-columns: minmax(0, 1fr);
-    grid-template-areas: 'brand' 'socials' 'address' 'about-heading' 'about' 'contact-heading' 'contact';
+    grid-template-rows: auto;
+    grid-template-areas:
+      'address-ko'
+      'address-en'
+      'about-heading'
+      'about'
+      'contact-heading'
+      'contact'
+      'socials'
+      'copyright';
+    height: auto;
+    padding: 44px var(--page-padding) 48px;
+    gap: 0;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: left;
+    overflow-wrap: anywhere;
   }
 
-  .site-footer__socials { justify-self: start; }
+  .site-footer__brand {
+    display: none;
+  }
+
+  /* Expose the existing address lines and copyright as mobile grid items. */
+  .site-footer__address {
+    display: contents;
+  }
+
+  .site-footer__address p:first-child {
+    grid-area: address-ko;
+  }
+
+  .site-footer__address p:nth-child(2) {
+    grid-area: address-en;
+  }
+
+  .site-footer__address p:last-child {
+    grid-area: copyright;
+    margin-top: 32px;
+  }
+
+  .site-footer__heading {
+    margin: 28px 0 12px;
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  .site-footer__contact {
+    grid-template-columns: 48px minmax(0, 1fr);
+    column-gap: 16px;
+    margin: 0;
+  }
+
+  .site-footer__socials {
+    justify-self: start;
+    gap: 16px;
+    margin-top: 32px;
+  }
 }

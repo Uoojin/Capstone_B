@@ -8,7 +8,7 @@
   background: #fff;
 }
 
-/* Keep only the pointer artwork outside the clipped hero scene. */
+/* Keep the pointer artwork and node hint outside the clipped hero scene. */
 .type-cursor-layer {
   position: fixed;
   inset: 0;
@@ -18,17 +18,17 @@
 
 .type-cursor-layer .type-click-cursor {
     position: absolute;
-    top: 10.5px;
-    left: 10.5px;
+    top: 0;
+    left: 0;
     z-index: 1;
     display: grid;
     place-items: center;
-    width: 55px;
-    height: 55px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     color: #fff;
     font-family: var(--font-family, 'Pretendard', Arial, Helvetica, sans-serif);
-    font-size: 9.4px;
+    font-size: 0;
     font-weight: 600;
     line-height: 1;
     pointer-events: none;
@@ -36,4 +36,30 @@
 
 .type-cursor-layer .type-click-cursor[hidden] {
     display: none;
+}
+
+.type-cursor-layer .type-node-hint {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    color: #fd00a0;
+    font-family: 'Helvetica Neue', Arial, var(--font-family), sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 150ms ease;
+}
+
+.type-cursor-layer .type-node-hint[data-visible="true"] {
+    opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .type-cursor-layer .type-node-hint {
+        transition: none;
+    }
 }

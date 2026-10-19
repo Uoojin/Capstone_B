@@ -71,6 +71,7 @@ async function renderPolaroidToBlob(element) {
     width: `${rect.width}px`, height: `${rect.height}px`,
     position: 'fixed', left: '-100000px', top: '0', margin: '0',
     borderColor: 'transparent', pointerEvents: 'none',
+    outline: 'none',
   })
   document.body.appendChild(clone)
   try {
@@ -330,8 +331,14 @@ function CameraCapture({ onCapture, onUpload }) {
         </button>
         <label className="gb-upload-button">
           이미지 업로드 <Upload aria-hidden="true" size={18} />
+          <span className="gb-upload-tooltip" id="gb-upload-tooltip" role="tooltip">
+            <strong>사진 촬영이 어려우신가요?</strong>
+            <span>직접 촬영하지 않고 원하는<br />사진을 업로드할 수 있어요.</span>
+          </span>
           <input
             accept="image/jpeg,image/png,image/webp"
+            aria-label="이미지 업로드"
+            aria-describedby="gb-upload-tooltip"
             onChange={handleFileChange}
             type="file"
           />

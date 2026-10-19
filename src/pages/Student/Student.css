@@ -143,7 +143,7 @@
   justify-content: space-between;
   padding: 28px 22px;
   background: #252c34;
-  color: #fff;
+  color: #ffffff;
   transform: rotateY(180deg);
   border-radius: 16px;
 }
@@ -157,7 +157,7 @@
 }
 
 .back-interview {
-  color: #f1f3f5;
+  color: #ffffff;
   font-size: 17px;
   font-weight: 400;
   line-height: 1.6;
@@ -179,12 +179,12 @@
 
 .back-label {
   width: 70px;
-  color: #fff;
+  color: #ffffff;
 }
 
 .back-value,
 .back-link {
-  color: #cfd6dc;
+  color: #ffffff;
 }
 
 .back-link {
@@ -324,6 +324,10 @@
 }
 
 @media (max-width: 767px) {
+  .student-img-placeholder {
+    border-radius: 8px;
+  }
+
   .student-page .student-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 28px 12px;
@@ -353,6 +357,7 @@
     padding: 12px 10px;
     gap: 10px;
     overflow-y: auto;
+    border-radius: 8px;
   }
 
   .student-page .back-interview {

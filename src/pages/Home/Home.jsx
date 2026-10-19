@@ -1,4 +1,4 @@
-import { useCallback, useLayoutEffect, useRef, useState } from 'react'
+import { useCallback, useLayoutEffect, useRef, useState, useSyncExternalStore } from 'react'
 import TypeInteraction from '../../components/TypeInteraction/TypeInteraction.jsx'
 import heroTitle from '../../assets/heroTitle.svg'
 import HomeSections from './HomeSections.jsx'
@@ -8,7 +8,48 @@ import './Home.css'
 const enteredOnHome = window.location.pathname.replace(/\/+$/, '') === import.meta.env.BASE_URL.replace(/\/+$/, '')
 let introStarted = false
 
+const mobileHomeViewport = window.matchMedia('(max-width: 767px)')
+// Replace null with an imported poster URL when the final image is ready.
+const mobilePosterImage = null
+
+function subscribeToMobileViewport(onChange) {
+  mobileHomeViewport.addEventListener('change', onChange)
+  return () => mobileHomeViewport.removeEventListener('change', onChange)
+}
+
+function getMobileViewport() {
+  return mobileHomeViewport.matches
+}
+
 export default function Home() {
+  const isMobile = useSyncExternalStore(subscribeToMobileViewport, getMobileViewport)
+  // Unmount desktop effects on mobile, rather than hiding running interactions.
+  return isMobile ? <MobileHome /> : <DesktopHome />
+}
+
+function MobileHome() {
+  return (
+    <main className="home-page home-mobile-page" aria-label="Home">
+      <div className="home-mobile-poster">
+        {mobilePosterImage && <img src={mobilePosterImage} alt="LET’S SYNC! 전시 포스터" />}
+      </div>
+      <section className="home-mobile-exhibition" aria-labelledby="home-mobile-title">
+        <h1 id="home-mobile-title">LET’S SYNC!</h1>
+        <p className="home-mobile-degree-show">
+          KAYWON UNIVERSITY OF ART &amp; DESIGN<br />
+          33RD DEGREE SHOW
+        </p>
+        <p className="home-mobile-slogan">당기고, 당고, 스파크!</p>
+        <p className="home-mobile-schedule">
+          KAYWON DESIGN HALL 5F<br />
+          NOV. 22 (FRI) - NOV. 24 (SUN)
+        </p>
+      </section>
+    </main>
+  )
+}
+
+function DesktopHome() {
   const [playIntro] = useState(() => enteredOnHome && !introStarted)
   const restoreHeaderRef = useRef(null)
   useLayoutEffect(() => {

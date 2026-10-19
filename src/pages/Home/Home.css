@@ -126,3 +126,62 @@
   }
 }
 
+
+/* Mobile MAIN has no mounted desktop hero, film, or interactive sections. */
+@media (max-width: 767px) {
+  .home-mobile-page {
+    margin-top: 0;
+  }
+
+  .home-mobile-poster {
+    width: 100%;
+    aspect-ratio: 1 / 1.414;
+    background: #e5e5e5;
+  }
+
+  .home-mobile-poster img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .home-mobile-exhibition {
+    padding: 28px var(--page-padding) 100px;
+    background: #fff;
+    color: #101010;
+    text-align: left;
+    overflow-wrap: anywhere;
+  }
+
+  .home-mobile-exhibition h1 {
+    margin: 0;
+    color: #fd00a0;
+    font-size: clamp(34px, 11vw, 84px);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.045em;
+  }
+
+  .home-mobile-degree-show,
+  .home-mobile-schedule {
+    font-size: clamp(12px, 2.85vw, 18px);
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  .home-mobile-degree-show {
+    margin-top: 20px;
+  }
+
+  .home-mobile-slogan {
+    margin-top: 18px;
+    font-size: clamp(18px, 4.6vw, 28px);
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .home-mobile-schedule {
+    margin-top: 18px;
+  }
+}

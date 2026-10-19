@@ -5,11 +5,13 @@ import { matchesHangulName } from './hangulSearch.js'
 import './Student.css'
 
 const roles = ['ALL', 'DESIGNER', 'PLANNER', 'PROGRAMMER']
+const cardBackColors = ['#FD00A0', '#00BFA3', '#8223A5', '#1D9F10', '#F7A600', '#5F50D8', '#009DEB']
 
 export default function Student() {
   const [activeRole, setActiveRole] = useState('ALL')
   const [searchTerm, setSearchTerm] = useState('')
   const [flippedCards, setFlippedCards] = useState({})
+  const [backColors, setBackColors] = useState({})
   const [floatingY, setFloatingY] = useState(0)
   const navigate = useNavigate()
   const sidebarRef = useRef(null)
@@ -55,7 +57,11 @@ export default function Student() {
     return [...filtered, ...emptySlots]
   }, [activeRole, searchTerm])
 
-  const handleCardFlip = (studentId) => {
+  const handleCardFlip = (studentId, randomValue) => {
+    if (!flippedCards[studentId]) {
+      const color = cardBackColors[Math.floor(randomValue * cardBackColors.length)]
+      setBackColors((current) => ({ ...current, [studentId]: color }))
+    }
     setFlippedCards((current) => ({
       ...current,
       [studentId]: !current[studentId],
@@ -86,14 +92,14 @@ export default function Student() {
                 <button
                   className={`student-flipper ${flippedCards[item.studentId] ? 'flipped' : ''}`}
                   type="button"
-                  onClick={() => handleCardFlip(item.studentId)}
+                  onClick={() => handleCardFlip(item.studentId, Math.random())}
                   aria-label={`${item.name} card`}
                 >
                   <span className="card-face card-front">
                     <span className="student-img-placeholder" />
                   </span>
 
-                  <span className="card-face card-back">
+                  <span className="card-face card-back" style={{ backgroundColor: backColors[item.studentId] }}>
                     <span className="back-interview">{item.interview}</span>
 
                     <span className="back-meta-list">
