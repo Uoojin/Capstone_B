@@ -8,6 +8,7 @@ import growth from '../../assets/symbol/symbol_4.svg'
 import letterS from '../../assets/type/S2_default.svg'
 import letterY from '../../assets/type/Y_default.svg'
 import letterN from '../../assets/type/N_default.svg'
+import letterC from '../../assets/type/C_default.svg'
 import './HomeSections.css'
 
 const themes = [
@@ -111,6 +112,9 @@ export default function HomeSections() {
           <Symbol asset={letterS} className="home-theme-letter home-theme-letter--s" />
           <Symbol asset={letterY} className="home-theme-letter home-theme-letter--y" />
           <Symbol asset={letterN} className="home-theme-letter home-theme-letter--n" />
+          <div className="home-theme-letter-card--c" aria-hidden="true">
+            <Symbol asset={letterC} />
+          </div>
         </div>
       </section>
 
