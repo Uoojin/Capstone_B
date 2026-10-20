@@ -12,7 +12,7 @@ import './HomeSections.css'
 
 const themes = [
   { id: 'empathy', title: '공감', asset: empathy, text: '서로 다른 생각과 감정이 만나고, 각자의 다름을 받아들이는 과정에서 이해의 폭이 넓어지며 새로운 가능성이 만들어집니다.' },
-  { id: 'immersion', title: '몰입', asset: immersion, text: '서로의 경험을 나누며 하나의 존재와 과정에 깊이 집중하게 됩니다. 익숙한 방식을 벗어나 함께 새로운 방향으로 나아갑니다.' },
+  { id: 'immersion', title: '몰입', asset: immersion, text: '서로의 경험을 나누며 하나의 문제와 과정에 깊이 집중하게 됩니다. 익숙한 방식을 벗어나 함께 새로운 방향으로 나아갑니다.' },
   { id: 'discovery', title: '발견', asset: discovery, text: '서로 다른 시선으로 바라보면 각자의 관점도 넓어집니다. 그 과정에서 혼자서는 보지 못했던 관점과 가능성을 발견합니다.' },
   { id: 'growth', title: '성장', asset: growth, text: '서로의 시도와 변화는 또 다른 도전을 시작하는 자극이 됩니다. 서로 영향을 주고받으며 새로운 시도를 이어갑니다.' },
 ]
