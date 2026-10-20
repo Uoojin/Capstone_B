@@ -33,7 +33,7 @@ export const committee = [
 
 export const DMD = [
     {
-        title: "SYNCOPATE",
+        title: "LET'S SYNC!",
         members: ['이한숲', '권나영', '주시원', '서예현', '양유빈', '이승연', '정다은', '정유진']
     },
     {

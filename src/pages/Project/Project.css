@@ -419,7 +419,8 @@
 }
 
 .project-index button:hover {
-  color: #777;
+  color: #FD00A0;
+  font-weight: 600;
 }
 
 .filter-bar,
@@ -899,10 +900,12 @@
 
   .project-page .list-card-name {
     text-align: left;
+    font-size: 17px;
     font-weight: 500;
   }
 
   .project-page .list-card-keywords {
+    font-size: 14px;
     text-align: right;
   }
 }
