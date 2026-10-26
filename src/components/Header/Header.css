@@ -363,3 +363,48 @@
     transition: none;
   }
 }
+
+/* Compact navigation only between the preserved desktop/mobile ranges. */
+@media (min-width: 768px) and (max-width: 1599px) {
+  .site-header { --header-pill-height: 36px; padding: 24px 3.125vw 0; gap: 16px; }
+  .site-header .site-logo { min-width: 124px; height: 36px; padding-inline: 18px; font-size: 14px; }
+  .site-header-menu { justify-content: flex-end; overflow: hidden; }
+  .site-header-menu-items { width: 248px; }
+  .is-menu-open .site-header-menu-items { width: 738px; }
+  .site-header-pill { min-width: 104px; height: 36px; padding-inline: 16px; font-size: 13px; }
+  .is-menu-open .site-header-pill.is-extra,
+  .is-menu-open .site-header-pill.is-extra:nth-child(4),
+  .is-menu-open .site-header-pill.is-extra:nth-child(5),
+  .is-menu-open .site-header-pill.is-extra:nth-child(6) {
+    min-width: 120px; width: 120px; flex-basis: 120px; padding-inline: 12px;
+  }
+  .site-menu-toggle { min-width: 36px; width: 36px; flex-basis: 36px; padding: 0; font-size: 26px; }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .site-header { gap: 12px; }
+  .site-header .site-logo { min-width: 110px; padding-inline: 12px; font-size: 12px; }
+  .site-header-pill { min-width: 82px; padding-inline: 10px; font-size: 11px; }
+  .site-header-menu-items { width: 204px; }
+  .is-menu-open .site-header-menu-items { width: 586px; }
+  .is-menu-open .site-header-pill.is-extra,
+  .is-menu-open .site-header-pill.is-extra:nth-child(4),
+  .is-menu-open .site-header-pill.is-extra:nth-child(5),
+  .is-menu-open .site-header-pill.is-extra:nth-child(6) {
+    min-width: 94px; width: 94px; flex-basis: 94px; padding-inline: 6px;
+  }
+}
+
+/* Keep the active-page marker inside the same primary button width on every laptop page. */
+@media (min-width: 1025px) and (max-width: 1599px) {
+  .site-header-pill:not(.is-extra):not(.site-menu-toggle) {
+    width: 104px;
+    flex-basis: 104px;
+  }
+
+  .is-menu-open .site-header-pill.is-extra:nth-child(6) {
+    min-width: 104px;
+    width: 104px;
+    flex-basis: 104px;
+  }
+}

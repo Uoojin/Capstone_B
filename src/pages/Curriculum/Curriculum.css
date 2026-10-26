@@ -12,6 +12,7 @@
 
 .curriculum-hero {
   --curriculum-hero-unit: min(1vw, 20.48px);
+  position: relative;
   display: flex;
   flex-direction: column;
   min-height: calc(100svh - var(--site-header-height));
@@ -336,37 +337,30 @@
   pointer-events: none;
 }
 
-.curriculum-scroll-button {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  padding: 0;
-  border: 0;
-  background: none;
-  color: #111;
-  font: inherit;
-  text-align: center;
-  animation: curriculum-scroll-bounce 3000ms ease-in-out infinite;
-}
-.curriculum-scroll-button svg { display: block; }
-@keyframes curriculum-scroll-bounce {
-  0%, 81%, 100% { opacity: 0; transform: translateY(0); }
-  14%, 26% { opacity: 1; transform: translateY(0); }
-  34% { opacity: 1; transform: translateY(6px); animation-timing-function: ease-out; }
-  44% { opacity: 1; transform: translateY(2px); }
-  52% { opacity: 1; transform: translateY(8px); animation-timing-function: ease-out; }
-  62% { opacity: 1; transform: translateY(4px); }
-  80% { opacity: 0; transform: translateY(12px); }
-}
 .curriculum-scroll-button:focus-visible { outline: 1px solid currentColor; outline-offset: 6px; }
-@media (prefers-reduced-motion: reduce) {
-  .curriculum-scroll-button { animation: none; }
-}
 @media (max-height: 760px) and (min-width: 768px) {
   .curriculum-hero { padding-top: 6svh; padding-bottom: 24px; }
   .curriculum-symbols { margin-bottom: 3svh; }
   .curriculum-main-title { font-size: min(calc(150 / 20.48 * var(--curriculum-hero-unit)), 13svh); }
   .curriculum-introduction { margin-top: 3svh; }
   .curriculum-scroll-cue { padding-top: 3svh; }
+}
+
+/* Laptop hero: restore the large width-based title and the original three-line alignment. */
+@media (min-width: 1025px) and (max-width: 1599px) {
+  .curriculum-hero { padding-top: clamp(32px, calc(10svh - 24px), 75px); padding-bottom: 24px; }
+  .curriculum-symbols { margin-bottom: clamp(28px, calc(9svh - 18px), 66px); }
+  .curriculum-main-title { font-size: clamp(80px, 7.8vw, 125px); }
+  .curriculum-introduction { margin-top: clamp(28px, calc(8svh - 12px), 64px); }
+  .curriculum-introduction h2 { font-size: clamp(16px, 1.25vw, 20px); }
+  .curriculum-introduction p { font-size: clamp(14px, 1.05vw, 17px); line-height: 1.65; }
+  .curriculum-scroll-cue { padding-top: clamp(16px, 3svh, 30px); }
+  .curriculum-pill { font-size: clamp(11px, 1.05vw, 16px); }
+}
+
+@media (min-width: 1025px) and (max-width: 1599px) and (max-height: 800px) {
+  .curriculum-hero { padding-top: 32px; }
+  .curriculum-symbols { margin-bottom: 28px; }
+  .curriculum-introduction { margin-top: 28px; }
+  .curriculum-scroll-cue { padding-top: 20px; }
 }

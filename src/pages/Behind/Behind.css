@@ -193,3 +193,17 @@
     text-align: center;
   }
 }
+
+/* Laptop only: preserve PC >=1600, tablet <=1024, mobile and HOME. */
+@media (min-width: 1025px) and (max-width: 1599px) {
+  .credit-hero { padding: 40px; gap: 18px; }
+  .credit-wordmark strong { font-size: clamp(54px, 4.6vw, 74px); }
+  .credit-hero p { font-size: 15px; }
+  .credit-section { padding-top: clamp(100px, 16svh, 160px); }
+  .credit-section h2 { font-size: 25px; margin-bottom: 44px; }
+  .credit-list { width: min(440px, 80%); }
+  .credit-row { grid-template-columns: 90px 1fr; font-size: 12px; margin-bottom: 24px; }
+  .credit-members { gap: 12px 10px; }
+  .credit-logo { padding-top: 45svh; padding-bottom: 100px; }
+  .credit-logo img { width: 164px; }
+}

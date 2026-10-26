@@ -1,0 +1,4502 @@
+[
+  {
+    "w": 1920,
+    "h": 1080,
+    "route": "student",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "overflow": false,
+    ".student-grid": {
+      "x": 60,
+      "y": 140,
+      "w": 1520,
+      "h": 16802.40625,
+      "display": "grid",
+      "cols": "365px 365px 365px 365px"
+    },
+    ".student-sidebar": {
+      "x": 1640,
+      "y": 140,
+      "w": 220,
+      "h": 16802.40625,
+      "display": "block",
+      "cols": "none"
+    },
+    ".student-flipper": {
+      "x": 60,
+      "y": 140,
+      "w": 365,
+      "h": 456.25,
+      "display": "block",
+      "cols": "none"
+    },
+    ".card-back": {
+      "x": 60,
+      "y": 140,
+      "w": 365,
+      "h": 456.25,
+      "display": "flex",
+      "cols": "none"
+    },
+    "singleFlip": true,
+    "menu": [
+      [
+        "PROJECT",
+        1000.28125,
+        1127.28125
+      ],
+      [
+        "STUDENT",
+        1129.28125,
+        1268
+      ],
+      [
+        "SYNCOPATE",
+        1270,
+        1408
+      ],
+      [
+        "GUESTBOOK",
+        1410,
+        1550
+      ],
+      [
+        "CURRICULUM",
+        1552,
+        1704
+      ],
+      [
+        "BEHIND",
+        1706,
+        1812
+      ],
+      [
+        "+",
+        1814,
+        1860
+      ]
+    ],
+    "preservedStyleDiff": []
+  },
+  {
+    "w": 1920,
+    "h": 1080,
+    "route": "project",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "overflow": false,
+    ".list-layout": {
+      "x": 60,
+      "y": 1160,
+      "w": 1800,
+      "h": 2369.984375,
+      "display": "grid",
+      "cols": "1460px 260px"
+    },
+    ".project-grid": {
+      "x": 60,
+      "y": 1350,
+      "w": 1460,
+      "h": 2229.984375,
+      "display": "grid",
+      "cols": "473.328px 473.328px 473.344px"
+    },
+    ".project-index": {
+      "x": 1600,
+      "y": 1160,
+      "w": 260,
+      "h": 2369.984375,
+      "display": "block",
+      "cols": "none"
+    },
+    ".project-card.is-active": {
+      "x": 815.464599609375,
+      "y": 233.1832275390625,
+      "w": 645.9111328125,
+      "h": 513.343994140625,
+      "display": "flex",
+      "cols": "none"
+    },
+    "menu": [
+      [
+        "PROJECT",
+        1002.796875,
+        1139
+      ],
+      [
+        "STUDENT",
+        1141,
+        1268
+      ],
+      [
+        "SYNCOPATE",
+        1270,
+        1408
+      ],
+      [
+        "GUESTBOOK",
+        1410,
+        1550
+      ],
+      [
+        "CURRICULUM",
+        1552,
+        1704
+      ],
+      [
+        "BEHIND",
+        1706,
+        1812
+      ],
+      [
+        "+",
+        1814,
+        1860
+      ]
+    ],
+    "list": {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "overflow": false,
+      ".list-layout": {
+        "x": 60,
+        "y": -645,
+        "w": 1800,
+        "h": 2369.984375,
+        "display": "grid",
+        "cols": "1460px 260px"
+      },
+      ".project-grid": {
+        "x": 60,
+        "y": -505,
+        "w": 1460,
+        "h": 2229.984375,
+        "display": "grid",
+        "cols": "473.328px 473.328px 473.344px"
+      },
+      ".project-index": {
+        "x": 1600,
+        "y": -645,
+        "w": 260,
+        "h": 2369.984375,
+        "display": "block",
+        "cols": "none"
+      },
+      ".project-card.is-active": {
+        "x": 286.8819885253906,
+        "y": -1572.2540283203125,
+        "w": 679.7371826171875,
+        "h": 563.8016357421875,
+        "display": "flex",
+        "cols": "none"
+      }
+    },
+    "indexText": [
+      "01탄탄대로",
+      "02끼잉끼잉클럽",
+      "03차칸 사람들",
+      "04",
+      "05공중도덕(空中道德)",
+      "06렛츠꺼어워",
+      "07복복복",
+      "08레츠기니",
+      "09hexagon",
+      "10Layer",
+      "11WAVE",
+      "12OCTAVE",
+      "13LIMEN",
+      "1442(사이)",
+      "15잇다 IT-DA",
+      "16MOMO",
+      "17REMNANT"
+    ],
+    "detail": {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "overflow": false,
+      ".list-layout": {
+        "x": 60,
+        "y": 223,
+        "w": 1800,
+        "h": 2369.984375,
+        "display": "grid",
+        "cols": "1460px 260px"
+      },
+      ".project-grid": {
+        "x": 60,
+        "y": 363,
+        "w": 1460,
+        "h": 2229.984375,
+        "display": "grid",
+        "cols": "473.328px 473.328px 473.344px"
+      },
+      ".project-index": {
+        "x": 1600,
+        "y": 223,
+        "w": 260,
+        "h": 2369.984375,
+        "display": "block",
+        "cols": "none"
+      },
+      ".project-card.is-active": {
+        "x": 368.63153076171875,
+        "y": -706.2308959960938,
+        "w": 664.2767944335938,
+        "h": 540.21240234375,
+        "display": "flex",
+        "cols": "none"
+      },
+      ".detail-hero": {
+        "x": 0,
+        "y": 0,
+        "w": 1920,
+        "h": 1080,
+        "display": "block",
+        "cols": "minmax(0px, 14.8fr) minmax(0px, 46.4fr) minmax(0px, 14.8fr)"
+      },
+      ".detail-intro": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0,
+        "display": "contents",
+        "cols": "none"
+      },
+      ".detail-media": {
+        "x": 515,
+        "y": 436,
+        "w": 890,
+        "h": 600,
+        "display": "block",
+        "cols": "none"
+      },
+      ".detail-metadata": {
+        "x": 1578,
+        "y": 436,
+        "w": 282,
+        "h": 108,
+        "display": "flex",
+        "cols": "none"
+      },
+      ".detail-team": {
+        "x": 0,
+        "y": 1080,
+        "w": 1920,
+        "h": 1080,
+        "display": "grid",
+        "cols": "284.156px 890.891px 284.172px"
+      }
+    },
+    "preservedStyleDiff": []
+  },
+  {
+    "w": 1920,
+    "h": 1080,
+    "route": "syncopate",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "overflow": false,
+    ".main-stage": {
+      "x": 365,
+      "y": 191,
+      "w": 1190,
+      "h": 626,
+      "display": "grid",
+      "cols": "693.703px 436.281px"
+    },
+    ".drawing-frame": {
+      "x": 385,
+      "y": 211,
+      "w": 693.703125,
+      "h": 586,
+      "display": "block",
+      "cols": "none"
+    },
+    ".tools-panel": {
+      "x": 1098.703125,
+      "y": 211,
+      "w": 436.28125,
+      "h": 586,
+      "display": "flex",
+      "cols": "none"
+    },
+    ".editor-message-box": {
+      "x": 1098.703125,
+      "y": 543,
+      "w": 436.28125,
+      "h": 170,
+      "display": "flex",
+      "cols": "none"
+    },
+    ".share-btn": {
+      "x": 1098.703125,
+      "y": 733,
+      "w": 436.28125,
+      "h": 64,
+      "display": "block",
+      "cols": "none"
+    },
+    ".syncopate-modal-close": {
+      "x": 936,
+      "y": 841,
+      "w": 48,
+      "h": 48,
+      "display": "flex",
+      "cols": "none"
+    },
+    "preservedStyleDiff": []
+  },
+  {
+    "w": 1800,
+    "h": 1169,
+    "route": "student",
+    "viewport": [
+      1800,
+      1169
+    ],
+    "overflow": false,
+    ".student-grid": {
+      "x": 60,
+      "y": 140,
+      "w": 1400,
+      "h": 15714.90625,
+      "display": "grid",
+      "cols": "335px 335px 335px 335px"
+    },
+    ".student-sidebar": {
+      "x": 1520,
+      "y": 140,
+      "w": 220,
+      "h": 15714.90625,
+      "display": "block",
+      "cols": "none"
+    },
+    ".student-flipper": {
+      "x": 60,
+      "y": 140,
+      "w": 335,
+      "h": 418.75,
+      "display": "block",
+      "cols": "none"
+    },
+    ".card-back": {
+      "x": 60,
+      "y": 140,
+      "w": 335,
+      "h": 418.75,
+      "display": "flex",
+      "cols": "none"
+    },
+    "singleFlip": true,
+    "menu": [
+      [
+        "PROJECT",
+        880.28125,
+        1007.28125
+      ],
+      [
+        "STUDENT",
+        1009.28125,
+        1148
+      ],
+      [
+        "SYNCOPATE",
+        1150,
+        1288
+      ],
+      [
+        "GUESTBOOK",
+        1290,
+        1430
+      ],
+      [
+        "CURRICULUM",
+        1432,
+        1584
+      ],
+      [
+        "BEHIND",
+        1586,
+        1692
+      ],
+      [
+        "+",
+        1694,
+        1740
+      ]
+    ],
+    "preservedStyleDiff": []
+  },
+  {
+    "w": 1800,
+    "h": 1169,
+    "route": "project",
+    "viewport": [
+      1800,
+      1169
+    ],
+    "overflow": false,
+    ".list-layout": {
+      "x": 60,
+      "y": 1249,
+      "w": 1680,
+      "h": 2189.984375,
+      "display": "grid",
+      "cols": "1340px 260px"
+    },
+    ".project-grid": {
+      "x": 60,
+      "y": 1439,
+      "w": 1340,
+      "h": 2049.984375,
+      "display": "grid",
+      "cols": "433.328px 433.328px 433.344px"
+    },
+    ".project-index": {
+      "x": 1480,
+      "y": 1249,
+      "w": 260,
+      "h": 2189.984375,
+      "display": "block",
+      "cols": "none"
+    },
+    ".project-card.is-active": {
+      "x": 806.6710815429688,
+      "y": 266.5740661621094,
+      "w": 659.2171020507812,
+      "h": 532.6988525390625,
+      "display": "flex",
+      "cols": "none"
+    },
+    "menu": [
+      [
+        "PROJECT",
+        882.796875,
+        1019
+      ],
+      [
+        "STUDENT",
+        1021,
+        1148
+      ],
+      [
+        "SYNCOPATE",
+        1150,
+        1288
+      ],
+      [
+        "GUESTBOOK",
+        1290,
+        1430
+      ],
+      [
+        "CURRICULUM",
+        1432,
+        1584
+      ],
+      [
+        "BEHIND",
+        1586,
+        1692
+      ],
+      [
+        "+",
+        1694,
+        1740
+      ]
+    ],
+    "list": {
+      "viewport": [
+        1800,
+        1169
+      ],
+      "overflow": false,
+      ".list-layout": {
+        "x": 60,
+        "y": -510,
+        "w": 1680,
+        "h": 2189.984375,
+        "display": "grid",
+        "cols": "1340px 260px"
+      },
+      ".project-grid": {
+        "x": 60,
+        "y": -370,
+        "w": 1340,
+        "h": 2049.984375,
+        "display": "grid",
+        "cols": "433.328px 433.328px 433.344px"
+      },
+      ".project-index": {
+        "x": 1480,
+        "y": -510,
+        "w": 260,
+        "h": 2189.984375,
+        "display": "block",
+        "cols": "none"
+      },
+      ".project-card.is-active": {
+        "x": 282.429931640625,
+        "y": -1492.4390869140625,
+        "w": 669.361572265625,
+        "h": 547.8596801757812,
+        "display": "flex",
+        "cols": "none"
+      }
+    },
+    "indexText": [
+      "01탄탄대로",
+      "02끼잉끼잉클럽",
+      "03차칸 사람들",
+      "04",
+      "05공중도덕(空中道德)",
+      "06렛츠꺼어워",
+      "07복복복",
+      "08레츠기니",
+      "09hexagon",
+      "10Layer",
+      "11WAVE",
+      "12OCTAVE",
+      "13LIMEN",
+      "1442(사이)",
+      "15잇다 IT-DA",
+      "16MOMO",
+      "17REMNANT"
+    ],
+    "detail": {
+      "viewport": [
+        1800,
+        1169
+      ],
+      "overflow": false,
+      ".list-layout": {
+        "x": 60,
+        "y": 282,
+        "w": 1680,
+        "h": 2189.984375,
+        "display": "grid",
+        "cols": "1340px 260px"
+      },
+      ".project-grid": {
+        "x": 60,
+        "y": 422,
+        "w": 1340,
+        "h": 2049.984375,
+        "display": "grid",
+        "cols": "433.328px 433.328px 433.344px"
+      },
+      ".project-index": {
+        "x": 1480,
+        "y": 282,
+        "w": 260,
+        "h": 2189.984375,
+        "display": "block",
+        "cols": "none"
+      },
+      ".project-card.is-active": {
+        "x": 365.053466796875,
+        "y": -699.6658935546875,
+        "w": 652.923095703125,
+        "h": 523.474609375,
+        "display": "flex",
+        "cols": "none"
+      },
+      ".detail-hero": {
+        "x": 0,
+        "y": 0,
+        "w": 1800,
+        "h": 1169,
+        "display": "block",
+        "cols": "minmax(0px, 14.8fr) minmax(0px, 46.4fr) minmax(0px, 14.8fr)"
+      },
+      ".detail-intro": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0,
+        "display": "contents",
+        "cols": "none"
+      },
+      ".detail-media": {
+        "x": 482.8125,
+        "y": 408.75,
+        "w": 834.375,
+        "h": 562.5,
+        "display": "block",
+        "cols": "none"
+      },
+      ".detail-metadata": {
+        "x": 1479.375,
+        "y": 408.75,
+        "w": 264.375,
+        "h": 107.25,
+        "display": "flex",
+        "cols": "none"
+      },
+      ".detail-team": {
+        "x": 0,
+        "y": 1169,
+        "w": 1800,
+        "h": 1169,
+        "display": "grid",
+        "cols": "266.391px 835.203px 266.391px"
+      }
+    },
+    "preservedStyleDiff": []
+  },
+  {
+    "w": 1800,
+    "h": 1169,
+    "route": "syncopate",
+    "viewport": [
+      1800,
+      1169
+    ],
+    "overflow": false,
+    ".main-stage": {
+      "x": 305,
+      "y": 235.5,
+      "w": 1190,
+      "h": 626,
+      "display": "grid",
+      "cols": "693.703px 436.281px"
+    },
+    ".drawing-frame": {
+      "x": 325,
+      "y": 255.5,
+      "w": 693.703125,
+      "h": 586,
+      "display": "block",
+      "cols": "none"
+    },
+    ".tools-panel": {
+      "x": 1038.703125,
+      "y": 255.5,
+      "w": 436.28125,
+      "h": 586,
+      "display": "flex",
+      "cols": "none"
+    },
+    ".editor-message-box": {
+      "x": 1038.703125,
+      "y": 587.5,
+      "w": 436.28125,
+      "h": 170,
+      "display": "flex",
+      "cols": "none"
+    },
+    ".share-btn": {
+      "x": 1038.703125,
+      "y": 777.5,
+      "w": 436.28125,
+      "h": 64,
+      "display": "block",
+      "cols": "none"
+    },
+    ".syncopate-modal-close": {
+      "x": 876,
+      "y": 885.5,
+      "w": 48,
+      "h": 48,
+      "display": "flex",
+      "cols": "none"
+    },
+    "preservedStyleDiff": []
+  },
+  {
+    "w": 1512,
+    "h": 850,
+    "route": "student",
+    "viewport": [
+      1512,
+      850
+    ],
+    "overflow": false,
+    ".student-grid": {
+      "x": 47.25,
+      "y": 128,
+      "w": 1137.796875,
+      "h": 12827.4375,
+      "display": "grid",
+      "cols": "272.438px 272.453px 272.453px 272.453px"
+    },
+    ".student-sidebar": {
+      "x": 1245.515625,
+      "y": 128,
+      "w": 219.234375,
+      "h": 12827.4375,
+      "display": "block",
+      "cols": "none"
+    },
+    ".student-flipper": {
+      "x": 47.25,
+      "y": 128,
+      "w": 272.4375,
+      "h": 340.546875,
+      "display": "block",
+      "cols": "none"
+    },
+    ".card-back": {
+      "x": 47.25,
+      "y": 128,
+      "w": 272.4375,
+      "h": 340.546875,
+      "display": "flex",
+      "cols": "none"
+    },
+    "singleFlip": true,
+    "menu": [
+      [
+        "PROJECT",
+        727.65625,
+        831.65625
+      ],
+      [
+        "STUDENT",
+        833.65625,
+        938.75
+      ],
+      [
+        "SYNCOPATE",
+        940.75,
+        1060.75
+      ],
+      [
+        "GUESTBOOK",
+        1062.75,
+        1182.75
+      ],
+      [
+        "CURRICULUM",
+        1184.75,
+        1304.75
+      ],
+      [
+        "BEHIND",
+        1306.75,
+        1426.75
+      ],
+      [
+        "+",
+        1428.75,
+        1464.75
+      ]
+    ]
+  },
+  {
+    "w": 1512,
+    "h": 850,
+    "route": "project",
+    "viewport": [
+      1512,
+      850
+    ],
+    "overflow": false,
+    ".list-layout": {
+      "x": 47.25,
+      "y": 898,
+      "w": 1417.5,
+      "h": 1806.34375,
+      "display": "grid",
+      "cols": "1122.67px 234.359px"
+    },
+    ".project-grid": {
+      "x": 47.25,
+      "y": 1028,
+      "w": 1122.671875,
+      "h": 1726.34375,
+      "display": "grid",
+      "cols": "360.109px 360.125px 360.109px"
+    },
+    ".project-index": {
+      "x": 1230.390625,
+      "y": 898,
+      "w": 234.359375,
+      "h": 1806.34375,
+      "display": "block",
+      "cols": "none"
+    },
+    ".project-card.is-active": {
+      "x": 624.8978881835938,
+      "y": 170.5622100830078,
+      "w": 568.7041625976562,
+      "h": 451.3603515625,
+      "display": "flex",
+      "cols": "none"
+    },
+    "menu": [
+      [
+        "PROJECT",
+        728.75,
+        832.75
+      ],
+      [
+        "STUDENT",
+        834.75,
+        938.75
+      ],
+      [
+        "SYNCOPATE",
+        940.75,
+        1060.75
+      ],
+      [
+        "GUESTBOOK",
+        1062.75,
+        1182.75
+      ],
+      [
+        "CURRICULUM",
+        1184.75,
+        1304.75
+      ],
+      [
+        "BEHIND",
+        1306.75,
+        1426.75
+      ],
+      [
+        "+",
+        1428.75,
+        1464.75
+      ]
+    ],
+    "list": {
+      "viewport": [
+        1512,
+        850
+      ],
+      "overflow": false,
+      ".list-layout": {
+        "x": 47.25,
+        "y": -486,
+        "w": 1417.5,
+        "h": 1806.34375,
+        "display": "grid",
+        "cols": "1122.67px 234.359px"
+      },
+      ".project-grid": {
+        "x": 47.25,
+        "y": -406,
+        "w": 1122.671875,
+        "h": 1726.34375,
+        "display": "grid",
+        "cols": "360.109px 360.125px 360.109px"
+      },
+      ".project-index": {
+        "x": 1230.390625,
+        "y": -486,
+        "w": 234.359375,
+        "h": 1806.34375,
+        "display": "block",
+        "cols": "none"
+      },
+      ".project-card.is-active": {
+        "x": 151.2113800048828,
+        "y": -1213.481201171875,
+        "w": 601.5208740234375,
+        "h": 500.40435791015625,
+        "display": "flex",
+        "cols": "none"
+      }
+    },
+    "indexText": [
+      "01탄탄대로",
+      "02끼잉끼잉클럽",
+      "03차칸 사람들",
+      "04",
+      "05공중도덕(空中道德)",
+      "06렛츠꺼어워",
+      "07복복복",
+      "08레츠기니",
+      "09hexagon",
+      "10Layer",
+      "11WAVE",
+      "12OCTAVE",
+      "13LIMEN",
+      "1442(사이)",
+      "15잇다 IT-DA",
+      "16MOMO",
+      "17REMNANT"
+    ],
+    "detail": {
+      "viewport": [
+        1512,
+        850
+      ],
+      "overflow": false,
+      ".list-layout": {
+        "x": 47.25,
+        "y": 210,
+        "w": 1417.5,
+        "h": 1806.34375,
+        "display": "grid",
+        "cols": "1122.67px 234.359px"
+      },
+      ".project-grid": {
+        "x": 47.25,
+        "y": 290,
+        "w": 1122.671875,
+        "h": 1726.34375,
+        "display": "grid",
+        "cols": "360.109px 360.125px 360.109px"
+      },
+      ".project-index": {
+        "x": 1230.390625,
+        "y": 210,
+        "w": 234.359375,
+        "h": 1806.34375,
+        "display": "block",
+        "cols": "none"
+      },
+      ".project-card.is-active": {
+        "x": 223.09619140625,
+        "y": -519.77880859375,
+        "w": 588.090087890625,
+        "h": 479.771484375,
+        "display": "flex",
+        "cols": "none"
+      },
+      ".detail-hero": {
+        "x": 0,
+        "y": 0,
+        "w": 1512,
+        "h": 912.28125,
+        "display": "grid",
+        "cols": "294.672px 766.141px 235.734px"
+      },
+      ".detail-intro": {
+        "x": 402.390625,
+        "y": 102,
+        "w": 766.140625,
+        "h": 137.328125,
+        "display": "flex",
+        "cols": "none"
+      },
+      ".detail-media": {
+        "x": 402.390625,
+        "y": 299.796875,
+        "w": 766.140625,
+        "h": 516.484375,
+        "display": "block",
+        "cols": "none"
+      },
+      ".detail-metadata": {
+        "x": 1229,
+        "y": 299.796875,
+        "w": 235.734375,
+        "h": 73.5625,
+        "display": "grid",
+        "cols": "235.734px"
+      },
+      ".detail-team": {
+        "x": 0,
+        "y": 912.28125,
+        "w": 1512,
+        "h": 850,
+        "display": "grid",
+        "cols": "223.766px 701.578px 223.781px"
+      }
+    }
+  },
+  {
+    "w": 1512,
+    "h": 850,
+    "route": "syncopate",
+    "viewport": [
+      1512,
+      850
+    ],
+    "overflow": false,
+    ".main-stage": {
+      "x": 231,
+      "y": 28,
+      "w": 1050,
+      "h": 726,
+      "display": "grid",
+      "cols": "613.891px 386.094px"
+    },
+    ".drawing-frame": {
+      "x": 247,
+      "y": 44,
+      "w": 613.890625,
+      "h": 694,
+      "display": "block",
+      "cols": "none"
+    },
+    ".tools-panel": {
+      "x": 878.890625,
+      "y": 44,
+      "w": 386.09375,
+      "h": 694,
+      "display": "flex",
+      "cols": "none"
+    },
+    ".editor-message-box": {
+      "x": 878.890625,
+      "y": 546,
+      "w": 386.09375,
+      "h": 130,
+      "display": "flex",
+      "cols": "none"
+    },
+    ".share-btn": {
+      "x": 878.890625,
+      "y": 690,
+      "w": 386.09375,
+      "h": 48,
+      "display": "block",
+      "cols": "none"
+    },
+    ".syncopate-modal-close": {
+      "x": 732,
+      "y": 774,
+      "w": 48,
+      "h": 48,
+      "display": "flex",
+      "cols": "none"
+    }
+  },
+  {
+    "w": 1440,
+    "h": 900,
+    "route": "student",
+    "viewport": [
+      1440,
+      900
+    ],
+    "overflow": false,
+    ".student-grid": {
+      "x": 45,
+      "y": 128,
+      "w": 1083.609375,
+      "h": 12336.25,
+      "display": "grid",
+      "cols": "258.891px 258.906px 258.906px 258.906px"
+    },
+    ".student-sidebar": {
+      "x": 1186.203125,
+      "y": 128,
+      "w": 208.796875,
+      "h": 12336.25,
+      "display": "block",
+      "cols": "none"
+    },
+    ".student-flipper": {
+      "x": 45,
+      "y": 128,
+      "w": 258.890625,
+      "h": 323.609375,
+      "display": "block",
+      "cols": "none"
+    },
+    ".card-back": {
+      "x": 45,
+      "y": 128,
+      "w": 258.890625,
+      "h": 323.609375,
+      "display": "flex",
+      "cols": "none"
+    },
+    "singleFlip": true,
+    "menu": [
+      [
+        "PROJECT",
+        657.90625,
+        761.90625
+      ],
+      [
+        "STUDENT",
+        763.90625,
+        869
+      ],
+      [
+        "SYNCOPATE",
+        871,
+        991
+      ],
+      [
+        "GUESTBOOK",
+        993,
+        1113
+      ],
+      [
+        "CURRICULUM",
+        1115,
+        1235
+      ],
+      [
+        "BEHIND",
+        1237,
+        1357
+      ],
+      [
+        "+",
+        1359,
+        1395
+      ]
+    ]
+  },
+  {
+    "w": 1440,
+    "h": 900,
+    "route": "project",
+    "viewport": [
+      1440,
+      900
+    ],
+    "overflow": false,
+    ".list-layout": {
+      "x": 45,
+      "y": 948,
+      "w": 1350,
+      "h": 1724.09375,
+      "display": "grid",
+      "cols": "1069.22px 223.188px"
+    },
+    ".project-grid": {
+      "x": 45,
+      "y": 1078,
+      "w": 1069.21875,
+      "h": 1644.09375,
+      "display": "grid",
+      "cols": "342.969px 342.969px 342.969px"
+    },
+    ".project-index": {
+      "x": 1171.8125,
+      "y": 948,
+      "w": 223.1875,
+      "h": 1724.09375,
+      "display": "block",
+      "cols": "none"
+    },
+    ".project-card.is-active": {
+      "x": 619.3922119140625,
+      "y": 199.5216064453125,
+      "w": 548.063720703125,
+      "h": 439.14892578125,
+      "display": "flex",
+      "cols": "none"
+    },
+    "menu": [
+      [
+        "PROJECT",
+        659,
+        763
+      ],
+      [
+        "STUDENT",
+        765,
+        869
+      ],
+      [
+        "SYNCOPATE",
+        871,
+        991
+      ],
+      [
+        "GUESTBOOK",
+        993,
+        1113
+      ],
+      [
+        "CURRICULUM",
+        1115,
+        1235
+      ],
+      [
+        "BEHIND",
+        1237,
+        1357
+      ],
+      [
+        "+",
+        1359,
+        1395
+      ]
+    ],
+    "list": {
+      "viewport": [
+        1440,
+        900
+      ],
+      "overflow": false,
+      ".list-layout": {
+        "x": 45,
+        "y": -420,
+        "w": 1350,
+        "h": 1724.09375,
+        "display": "grid",
+        "cols": "1069.22px 223.188px"
+      },
+      ".project-grid": {
+        "x": 45,
+        "y": -340,
+        "w": 1069.21875,
+        "h": 1644.09375,
+        "display": "grid",
+        "cols": "342.969px 342.969px 342.969px"
+      },
+      ".project-index": {
+        "x": 1171.8125,
+        "y": -420,
+        "w": 223.1875,
+        "h": 1724.09375,
+        "display": "block",
+        "cols": "none"
+      },
+      ".project-card.is-active": {
+        "x": 175.92178344726562,
+        "y": -1168.5767822265625,
+        "w": 567.0509033203125,
+        "h": 467.5074462890625,
+        "display": "flex",
+        "cols": "none"
+      }
+    },
+    "indexText": [
+      "01탄탄대로",
+      "02끼잉끼잉클럽",
+      "03차칸 사람들",
+      "04",
+      "05공중도덕(空中道德)",
+      "06렛츠꺼어워",
+      "07복복복",
+      "08레츠기니",
+      "09hexagon",
+      "10Layer",
+      "11WAVE",
+      "12OCTAVE",
+      "13LIMEN",
+      "1442(사이)",
+      "15잇다 IT-DA",
+      "16MOMO",
+      "17REMNANT"
+    ],
+    "detail": {
+      "viewport": [
+        1440,
+        900
+      ],
+      "overflow": false,
+      ".list-layout": {
+        "x": 45,
+        "y": 241,
+        "w": 1350,
+        "h": 1724.09375,
+        "display": "grid",
+        "cols": "1069.22px 223.188px"
+      },
+      ".project-grid": {
+        "x": 45,
+        "y": 321,
+        "w": 1069.21875,
+        "h": 1644.09375,
+        "display": "grid",
+        "cols": "342.969px 342.969px 342.969px"
+      },
+      ".project-index": {
+        "x": 1171.8125,
+        "y": 241,
+        "w": 223.1875,
+        "h": 1724.09375,
+        "display": "block",
+        "cols": "none"
+      },
+      ".project-card.is-active": {
+        "x": 244.92982482910156,
+        "y": -508.1775207519531,
+        "w": 553.68701171875,
+        "h": 447.3852844238281,
+        "display": "flex",
+        "cols": "none"
+      },
+      ".detail-hero": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 900,
+        "display": "grid",
+        "cols": "280.625px 729.672px 224.516px"
+      },
+      ".detail-intro": {
+        "x": 383.21875,
+        "y": 108,
+        "w": 729.671875,
+        "h": 133.515625,
+        "display": "flex",
+        "cols": "none"
+      },
+      ".detail-media": {
+        "x": 383.21875,
+        "y": 299.109375,
+        "w": 729.671875,
+        "h": 491.90625,
+        "display": "block",
+        "cols": "none"
+      },
+      ".detail-metadata": {
+        "x": 1170.484375,
+        "y": 299.109375,
+        "w": 224.515625,
+        "h": 73.5625,
+        "display": "grid",
+        "cols": "224.516px"
+      },
+      ".detail-team": {
+        "x": 0,
+        "y": 900,
+        "w": 1440,
+        "h": 900,
+        "display": "grid",
+        "cols": "213.125px 668.172px 213.141px"
+      }
+    }
+  },
+  {
+    "w": 1440,
+    "h": 900,
+    "route": "syncopate",
+    "viewport": [
+      1440,
+      900
+    ],
+    "overflow": false,
+    ".main-stage": {
+      "x": 195,
+      "y": 47.203125,
+      "w": 1050,
+      "h": 737.59375,
+      "display": "grid",
+      "cols": "613.891px 386.094px"
+    },
+    ".drawing-frame": {
+      "x": 211,
+      "y": 63.203125,
+      "w": 613.890625,
+      "h": 705.59375,
+      "display": "block",
+      "cols": "none"
+    },
+    ".tools-panel": {
+      "x": 842.890625,
+      "y": 63.203125,
+      "w": 386.09375,
+      "h": 705.59375,
+      "display": "flex",
+      "cols": "none"
+    },
+    ".editor-message-box": {
+      "x": 842.890625,
+      "y": 576.796875,
+      "w": 386.09375,
+      "h": 130,
+      "display": "flex",
+      "cols": "none"
+    },
+    ".share-btn": {
+      "x": 842.890625,
+      "y": 720.796875,
+      "w": 386.09375,
+      "h": 48,
+      "display": "block",
+      "cols": "none"
+    },
+    ".syncopate-modal-close": {
+      "x": 696,
+      "y": 804.796875,
+      "w": 48,
+      "h": 48,
+      "display": "flex",
+      "cols": "none"
+    }
+  },
+  {
+    "w": 1366,
+    "h": 768,
+    "route": "student",
+    "viewport": [
+      1366,
+      768
+    ],
+    "overflow": false,
+    ".student-grid": {
+      "x": 42.6875,
+      "y": 128,
+      "w": 1027.9375,
+      "h": 11831.484375,
+      "display": "grid",
+      "cols": "244.984px 244.984px 244.984px 244.984px"
+    },
+    ".student-sidebar": {
+      "x": 1125.25,
+      "y": 128,
+      "w": 198.0625,
+      "h": 11831.484375,
+      "display": "block",
+      "cols": "none"
+    },
+    ".student-flipper": {
+      "x": 42.6875,
+      "y": 128,
+      "w": 244.984375,
+      "h": 306.21875,
+      "display": "block",
+      "cols": "none"
+    },
+    ".card-back": {
+      "x": 42.6875,
+      "y": 128,
+      "w": 244.984375,
+      "h": 306.21875,
+      "display": "flex",
+      "cols": "none"
+    },
+    "singleFlip": true,
+    "menu": [
+      [
+        "PROJECT",
+        586.21875,
+        690.21875
+      ],
+      [
+        "STUDENT",
+        692.21875,
+        797.3125
+      ],
+      [
+        "SYNCOPATE",
+        799.3125,
+        919.3125
+      ],
+      [
+        "GUESTBOOK",
+        921.3125,
+        1041.3125
+      ],
+      [
+        "CURRICULUM",
+        1043.3125,
+        1163.3125
+      ],
+      [
+        "BEHIND",
+        1165.3125,
+        1285.3125
+      ],
+      [
+        "+",
+        1287.3125,
+        1323.3125
+      ]
+    ]
+  },
+  {
+    "w": 1366,
+    "h": 768,
+    "route": "project",
+    "viewport": [
+      1366,
+      768
+    ],
+    "overflow": false,
+    ".list-layout": {
+      "x": 42.6875,
+      "y": 816,
+      "w": 1280.625,
+      "h": 1639.640625,
+      "display": "grid",
+      "cols": "1014.28px 211.719px"
+    },
+    ".project-grid": {
+      "x": 42.6875,
+      "y": 946,
+      "w": 1014.28125,
+      "h": 1559.640625,
+      "display": "grid",
+      "cols": "325.344px 325.359px 325.344px"
+    },
+    ".project-index": {
+      "x": 1111.59375,
+      "y": 816,
+      "w": 211.71875,
+      "h": 1639.640625,
+      "display": "block",
+      "cols": "none"
+    },
+    ".project-card.is-active": {
+      "x": 566.0646362304688,
+      "y": 158.6546630859375,
+      "w": 514.2008666992188,
+      "h": 408.35540771484375,
+      "display": "flex",
+      "cols": "none"
+    },
+    "menu": [
+      [
+        "PROJECT",
+        587.3125,
+        691.3125
+      ],
+      [
+        "STUDENT",
+        693.3125,
+        797.3125
+      ],
+      [
+        "SYNCOPATE",
+        799.3125,
+        919.3125
+      ],
+      [
+        "GUESTBOOK",
+        921.3125,
+        1041.3125
+      ],
+      [
+        "CURRICULUM",
+        1043.3125,
+        1163.3125
+      ],
+      [
+        "BEHIND",
+        1165.3125,
+        1285.3125
+      ],
+      [
+        "+",
+        1287.3125,
+        1323.3125
+      ]
+    ],
+    "list": {
+      "viewport": [
+        1366,
+        768
+      ],
+      "overflow": false,
+      ".list-layout": {
+        "x": 42.6875,
+        "y": -444,
+        "w": 1280.625,
+        "h": 1639.640625,
+        "display": "grid",
+        "cols": "1014.28px 211.719px"
+      },
+      ".project-grid": {
+        "x": 42.6875,
+        "y": -364,
+        "w": 1014.28125,
+        "h": 1559.640625,
+        "display": "grid",
+        "cols": "325.344px 325.359px 325.344px"
+      },
+      ".project-index": {
+        "x": 1111.59375,
+        "y": -444,
+        "w": 211.71875,
+        "h": 1639.640625,
+        "display": "block",
+        "cols": "none"
+      },
+      ".project-card.is-active": {
+        "x": 140.4357147216797,
+        "y": -1101.49267578125,
+        "w": 542.7525634765625,
+        "h": 451.00054931640625,
+        "display": "flex",
+        "cols": "none"
+      }
+    },
+    "indexText": [
+      "01탄탄대로",
+      "02끼잉끼잉클럽",
+      "03차칸 사람들",
+      "04",
+      "05공중도덕(空中道德)",
+      "06렛츠꺼어워",
+      "07복복복",
+      "08레츠기니",
+      "09hexagon",
+      "10Layer",
+      "11WAVE",
+      "12OCTAVE",
+      "13LIMEN",
+      "1442(사이)",
+      "15잇다 IT-DA",
+      "16MOMO",
+      "17REMNANT"
+    ],
+    "detail": {
+      "viewport": [
+        1366,
+        768
+      ],
+      "overflow": false,
+      ".list-layout": {
+        "x": 42.6875,
+        "y": 182,
+        "w": 1280.625,
+        "h": 1639.640625,
+        "display": "grid",
+        "cols": "1014.28px 211.719px"
+      },
+      ".project-grid": {
+        "x": 42.6875,
+        "y": 262,
+        "w": 1014.28125,
+        "h": 1559.640625,
+        "display": "grid",
+        "cols": "325.344px 325.359px 325.344px"
+      },
+      ".project-index": {
+        "x": 1111.59375,
+        "y": 182,
+        "w": 211.71875,
+        "h": 1639.640625,
+        "display": "block",
+        "cols": "none"
+      },
+      ".project-card.is-active": {
+        "x": 207.51126098632812,
+        "y": -477.3843994140625,
+        "w": 530.146728515625,
+        "h": 431.69842529296875,
+        "display": "flex",
+        "cols": "none"
+      },
+      ".detail-hero": {
+        "x": 0,
+        "y": 0,
+        "w": 1366,
+        "h": 839.015625,
+        "display": "grid",
+        "cols": "266.219px 692.172px 212.969px"
+      },
+      ".detail-intro": {
+        "x": 363.53125,
+        "y": 92.15625,
+        "w": 692.171875,
+        "h": 129.609375,
+        "display": "flex",
+        "cols": "none"
+      },
+      ".detail-media": {
+        "x": 363.53125,
+        "y": 276.390625,
+        "w": 692.171875,
+        "h": 466.625,
+        "display": "block",
+        "cols": "none"
+      },
+      ".detail-metadata": {
+        "x": 1110.328125,
+        "y": 276.390625,
+        "w": 212.96875,
+        "h": 92.75,
+        "display": "grid",
+        "cols": "212.969px"
+      },
+      ".detail-team": {
+        "x": 0,
+        "y": 839.015625,
+        "w": 1366,
+        "h": 768,
+        "display": "grid",
+        "cols": "202.172px 633.828px 202.188px"
+      }
+    }
+  },
+  {
+    "w": 1366,
+    "h": 768,
+    "route": "syncopate",
+    "viewport": [
+      1366,
+      768
+    ],
+    "overflow": false,
+    ".main-stage": {
+      "x": 158,
+      "y": 28,
+      "w": 1050,
+      "h": 644,
+      "display": "grid",
+      "cols": "613.891px 386.094px"
+    },
+    ".drawing-frame": {
+      "x": 174,
+      "y": 44,
+      "w": 613.890625,
+      "h": 612,
+      "display": "block",
+      "cols": "none"
+    },
+    ".tools-panel": {
+      "x": 805.890625,
+      "y": 44,
+      "w": 386.09375,
+      "h": 612,
+      "display": "flex",
+      "cols": "none"
+    },
+    ".editor-message-box": {
+      "x": 805.890625,
+      "y": 464,
+      "w": 386.09375,
+      "h": 130,
+      "display": "flex",
+      "cols": "none"
+    },
+    ".share-btn": {
+      "x": 805.890625,
+      "y": 608,
+      "w": 386.09375,
+      "h": 48,
+      "display": "block",
+      "cols": "none"
+    },
+    ".syncopate-modal-close": {
+      "x": 659,
+      "y": 692,
+      "w": 48,
+      "h": 48,
+      "display": "flex",
+      "cols": "none"
+    }
+  },
+  {
+    "w": 1280,
+    "h": 720,
+    "route": "student",
+    "viewport": [
+      1280,
+      720
+    ],
+    "overflow": false,
+    ".student-grid": {
+      "x": 40,
+      "y": 128,
+      "w": 963.21875,
+      "h": 11245.28125,
+      "display": "grid",
+      "cols": "228.797px 228.812px 228.797px 228.812px"
+    },
+    ".student-sidebar": {
+      "x": 1054.40625,
+      "y": 128,
+      "w": 185.59375,
+      "h": 11245.28125,
+      "display": "block",
+      "cols": "none"
+    },
+    ".student-flipper": {
+      "x": 40,
+      "y": 128,
+      "w": 228.796875,
+      "h": 285.984375,
+      "display": "block",
+      "cols": "none"
+    },
+    ".card-back": {
+      "x": 40,
+      "y": 128,
+      "w": 228.796875,
+      "h": 285.984375,
+      "display": "flex",
+      "cols": "none"
+    },
+    "singleFlip": true,
+    "menu": [
+      [
+        "PROJECT",
+        502.90625,
+        606.90625
+      ],
+      [
+        "STUDENT",
+        608.90625,
+        714
+      ],
+      [
+        "SYNCOPATE",
+        716,
+        836
+      ],
+      [
+        "GUESTBOOK",
+        838,
+        958
+      ],
+      [
+        "CURRICULUM",
+        960,
+        1080
+      ],
+      [
+        "BEHIND",
+        1082,
+        1202
+      ],
+      [
+        "+",
+        1204,
+        1240
+      ]
+    ]
+  },
+  {
+    "w": 1280,
+    "h": 720,
+    "route": "project",
+    "viewport": [
+      1280,
+      720
+    ],
+    "overflow": false,
+    ".list-layout": {
+      "x": 40,
+      "y": 768,
+      "w": 1200,
+      "h": 1541.46875,
+      "display": "grid",
+      "cols": "950.422px 198.391px"
+    },
+    ".project-grid": {
+      "x": 40,
+      "y": 898,
+      "w": 950.421875,
+      "h": 1461.46875,
+      "display": "grid",
+      "cols": "304.859px 304.875px 304.859px"
+    },
+    ".project-index": {
+      "x": 1041.609375,
+      "y": 768,
+      "w": 198.390625,
+      "h": 1541.46875,
+      "display": "block",
+      "cols": "none"
+    },
+    ".project-card.is-active": {
+      "x": 545.9616088867188,
+      "y": 150.9014129638672,
+      "w": 485.96392822265625,
+      "h": 388.6072998046875,
+      "display": "flex",
+      "cols": "none"
+    },
+    "menu": [
+      [
+        "PROJECT",
+        504,
+        608
+      ],
+      [
+        "STUDENT",
+        610,
+        714
+      ],
+      [
+        "SYNCOPATE",
+        716,
+        836
+      ],
+      [
+        "GUESTBOOK",
+        838,
+        958
+      ],
+      [
+        "CURRICULUM",
+        960,
+        1080
+      ],
+      [
+        "BEHIND",
+        1082,
+        1202
+      ],
+      [
+        "+",
+        1204,
+        1240
+      ]
+    ],
+    "list": {
+      "viewport": [
+        1280,
+        720
+      ],
+      "overflow": false,
+      ".list-layout": {
+        "x": 40,
+        "y": -419,
+        "w": 1200,
+        "h": 1541.46875,
+        "display": "grid",
+        "cols": "950.422px 198.391px"
+      },
+      ".project-grid": {
+        "x": 40,
+        "y": -339,
+        "w": 950.421875,
+        "h": 1461.46875,
+        "display": "grid",
+        "cols": "304.859px 304.875px 304.859px"
+      },
+      ".project-index": {
+        "x": 1041.609375,
+        "y": -419,
+        "w": 198.390625,
+        "h": 1541.46875,
+        "display": "block",
+        "cols": "none"
+      },
+      ".project-card.is-active": {
+        "x": 152.58555603027344,
+        "y": -1036.2685546875,
+        "w": 504.749755859375,
+        "h": 416.6474609375,
+        "display": "flex",
+        "cols": "none"
+      }
+    },
+    "indexText": [
+      "01탄탄대로",
+      "02끼잉끼잉클럽",
+      "03차칸 사람들",
+      "04",
+      "05공중도덕(空中道德)",
+      "06렛츠꺼어워",
+      "07복복복",
+      "08레츠기니",
+      "09hexagon",
+      "10Layer",
+      "11WAVE",
+      "12OCTAVE",
+      "13LIMEN",
+      "1442(사이)",
+      "15잇다 IT-DA",
+      "16MOMO",
+      "17REMNANT"
+    ],
+    "detail": {
+      "viewport": [
+        1280,
+        720
+      ],
+      "overflow": false,
+      ".list-layout": {
+        "x": 40,
+        "y": 166,
+        "w": 1200,
+        "h": 1541.46875,
+        "display": "grid",
+        "cols": "950.422px 198.391px"
+      },
+      ".project-grid": {
+        "x": 40,
+        "y": 246,
+        "w": 950.421875,
+        "h": 1461.46875,
+        "display": "grid",
+        "cols": "304.859px 304.875px 304.859px"
+      },
+      ".project-index": {
+        "x": 1041.609375,
+        "y": 166,
+        "w": 198.390625,
+        "h": 1541.46875,
+        "display": "block",
+        "cols": "none"
+      },
+      ".project-card.is-active": {
+        "x": 215.81082153320312,
+        "y": -451.96405029296875,
+        "w": 492.5482482910156,
+        "h": 398.2400207519531,
+        "display": "flex",
+        "cols": "none"
+      },
+      ".detail-hero": {
+        "x": 0,
+        "y": 0,
+        "w": 1280,
+        "h": 797.5,
+        "display": "grid",
+        "cols": "249.453px 648.594px 199.562px"
+      },
+      ".detail-intro": {
+        "x": 340.640625,
+        "y": 88,
+        "w": 648.59375,
+        "h": 125.0625,
+        "display": "flex",
+        "cols": "none"
+      },
+      ".detail-media": {
+        "x": 340.640625,
+        "y": 264.25,
+        "w": 648.59375,
+        "h": 437.25,
+        "display": "block",
+        "cols": "none"
+      },
+      ".detail-metadata": {
+        "x": 1040.421875,
+        "y": 264.25,
+        "w": 199.5625,
+        "h": 92.75,
+        "display": "grid",
+        "cols": "199.562px"
+      },
+      ".detail-team": {
+        "x": 0,
+        "y": 797.5,
+        "w": 1280,
+        "h": 720,
+        "display": "grid",
+        "cols": "189.438px 593.953px 189.453px"
+      }
+    }
+  },
+  {
+    "w": 1280,
+    "h": 720,
+    "route": "syncopate",
+    "viewport": [
+      1280,
+      720
+    ],
+    "overflow": false,
+    ".main-stage": {
+      "x": 115.203125,
+      "y": 28,
+      "w": 1049.59375,
+      "h": 596,
+      "display": "grid",
+      "cols": "613.641px 385.938px"
+    },
+    ".drawing-frame": {
+      "x": 131.203125,
+      "y": 44,
+      "w": 613.640625,
+      "h": 564,
+      "display": "block",
+      "cols": "none"
+    },
+    ".tools-panel": {
+      "x": 762.84375,
+      "y": 44,
+      "w": 385.9375,
+      "h": 564,
+      "display": "flex",
+      "cols": "none"
+    },
+    ".editor-message-box": {
+      "x": 762.84375,
+      "y": 416,
+      "w": 385.9375,
+      "h": 130,
+      "display": "flex",
+      "cols": "none"
+    },
+    ".share-btn": {
+      "x": 762.84375,
+      "y": 560,
+      "w": 385.9375,
+      "h": 48,
+      "display": "block",
+      "cols": "none"
+    },
+    ".syncopate-modal-close": {
+      "x": 616,
+      "y": 644,
+      "w": 48,
+      "h": 48,
+      "display": "flex",
+      "cols": "none"
+    }
+  },
+  {
+    "w": 1024,
+    "h": 768,
+    "route": "student",
+    "viewport": [
+      1024,
+      768
+    ],
+    "overflow": false,
+    ".student-grid": {
+      "x": 32,
+      "y": 208,
+      "w": 960,
+      "h": 18998.421875,
+      "display": "grid",
+      "cols": "309.328px 309.328px 309.344px"
+    },
+    ".student-sidebar": {
+      "x": 32,
+      "y": 112,
+      "w": 960,
+      "h": 64,
+      "display": "block",
+      "cols": "none"
+    },
+    ".student-flipper": {
+      "x": 32,
+      "y": 208,
+      "w": 309.328125,
+      "h": 386.65625,
+      "display": "block",
+      "cols": "none"
+    },
+    ".card-back": {
+      "x": 32,
+      "y": 208,
+      "w": 309.328125,
+      "h": 386.65625,
+      "display": "flex",
+      "cols": "none"
+    },
+    "singleFlip": true,
+    "menu": [
+      [
+        "PROJECT",
+        356,
+        438
+      ],
+      [
+        "STUDENT",
+        440,
+        524
+      ],
+      [
+        "SYNCOPATE",
+        526,
+        620
+      ],
+      [
+        "GUESTBOOK",
+        622,
+        716
+      ],
+      [
+        "CURRICULUM",
+        718,
+        812
+      ],
+      [
+        "BEHIND",
+        814,
+        908
+      ],
+      [
+        "+",
+        910,
+        992
+      ]
+    ]
+  },
+  {
+    "w": 1024,
+    "h": 768,
+    "route": "project",
+    "viewport": [
+      1024,
+      768
+    ],
+    "overflow": false,
+    ".list-layout": {
+      "x": 32,
+      "y": 816,
+      "w": 960,
+      "h": 2786.5,
+      "display": "grid",
+      "cols": "780px 156px"
+    },
+    ".project-grid": {
+      "x": 32,
+      "y": 946,
+      "w": 780,
+      "h": 2706.5,
+      "display": "grid",
+      "cols": "382px 382px"
+    },
+    ".project-index": {
+      "x": 836,
+      "y": 816,
+      "w": 156,
+      "h": 2786.5,
+      "display": "block",
+      "cols": "none"
+    },
+    ".project-card.is-active": {
+      "x": 403.74615478515625,
+      "y": 152.39486694335938,
+      "w": 531.8277587890625,
+      "h": 424.4070129394531,
+      "display": "flex",
+      "cols": "none"
+    },
+    "menu": [
+      [
+        "PROJECT",
+        357.734375,
+        440
+      ],
+      [
+        "STUDENT",
+        442,
+        524
+      ],
+      [
+        "SYNCOPATE",
+        526,
+        620
+      ],
+      [
+        "GUESTBOOK",
+        622,
+        716
+      ],
+      [
+        "CURRICULUM",
+        718,
+        812
+      ],
+      [
+        "BEHIND",
+        814,
+        908
+      ],
+      [
+        "+",
+        910,
+        992
+      ]
+    ],
+    "list": {
+      "viewport": [
+        1024,
+        768
+      ],
+      "overflow": false,
+      ".list-layout": {
+        "x": 32,
+        "y": -1017,
+        "w": 960,
+        "h": 2786.5,
+        "display": "grid",
+        "cols": "780px 156px"
+      },
+      ".project-grid": {
+        "x": 32,
+        "y": -937,
+        "w": 780,
+        "h": 2706.5,
+        "display": "grid",
+        "cols": "382px 382px"
+      },
+      ".project-index": {
+        "x": 836,
+        "y": -1017,
+        "w": 156,
+        "h": 2786.5,
+        "display": "block",
+        "cols": "none"
+      },
+      ".project-card.is-active": {
+        "x": -33.17076110839844,
+        "y": -1680.6357421875,
+        "w": 555.694580078125,
+        "h": 460.0775146484375,
+        "display": "flex",
+        "cols": "none"
+      }
+    },
+    "indexText": [
+      "01탄탄대로",
+      "02끼잉끼잉클럽",
+      "03차칸 사람들",
+      "04",
+      "05공중도덕(空中道德)",
+      "06렛츠꺼어워",
+      "07복복복",
+      "08레츠기니",
+      "09hexagon",
+      "10Layer",
+      "11WAVE",
+      "12OCTAVE",
+      "13LIMEN",
+      "1442(사이)",
+      "15잇다 IT-DA",
+      "16MOMO",
+      "17REMNANT"
+    ],
+    "detail": {
+      "viewport": [
+        1024,
+        768
+      ],
+      "overflow": false,
+      ".list-layout": {
+        "x": 32,
+        "y": 161,
+        "w": 960,
+        "h": 2786.5,
+        "display": "grid",
+        "cols": "780px 156px"
+      },
+      ".project-grid": {
+        "x": 32,
+        "y": 241,
+        "w": 780,
+        "h": 2706.5,
+        "display": "grid",
+        "cols": "382px 382px"
+      },
+      ".project-index": {
+        "x": 836,
+        "y": 161,
+        "w": 156,
+        "h": 2786.5,
+        "display": "block",
+        "cols": "none"
+      },
+      ".project-card.is-active": {
+        "x": 33.902103424072266,
+        "y": -503.9445495605469,
+        "w": 542.91845703125,
+        "h": 440.6617431640625,
+        "display": "flex",
+        "cols": "none"
+      },
+      ".detail-hero": {
+        "x": 0,
+        "y": 0,
+        "w": 1024,
+        "h": 780.71875,
+        "display": "grid",
+        "cols": "265.141px 662.859px"
+      },
+      ".detail-intro": {
+        "x": 329.140625,
+        "y": 92.15625,
+        "w": 662.859375,
+        "h": 113.703125,
+        "display": "flex",
+        "cols": "none"
+      },
+      ".detail-media": {
+        "x": 329.140625,
+        "y": 237.859375,
+        "w": 662.859375,
+        "h": 446.859375,
+        "display": "block",
+        "cols": "none"
+      },
+      ".detail-metadata": {
+        "x": 32,
+        "y": 237.859375,
+        "w": 265.140625,
+        "h": 73.5625,
+        "display": "grid",
+        "cols": "265.141px"
+      },
+      ".detail-team": {
+        "x": 0,
+        "y": 780.71875,
+        "w": 1024,
+        "h": 768,
+        "display": "grid",
+        "cols": "151.547px 475.141px 151.547px"
+      }
+    }
+  },
+  {
+    "w": 1024,
+    "h": 768,
+    "route": "syncopate",
+    "viewport": [
+      1024,
+      768
+    ],
+    "overflow": false,
+    ".main-stage": {
+      "x": 37,
+      "y": 79,
+      "w": 950,
+      "h": 542,
+      "display": "grid",
+      "cols": "553.734px 348.25px"
+    },
+    ".drawing-frame": {
+      "x": 53,
+      "y": 95,
+      "w": 553.734375,
+      "h": 510,
+      "display": "block",
+      "cols": "none"
+    },
+    ".tools-panel": {
+      "x": 622.734375,
+      "y": 95,
+      "w": 348.25,
+      "h": 510,
+      "display": "flex",
+      "cols": "none"
+    },
+    ".editor-message-box": {
+      "x": 622.734375,
+      "y": 413,
+      "w": 348.25,
+      "h": 130,
+      "display": "flex",
+      "cols": "none"
+    },
+    ".share-btn": {
+      "x": 622.734375,
+      "y": 557,
+      "w": 348.25,
+      "h": 48,
+      "display": "block",
+      "cols": "none"
+    },
+    ".syncopate-modal-close": {
+      "x": 488,
+      "y": 641,
+      "w": 48,
+      "h": 48,
+      "display": "flex",
+      "cols": "none"
+    }
+  },
+  {
+    "w": 820,
+    "h": 1180,
+    "route": "student",
+    "viewport": [
+      820,
+      1180
+    ],
+    "overflow": false,
+    ".student-grid": {
+      "x": 25.625,
+      "y": 208,
+      "w": 768.75,
+      "h": 15890.3125,
+      "display": "grid",
+      "cols": "245.578px 245.578px 245.578px"
+    },
+    ".student-sidebar": {
+      "x": 25.625,
+      "y": 112,
+      "w": 768.75,
+      "h": 64,
+      "display": "block",
+      "cols": "none"
+    },
+    ".student-flipper": {
+      "x": 25.625,
+      "y": 208,
+      "w": 245.578125,
+      "h": 306.96875,
+      "display": "block",
+      "cols": "none"
+    },
+    ".card-back": {
+      "x": 25.625,
+      "y": 208,
+      "w": 245.578125,
+      "h": 306.96875,
+      "display": "flex",
+      "cols": "none"
+    },
+    "singleFlip": true,
+    "menu": [
+      [
+        "PROJECT",
+        158.375,
+        240.375
+      ],
+      [
+        "STUDENT",
+        242.375,
+        326.375
+      ],
+      [
+        "SYNCOPATE",
+        328.375,
+        422.375
+      ],
+      [
+        "GUESTBOOK",
+        424.375,
+        518.375
+      ],
+      [
+        "CURRICULUM",
+        520.375,
+        614.375
+      ],
+      [
+        "BEHIND",
+        616.375,
+        710.375
+      ],
+      [
+        "+",
+        712.375,
+        794.375
+      ]
+    ]
+  },
+  {
+    "w": 820,
+    "h": 1180,
+    "route": "project",
+    "viewport": [
+      820,
+      1180
+    ],
+    "overflow": false,
+    ".list-layout": {
+      "x": 25.625,
+      "y": 1228,
+      "w": 768.75,
+      "h": 2141.03125,
+      "display": "grid",
+      "cols": "588.75px 156px"
+    },
+    ".project-grid": {
+      "x": 25.625,
+      "y": 1358,
+      "w": 588.75,
+      "h": 2061.03125,
+      "display": "grid",
+      "cols": "286.375px 286.375px"
+    },
+    ".project-index": {
+      "x": 638.375,
+      "y": 1228,
+      "w": 156,
+      "h": 2141.03125,
+      "display": "block",
+      "cols": "none"
+    },
+    ".project-card.is-active": {
+      "x": 328.73675537109375,
+      "y": 357.31817626953125,
+      "w": 427.3009033203125,
+      "h": 341.9202880859375,
+      "display": "flex",
+      "cols": "none"
+    },
+    "menu": [
+      [
+        "PROJECT",
+        160.109375,
+        242.375
+      ],
+      [
+        "STUDENT",
+        244.375,
+        326.375
+      ],
+      [
+        "SYNCOPATE",
+        328.375,
+        422.375
+      ],
+      [
+        "GUESTBOOK",
+        424.375,
+        518.375
+      ],
+      [
+        "CURRICULUM",
+        520.375,
+        614.375
+      ],
+      [
+        "BEHIND",
+        616.375,
+        710.375
+      ],
+      [
+        "+",
+        712.375,
+        794.375
+      ]
+    ],
+    "list": {
+      "viewport": [
+        820,
+        1180
+      ],
+      "overflow": false,
+      ".list-layout": {
+        "x": 25.625,
+        "y": -489,
+        "w": 768.75,
+        "h": 2141.03125,
+        "display": "grid",
+        "cols": "588.75px 156px"
+      },
+      ".project-grid": {
+        "x": 25.625,
+        "y": -409,
+        "w": 588.75,
+        "h": 2061.03125,
+        "display": "grid",
+        "cols": "286.375px 286.375px"
+      },
+      ".project-index": {
+        "x": 638.375,
+        "y": -489,
+        "w": 156,
+        "h": 2141.03125,
+        "display": "block",
+        "cols": "none"
+      },
+      ".project-card.is-active": {
+        "x": -19.88570785522461,
+        "y": -1359.702880859375,
+        "w": 443.758544921875,
+        "h": 366.51708984375,
+        "display": "flex",
+        "cols": "none"
+      }
+    },
+    "indexText": [
+      "01탄탄대로",
+      "02끼잉끼잉클럽",
+      "03차칸 사람들",
+      "04",
+      "05공중도덕(空中道德)",
+      "06렛츠꺼어워",
+      "07복복복",
+      "08레츠기니",
+      "09hexagon",
+      "10Layer",
+      "11WAVE",
+      "12OCTAVE",
+      "13LIMEN",
+      "1442(사이)",
+      "15잇다 IT-DA",
+      "16MOMO",
+      "17REMNANT"
+    ],
+    "detail": {
+      "viewport": [
+        820,
+        1180
+      ],
+      "overflow": false,
+      ".list-layout": {
+        "x": 25.625,
+        "y": 403,
+        "w": 768.75,
+        "h": 2141.03125,
+        "display": "grid",
+        "cols": "588.75px 156px"
+      },
+      ".project-grid": {
+        "x": 25.625,
+        "y": 483,
+        "w": 588.75,
+        "h": 2061.03125,
+        "display": "grid",
+        "cols": "286.375px 286.375px"
+      },
+      ".project-index": {
+        "x": 638.375,
+        "y": 403,
+        "w": 156,
+        "h": 2141.03125,
+        "display": "block",
+        "cols": "none"
+      },
+      ".project-card.is-active": {
+        "x": 33.92436599731445,
+        "y": -468.4195251464844,
+        "w": 433.410888671875,
+        "h": 350.8752136230469,
+        "display": "flex",
+        "cols": "none"
+      },
+      ".detail-hero": {
+        "x": 0,
+        "y": 0,
+        "w": 820,
+        "h": 1180,
+        "display": "grid",
+        "cols": "210.5px 526.25px"
+      },
+      ".detail-intro": {
+        "x": 268.125,
+        "y": 141.59375,
+        "w": 526.25,
+        "h": 136.46875,
+        "display": "flex",
+        "cols": "none"
+      },
+      ".detail-media": {
+        "x": 268.125,
+        "y": 310.0625,
+        "w": 526.25,
+        "h": 354.765625,
+        "display": "block",
+        "cols": "none"
+      },
+      ".detail-metadata": {
+        "x": 25.625,
+        "y": 310.0625,
+        "w": 210.5,
+        "h": 92.75,
+        "display": "grid",
+        "cols": "210.5px"
+      },
+      ".detail-team": {
+        "x": 0,
+        "y": 1180,
+        "w": 820,
+        "h": 1302.265625,
+        "display": "grid",
+        "cols": "772px"
+      }
+    }
+  },
+  {
+    "w": 820,
+    "h": 1180,
+    "route": "syncopate",
+    "viewport": [
+      820,
+      1180
+    ],
+    "overflow": false,
+    ".main-stage": {
+      "x": 24,
+      "y": 285,
+      "w": 772,
+      "h": 542,
+      "display": "grid",
+      "cols": "444.453px 279.531px"
+    },
+    ".drawing-frame": {
+      "x": 40,
+      "y": 301,
+      "w": 444.453125,
+      "h": 510,
+      "display": "block",
+      "cols": "none"
+    },
+    ".tools-panel": {
+      "x": 500.453125,
+      "y": 301,
+      "w": 279.53125,
+      "h": 510,
+      "display": "flex",
+      "cols": "none"
+    },
+    ".editor-message-box": {
+      "x": 500.453125,
+      "y": 619,
+      "w": 279.53125,
+      "h": 130,
+      "display": "flex",
+      "cols": "none"
+    },
+    ".share-btn": {
+      "x": 500.453125,
+      "y": 763,
+      "w": 279.53125,
+      "h": 48,
+      "display": "block",
+      "cols": "none"
+    },
+    ".syncopate-modal-close": {
+      "x": 386,
+      "y": 847,
+      "w": 48,
+      "h": 48,
+      "display": "flex",
+      "cols": "none"
+    }
+  },
+  {
+    "w": 768,
+    "h": 1024,
+    "route": "student",
+    "viewport": [
+      768,
+      1024
+    ],
+    "overflow": false,
+    ".student-grid": {
+      "x": 24,
+      "y": 208,
+      "w": 720,
+      "h": 15098.125,
+      "display": "grid",
+      "cols": "229.328px 229.328px 229.328px"
+    },
+    ".student-sidebar": {
+      "x": 24,
+      "y": 112,
+      "w": 720,
+      "h": 64,
+      "display": "block",
+      "cols": "none"
+    },
+    ".student-flipper": {
+      "x": 24,
+      "y": 208,
+      "w": 229.328125,
+      "h": 286.65625,
+      "display": "block",
+      "cols": "none"
+    },
+    ".card-back": {
+      "x": 24,
+      "y": 208,
+      "w": 229.328125,
+      "h": 286.65625,
+      "display": "flex",
+      "cols": "none"
+    },
+    "singleFlip": true,
+    "menu": [
+      [
+        "PROJECT",
+        108,
+        190
+      ],
+      [
+        "STUDENT",
+        192,
+        276
+      ],
+      [
+        "SYNCOPATE",
+        278,
+        372
+      ],
+      [
+        "GUESTBOOK",
+        374,
+        468
+      ],
+      [
+        "CURRICULUM",
+        470,
+        564
+      ],
+      [
+        "BEHIND",
+        566,
+        660
+      ],
+      [
+        "+",
+        662,
+        744
+      ]
+    ]
+  },
+  {
+    "w": 768,
+    "h": 1024,
+    "route": "project",
+    "viewport": [
+      768,
+      1024
+    ],
+    "overflow": false,
+    ".list-layout": {
+      "x": 24,
+      "y": 1072,
+      "w": 720,
+      "h": 1976.5,
+      "display": "grid",
+      "cols": "540px 156px"
+    },
+    ".project-grid": {
+      "x": 24,
+      "y": 1202,
+      "w": 540,
+      "h": 1896.5,
+      "display": "grid",
+      "cols": "262px 262px"
+    },
+    ".project-index": {
+      "x": 588,
+      "y": 1072,
+      "w": 156,
+      "h": 1976.5,
+      "display": "block",
+      "cols": "none"
+    },
+    ".project-card.is-active": {
+      "x": 293.93719482421875,
+      "y": 306.04766845703125,
+      "w": 396.4918212890625,
+      "h": 314.8985595703125,
+      "display": "flex",
+      "cols": "none"
+    },
+    "menu": [
+      [
+        "PROJECT",
+        109.734375,
+        192
+      ],
+      [
+        "STUDENT",
+        194,
+        276
+      ],
+      [
+        "SYNCOPATE",
+        278,
+        372
+      ],
+      [
+        "GUESTBOOK",
+        374,
+        468
+      ],
+      [
+        "CURRICULUM",
+        470,
+        564
+      ],
+      [
+        "BEHIND",
+        566,
+        660
+      ],
+      [
+        "+",
+        662,
+        744
+      ]
+    ],
+    "list": {
+      "viewport": [
+        768,
+        1024
+      ],
+      "overflow": false,
+      ".list-layout": {
+        "x": 24,
+        "y": -484,
+        "w": 720,
+        "h": 1976.5,
+        "display": "grid",
+        "cols": "540px 156px"
+      },
+      ".project-grid": {
+        "x": 24,
+        "y": -404,
+        "w": 540,
+        "h": 1896.5,
+        "display": "grid",
+        "cols": "262px 262px"
+      },
+      ".project-index": {
+        "x": 588,
+        "y": -484,
+        "w": 156,
+        "h": 1976.5,
+        "display": "block",
+        "cols": "none"
+      },
+      ".project-card.is-active": {
+        "x": -35.76038360595703,
+        "y": -1249.980712890625,
+        "w": 418.737060546875,
+        "h": 348.14404296875,
+        "display": "flex",
+        "cols": "none"
+      }
+    },
+    "indexText": [
+      "01탄탄대로",
+      "02끼잉끼잉클럽",
+      "03차칸 사람들",
+      "04",
+      "05공중도덕(空中道德)",
+      "06렛츠꺼어워",
+      "07복복복",
+      "08레츠기니",
+      "09hexagon",
+      "10Layer",
+      "11WAVE",
+      "12OCTAVE",
+      "13LIMEN",
+      "1442(사이)",
+      "15잇다 IT-DA",
+      "16MOMO",
+      "17REMNANT"
+    ],
+    "detail": {
+      "viewport": [
+        768,
+        1024
+      ],
+      "overflow": false,
+      ".list-layout": {
+        "x": 24,
+        "y": 334,
+        "w": 720,
+        "h": 1976.5,
+        "display": "grid",
+        "cols": "540px 156px"
+      },
+      ".project-grid": {
+        "x": 24,
+        "y": 414,
+        "w": 540,
+        "h": 1896.5,
+        "display": "grid",
+        "cols": "262px 262px"
+      },
+      ".project-index": {
+        "x": 588,
+        "y": 334,
+        "w": 156,
+        "h": 1976.5,
+        "display": "block",
+        "cols": "none"
+      },
+      ".project-card.is-active": {
+        "x": 14.358806610107422,
+        "y": -433.50506591796875,
+        "w": 409.3502197265625,
+        "h": 333.7432861328125,
+        "display": "flex",
+        "cols": "none"
+      },
+      ".detail-hero": {
+        "x": 0,
+        "y": 0,
+        "w": 768,
+        "h": 1024,
+        "display": "grid",
+        "cols": "196.562px 491.438px"
+      },
+      ".detail-intro": {
+        "x": 252.5625,
+        "y": 122.875,
+        "w": 491.4375,
+        "h": 136.46875,
+        "display": "flex",
+        "cols": "none"
+      },
+      ".detail-media": {
+        "x": 252.5625,
+        "y": 291.34375,
+        "w": 491.4375,
+        "h": 331.296875,
+        "display": "block",
+        "cols": "none"
+      },
+      ".detail-metadata": {
+        "x": 24,
+        "y": 291.34375,
+        "w": 196.5625,
+        "h": 92.75,
+        "display": "grid",
+        "cols": "196.562px"
+      },
+      ".detail-team": {
+        "x": 0,
+        "y": 1024,
+        "w": 768,
+        "h": 1247.421875,
+        "display": "grid",
+        "cols": "720px"
+      }
+    }
+  },
+  {
+    "w": 768,
+    "h": 1024,
+    "route": "syncopate",
+    "viewport": [
+      768,
+      1024
+    ],
+    "overflow": false,
+    ".main-stage": {
+      "x": 24,
+      "y": 207,
+      "w": 720,
+      "h": 542,
+      "display": "grid",
+      "cols": "412.531px 259.453px"
+    },
+    ".drawing-frame": {
+      "x": 40,
+      "y": 223,
+      "w": 412.53125,
+      "h": 510,
+      "display": "block",
+      "cols": "none"
+    },
+    ".tools-panel": {
+      "x": 468.53125,
+      "y": 223,
+      "w": 259.453125,
+      "h": 510,
+      "display": "flex",
+      "cols": "none"
+    },
+    ".editor-message-box": {
+      "x": 468.53125,
+      "y": 541,
+      "w": 259.453125,
+      "h": 130,
+      "display": "flex",
+      "cols": "none"
+    },
+    ".share-btn": {
+      "x": 468.53125,
+      "y": 685,
+      "w": 259.453125,
+      "h": 48,
+      "display": "block",
+      "cols": "none"
+    },
+    ".syncopate-modal-close": {
+      "x": 360,
+      "y": 769,
+      "w": 48,
+      "h": 48,
+      "display": "flex",
+      "cols": "none"
+    }
+  },
+  {
+    "w": 767,
+    "h": 850,
+    "route": "student",
+    "viewport": [
+      767,
+      850
+    ],
+    "overflow": false,
+    ".student-grid": {
+      "x": 22,
+      "y": 214,
+      "w": 723,
+      "h": 30447.75,
+      "display": "grid",
+      "cols": "355.5px 355.5px"
+    },
+    ".student-sidebar": {
+      "x": 22,
+      "y": 106,
+      "w": 723,
+      "h": 68,
+      "display": "block",
+      "cols": "none"
+    },
+    ".student-flipper": {
+      "x": 22,
+      "y": 214,
+      "w": 355.5,
+      "h": 444.375,
+      "display": "block",
+      "cols": "none"
+    },
+    ".card-back": {
+      "x": 22,
+      "y": 214,
+      "w": 355.5,
+      "h": 444.375,
+      "display": "flex",
+      "cols": "none"
+    },
+    "singleFlip": true,
+    "preservedStyleDiff": []
+  },
+  {
+    "w": 767,
+    "h": 850,
+    "route": "project",
+    "viewport": [
+      767,
+      850
+    ],
+    "overflow": false,
+    ".list-layout": {
+      "x": 20,
+      "y": 102,
+      "w": 727,
+      "h": 10668.25,
+      "display": "grid",
+      "cols": "727px"
+    },
+    ".project-grid": {
+      "x": 20,
+      "y": 102,
+      "w": 727,
+      "h": 10668.25,
+      "display": "grid",
+      "cols": "727px"
+    },
+    ".project-index": {
+      "x": 0,
+      "y": 0,
+      "w": 0,
+      "h": 0,
+      "display": "none",
+      "cols": "none"
+    },
+    "list": {
+      "viewport": [
+        767,
+        850
+      ],
+      "overflow": false,
+      ".list-layout": {
+        "x": 20,
+        "y": 28,
+        "w": 727,
+        "h": 10668.25,
+        "display": "grid",
+        "cols": "727px"
+      },
+      ".project-grid": {
+        "x": 20,
+        "y": 28,
+        "w": 727,
+        "h": 10668.25,
+        "display": "grid",
+        "cols": "727px"
+      },
+      ".project-index": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0,
+        "display": "none",
+        "cols": "none"
+      }
+    },
+    "indexText": [
+      "01탄탄대로",
+      "02끼잉끼잉클럽",
+      "03차칸 사람들",
+      "04",
+      "05공중도덕(空中道德)",
+      "06렛츠꺼어워",
+      "07복복복",
+      "08레츠기니",
+      "09hexagon",
+      "10Layer",
+      "11WAVE",
+      "12OCTAVE",
+      "13LIMEN",
+      "1442(사이)",
+      "15잇다 IT-DA",
+      "16MOMO",
+      "17REMNANT"
+    ],
+    "detail": {
+      "viewport": [
+        767,
+        850
+      ],
+      "overflow": false,
+      ".list-layout": {
+        "x": 20,
+        "y": 28,
+        "w": 727,
+        "h": 10668.25,
+        "display": "grid",
+        "cols": "727px"
+      },
+      ".project-grid": {
+        "x": 20,
+        "y": 28,
+        "w": 727,
+        "h": 10668.25,
+        "display": "grid",
+        "cols": "727px"
+      },
+      ".project-index": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0,
+        "display": "none",
+        "cols": "none"
+      },
+      ".detail-hero": {
+        "x": 0,
+        "y": 0,
+        "w": 767,
+        "h": 970.40625,
+        "display": "grid",
+        "cols": "719px"
+      },
+      ".detail-intro": {
+        "x": 24,
+        "y": 155.09375,
+        "w": 719,
+        "h": 96.1875,
+        "display": "block",
+        "cols": "none"
+      },
+      ".detail-media": {
+        "x": 24,
+        "y": 381.28125,
+        "w": 719,
+        "h": 485.125,
+        "display": "block",
+        "cols": "none"
+      },
+      ".detail-metadata": {
+        "x": 24,
+        "y": 279.28125,
+        "w": 719,
+        "h": 74,
+        "display": "grid",
+        "cols": "719px"
+      },
+      ".detail-team": {
+        "x": 0,
+        "y": 970.40625,
+        "w": 767,
+        "h": 1246.359375,
+        "display": "grid",
+        "cols": "719px"
+      }
+    },
+    "preservedStyleDiff": []
+  },
+  {
+    "w": 390,
+    "h": 844,
+    "route": "student",
+    "viewport": [
+      390,
+      844
+    ],
+    "overflow": false,
+    ".student-grid": {
+      "x": 20,
+      "y": 210,
+      "w": 350,
+      "h": 16942.28125,
+      "display": "grid",
+      "cols": "169px 169px"
+    },
+    ".student-sidebar": {
+      "x": 20,
+      "y": 102,
+      "w": 350,
+      "h": 68,
+      "display": "block",
+      "cols": "none"
+    },
+    ".student-flipper": {
+      "x": 20,
+      "y": 210,
+      "w": 169,
+      "h": 211.25,
+      "display": "block",
+      "cols": "none"
+    },
+    ".card-back": {
+      "x": 20,
+      "y": 210,
+      "w": 169,
+      "h": 211.25,
+      "display": "flex",
+      "cols": "none"
+    },
+    "singleFlip": true,
+    "preservedStyleDiff": []
+  },
+  {
+    "w": 390,
+    "h": 844,
+    "route": "project",
+    "viewport": [
+      390,
+      844
+    ],
+    "overflow": false,
+    ".list-layout": {
+      "x": 20,
+      "y": 102,
+      "w": 350,
+      "h": 6296.5,
+      "display": "grid",
+      "cols": "350px"
+    },
+    ".project-grid": {
+      "x": 20,
+      "y": 102,
+      "w": 350,
+      "h": 6296.5,
+      "display": "grid",
+      "cols": "350px"
+    },
+    ".project-index": {
+      "x": 0,
+      "y": 0,
+      "w": 0,
+      "h": 0,
+      "display": "none",
+      "cols": "none"
+    },
+    "list": {
+      "viewport": [
+        390,
+        844
+      ],
+      "overflow": false,
+      ".list-layout": {
+        "x": 20,
+        "y": 28,
+        "w": 350,
+        "h": 6296.5,
+        "display": "grid",
+        "cols": "350px"
+      },
+      ".project-grid": {
+        "x": 20,
+        "y": 28,
+        "w": 350,
+        "h": 6296.5,
+        "display": "grid",
+        "cols": "350px"
+      },
+      ".project-index": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0,
+        "display": "none",
+        "cols": "none"
+      }
+    },
+    "indexText": [
+      "01탄탄대로",
+      "02끼잉끼잉클럽",
+      "03차칸 사람들",
+      "04",
+      "05공중도덕(空中道德)",
+      "06렛츠꺼어워",
+      "07복복복",
+      "08레츠기니",
+      "09hexagon",
+      "10Layer",
+      "11WAVE",
+      "12OCTAVE",
+      "13LIMEN",
+      "1442(사이)",
+      "15잇다 IT-DA",
+      "16MOMO",
+      "17REMNANT"
+    ],
+    "detail": {
+      "viewport": [
+        390,
+        844
+      ],
+      "overflow": false,
+      ".list-layout": {
+        "x": 20,
+        "y": 28,
+        "w": 350,
+        "h": 6296.5,
+        "display": "grid",
+        "cols": "350px"
+      },
+      ".project-grid": {
+        "x": 20,
+        "y": 28,
+        "w": 350,
+        "h": 6296.5,
+        "display": "grid",
+        "cols": "350px"
+      },
+      ".project-index": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0,
+        "display": "none",
+        "cols": "none"
+      },
+      ".detail-hero": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "display": "grid",
+        "cols": "342px"
+      },
+      ".detail-intro": {
+        "x": 24,
+        "y": 155.09375,
+        "w": 342,
+        "h": 142.375,
+        "display": "block",
+        "cols": "none"
+      },
+      ".detail-media": {
+        "x": 24,
+        "y": 427.46875,
+        "w": 342,
+        "h": 230.75,
+        "display": "block",
+        "cols": "none"
+      },
+      ".detail-metadata": {
+        "x": 24,
+        "y": 325.46875,
+        "w": 342,
+        "h": 74,
+        "display": "grid",
+        "cols": "342px"
+      },
+      ".detail-team": {
+        "x": 0,
+        "y": 844,
+        "w": 390,
+        "h": 848.734375,
+        "display": "grid",
+        "cols": "342px"
+      }
+    },
+    "preservedStyleDiff": []
+  },
+  {
+    "w": 375,
+    "h": 812,
+    "route": "student",
+    "viewport": [
+      375,
+      812
+    ],
+    "overflow": false,
+    ".student-grid": {
+      "x": 20,
+      "y": 248,
+      "w": 335,
+      "h": 16398.53125,
+      "display": "grid",
+      "cols": "161.5px 161.5px"
+    },
+    ".student-sidebar": {
+      "x": 20,
+      "y": 102,
+      "w": 335,
+      "h": 106,
+      "display": "block",
+      "cols": "none"
+    },
+    ".student-flipper": {
+      "x": 20,
+      "y": 248,
+      "w": 161.5,
+      "h": 201.875,
+      "display": "block",
+      "cols": "none"
+    },
+    ".card-back": {
+      "x": 20,
+      "y": 248,
+      "w": 161.5,
+      "h": 201.875,
+      "display": "flex",
+      "cols": "none"
+    },
+    "singleFlip": true,
+    "preservedStyleDiff": []
+  },
+  {
+    "w": 375,
+    "h": 812,
+    "route": "project",
+    "viewport": [
+      375,
+      812
+    ],
+    "overflow": false,
+    ".list-layout": {
+      "x": 20,
+      "y": 102,
+      "w": 335,
+      "h": 6189.25,
+      "display": "grid",
+      "cols": "335px"
+    },
+    ".project-grid": {
+      "x": 20,
+      "y": 102,
+      "w": 335,
+      "h": 6189.25,
+      "display": "grid",
+      "cols": "335px"
+    },
+    ".project-index": {
+      "x": 0,
+      "y": 0,
+      "w": 0,
+      "h": 0,
+      "display": "none",
+      "cols": "none"
+    },
+    "list": {
+      "viewport": [
+        375,
+        812
+      ],
+      "overflow": false,
+      ".list-layout": {
+        "x": 20,
+        "y": 28,
+        "w": 335,
+        "h": 6189.25,
+        "display": "grid",
+        "cols": "335px"
+      },
+      ".project-grid": {
+        "x": 20,
+        "y": 28,
+        "w": 335,
+        "h": 6189.25,
+        "display": "grid",
+        "cols": "335px"
+      },
+      ".project-index": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0,
+        "display": "none",
+        "cols": "none"
+      }
+    },
+    "indexText": [
+      "01탄탄대로",
+      "02끼잉끼잉클럽",
+      "03차칸 사람들",
+      "04",
+      "05공중도덕(空中道德)",
+      "06렛츠꺼어워",
+      "07복복복",
+      "08레츠기니",
+      "09hexagon",
+      "10Layer",
+      "11WAVE",
+      "12OCTAVE",
+      "13LIMEN",
+      "1442(사이)",
+      "15잇다 IT-DA",
+      "16MOMO",
+      "17REMNANT"
+    ],
+    "detail": {
+      "viewport": [
+        375,
+        812
+      ],
+      "overflow": false,
+      ".list-layout": {
+        "x": 20,
+        "y": 28,
+        "w": 335,
+        "h": 6189.25,
+        "display": "grid",
+        "cols": "335px"
+      },
+      ".project-grid": {
+        "x": 20,
+        "y": 28,
+        "w": 335,
+        "h": 6189.25,
+        "display": "grid",
+        "cols": "335px"
+      },
+      ".project-index": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0,
+        "display": "none",
+        "cols": "none"
+      },
+      ".detail-hero": {
+        "x": 0,
+        "y": 0,
+        "w": 375,
+        "h": 812,
+        "display": "grid",
+        "cols": "327px"
+      },
+      ".detail-intro": {
+        "x": 24,
+        "y": 155.09375,
+        "w": 327,
+        "h": 168.375,
+        "display": "block",
+        "cols": "none"
+      },
+      ".detail-media": {
+        "x": 24,
+        "y": 453.46875,
+        "w": 327,
+        "h": 220.625,
+        "display": "block",
+        "cols": "none"
+      },
+      ".detail-metadata": {
+        "x": 24,
+        "y": 351.46875,
+        "w": 327,
+        "h": 74,
+        "display": "grid",
+        "cols": "327px"
+      },
+      ".detail-team": {
+        "x": 0,
+        "y": 812,
+        "w": 375,
+        "h": 832.90625,
+        "display": "grid",
+        "cols": "327px"
+      }
+    },
+    "preservedStyleDiff": []
+  },
+  {
+    "w": 1280,
+    "h": 600,
+    "route": "student",
+    "viewport": [
+      1280,
+      600
+    ],
+    "overflow": false,
+    ".student-grid": {
+      "x": 40,
+      "y": 128,
+      "w": 963.21875,
+      "h": 11245.28125,
+      "display": "grid",
+      "cols": "228.797px 228.812px 228.797px 228.812px"
+    },
+    ".student-sidebar": {
+      "x": 1054.40625,
+      "y": 128,
+      "w": 185.59375,
+      "h": 11245.28125,
+      "display": "block",
+      "cols": "none"
+    },
+    ".student-flipper": {
+      "x": 40,
+      "y": 128,
+      "w": 228.796875,
+      "h": 285.984375,
+      "display": "block",
+      "cols": "none"
+    },
+    ".card-back": {
+      "x": 40,
+      "y": 128,
+      "w": 228.796875,
+      "h": 285.984375,
+      "display": "flex",
+      "cols": "none"
+    },
+    "singleFlip": true,
+    "menu": [
+      [
+        "PROJECT",
+        502.90625,
+        606.90625
+      ],
+      [
+        "STUDENT",
+        608.90625,
+        714
+      ],
+      [
+        "SYNCOPATE",
+        716,
+        836
+      ],
+      [
+        "GUESTBOOK",
+        838,
+        958
+      ],
+      [
+        "CURRICULUM",
+        960,
+        1080
+      ],
+      [
+        "BEHIND",
+        1082,
+        1202
+      ],
+      [
+        "+",
+        1204,
+        1240
+      ]
+    ]
+  },
+  {
+    "w": 1280,
+    "h": 600,
+    "route": "project",
+    "viewport": [
+      1280,
+      600
+    ],
+    "overflow": false,
+    ".list-layout": {
+      "x": 40,
+      "y": 668,
+      "w": 1200,
+      "h": 1541.46875,
+      "display": "grid",
+      "cols": "950.422px 198.391px"
+    },
+    ".project-grid": {
+      "x": 40,
+      "y": 798,
+      "w": 950.421875,
+      "h": 1461.46875,
+      "display": "grid",
+      "cols": "304.859px 304.875px 304.859px"
+    },
+    ".project-index": {
+      "x": 1041.609375,
+      "y": 668,
+      "w": 198.390625,
+      "h": 1541.46875,
+      "display": "block",
+      "cols": "none"
+    },
+    ".project-card.is-active": {
+      "x": 557.376708984375,
+      "y": 125.0387191772461,
+      "w": 449.432861328125,
+      "h": 360.0885009765625,
+      "display": "flex",
+      "cols": "none"
+    },
+    "menu": [
+      [
+        "PROJECT",
+        504,
+        608
+      ],
+      [
+        "STUDENT",
+        610,
+        714
+      ],
+      [
+        "SYNCOPATE",
+        716,
+        836
+      ],
+      [
+        "GUESTBOOK",
+        838,
+        958
+      ],
+      [
+        "CURRICULUM",
+        960,
+        1080
+      ],
+      [
+        "BEHIND",
+        1082,
+        1202
+      ],
+      [
+        "+",
+        1204,
+        1240
+      ]
+    ],
+    "list": {
+      "viewport": [
+        1280,
+        600
+      ],
+      "overflow": false,
+      ".list-layout": {
+        "x": 40,
+        "y": -479,
+        "w": 1200,
+        "h": 1541.46875,
+        "display": "grid",
+        "cols": "950.422px 198.391px"
+      },
+      ".project-grid": {
+        "x": 40,
+        "y": -399,
+        "w": 950.421875,
+        "h": 1461.46875,
+        "display": "grid",
+        "cols": "304.859px 304.875px 304.859px"
+      },
+      ".project-index": {
+        "x": 1041.609375,
+        "y": -479,
+        "w": 198.390625,
+        "h": 1541.46875,
+        "display": "block",
+        "cols": "none"
+      },
+      ".project-card.is-active": {
+        "x": 191.9048309326172,
+        "y": -1021.9817504882812,
+        "w": 465.3873291015625,
+        "h": 383.93377685546875,
+        "display": "flex",
+        "cols": "none"
+      }
+    },
+    "indexText": [
+      "01탄탄대로",
+      "02끼잉끼잉클럽",
+      "03차칸 사람들",
+      "04",
+      "05공중도덕(空中道德)",
+      "06렛츠꺼어워",
+      "07복복복",
+      "08레츠기니",
+      "09hexagon",
+      "10Layer",
+      "11WAVE",
+      "12OCTAVE",
+      "13LIMEN",
+      "1442(사이)",
+      "15잇다 IT-DA",
+      "16MOMO",
+      "17REMNANT"
+    ],
+    "detail": {
+      "viewport": [
+        1280,
+        600
+      ],
+      "overflow": false,
+      ".list-layout": {
+        "x": 40,
+        "y": 106,
+        "w": 1200,
+        "h": 1541.46875,
+        "display": "grid",
+        "cols": "950.422px 198.391px"
+      },
+      ".project-grid": {
+        "x": 40,
+        "y": 186,
+        "w": 950.421875,
+        "h": 1461.46875,
+        "display": "grid",
+        "cols": "304.859px 304.875px 304.859px"
+      },
+      ".project-index": {
+        "x": 1041.609375,
+        "y": 106,
+        "w": 198.390625,
+        "h": 1541.46875,
+        "display": "block",
+        "cols": "none"
+      },
+      ".project-card.is-active": {
+        "x": 250.24188232421875,
+        "y": -437.54217529296875,
+        "w": 454.1058349609375,
+        "h": 366.933349609375,
+        "display": "flex",
+        "cols": "none"
+      },
+      ".detail-hero": {
+        "x": 0,
+        "y": 0,
+        "w": 1280,
+        "h": 797.5,
+        "display": "grid",
+        "cols": "249.453px 648.594px 199.562px"
+      },
+      ".detail-intro": {
+        "x": 340.640625,
+        "y": 88,
+        "w": 648.59375,
+        "h": 125.0625,
+        "display": "flex",
+        "cols": "none"
+      },
+      ".detail-media": {
+        "x": 340.640625,
+        "y": 264.25,
+        "w": 648.59375,
+        "h": 437.25,
+        "display": "block",
+        "cols": "none"
+      },
+      ".detail-metadata": {
+        "x": 1040.421875,
+        "y": 264.25,
+        "w": 199.5625,
+        "h": 92.75,
+        "display": "grid",
+        "cols": "199.562px"
+      },
+      ".detail-team": {
+        "x": 0,
+        "y": 797.5,
+        "w": 1280,
+        "h": 600,
+        "display": "grid",
+        "cols": "189.438px 593.953px 189.453px"
+      }
+    }
+  },
+  {
+    "w": 1280,
+    "h": 600,
+    "route": "syncopate",
+    "viewport": [
+      1280,
+      600
+    ],
+    "overflow": false,
+    ".main-stage": {
+      "x": 115.203125,
+      "y": 24,
+      "w": 1049.59375,
+      "h": 492,
+      "display": "grid",
+      "cols": "613.641px 385.938px"
+    },
+    ".drawing-frame": {
+      "x": 131.203125,
+      "y": 40,
+      "w": 613.640625,
+      "h": 460,
+      "display": "block",
+      "cols": "none"
+    },
+    ".tools-panel": {
+      "x": 762.84375,
+      "y": 40,
+      "w": 385.9375,
+      "h": 460,
+      "display": "flex",
+      "cols": "none"
+    },
+    ".editor-message-box": {
+      "x": 762.84375,
+      "y": 308,
+      "w": 385.9375,
+      "h": 130,
+      "display": "flex",
+      "cols": "none"
+    },
+    ".share-btn": {
+      "x": 762.84375,
+      "y": 452,
+      "w": 385.9375,
+      "h": 48,
+      "display": "block",
+      "cols": "none"
+    },
+    ".syncopate-modal-close": {
+      "x": 616,
+      "y": 536,
+      "w": 48,
+      "h": 48,
+      "display": "flex",
+      "cols": "none"
+    }
+  },
+  {
+    "w": 768,
+    "h": 600,
+    "route": "student",
+    "viewport": [
+      768,
+      600
+    ],
+    "overflow": false,
+    ".student-grid": {
+      "x": 24,
+      "y": 208,
+      "w": 720,
+      "h": 15098.125,
+      "display": "grid",
+      "cols": "229.328px 229.328px 229.328px"
+    },
+    ".student-sidebar": {
+      "x": 24,
+      "y": 112,
+      "w": 720,
+      "h": 64,
+      "display": "block",
+      "cols": "none"
+    },
+    ".student-flipper": {
+      "x": 24,
+      "y": 208,
+      "w": 229.328125,
+      "h": 286.65625,
+      "display": "block",
+      "cols": "none"
+    },
+    ".card-back": {
+      "x": 24,
+      "y": 208,
+      "w": 229.328125,
+      "h": 286.65625,
+      "display": "flex",
+      "cols": "none"
+    },
+    "singleFlip": true,
+    "menu": [
+      [
+        "PROJECT",
+        108,
+        190
+      ],
+      [
+        "STUDENT",
+        192,
+        276
+      ],
+      [
+        "SYNCOPATE",
+        278,
+        372
+      ],
+      [
+        "GUESTBOOK",
+        374,
+        468
+      ],
+      [
+        "CURRICULUM",
+        470,
+        564
+      ],
+      [
+        "BEHIND",
+        566,
+        660
+      ],
+      [
+        "+",
+        662,
+        744
+      ]
+    ]
+  },
+  {
+    "w": 768,
+    "h": 600,
+    "route": "project",
+    "viewport": [
+      768,
+      600
+    ],
+    "overflow": false,
+    ".list-layout": {
+      "x": 24,
+      "y": 668,
+      "w": 720,
+      "h": 1976.5,
+      "display": "grid",
+      "cols": "540px 156px"
+    },
+    ".project-grid": {
+      "x": 24,
+      "y": 798,
+      "w": 540,
+      "h": 1896.5,
+      "display": "grid",
+      "cols": "262px 262px"
+    },
+    ".project-index": {
+      "x": 588,
+      "y": 668,
+      "w": 156,
+      "h": 1976.5,
+      "display": "block",
+      "cols": "none"
+    },
+    ".project-card.is-active": {
+      "x": 293.93719482421875,
+      "y": 144.4477081298828,
+      "w": 396.4918212890625,
+      "h": 314.89849853515625,
+      "display": "flex",
+      "cols": "none"
+    },
+    "menu": [
+      [
+        "PROJECT",
+        109.734375,
+        192
+      ],
+      [
+        "STUDENT",
+        194,
+        276
+      ],
+      [
+        "SYNCOPATE",
+        278,
+        372
+      ],
+      [
+        "GUESTBOOK",
+        374,
+        468
+      ],
+      [
+        "CURRICULUM",
+        470,
+        564
+      ],
+      [
+        "BEHIND",
+        566,
+        660
+      ],
+      [
+        "+",
+        662,
+        744
+      ]
+    ],
+    "list": {
+      "viewport": [
+        768,
+        600
+      ],
+      "overflow": false,
+      ".list-layout": {
+        "x": 24,
+        "y": -696,
+        "w": 720,
+        "h": 1976.5,
+        "display": "grid",
+        "cols": "540px 156px"
+      },
+      ".project-grid": {
+        "x": 24,
+        "y": -616,
+        "w": 540,
+        "h": 1896.5,
+        "display": "grid",
+        "cols": "262px 262px"
+      },
+      ".project-index": {
+        "x": 588,
+        "y": -696,
+        "w": 156,
+        "h": 1976.5,
+        "display": "block",
+        "cols": "none"
+      },
+      ".project-card.is-active": {
+        "x": -35.76038360595703,
+        "y": -1219.580810546875,
+        "w": 418.737060546875,
+        "h": 348.1441650390625,
+        "display": "flex",
+        "cols": "none"
+      }
+    },
+    "indexText": [
+      "01탄탄대로",
+      "02끼잉끼잉클럽",
+      "03차칸 사람들",
+      "04",
+      "05공중도덕(空中道德)",
+      "06렛츠꺼어워",
+      "07복복복",
+      "08레츠기니",
+      "09hexagon",
+      "10Layer",
+      "11WAVE",
+      "12OCTAVE",
+      "13LIMEN",
+      "1442(사이)",
+      "15잇다 IT-DA",
+      "16MOMO",
+      "17REMNANT"
+    ],
+    "detail": {
+      "viewport": [
+        768,
+        600
+      ],
+      "overflow": false,
+      ".list-layout": {
+        "x": 24,
+        "y": 122,
+        "w": 720,
+        "h": 1976.5,
+        "display": "grid",
+        "cols": "540px 156px"
+      },
+      ".project-grid": {
+        "x": 24,
+        "y": 202,
+        "w": 540,
+        "h": 1896.5,
+        "display": "grid",
+        "cols": "262px 262px"
+      },
+      ".project-index": {
+        "x": 588,
+        "y": 122,
+        "w": 156,
+        "h": 1976.5,
+        "display": "block",
+        "cols": "none"
+      },
+      ".project-card.is-active": {
+        "x": 14.349308967590332,
+        "y": -403.10504150390625,
+        "w": 409.35205078125,
+        "h": 333.74603271484375,
+        "display": "flex",
+        "cols": "none"
+      },
+      ".detail-hero": {
+        "x": 0,
+        "y": 0,
+        "w": 768,
+        "h": 683.765625,
+        "display": "grid",
+        "cols": "196.562px 491.438px"
+      },
+      ".detail-intro": {
+        "x": 252.5625,
+        "y": 88,
+        "w": 491.4375,
+        "h": 136.46875,
+        "display": "flex",
+        "cols": "none"
+      },
+      ".detail-media": {
+        "x": 252.5625,
+        "y": 256.46875,
+        "w": 491.4375,
+        "h": 331.296875,
+        "display": "block",
+        "cols": "none"
+      },
+      ".detail-metadata": {
+        "x": 24,
+        "y": 256.46875,
+        "w": 196.5625,
+        "h": 92.75,
+        "display": "grid",
+        "cols": "196.562px"
+      },
+      ".detail-team": {
+        "x": 0,
+        "y": 683.765625,
+        "w": 768,
+        "h": 1247.421875,
+        "display": "grid",
+        "cols": "720px"
+      }
+    }
+  },
+  {
+    "w": 768,
+    "h": 600,
+    "route": "syncopate",
+    "viewport": [
+      768,
+      600
+    ],
+    "overflow": false,
+    ".main-stage": {
+      "x": 24,
+      "y": 24,
+      "w": 720,
+      "h": 542,
+      "display": "grid",
+      "cols": "412.531px 259.453px"
+    },
+    ".drawing-frame": {
+      "x": 40,
+      "y": 40,
+      "w": 412.53125,
+      "h": 510,
+      "display": "block",
+      "cols": "none"
+    },
+    ".tools-panel": {
+      "x": 468.53125,
+      "y": 40,
+      "w": 259.453125,
+      "h": 510,
+      "display": "flex",
+      "cols": "none"
+    },
+    ".editor-message-box": {
+      "x": 468.53125,
+      "y": 358,
+      "w": 259.453125,
+      "h": 130,
+      "display": "flex",
+      "cols": "none"
+    },
+    ".share-btn": {
+      "x": 468.53125,
+      "y": 502,
+      "w": 259.453125,
+      "h": 48,
+      "display": "block",
+      "cols": "none"
+    },
+    ".syncopate-modal-close": {
+      "x": 360,
+      "y": 586,
+      "w": 48,
+      "h": 48,
+      "display": "flex",
+      "cols": "none"
+    }
+  }
+]

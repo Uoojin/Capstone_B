@@ -504,3 +504,27 @@
   user-select: none;
 }
 
+
+/* Laptop capture only: size the content itself; do not crop overflow. */
+@media (min-width: 1025px) and (max-width: 1599px) {
+  .gb-modal:has(> .gb-modal__dialog--capture) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    padding: 24px;
+  }
+  .gb-modal .gb-modal__dialog--capture {
+    width: min(100%, 680px, calc((100dvh - 340px) * 1.25 + 36px));
+    min-width: 0;
+    max-height: none;
+    flex: none;
+    overflow: visible;
+  }
+  .gb-modal__dialog--capture + .gb-modal__close { align-self: center; margin-top: 0; flex-shrink: 0; }
+  .gb-modal .gb-modal__dialog--capture + .gb-modal__close { width: 32px; height: 32px; font-size: 20px; }
+  .gb-modal__dialog--capture .gb-photo-actions { grid-template-columns: minmax(0, 1fr) 170px; }
+  .gb-modal__dialog--capture .gb-upload-button { min-width: 0; }
+  .gb-modal__dialog--capture .gb-camera__fallback { max-width: min(420px, 100%); }
+}

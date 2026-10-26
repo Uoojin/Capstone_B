@@ -1,0 +1,281 @@
+
+
+.content-page-flow.syncopate-page {
+  height: 100dvh;
+  margin-top: calc(-1 * var(--site-header-height));
+}
+
+.archive-viewport {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  user-select: none;
+  font-family: -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif;
+  cursor: default;
+}
+
+/* 드로잉 실행 버튼 */
+.archive-drawing-btn {
+  position: absolute;
+  left: 50%;
+  bottom: 36px;
+  transform: translateX(-50%);
+  background: #FD00A0;
+  border: none;
+  border-radius: 15px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #FFFFFF;
+  cursor: pointer;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 14px 16px;
+  outline: none;
+  white-space: nowrap;
+}
+
+.archive-drawing-btn:hover {
+  color: #FFFFFF;
+  opacity: 0.85;
+}
+
+/* 좌측 하단 텍스트 */
+.archive-bottom-guide {
+  position: absolute;
+  bottom: 36px;
+  left: 64px;
+  padding: 8px 12px;
+  border: 1px dashed #D1D1D1;
+  pointer-events: none;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.archive-bottom-guide p {
+  margin: 0;
+  font-size: 15px;
+  color: #c1c1c1;
+  line-height: 1.5;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.main-archive-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: grab;
+  touch-action: none;
+}
+
+.main-archive-canvas:active {
+  cursor: grabbing;
+}
+
+/* 모달  */
+.content-page-flow .message-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 104px 24px 24px;
+  background:#16141517;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+.polaroid-modal-card {
+  position: relative;
+  width: min(390px, 100%);
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 18px 18px 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  animation: popIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.94) translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* 내부 이미지 영역  */
+.polaroid-image-area {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+  border-radius: 0;
+}
+
+.polaroid-object-img {
+  width: 120px;
+  height: 120px;
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+  display: block;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* 하단 텍스트 영역 */
+.polaroid-text-area {
+  width: 100%;
+  margin-top: 18px;
+  padding: 0 6px;
+  box-sizing: border-box;
+}
+
+.polaroid-caption-text {
+  margin: 0;
+  font-size: 15px;
+  color: #111;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  text-align: left;
+  word-break: break-all;
+  font-weight: 400;
+}
+
+/* 싱크 횟수 및 날짜 영역 */
+.polaroid-footer-meta {
+  width: 100%;
+  margin-top: 16px;
+  padding: 0 6px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.polaroid-sync-info {
+  font-size: 15px;
+  font-weight: 400;
+  color: #959595;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  letter-spacing: 0;
+}
+
+.polaroid-sync-count {
+  font-size: 15px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  color: #000000;
+  margin-left: 0;
+}
+
+.polaroid-date-info {
+  font-size: 15px;
+  font-weight: 400;
+  color: #959595;
+  letter-spacing: 0;
+}
+
+.content-page-flow .syncopate-modal-close {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  border: 0;
+  border-radius: 50%;
+  background: #fff;
+  color: #b3b3b3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
+}
+
+.polaroid-modal-card > .syncopate-modal-close {
+  position: absolute;
+  top: calc(100% + 24px);
+  left: calc(50% - 24px);
+}
+
+.content-page-flow .message-modal-backdrop {
+  padding: 24px 24px 96px;
+  overflow-y: auto;
+}
+
+@media (max-height: 650px) {
+  .content-page-flow .message-modal-backdrop {
+    align-items: flex-start;
+  }
+
+  .polaroid-image-area {
+    max-height: 45dvh;
+  }
+}
+
+
+/* Help bubble is anchored above the existing guide without moving its border or text. */
+.archive-how-to-sync {
+  position: absolute;
+  bottom: calc(100% + 30px);
+  left: -1px;
+  width: min(240px, calc(100vw - 84px));
+  padding: 16px;
+  border-radius: 15px;
+  background: #FD00A0;
+  color: #FFFFFF;
+  text-align: left;
+  pointer-events: none;
+}
+
+.archive-how-to-sync::after {
+  content: '';
+  position: absolute;
+  left: 22px;
+  bottom: -13px;
+  width: 20px;
+  height: 18px;
+  background: inherit;
+  clip-path: polygon(0 0, 100% 0, 62% 88%, 50% 100%, 38% 88%);
+}
+
+.archive-how-to-sync h2 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 18px;
+}
+
+.archive-how-to-sync ul {
+  margin: 0;
+  padding-left: 14px;
+  list-style: disc;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.archive-how-to-sync li::marker { font-size: 8px; }

@@ -1,0 +1,76 @@
+[
+  {
+    "w": 1920,
+    "route": "student",
+    "pixelIdentical": true
+  },
+  {
+    "w": 1920,
+    "route": "project",
+    "pixelIdentical": true
+  },
+  {
+    "w": 1800,
+    "route": "student",
+    "pixelIdentical": true
+  },
+  {
+    "w": 1800,
+    "route": "project",
+    "pixelIdentical": true
+  },
+  {
+    "w": 767,
+    "route": "student",
+    "pixelIdentical": true
+  },
+  {
+    "w": 767,
+    "route": "project",
+    "pixelIdentical": true
+  },
+  {
+    "w": 390,
+    "route": "student",
+    "pixelIdentical": true
+  },
+  {
+    "w": 390,
+    "route": "project",
+    "pixelIdentical": true
+  },
+  {
+    "w": 375,
+    "route": "student",
+    "pixelIdentical": true
+  },
+  {
+    "w": 375,
+    "route": "project",
+    "pixelIdentical": true
+  },
+  {
+    "w": 1280,
+    "searchMatches": [
+      "권나영"
+    ],
+    "plannerFilter": true,
+    "plannerCount": 11
+  },
+  {
+    "w": 768,
+    "searchMatches": [
+      "권나영"
+    ],
+    "plannerFilter": true,
+    "plannerCount": 11
+  },
+  {
+    "w": 390,
+    "searchMatches": [
+      "권나영"
+    ],
+    "plannerFilter": true,
+    "plannerCount": 11
+  }
+]

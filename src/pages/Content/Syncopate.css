@@ -23,7 +23,7 @@
   transform: translateX(-50%);
   background: #FD00A0;
   border: none;
-  border-radius: 9px;
+  border-radius: 15px;
   font-size: 16px;
   font-weight: 500;
   color: #FFFFFF;
@@ -242,7 +242,7 @@
   left: -1px;
   width: min(240px, calc(100vw - 84px));
   padding: 16px;
-  border-radius: 23px;
+  border-radius: 15px;
   background: #FD00A0;
   color: #FFFFFF;
   text-align: left;
@@ -279,3 +279,24 @@
 }
 
 .archive-how-to-sync li::marker { font-size: 8px; }
+
+/* Laptop only: preserve PC >=1600, tablet <=1024, mobile and HOME. */
+@media (min-width: 1025px) and (max-width: 1599px) {
+  .syncopate-page .archive-bottom-guide { left: 3.125vw; bottom: 24px; padding: 6px 9px; max-width: 32vw; }
+  .syncopate-page .archive-bottom-guide p { font-size: 11px; line-height: 1.55; }
+  .syncopate-page .archive-how-to-sync { width: clamp(184px, 13vw, 210px); padding: 12px; bottom: calc(100% + 22px); }
+  .syncopate-page .archive-how-to-sync h2 { font-size: 12px; line-height: 16px; margin-bottom: 6px; }
+  .syncopate-page .archive-how-to-sync ul { font-size: 10px; line-height: 16px; padding-left: 12px; }
+  .syncopate-page .archive-drawing-btn { bottom: 24px; font-size: 12px; border-radius: 11px; padding: 10px 13px; }
+  .syncopate-page .message-modal-backdrop { align-items: center; padding-bottom: 80px; }
+  .syncopate-page .polaroid-image-area { max-height: none; }
+  .syncopate-page .polaroid-modal-card { width: min(290px, 20vw, calc((100svh - 220px) * .66)); padding: 18px 18px 20px; }
+  .syncopate-page .polaroid-caption-text { font-size: 15px; line-height: 1.8; }
+  .syncopate-page .polaroid-sync-info,
+  .syncopate-page .polaroid-sync-count,
+  .syncopate-page .polaroid-date-info { font-size: 15px; }
+  .syncopate-page .syncopate-modal-close { width: 32px; height: 32px; flex-basis: 32px; }
+  .syncopate-page .syncopate-modal-close > svg { width: 16px; height: 16px; }
+  .syncopate-page .polaroid-modal-card > .syncopate-modal-close { left: calc(50% - 16px); }
+
+}

@@ -206,13 +206,16 @@ export default function DrawingEditor({ onShareComplete, onCancel }) {
       setIsUploading(false);
     }
   };
-
+  const handleBackdropClick = (event) => {
+    if (event.target === event.currentTarget && !isUploading) onCancel?.();
+  };
 
   return (
     <div
       className="editor-screen"
+      onClick={handleBackdropClick}
     >
-      <div className="content-container">
+      <div className="content-container" onClick={handleBackdropClick}>
         {/* 상단 영역 */}
         <div className="title-heading">
         </div>

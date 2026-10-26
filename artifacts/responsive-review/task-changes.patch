@@ -1,0 +1,354 @@
+--- before/src/pages/Project/Project.css
++++ after/src/pages/Project/Project.css
+@@ -1105,7 +1105,7 @@
+   }
+ }
+ 
+-/* Keep the original desktop layout from 1440px; adapt only smaller desktops. */
++/* Preserve the existing detail scroller and navigation clearance, including TEAM. */
+ @media (min-width: 901px) and (max-width: 1439px) {
+   .detail-view {
+     --detail-nav-space: calc(68px + max(3.3svh, env(safe-area-inset-bottom)));
+@@ -1113,60 +1113,6 @@
+ 
+   .detail-view .detail-scroller {
+     height: calc(100% - var(--detail-nav-space));
+-  }
+-
+-  .detail-hero {
+-    display: grid;
+-    grid-template-columns: minmax(0, 1.15fr) minmax(0, 2.55fr) minmax(190px, 1fr);
+-    grid-template-areas: 'identity intro .' '. media metadata';
+-    grid-template-rows: auto auto;
+-    column-gap: clamp(20px, 3.5vw, 50px);
+-    row-gap: clamp(24px, 2.15vw, 31px);
+-    min-height: calc(100svh - var(--detail-nav-space));
+-    padding: clamp(80px, 13.9svh, calc(150 * var(--figma-unit))) 3.125vw 44px;
+-  }
+-
+-  .detail-hero .detail-identity {
+-    position: static;
+-    width: 100%;
+-    min-width: 0;
+-  }
+-
+-  .detail-hero .detail-intro {
+-    display: flex;
+-    flex-direction: column;
+-    gap: clamp(24px, 2.5vw, 36px);
+-    padding-top: calc(19 * var(--figma-unit));
+-  }
+-
+-  .detail-hero .detail-slogan,
+-  .detail-hero .detail-desc {
+-    position: static;
+-    width: 100%;
+-  }
+-
+-  .detail-hero .detail-desc {
+-    max-width: calc(587 * var(--figma-unit));
+-  }
+-
+-  .detail-hero>.detail-media {
+-    position: static;
+-    width: 100%;
+-    height: auto;
+-    aspect-ratio: 890 / 600;
+-  }
+-
+-  .detail-hero>.detail-media img {
+-    object-fit: contain;
+-  }
+-
+-  .detail-hero .detail-metadata {
+-    position: static;
+-    width: 100%;
+-  }
+-
+-  .detail-hero .detail-metadata>div {
+-    gap: clamp(10px, 1.2vw, 18px);
+   }
+ }
+ 
+@@ -1258,3 +1204,140 @@
+     grid-template-columns: minmax(0, 1fr);
+   }
+ }
++
++/* Responsive layout: desktop >=1600 and mobile <=767 retain their original cascade.
++   These bounded overrides intentionally follow the legacy 900/1100/1799 rules. */
++@media (min-width: 768px) and (max-width: 1599px) {
++  .project-page .project-overview {
++    min-height: 540px;
++  }
++
++  .project-page .project-card {
++    width: min(35vw, 600px, max(320px, calc((100svh - 290px) / .75)));
++  }
++
++  .project-page .card-label {
++    top: calc(100% + clamp(28px, 4svh, 52px));
++  }
++
++  .project-page .project-list {
++    padding: 48px 3.125vw 64px;
++  }
++
++  .project-page .list-layout {
++    grid-template-columns: minmax(0, 1fr) minmax(170px, 15.5vw);
++    gap: 4vw;
++  }
++
++  .project-page .project-grid {
++    max-width: none;
++    grid-template-columns: repeat(3, minmax(0, 1fr));
++    gap: clamp(16px, 1.4vw, 22px);
++  }
++
++  .project-page .filter-bar {
++    grid-template-columns: minmax(0, 1fr) auto;
++    margin-top: 0;
++    min-height: 64px;
++  }
++
++  .project-page .filter-controls { grid-column: 1; }
++  .project-page .selected-area { grid-column: 1; grid-row: 2; }
++  .project-page .clear-btn { grid-column: 2; grid-row: 1; }
++  .project-page .project-index { padding-top: 80px; }
++  .project-page .project-index button {
++    grid-template-columns: 44px minmax(0, 1fr);
++    gap: 8px;
++    line-height: 1.4;
++    padding-block: 5px;
++  }
++
++  .detail-hero {
++    --figma-unit: calc(100vw / 1920);
++    display: grid;
++    grid-template-columns: minmax(0, 20fr) minmax(0, 52fr) minmax(170px, 16fr);
++    grid-template-areas: 'identity intro .' '. media metadata';
++    grid-template-rows: auto auto;
++    column-gap: 4vw;
++    row-gap: clamp(32px, 4vw, 64px);
++    min-height: 100svh;
++    padding: clamp(88px, 12svh, 150px) 3.125vw 96px;
++    font-family: 'Pretendard', var(--font-family);
++  }
++
++  .detail-hero .detail-identity {
++    position: static;
++    width: 100%;
++    min-width: 0;
++    gap: 12px;
++  }
++
++  .detail-hero .detail-title { font-size: clamp(32px, 3.4vw, 54px); }
++  .detail-hero .site-link {
++    flex-basis: 32px;
++    width: 32px;
++    height: 32px;
++    margin-top: 8px;
++  }
++
++  .detail-hero .detail-intro {
++    display: flex;
++    flex-direction: column;
++    gap: clamp(28px, 3vw, 48px);
++    padding-top: 8px;
++  }
++
++  .detail-hero .detail-slogan,
++  .detail-hero .detail-desc {
++    position: static;
++    width: 100%;
++    max-width: none;
++    margin: 0;
++  }
++
++  .detail-hero .detail-slogan { font-size: clamp(24px, 1.9vw, 30px); }
++  .detail-hero .detail-desc { font-size: 15px; line-height: 1.65; text-align: left; }
++  .detail-hero > .detail-media {
++    position: static;
++    width: 100%;
++    height: auto;
++    aspect-ratio: 890 / 600;
++  }
++
++  .detail-hero .detail-metadata {
++    position: static;
++    width: 100%;
++    display: grid;
++    gap: 8px;
++    font-size: 12px;
++    line-height: 1.6;
++  }
++
++  .detail-hero .detail-metadata > div {
++    display: grid;
++    grid-template-columns: 52px minmax(0, 1fr);
++    align-items: start;
++    gap: 12px;
++  }
++
++  .detail-hero .detail-metadata dt { width: auto; }
++}
++
++@media (min-width: 768px) and (max-width: 1024px) {
++  .project-page .project-card { width: min(48vw, max(320px, calc((100svh - 290px) / .75))); }
++  .project-page .list-layout {
++    grid-template-columns: minmax(0, 1fr) 156px;
++    gap: 24px;
++  }
++  .project-page .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
++  .project-page .filter-trigger { min-width: 96px; gap: 12px; padding-inline: 12px; }
++  .project-page .project-index button { grid-template-columns: 28px minmax(0, 1fr); font-size: 13px; }
++  .detail-hero {
++    grid-template-columns: minmax(0, 1fr) minmax(0, 2.5fr);
++    grid-template-areas: 'identity intro' 'metadata media';
++    gap: 32px;
++  }
++  .detail-hero .detail-title { font-size: 32px; }
++  .detail-hero .detail-slogan { font-size: 24px; }
++  .detail-hero .detail-desc { font-size: 14px; }
++}
+--- before/src/pages/Project/Project.jsx
++++ after/src/pages/Project/Project.jsx
+@@ -149,6 +149,11 @@
+     state.cardWidth = window.matchMedia('(max-width: 900px)').matches
+       ? Math.min(stageWidth * 0.62, 380)
+       : clamp(stageWidth * 0.48, 380, 600)
++    // Use the rendered responsive card size for orbital spacing in the middle range.
++    // The original desktop/mobile geometry and all motion calculations stay intact.
++    if (stageWidth >= 768 && stageWidth < 1600 && cardRefs.current[0]) {
++      state.cardWidth = parseFloat(getComputedStyle(cardRefs.current[0]).width)
++    }
+     state.cardHeight = state.cardWidth * 0.75
+ 
+     if (displayProjects.length === 0) {
+--- before/src/pages/Student/Student.css
++++ after/src/pages/Student/Student.css
+@@ -392,3 +392,38 @@
+     overflow-wrap: anywhere;
+   }
+ }
++
++/* Only laptop/tablet: keep existing desktop and mobile cascades unchanged. */
++@media (min-width: 768px) and (max-width: 1599px) {
++  .student-page {
++    flex-direction: row;
++    gap: 4vw;
++    padding: 48px 3.125vw;
++  }
++  .student-page .student-sidebar {
++    width: clamp(170px, 14.5vw, 220px);
++    flex: 0 0 clamp(170px, 14.5vw, 220px);
++  }
++  .student-page .student-search-box { width: 100%; }
++  .student-page .student-grid {
++    grid-template-columns: repeat(4, minmax(0, 1fr));
++    gap: 40px 16px;
++  }
++  .student-page .card-back { padding: 16px 12px; gap: 12px; overflow-y: auto; }
++  .student-page .back-interview { font-size: 14px; line-height: 1.55; overflow-wrap: anywhere; }
++  .student-page .back-meta-list { gap: 8px; }
++  .student-page .back-meta-row { flex-wrap: wrap; gap: 2px 6px; font-size: 12px; }
++  .student-page .back-label { width: auto; flex-shrink: 0; }
++  .student-page .back-value,
++  .student-page .back-link { min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
++  .student-page .student-meta { white-space: normal; overflow-wrap: anywhere; font-size: 13px; }
++}
++
++@media (min-width: 768px) and (max-width: 1024px) {
++  .student-page { flex-direction: column-reverse; gap: 32px; padding: 32px 3.125vw; }
++  .student-page .student-sidebar { width: 100%; flex-basis: auto; }
++  .student-page .student-floating-menu { gap: 20px; }
++  .student-page .role-group { flex-direction: row; flex-wrap: wrap; gap: 20px; }
++  .student-page .student-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
++  .student-page .student-search-box { max-width: 320px; }
++}
+--- before/src/pages/Content/DrawingEditor.css
++++ after/src/pages/Content/DrawingEditor.css
+@@ -1771,3 +1771,46 @@
+     margin-top: 20px;
+   }
+ }
++
++/* SYNCOPATE modal sizing only; the canvas keeps its native drawing coordinates. */
++@media (min-width: 768px) and (max-width: 1599px) {
++  .content-drawing-overlay .editor-screen .content-container { padding: 24px; gap: 20px; }
++  .content-drawing-overlay .editor-screen .main-stage {
++    width: min(100%, 1050px, 82vw);
++    grid-template-columns: minmax(0, 1.59fr) minmax(0, 1fr);
++    padding: 16px;
++    gap: 18px;
++  }
++  .content-drawing-overlay .editor-screen .drawing-frame {
++    height: max(460px, min(520px, calc(100dvh - 240px)));
++    min-height: 0;
++  }
++  .content-drawing-overlay .editor-screen .canvas-layer {
++    width: min(100%, calc((100dvh - 210px) * 700 / 630));
++    max-width: 100%;
++  }
++  .content-drawing-overlay .editor-screen .tool-label,
++  .content-drawing-overlay .editor-screen .field-title,
++  .content-drawing-overlay .editor-screen .editor-message-title { font-size: 13px; margin-bottom: 10px; }
++  .content-drawing-overlay .editor-screen .tool-icons-row { gap: 12px; margin-bottom: 12px; }
++  .content-drawing-overlay .editor-screen .settings-block { gap: 12px; }
++  .content-drawing-overlay .editor-screen .symbol-options,
++  .content-drawing-overlay .editor-screen .palette-flex { gap: 8px; }
++  .content-drawing-overlay .editor-screen .symbol-option,
++  .content-drawing-overlay .editor-screen .palette-dot {
++    width: 26px; height: 26px; flex-basis: 26px;
++  }
++  .content-drawing-overlay .editor-screen .editor-message-box {
++    height: 130px; min-height: 130px; padding: 14px;
++  }
++  .content-drawing-overlay .editor-screen .editor-message-input { font-size: 13px; }
++  .content-drawing-overlay .editor-screen .editor-message-count { font-size: 12px; }
++  .content-drawing-overlay .editor-screen .bottom-action-wrap { margin-top: 14px; }
++  .content-drawing-overlay .editor-screen .bottom-action-wrap .share-btn { height: 48px; font-size: 16px; }
++}
++
++@media (min-width: 768px) and (max-width: 1024px) {
++  .content-drawing-overlay .editor-screen .main-stage { width: min(950px, 100%); gap: 16px; }
++  .content-drawing-overlay .editor-screen .drawing-frame { height: 510px; }
++  .content-drawing-overlay .editor-screen .canvas-layer { width: 100%; }
++}
+--- before/src/components/Header/Header.css
++++ after/src/components/Header/Header.css
+@@ -363,3 +363,34 @@
+     transition: none;
+   }
+ }
++
++/* Compact navigation only between the preserved desktop/mobile ranges. */
++@media (min-width: 768px) and (max-width: 1599px) {
++  .site-header { --header-pill-height: 36px; padding: 24px 3.125vw 0; gap: 16px; }
++  .site-header .site-logo { min-width: 124px; height: 36px; padding-inline: 18px; font-size: 14px; }
++  .site-header-menu { justify-content: flex-end; overflow: hidden; }
++  .site-header-menu-items { width: 248px; }
++  .is-menu-open .site-header-menu-items { width: 738px; }
++  .site-header-pill { min-width: 104px; height: 36px; padding-inline: 16px; font-size: 13px; }
++  .is-menu-open .site-header-pill.is-extra,
++  .is-menu-open .site-header-pill.is-extra:nth-child(4),
++  .is-menu-open .site-header-pill.is-extra:nth-child(5),
++  .is-menu-open .site-header-pill.is-extra:nth-child(6) {
++    min-width: 120px; width: 120px; flex-basis: 120px; padding-inline: 12px;
++  }
++  .site-menu-toggle { min-width: 36px; width: 36px; flex-basis: 36px; padding: 0; font-size: 26px; }
++}
++
++@media (min-width: 768px) and (max-width: 1024px) {
++  .site-header { gap: 12px; }
++  .site-header .site-logo { min-width: 110px; padding-inline: 12px; font-size: 12px; }
++  .site-header-pill { min-width: 82px; padding-inline: 10px; font-size: 11px; }
++  .site-header-menu-items { width: 204px; }
++  .is-menu-open .site-header-menu-items { width: 586px; }
++  .is-menu-open .site-header-pill.is-extra,
++  .is-menu-open .site-header-pill.is-extra:nth-child(4),
++  .is-menu-open .site-header-pill.is-extra:nth-child(5),
++  .is-menu-open .site-header-pill.is-extra:nth-child(6) {
++    min-width: 94px; width: 94px; flex-basis: 94px; padding-inline: 6px;
++  }
++}

@@ -1,0 +1,238 @@
+--- before/src/components/Header/Header.css
++++ after/src/components/Header/Header.css
+@@ -394,3 +394,12 @@
+     min-width: 94px; width: 94px; flex-basis: 94px; padding-inline: 6px;
+   }
+ }
++
++/* Laptop only: preserve PC >=1600, tablet <=1024, mobile and HOME. */
++@media (min-width: 1025px) and (max-width: 1599px) {
++  .site-header--subpage { --header-pill-height: clamp(32px, 4.5svh, 36px); padding-top: 22px; }
++  .site-header--subpage .site-logo,
++  .site-header--subpage .site-header-pill { height: var(--header-pill-height); }
++  .site-header--subpage .site-header-pill { font-size: 12px; }
++  .site-header--subpage .site-logo { font-size: 13px; }
++}
+--- before/src/components/Header/Header.jsx
++++ after/src/components/Header/Header.jsx
+@@ -25,7 +25,7 @@
+ 
+   return (
+     <header
+-      className={`site-header ${isOpen ? 'is-menu-open' : ''}`}
++      className={`site-header ${pathname !== '/' ? 'site-header--subpage' : ''} ${isOpen ? 'is-menu-open' : ''}`}
+       onKeyDown={(event) => {
+         if (event.key === 'Escape') setIsOpen(false)
+       }}
+--- before/src/pages/Behind/Behind.css
++++ after/src/pages/Behind/Behind.css
+@@ -193,3 +193,17 @@
+     text-align: center;
+   }
+ }
++
++/* Laptop only: preserve PC >=1600, tablet <=1024, mobile and HOME. */
++@media (min-width: 1025px) and (max-width: 1599px) {
++  .credit-hero { padding: 40px; gap: 18px; }
++  .credit-wordmark strong { font-size: clamp(54px, 4.6vw, 74px); }
++  .credit-hero p { font-size: 15px; }
++  .credit-section { padding-top: clamp(100px, 16svh, 160px); }
++  .credit-section h2 { font-size: 25px; margin-bottom: 44px; }
++  .credit-list { width: min(440px, 80%); }
++  .credit-row { grid-template-columns: 90px 1fr; font-size: 12px; margin-bottom: 24px; }
++  .credit-members { gap: 12px 10px; }
++  .credit-logo { padding-top: 45svh; padding-bottom: 100px; }
++  .credit-logo img { width: 164px; }
++}
+--- before/src/pages/Content/DrawingEditor.css
++++ after/src/pages/Content/DrawingEditor.css
+@@ -1814,3 +1814,30 @@
+   .content-drawing-overlay .editor-screen .drawing-frame { height: 510px; }
+   .content-drawing-overlay .editor-screen .canvas-layer { width: 100%; }
+ }
++
++/* Laptop only: preserve PC >=1600, tablet <=1024, mobile and HOME. */
++@media (min-width: 1025px) and (max-width: 1599px) {
++  .content-drawing-overlay .editor-screen .main-stage {
++    --laptop-frame-height: max(400px, min(480px, calc(100dvh - 240px)));
++    width: min(1050px, 66vw);
++    gap: 16px;
++  }
++  .content-drawing-overlay .editor-screen .drawing-frame { height: var(--laptop-frame-height); }
++  .content-drawing-overlay .editor-screen .canvas-layer { width: min(100%, calc((var(--laptop-frame-height) - 64px) * 700 / 630)); }
++  .content-drawing-overlay .editor-screen .tool-label,
++  .content-drawing-overlay .editor-screen .field-title,
++  .content-drawing-overlay .editor-screen .editor-message-title { font-size: 12px; line-height: 18px; margin-bottom: 8px; }
++  .content-drawing-overlay .editor-screen .settings-block { gap: 10px; }
++  .content-drawing-overlay .editor-screen .tool-icons-row { margin-bottom: 10px; }
++  .content-drawing-overlay .editor-screen .circle-icon-btn { width: 28px; height: 28px; }
++  .content-drawing-overlay .editor-screen .symbol-option,
++  .content-drawing-overlay .editor-screen .palette-dot { width: 24px; height: 24px; flex-basis: 24px; }
++  .content-drawing-overlay .editor-screen .editor-message-box { min-height: 112px; height: 112px; padding: 12px; }
++  .content-drawing-overlay .editor-screen .editor-message-input { font-size: 12px; }
++  .content-drawing-overlay .editor-screen .bottom-action-wrap { margin-top: 12px; }
++  .content-drawing-overlay .editor-screen .bottom-action-wrap .share-btn { height: 42px; font-size: 14px; }
++  .content-drawing-overlay .editor-screen .canvas-bottom-hint { font-size: 10px; }
++  .content-drawing-overlay .editor-screen .undo-btn svg { width: 16px; height: 16px; }
++  .content-drawing-overlay .syncopate-modal-close { width: 38px; height: 38px; flex-basis: 38px; }
++
++}
+--- before/src/pages/Content/Syncopate.css
++++ after/src/pages/Content/Syncopate.css
+@@ -279,3 +279,18 @@
+ }
+ 
+ .archive-how-to-sync li::marker { font-size: 8px; }
++
++/* Laptop only: preserve PC >=1600, tablet <=1024, mobile and HOME. */
++@media (min-width: 1025px) and (max-width: 1599px) {
++  .syncopate-page .archive-bottom-guide { left: 3.125vw; bottom: 24px; padding: 6px 9px; max-width: 32vw; }
++  .syncopate-page .archive-bottom-guide p { font-size: 11px; line-height: 1.55; }
++  .syncopate-page .archive-how-to-sync { width: clamp(184px, 13vw, 210px); padding: 12px; bottom: calc(100% + 22px); }
++  .syncopate-page .archive-how-to-sync h2 { font-size: 12px; line-height: 16px; margin-bottom: 6px; }
++  .syncopate-page .archive-how-to-sync ul { font-size: 10px; line-height: 16px; padding-left: 12px; }
++  .syncopate-page .archive-drawing-btn { bottom: 24px; font-size: 12px; border-radius: 11px; padding: 10px 13px; }
++  .syncopate-page .polaroid-modal-card { width: min(330px, calc(100svh - 170px)); padding: 14px; }
++  .syncopate-page .polaroid-caption-text { font-size: 12px; line-height: 1.65; }
++  .syncopate-page .polaroid-sync-info,
++  .syncopate-page .polaroid-sync-count,
++  .syncopate-page .polaroid-date-info { font-size: 11px; }
++}
+--- before/src/pages/Curriculum/Curriculum.css
++++ after/src/pages/Curriculum/Curriculum.css
+@@ -345,3 +345,15 @@
+   .curriculum-introduction { margin-top: 3svh; }
+   .curriculum-scroll-cue { padding-top: 3svh; }
+ }
++
++/* Laptop only: preserve PC >=1600, tablet <=1024, mobile and HOME. */
++@media (min-width: 1025px) and (max-width: 1599px) {
++  .curriculum-hero { padding-top: clamp(28px, 5svh, 64px); padding-bottom: 24px; }
++  .curriculum-symbols { margin-bottom: clamp(24px, 4svh, 52px); }
++  .curriculum-main-title { font-size: min(7.32vw, 12svh); }
++  .curriculum-introduction { margin-top: clamp(24px, 4svh, 52px); }
++  .curriculum-introduction h2 { font-size: 16px; }
++  .curriculum-introduction p { font-size: 13px; }
++  .curriculum-scroll-cue { padding-top: 4svh; }
++  .curriculum-pill { font-size: clamp(11px, 1.05vw, 16px); }
++}
+--- before/src/pages/Guestbook/Guestbook.css
++++ after/src/pages/Guestbook/Guestbook.css
+@@ -444,4 +444,25 @@
+     margin-top: 40px;
+     padding-inline: 0;
+   }
+-}+}
++/* Laptop only: preserve PC >=1600, tablet <=1024, mobile and HOME. */
++@media (min-width: 1025px) and (max-width: 1599px) {
++  .gb-hero { min-height: 380px; height: calc(100dvh - var(--site-header-height) - 64px); margin: 28px 3.125vw 0; }
++  .gb-hero__description { font-size: clamp(14px, 1.25vw, 19px); }
++  .gb-hero__actions { min-width: 300px; }
++  .gb-hero__actions .gb-button { min-height: 58px; padding: 9px; }
++  .gb-hero__button-title { font-size: 19px; }
++  .gb-hero__button-description { font-size: 11px; }
++  .gb-archive { margin-inline: 3.125vw; }
++  .gb-modal { padding: 24px; overflow-y: auto; }
++  .gb-modal__dialog { max-height: calc(100svh - 132px); overflow-y: auto; }
++  .gb-modal .gb-modal__dialog--message { width: min(440px, 100%); padding: 24px; font-size: 12px; }
++  .gb-modal .gb-button { min-height: 44px; font-size: 13px; }
++  .gb-modal .gb-message-form__textarea { height: 230px; }
++  .gb-modal .gb-message-form__textarea textarea { height: 168px; }
++
++  .gb-modal .gb-message-form__row label { min-height: 40px; padding-inline: 12px; }
++  .gb-modal .gb-message-form__textarea textarea { line-height: 20px; }
++  .gb-modal .gb-modal__close { width: 36px; height: 36px; font-size: 26px; }
++
++}
+--- before/src/pages/Project/Project.css
++++ after/src/pages/Project/Project.css
+@@ -1341,3 +1341,67 @@
+   .detail-hero .detail-slogan { font-size: 24px; }
+   .detail-hero .detail-desc { font-size: 14px; }
+ }
++
++/* Laptop only: preserve PC >=1600, tablet <=1024, mobile and HOME. */
++@media (min-width: 1025px) and (max-width: 1599px) {
++  .project-page .project-list {
++    /* The existing scroll animation lands at the section's top, behind the sticky header. */
++    padding-top: calc(var(--site-header-height) + clamp(24px, 3.5svh, 36px));
++  }
++  .project-page .filter-bar { min-height: 48px; margin-bottom: 16px; }
++  .project-page .filter-trigger,
++  .project-page .selected-chip { height: 30px; font-size: 12px; }
++  .project-page .filter-trigger { min-width: 108px; padding-inline: 14px; gap: 18px; }
++  .project-page .filter-menu { min-width: 108px; padding: 10px 14px; }
++  .project-page .filter-menu button { min-height: 28px; font-size: 12px; }
++  .project-page .clear-btn { height: 30px; line-height: 30px; font-size: 12px; }
++  .project-page .project-index { padding-top: 64px; }
++  .project-page .project-index button { font-size: 12px; min-height: 26px; padding-block: 4px; }
++  .project-page .team-label { font-size: 13px; margin-bottom: 10px; }
++  .project-page .project-title { font-size: 18px; }
++
++  .detail-view { --detail-nav-space: 72px; }
++  .detail-view .detail-scroller { height: calc(100% - var(--detail-nav-space)); }
++  .detail-hero {
++    grid-template-columns: minmax(0, 14.8fr) minmax(0, 46.4fr) minmax(0, 14.8fr);
++    column-gap: 9vw;
++    row-gap: clamp(24px, 3.5svh, 36px);
++    min-height: calc(100svh - var(--detail-nav-space));
++    padding: clamp(56px, 10svh, 110px) 3vw 24px;
++  }
++  .detail-hero .detail-identity { width: calc(100% + 8vw); gap: 16px; }
++  .detail-hero .detail-title { font-size: clamp(30px, 3.75vw, 60px); }
++  .detail-hero .detail-intro { gap: clamp(22px, 3.5svh, 36px); padding-top: 6px; }
++  .detail-hero .detail-slogan { font-size: clamp(20px, 1.875vw, 30px); line-height: 1.3; }
++  .detail-hero .detail-desc {
++    max-width: 31vw;
++    font-size: clamp(12px, .89vw, 14px);
++    line-height: 1.6;
++  }
++  .detail-hero > .detail-media {
++    width: min(100%, calc(max(220px, 100svh - 350px) * 890 / 600));
++    height: auto;
++    aspect-ratio: 890 / 600;
++    border-radius: 16px;
++  }
++  .detail-hero > .detail-media img { object-fit: contain; }
++  .detail-hero .detail-metadata { font-size: clamp(10px, .78vw, 12px); gap: 5px; }
++  .detail-hero .detail-metadata > div { grid-template-columns: 46px minmax(0, 1fr); gap: 8px; }
++  .detail-hero .site-link { flex-basis: 30px; width: 30px; height: 30px; margin-top: 8px; }
++
++  .detail-team {
++    min-height: calc(100svh - var(--detail-nav-space));
++    padding-block: 24px;
++  }
++  .detail-team-media { height: min(48.94vw, calc(100svh - 120px)); }
++  .detail-team-info { width: calc(100% - 2vw); }
++  .team-title { font-size: clamp(16px, 1.3vw, 21px); gap: 6px; }
++  .team-title > span { font-size: clamp(12px, 1vw, 16px); }
++  .detail-handwriting { margin-top: 4.8svh; }
++  .members { gap: clamp(12px, 2.2svh, 24px); }
++  .member-name { font-size: clamp(12px, .89vw, 14px); margin-bottom: 5px; }
++  .member-role { font-size: clamp(10px, .68vw, 11px); }
++  .detail-project-nav { bottom: 16px; }
++  .detail-project-nav button { font-size: 13px; gap: 10px; }
++  .close-detail { width: 38px; height: 38px; padding: 10px; top: 3vw; right: 3vw; }
++}
+--- before/src/pages/Student/Student.css
++++ after/src/pages/Student/Student.css
+@@ -427,3 +427,19 @@
+   .student-page .student-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+   .student-page .student-search-box { max-width: 320px; }
+ }
++
++/* Laptop only: preserve PC >=1600, tablet <=1024, mobile and HOME. */
++@media (min-width: 1025px) and (max-width: 1599px) {
++  .student-page { padding-top: clamp(30px, 5svh, 44px); }
++  .student-page .student-grid { gap: 36px 16px; }
++  .student-page .student-flipper { margin-bottom: 12px; }
++  .student-page .student-info { gap: 7px; }
++  .student-page .student-name { font-size: 16px; }
++  .student-page .student-meta { font-size: 12px; }
++  .student-page .back-interview { font-size: 12px; }
++  .student-page .back-meta-row { font-size: 11px; }
++  .student-page .role-btn { font-size: 13px; }
++  .student-page .role-group { gap: 17px; }
++  .student-page .student-floating-menu { gap: 26px; }
++  .student-page .student-search-input { font-size: 12px; }
++}

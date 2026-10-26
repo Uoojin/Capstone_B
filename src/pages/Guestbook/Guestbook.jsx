@@ -82,6 +82,7 @@ function GuestbookHero({ onPhotoBooth, onMessage }) {
           <span className="gb-hero__button-description">메시지만 남기기</span>
         </button>
       </div>
+      <span className="scroll-indicator" aria-hidden="true" />
     </section>
   )
 }

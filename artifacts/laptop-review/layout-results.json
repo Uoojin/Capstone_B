@@ -1,0 +1,5843 @@
+{
+  "results": [
+    {
+      "w": 1512,
+      "h": 850,
+      "route": "project",
+      "initial": {
+        "viewport": {
+          "width": 1512,
+          "height": 850,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1512,
+            850
+          ],
+          "outer": [
+            1512,
+            850
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1512,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".filter-bar": {
+          "x": 47.25,
+          "y": 989.75,
+          "w": 1122.671875,
+          "h": 48,
+          "bottom": 1037.75,
+          "cols": "1070.5px 44.1719px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".project-grid": {
+          "x": 47.25,
+          "y": 1073.75,
+          "w": 1122.671875,
+          "h": 1726.34375,
+          "bottom": 2800.09375,
+          "cols": "360.109px 360.125px 360.109px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".project-index": {
+          "x": 1230.390625,
+          "y": 959.75,
+          "w": 234.359375,
+          "h": 1790.34375,
+          "bottom": 2750.09375,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        }
+      },
+      "list": {
+        "viewport": {
+          "width": 1512,
+          "height": 850,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1512,
+            850
+          ],
+          "outer": [
+            1512,
+            850
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1512,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".filter-bar": {
+          "x": 47.25,
+          "y": 109.75,
+          "w": 1122.671875,
+          "h": 48,
+          "bottom": 157.75,
+          "cols": "1070.5px 44.1719px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".project-grid": {
+          "x": 47.25,
+          "y": 173.75677490234375,
+          "w": 1122.671875,
+          "h": 1726.34375,
+          "bottom": 1900.1005249023438,
+          "cols": "360.109px 360.125px 360.109px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".project-index": {
+          "x": 1230.390625,
+          "y": 109.75,
+          "w": 234.359375,
+          "h": 1790.34375,
+          "bottom": 1900.09375,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        }
+      },
+      "filterClear": true,
+      "projects": [
+        {
+          "name": "잘가계",
+          "overlap": false,
+          "imageBottom": 724.859375,
+          "scrollerHeight": 778,
+          "scrollHeight": 1556,
+          "reachable": true
+        },
+        {
+          "name": "LET'S SYNC!",
+          "overlap": false,
+          "imageBottom": 746.375,
+          "scrollerHeight": 778,
+          "scrollHeight": 1556,
+          "reachable": true
+        },
+        {
+          "name": "SEESAW",
+          "overlap": false,
+          "imageBottom": 724.859375,
+          "scrollerHeight": 778,
+          "scrollHeight": 1556,
+          "reachable": true
+        },
+        {
+          "name": "아키 (aquí)",
+          "overlap": false,
+          "imageBottom": 724.859375,
+          "scrollerHeight": 778,
+          "scrollHeight": 1556,
+          "reachable": true
+        },
+        {
+          "name": "말모이",
+          "overlap": false,
+          "imageBottom": 724.859375,
+          "scrollerHeight": 778,
+          "scrollHeight": 1556,
+          "reachable": true
+        },
+        {
+          "name": "FEELD",
+          "overlap": false,
+          "imageBottom": 746.375,
+          "scrollerHeight": 778,
+          "scrollHeight": 1556,
+          "reachable": true
+        },
+        {
+          "name": "착! (Chak!)",
+          "overlap": false,
+          "imageBottom": 724.859375,
+          "scrollerHeight": 778,
+          "scrollHeight": 1556,
+          "reachable": true
+        },
+        {
+          "name": "emora",
+          "overlap": false,
+          "imageBottom": 724.859375,
+          "scrollerHeight": 778,
+          "scrollHeight": 1556,
+          "reachable": true
+        },
+        {
+          "name": "PLEV",
+          "overlap": false,
+          "imageBottom": 767.890625,
+          "scrollerHeight": 778,
+          "scrollHeight": 1570,
+          "reachable": true
+        },
+        {
+          "name": "POP-ING",
+          "overlap": false,
+          "imageBottom": 746.375,
+          "scrollerHeight": 778,
+          "scrollHeight": 1556,
+          "reachable": true
+        },
+        {
+          "name": "HAELON",
+          "overlap": false,
+          "imageBottom": 724.859375,
+          "scrollerHeight": 778,
+          "scrollHeight": 1556,
+          "reachable": true
+        },
+        {
+          "name": "SNOOZE",
+          "overlap": false,
+          "imageBottom": 724.859375,
+          "scrollerHeight": 778,
+          "scrollHeight": 1556,
+          "reachable": true
+        },
+        {
+          "name": "공명체",
+          "overlap": false,
+          "imageBottom": 746.375,
+          "scrollerHeight": 778,
+          "scrollHeight": 1556,
+          "reachable": true
+        },
+        {
+          "name": "PARALLAX",
+          "overlap": false,
+          "imageBottom": 724.859375,
+          "scrollerHeight": 778,
+          "scrollHeight": 1556,
+          "reachable": true
+        },
+        {
+          "name": "인생정거장",
+          "overlap": false,
+          "imageBottom": 746.375,
+          "scrollerHeight": 778,
+          "scrollHeight": 1556,
+          "reachable": true
+        },
+        {
+          "name": "COMPASS",
+          "overlap": false,
+          "imageBottom": 724.859375,
+          "scrollerHeight": 778,
+          "scrollHeight": 1556,
+          "reachable": true
+        },
+        {
+          "name": "오름 oreum",
+          "overlap": false,
+          "imageBottom": 724.859375,
+          "scrollerHeight": 778,
+          "scrollHeight": 1556,
+          "reachable": true
+        }
+      ],
+      "team": {
+        "viewport": {
+          "width": 1512,
+          "height": 850,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1512,
+            850
+          ],
+          "outer": [
+            1512,
+            850
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": -850,
+          "w": 1512,
+          "h": 80,
+          "bottom": -770,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".filter-bar": {
+          "x": 47.25,
+          "y": 109.75,
+          "w": 1122.671875,
+          "h": 48,
+          "bottom": 157.75,
+          "cols": "1070.5px 44.1719px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".project-grid": {
+          "x": 47.25,
+          "y": 173.75,
+          "w": 1122.671875,
+          "h": 1726.34375,
+          "bottom": 1900.09375,
+          "cols": "360.109px 360.125px 360.109px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".project-index": {
+          "x": 1230.390625,
+          "y": 109.75,
+          "w": 234.359375,
+          "h": 1790.34375,
+          "bottom": 1900.09375,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".detail-hero": {
+          "x": 0,
+          "y": -778,
+          "w": 1512,
+          "h": 778,
+          "bottom": 0,
+          "cols": "223.766px 701.578px 223.781px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".detail-hero>.detail-media": {
+          "x": 405.203125,
+          "y": -526.109375,
+          "w": 701.578125,
+          "h": 472.96875,
+          "bottom": -53.140625,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".detail-intro": {
+          "x": 405.203125,
+          "y": -693,
+          "w": 701.578125,
+          "h": 137.140625,
+          "bottom": -555.859375,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".detail-team": {
+          "x": 0,
+          "y": 0,
+          "w": 1512,
+          "h": 778,
+          "bottom": 778,
+          "cols": "223.766px 701.578px 223.781px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".detail-team-media": {
+          "x": 405.203125,
+          "y": 24,
+          "w": 701.578125,
+          "h": 730,
+          "bottom": 754,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".members": {
+          "x": 1242.859375,
+          "y": 389,
+          "w": 223.78125,
+          "h": 0,
+          "bottom": 389,
+          "cols": "223.781px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".detail-project-nav": {
+          "x": 45.359375,
+          "y": 790,
+          "w": 1421.28125,
+          "h": 44,
+          "bottom": 834,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        }
+      }
+    },
+    {
+      "w": 1512,
+      "h": 850,
+      "route": "student",
+      "initial": {
+        "viewport": {
+          "width": 1512,
+          "height": 850,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1512,
+            850
+          ],
+          "outer": [
+            1512,
+            850
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1512,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".student-grid": {
+          "x": 47.25,
+          "y": 122.5,
+          "w": 1137.796875,
+          "h": 12450.296875,
+          "bottom": 12572.796875,
+          "cols": "272.438px 272.453px 272.453px 272.453px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".student-sidebar": {
+          "x": 1245.515625,
+          "y": 122.5,
+          "w": 219.234375,
+          "h": 12450.296875,
+          "bottom": 12572.796875,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        }
+      },
+      "flipped": 1
+    },
+    {
+      "w": 1512,
+      "h": 850,
+      "route": "syncopate",
+      "initial": {
+        "viewport": {
+          "width": 1512,
+          "height": 850,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1512,
+            850
+          ],
+          "outer": [
+            1512,
+            850
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1512,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".archive-bottom-guide": {
+          "x": 47.25,
+          "y": 773.90625,
+          "w": 298.4375,
+          "h": 52.09375,
+          "bottom": 826,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".archive-how-to-sync": {
+          "x": 47.25,
+          "y": 658.90625,
+          "w": 189,
+          "h": 94,
+          "bottom": 752.90625,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".archive-drawing-btn": {
+          "x": 699.875,
+          "y": 791,
+          "w": 112.25,
+          "h": 35,
+          "bottom": 826,
+          "cols": "none",
+          "font": "12px",
+          "display": "flex"
+        }
+      },
+      "modal": {
+        "viewport": {
+          "width": 1512,
+          "height": 850,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1512,
+            850
+          ],
+          "outer": [
+            1512,
+            850
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1512,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".archive-bottom-guide": {
+          "x": 47.25,
+          "y": 773.90625,
+          "w": 298.4375,
+          "h": 52.09375,
+          "bottom": 826,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".archive-how-to-sync": {
+          "x": 47.25,
+          "y": 658.90625,
+          "w": 189,
+          "h": 94,
+          "bottom": 752.90625,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".archive-drawing-btn": {
+          "x": 699.875,
+          "y": 791,
+          "w": 112.25,
+          "h": 35,
+          "bottom": 826,
+          "cols": "none",
+          "font": "12px",
+          "display": "flex"
+        },
+        ".main-stage": {
+          "x": 257.046875,
+          "y": 135,
+          "w": 997.90625,
+          "h": 512,
+          "bottom": 647,
+          "cols": "583.141px 366.766px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".drawing-frame": {
+          "x": 273.046875,
+          "y": 151,
+          "w": 583.140625,
+          "h": 480,
+          "bottom": 631,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".tools-panel": {
+          "x": 872.1875,
+          "y": 151,
+          "w": 366.765625,
+          "h": 480,
+          "bottom": 631,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".share-btn": {
+          "x": 872.1875,
+          "y": 589,
+          "w": 366.765625,
+          "h": 42,
+          "bottom": 631,
+          "cols": "none",
+          "font": "14px",
+          "display": "block"
+        },
+        ".syncopate-modal-close": {
+          "x": 732,
+          "y": 667,
+          "w": 48,
+          "h": 48,
+          "bottom": 715,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        }
+      },
+      "modalScrolled": {
+        "viewport": {
+          "width": 1512,
+          "height": 850,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1512,
+            850
+          ],
+          "outer": [
+            1512,
+            850
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1512,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".archive-bottom-guide": {
+          "x": 47.25,
+          "y": 773.90625,
+          "w": 298.4375,
+          "h": 52.09375,
+          "bottom": 826,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".archive-how-to-sync": {
+          "x": 47.25,
+          "y": 658.90625,
+          "w": 189,
+          "h": 94,
+          "bottom": 752.90625,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".archive-drawing-btn": {
+          "x": 699.875,
+          "y": 791,
+          "w": 112.25,
+          "h": 35,
+          "bottom": 826,
+          "cols": "none",
+          "font": "12px",
+          "display": "flex"
+        },
+        ".main-stage": {
+          "x": 257.046875,
+          "y": 135,
+          "w": 997.90625,
+          "h": 512,
+          "bottom": 647,
+          "cols": "583.141px 366.766px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".drawing-frame": {
+          "x": 273.046875,
+          "y": 151,
+          "w": 583.140625,
+          "h": 480,
+          "bottom": 631,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".tools-panel": {
+          "x": 872.1875,
+          "y": 151,
+          "w": 366.765625,
+          "h": 480,
+          "bottom": 631,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".share-btn": {
+          "x": 872.1875,
+          "y": 589,
+          "w": 366.765625,
+          "h": 42,
+          "bottom": 631,
+          "cols": "none",
+          "font": "14px",
+          "display": "block"
+        },
+        ".syncopate-modal-close": {
+          "x": 732,
+          "y": 667,
+          "w": 48,
+          "h": 48,
+          "bottom": 715,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        }
+      },
+      "closed": true
+    },
+    {
+      "w": 1512,
+      "h": 850,
+      "route": "guestbook",
+      "initial": {
+        "viewport": {
+          "width": 1512,
+          "height": 850,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1512,
+            850
+          ],
+          "outer": [
+            1512,
+            850
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1512,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".gb-hero": {
+          "x": 47.25,
+          "y": 108,
+          "w": 1417.5,
+          "h": 706,
+          "bottom": 814,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".gb-hero__actions": {
+          "x": 557.5546875,
+          "y": 531.59375,
+          "w": 396.890625,
+          "h": 60.1875,
+          "bottom": 591.78125,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        }
+      },
+      "message": {
+        "viewport": {
+          "width": 1512,
+          "height": 850,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1512,
+            850
+          ],
+          "outer": [
+            1512,
+            850
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1512,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".gb-hero": {
+          "x": 47.25,
+          "y": 108,
+          "w": 1417.5,
+          "h": 706,
+          "bottom": 814,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".gb-hero__actions": {
+          "x": 557.5546875,
+          "y": 531.59375,
+          "w": 396.890625,
+          "h": 60.1875,
+          "bottom": 591.78125,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".gb-modal__dialog": {
+          "x": 536,
+          "y": 222.5,
+          "w": 440,
+          "h": 405,
+          "bottom": 627.5,
+          "cols": "none",
+          "font": "14px",
+          "display": "block"
+        },
+        ".gb-modal__close": {
+          "x": 734,
+          "y": 649.5,
+          "w": 44,
+          "h": 44,
+          "bottom": 693.5,
+          "cols": "44px",
+          "font": "30px",
+          "display": "grid"
+        }
+      }
+    },
+    {
+      "w": 1512,
+      "h": 850,
+      "route": "curriculum",
+      "initial": {
+        "viewport": {
+          "width": 1512,
+          "height": 850,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1512,
+            850
+          ],
+          "outer": [
+            1512,
+            850
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1512,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".curriculum-introduction": {
+          "x": 451.828125,
+          "y": 510.28125,
+          "w": 665.265625,
+          "h": 64.3125,
+          "bottom": 574.59375,
+          "cols": "147.656px 474.797px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".curriculum-scroll-cue": {
+          "x": 756,
+          "y": 792,
+          "w": 0,
+          "h": 34,
+          "bottom": 826,
+          "cols": "none",
+          "font": "10px",
+          "display": "block"
+        }
+      }
+    },
+    {
+      "w": 1512,
+      "h": 850,
+      "route": "credit",
+      "initial": {
+        "viewport": {
+          "width": 1512,
+          "height": 850,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1512,
+            850
+          ],
+          "outer": [
+            1512,
+            850
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1512,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".credit-wordmark": {
+          "x": 552.046875,
+          "y": 358.71875,
+          "w": 407.890625,
+          "h": 69.546875,
+          "bottom": 428.265625,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        }
+      }
+    },
+    {
+      "w": 1440,
+      "h": 780,
+      "route": "project",
+      "initial": {
+        "viewport": {
+          "width": 1440,
+          "height": 780,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1440,
+            780
+          ],
+          "outer": [
+            1440,
+            780
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1440,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".filter-bar": {
+          "x": 45,
+          "y": 917.296875,
+          "w": 1069.21875,
+          "h": 48,
+          "bottom": 965.296875,
+          "cols": "1017.05px 44.1719px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".project-grid": {
+          "x": 45,
+          "y": 1001.296875,
+          "w": 1069.21875,
+          "h": 1644.09375,
+          "bottom": 2645.390625,
+          "cols": "342.969px 342.969px 342.969px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".project-index": {
+          "x": 1171.8125,
+          "y": 887.296875,
+          "w": 223.1875,
+          "h": 1708.09375,
+          "bottom": 2595.390625,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        }
+      },
+      "list": {
+        "viewport": {
+          "width": 1440,
+          "height": 780,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1440,
+            780
+          ],
+          "outer": [
+            1440,
+            780
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1440,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".filter-bar": {
+          "x": 45,
+          "y": 107.296875,
+          "w": 1069.21875,
+          "h": 48,
+          "bottom": 155.296875,
+          "cols": "1017.05px 44.1719px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".project-grid": {
+          "x": 45,
+          "y": 171.30364990234375,
+          "w": 1069.21875,
+          "h": 1644.09375,
+          "bottom": 1815.3973999023438,
+          "cols": "342.969px 342.969px 342.969px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".project-index": {
+          "x": 1171.8125,
+          "y": 107.296875,
+          "w": 223.1875,
+          "h": 1708.09375,
+          "bottom": 1815.390625,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        }
+      },
+      "filterClear": true,
+      "projects": [
+        {
+          "name": "잘가계",
+          "overlap": false,
+          "imageBottom": 675.171875,
+          "scrollerHeight": 708,
+          "scrollHeight": 1416,
+          "reachable": true
+        },
+        {
+          "name": "LET'S SYNC!",
+          "overlap": false,
+          "imageBottom": 695.671875,
+          "scrollerHeight": 708,
+          "scrollHeight": 1428,
+          "reachable": true
+        },
+        {
+          "name": "SEESAW",
+          "overlap": false,
+          "imageBottom": 675.171875,
+          "scrollerHeight": 708,
+          "scrollHeight": 1416,
+          "reachable": true
+        },
+        {
+          "name": "아키 (aquí)",
+          "overlap": false,
+          "imageBottom": 675.171875,
+          "scrollerHeight": 708,
+          "scrollHeight": 1416,
+          "reachable": true
+        },
+        {
+          "name": "말모이",
+          "overlap": false,
+          "imageBottom": 675.171875,
+          "scrollerHeight": 708,
+          "scrollHeight": 1416,
+          "reachable": true
+        },
+        {
+          "name": "FEELD",
+          "overlap": false,
+          "imageBottom": 695.671875,
+          "scrollerHeight": 708,
+          "scrollHeight": 1428,
+          "reachable": true
+        },
+        {
+          "name": "착! (Chak!)",
+          "overlap": false,
+          "imageBottom": 675.171875,
+          "scrollerHeight": 708,
+          "scrollHeight": 1416,
+          "reachable": true
+        },
+        {
+          "name": "emora",
+          "overlap": false,
+          "imageBottom": 675.171875,
+          "scrollerHeight": 708,
+          "scrollHeight": 1416,
+          "reachable": true
+        },
+        {
+          "name": "PLEV",
+          "overlap": false,
+          "imageBottom": 716.171875,
+          "scrollerHeight": 708,
+          "scrollHeight": 1448,
+          "reachable": true
+        },
+        {
+          "name": "POP-ING",
+          "overlap": false,
+          "imageBottom": 695.671875,
+          "scrollerHeight": 708,
+          "scrollHeight": 1428,
+          "reachable": true
+        },
+        {
+          "name": "HAELON",
+          "overlap": false,
+          "imageBottom": 675.171875,
+          "scrollerHeight": 708,
+          "scrollHeight": 1416,
+          "reachable": true
+        },
+        {
+          "name": "SNOOZE",
+          "overlap": false,
+          "imageBottom": 675.171875,
+          "scrollerHeight": 708,
+          "scrollHeight": 1416,
+          "reachable": true
+        },
+        {
+          "name": "공명체",
+          "overlap": false,
+          "imageBottom": 695.671875,
+          "scrollerHeight": 708,
+          "scrollHeight": 1428,
+          "reachable": true
+        },
+        {
+          "name": "PARALLAX",
+          "overlap": false,
+          "imageBottom": 675.171875,
+          "scrollerHeight": 708,
+          "scrollHeight": 1416,
+          "reachable": true
+        },
+        {
+          "name": "인생정거장",
+          "overlap": false,
+          "imageBottom": 695.671875,
+          "scrollerHeight": 708,
+          "scrollHeight": 1428,
+          "reachable": true
+        },
+        {
+          "name": "COMPASS",
+          "overlap": false,
+          "imageBottom": 675.171875,
+          "scrollerHeight": 708,
+          "scrollHeight": 1416,
+          "reachable": true
+        },
+        {
+          "name": "오름 oreum",
+          "overlap": false,
+          "imageBottom": 675.171875,
+          "scrollerHeight": 708,
+          "scrollHeight": 1416,
+          "reachable": true
+        }
+      ],
+      "team": {
+        "viewport": {
+          "width": 1440,
+          "height": 780,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1440,
+            780
+          ],
+          "outer": [
+            1440,
+            780
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": -780,
+          "w": 1440,
+          "h": 80,
+          "bottom": -700,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".filter-bar": {
+          "x": 45,
+          "y": 107.296875,
+          "w": 1069.21875,
+          "h": 48,
+          "bottom": 155.296875,
+          "cols": "1017.05px 44.1719px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".project-grid": {
+          "x": 45,
+          "y": 171.296875,
+          "w": 1069.21875,
+          "h": 1644.09375,
+          "bottom": 1815.390625,
+          "cols": "342.969px 342.969px 342.969px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".project-index": {
+          "x": 1171.8125,
+          "y": 107.296875,
+          "w": 223.1875,
+          "h": 1708.09375,
+          "bottom": 1815.390625,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".detail-hero": {
+          "x": 0,
+          "y": -708,
+          "w": 1440,
+          "h": 708,
+          "bottom": 0,
+          "cols": "213.125px 668.172px 213.141px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".detail-hero>.detail-media": {
+          "x": 385.90625,
+          "y": -472.8125,
+          "w": 652.65625,
+          "h": 439.984375,
+          "bottom": -32.828125,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".detail-intro": {
+          "x": 385.90625,
+          "y": -630,
+          "w": 668.171875,
+          "h": 129.890625,
+          "bottom": -500.109375,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".detail-team": {
+          "x": 0,
+          "y": 0,
+          "w": 1440,
+          "h": 708,
+          "bottom": 708,
+          "cols": "213.125px 668.172px 213.141px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".detail-team-media": {
+          "x": 385.90625,
+          "y": 24,
+          "w": 668.171875,
+          "h": 660,
+          "bottom": 684,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".members": {
+          "x": 1183.671875,
+          "y": 354,
+          "w": 213.140625,
+          "h": 0,
+          "bottom": 354,
+          "cols": "213.141px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".detail-project-nav": {
+          "x": 43.1875,
+          "y": 720,
+          "w": 1353.625,
+          "h": 44,
+          "bottom": 764,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        }
+      }
+    },
+    {
+      "w": 1440,
+      "h": 780,
+      "route": "student",
+      "initial": {
+        "viewport": {
+          "width": 1440,
+          "height": 780,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1440,
+            780
+          ],
+          "outer": [
+            1440,
+            780
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1440,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".student-grid": {
+          "x": 45,
+          "y": 119,
+          "w": 1083.609375,
+          "h": 11959.109375,
+          "bottom": 12078.109375,
+          "cols": "258.891px 258.906px 258.906px 258.906px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".student-sidebar": {
+          "x": 1186.203125,
+          "y": 119,
+          "w": 208.796875,
+          "h": 11959.109375,
+          "bottom": 12078.109375,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        }
+      },
+      "flipped": 1
+    },
+    {
+      "w": 1440,
+      "h": 780,
+      "route": "syncopate",
+      "initial": {
+        "viewport": {
+          "width": 1440,
+          "height": 780,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1440,
+            780
+          ],
+          "outer": [
+            1440,
+            780
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1440,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".archive-bottom-guide": {
+          "x": 45,
+          "y": 703.90625,
+          "w": 298.4375,
+          "h": 52.09375,
+          "bottom": 756,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".archive-how-to-sync": {
+          "x": 45,
+          "y": 588.90625,
+          "w": 180,
+          "h": 94,
+          "bottom": 682.90625,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".archive-drawing-btn": {
+          "x": 663.875,
+          "y": 721,
+          "w": 112.25,
+          "h": 35,
+          "bottom": 756,
+          "cols": "none",
+          "font": "12px",
+          "display": "flex"
+        }
+      },
+      "modal": {
+        "viewport": {
+          "width": 1440,
+          "height": 780,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1440,
+            780
+          ],
+          "outer": [
+            1440,
+            780
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1440,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".archive-bottom-guide": {
+          "x": 45,
+          "y": 703.90625,
+          "w": 298.4375,
+          "h": 52.09375,
+          "bottom": 756,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".archive-how-to-sync": {
+          "x": 45,
+          "y": 588.90625,
+          "w": 180,
+          "h": 94,
+          "bottom": 682.90625,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".archive-drawing-btn": {
+          "x": 663.875,
+          "y": 721,
+          "w": 112.25,
+          "h": 35,
+          "bottom": 756,
+          "cols": "none",
+          "font": "12px",
+          "display": "flex"
+        },
+        ".main-stage": {
+          "x": 244.796875,
+          "y": 100,
+          "w": 950.390625,
+          "h": 512,
+          "bottom": 612,
+          "cols": "553.969px 348.406px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".drawing-frame": {
+          "x": 260.796875,
+          "y": 116,
+          "w": 553.96875,
+          "h": 480,
+          "bottom": 596,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".tools-panel": {
+          "x": 830.765625,
+          "y": 116,
+          "w": 348.40625,
+          "h": 480,
+          "bottom": 596,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".share-btn": {
+          "x": 830.765625,
+          "y": 554,
+          "w": 348.40625,
+          "h": 42,
+          "bottom": 596,
+          "cols": "none",
+          "font": "14px",
+          "display": "block"
+        },
+        ".syncopate-modal-close": {
+          "x": 696,
+          "y": 632,
+          "w": 48,
+          "h": 48,
+          "bottom": 680,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        }
+      },
+      "modalScrolled": {
+        "viewport": {
+          "width": 1440,
+          "height": 780,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1440,
+            780
+          ],
+          "outer": [
+            1440,
+            780
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1440,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".archive-bottom-guide": {
+          "x": 45,
+          "y": 703.90625,
+          "w": 298.4375,
+          "h": 52.09375,
+          "bottom": 756,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".archive-how-to-sync": {
+          "x": 45,
+          "y": 588.90625,
+          "w": 180,
+          "h": 94,
+          "bottom": 682.90625,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".archive-drawing-btn": {
+          "x": 663.875,
+          "y": 721,
+          "w": 112.25,
+          "h": 35,
+          "bottom": 756,
+          "cols": "none",
+          "font": "12px",
+          "display": "flex"
+        },
+        ".main-stage": {
+          "x": 244.796875,
+          "y": 100,
+          "w": 950.390625,
+          "h": 512,
+          "bottom": 612,
+          "cols": "553.969px 348.406px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".drawing-frame": {
+          "x": 260.796875,
+          "y": 116,
+          "w": 553.96875,
+          "h": 480,
+          "bottom": 596,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".tools-panel": {
+          "x": 830.765625,
+          "y": 116,
+          "w": 348.40625,
+          "h": 480,
+          "bottom": 596,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".share-btn": {
+          "x": 830.765625,
+          "y": 554,
+          "w": 348.40625,
+          "h": 42,
+          "bottom": 596,
+          "cols": "none",
+          "font": "14px",
+          "display": "block"
+        },
+        ".syncopate-modal-close": {
+          "x": 696,
+          "y": 632,
+          "w": 48,
+          "h": 48,
+          "bottom": 680,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        }
+      },
+      "closed": true
+    },
+    {
+      "w": 1440,
+      "h": 780,
+      "route": "guestbook",
+      "initial": {
+        "viewport": {
+          "width": 1440,
+          "height": 780,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1440,
+            780
+          ],
+          "outer": [
+            1440,
+            780
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1440,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".gb-hero": {
+          "x": 45,
+          "y": 108,
+          "w": 1350,
+          "h": 636,
+          "bottom": 744,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".gb-hero__actions": {
+          "x": 531,
+          "y": 489.59375,
+          "w": 378,
+          "h": 60.1875,
+          "bottom": 549.78125,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        }
+      },
+      "message": {
+        "viewport": {
+          "width": 1440,
+          "height": 780,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1440,
+            780
+          ],
+          "outer": [
+            1440,
+            780
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1440,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".gb-hero": {
+          "x": 45,
+          "y": 108,
+          "w": 1350,
+          "h": 636,
+          "bottom": 744,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".gb-hero__actions": {
+          "x": 531,
+          "y": 489.59375,
+          "w": 378,
+          "h": 60.1875,
+          "bottom": 549.78125,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".gb-modal__dialog": {
+          "x": 500,
+          "y": 187.5,
+          "w": 440,
+          "h": 405,
+          "bottom": 592.5,
+          "cols": "none",
+          "font": "14px",
+          "display": "block"
+        },
+        ".gb-modal__close": {
+          "x": 698,
+          "y": 614.5,
+          "w": 44,
+          "h": 44,
+          "bottom": 658.5,
+          "cols": "44px",
+          "font": "30px",
+          "display": "grid"
+        }
+      }
+    },
+    {
+      "w": 1440,
+      "h": 780,
+      "route": "curriculum",
+      "initial": {
+        "viewport": {
+          "width": 1440,
+          "height": 780,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1440,
+            780
+          ],
+          "outer": [
+            1440,
+            780
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1440,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".curriculum-introduction": {
+          "x": 430.3125,
+          "y": 476.21875,
+          "w": 633.59375,
+          "h": 64.3125,
+          "bottom": 540.53125,
+          "cols": "140.625px 452.188px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".curriculum-scroll-cue": {
+          "x": 720,
+          "y": 724.8125,
+          "w": 0,
+          "h": 31.1875,
+          "bottom": 756,
+          "cols": "none",
+          "font": "10px",
+          "display": "block"
+        }
+      }
+    },
+    {
+      "w": 1440,
+      "h": 780,
+      "route": "credit",
+      "initial": {
+        "viewport": {
+          "width": 1440,
+          "height": 780,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1440,
+            780
+          ],
+          "outer": [
+            1440,
+            780
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1440,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".credit-wordmark": {
+          "x": 525.921875,
+          "y": 325.375,
+          "w": 388.140625,
+          "h": 66.234375,
+          "bottom": 391.609375,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        }
+      }
+    },
+    {
+      "w": 1366,
+      "h": 680,
+      "route": "project",
+      "initial": {
+        "viewport": {
+          "width": 1366,
+          "height": 680,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1366,
+            680
+          ],
+          "outer": [
+            1366,
+            680
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1366,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".filter-bar": {
+          "x": 42.6875,
+          "y": 814,
+          "w": 1014.28125,
+          "h": 48,
+          "bottom": 862,
+          "cols": "962.109px 44.1719px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".project-grid": {
+          "x": 42.6875,
+          "y": 898,
+          "w": 1014.28125,
+          "h": 1559.640625,
+          "bottom": 2457.640625,
+          "cols": "325.344px 325.359px 325.344px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".project-index": {
+          "x": 1111.59375,
+          "y": 784,
+          "w": 211.71875,
+          "h": 1623.640625,
+          "bottom": 2407.640625,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        }
+      },
+      "list": {
+        "viewport": {
+          "width": 1366,
+          "height": 680,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1366,
+            680
+          ],
+          "outer": [
+            1366,
+            680
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1366,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".filter-bar": {
+          "x": 42.6875,
+          "y": 104,
+          "w": 1014.28125,
+          "h": 48,
+          "bottom": 152,
+          "cols": "962.109px 44.1719px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".project-grid": {
+          "x": 42.6875,
+          "y": 168.0167236328125,
+          "w": 1014.28125,
+          "h": 1559.640625,
+          "bottom": 1727.6573486328125,
+          "cols": "325.344px 325.359px 325.344px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".project-index": {
+          "x": 1111.59375,
+          "y": 104,
+          "w": 211.71875,
+          "h": 1623.640625,
+          "bottom": 1727.640625,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        }
+      },
+      "filterClear": true,
+      "projects": [
+        {
+          "name": "잘가계",
+          "overlap": false,
+          "imageBottom": 553.375,
+          "scrollerHeight": 608,
+          "scrollHeight": 1216,
+          "reachable": true
+        },
+        {
+          "name": "LET'S SYNC!",
+          "overlap": false,
+          "imageBottom": 572.8125,
+          "scrollerHeight": 608,
+          "scrollHeight": 1216,
+          "reachable": true
+        },
+        {
+          "name": "SEESAW",
+          "overlap": false,
+          "imageBottom": 553.375,
+          "scrollerHeight": 608,
+          "scrollHeight": 1216,
+          "reachable": true
+        },
+        {
+          "name": "아키 (aquí)",
+          "overlap": false,
+          "imageBottom": 553.375,
+          "scrollerHeight": 608,
+          "scrollHeight": 1216,
+          "reachable": true
+        },
+        {
+          "name": "말모이",
+          "overlap": false,
+          "imageBottom": 553.375,
+          "scrollerHeight": 608,
+          "scrollHeight": 1216,
+          "reachable": true
+        },
+        {
+          "name": "FEELD",
+          "overlap": false,
+          "imageBottom": 572.8125,
+          "scrollerHeight": 608,
+          "scrollHeight": 1216,
+          "reachable": true
+        },
+        {
+          "name": "착! (Chak!)",
+          "overlap": false,
+          "imageBottom": 553.375,
+          "scrollerHeight": 608,
+          "scrollHeight": 1216,
+          "reachable": true
+        },
+        {
+          "name": "emora",
+          "overlap": false,
+          "imageBottom": 553.375,
+          "scrollerHeight": 608,
+          "scrollHeight": 1216,
+          "reachable": true
+        },
+        {
+          "name": "PLEV",
+          "overlap": false,
+          "imageBottom": 592.25,
+          "scrollerHeight": 608,
+          "scrollHeight": 1224,
+          "reachable": true
+        },
+        {
+          "name": "POP-ING",
+          "overlap": false,
+          "imageBottom": 572.8125,
+          "scrollerHeight": 608,
+          "scrollHeight": 1216,
+          "reachable": true
+        },
+        {
+          "name": "HAELON",
+          "overlap": false,
+          "imageBottom": 553.375,
+          "scrollerHeight": 608,
+          "scrollHeight": 1216,
+          "reachable": true
+        },
+        {
+          "name": "SNOOZE",
+          "overlap": false,
+          "imageBottom": 553.375,
+          "scrollerHeight": 608,
+          "scrollHeight": 1216,
+          "reachable": true
+        },
+        {
+          "name": "공명체",
+          "overlap": false,
+          "imageBottom": 572.8125,
+          "scrollerHeight": 608,
+          "scrollHeight": 1216,
+          "reachable": true
+        },
+        {
+          "name": "PARALLAX",
+          "overlap": false,
+          "imageBottom": 553.375,
+          "scrollerHeight": 608,
+          "scrollHeight": 1216,
+          "reachable": true
+        },
+        {
+          "name": "인생정거장",
+          "overlap": false,
+          "imageBottom": 572.8125,
+          "scrollerHeight": 608,
+          "scrollHeight": 1216,
+          "reachable": true
+        },
+        {
+          "name": "COMPASS",
+          "overlap": false,
+          "imageBottom": 553.375,
+          "scrollerHeight": 608,
+          "scrollHeight": 1216,
+          "reachable": true
+        },
+        {
+          "name": "오름 oreum",
+          "overlap": false,
+          "imageBottom": 553.375,
+          "scrollerHeight": 608,
+          "scrollHeight": 1216,
+          "reachable": true
+        }
+      ],
+      "team": {
+        "viewport": {
+          "width": 1366,
+          "height": 680,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1366,
+            680
+          ],
+          "outer": [
+            1366,
+            680
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": -680,
+          "w": 1366,
+          "h": 80,
+          "bottom": -600,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".filter-bar": {
+          "x": 42.6875,
+          "y": 104,
+          "w": 1014.28125,
+          "h": 48,
+          "bottom": 152,
+          "cols": "962.109px 44.1719px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".project-grid": {
+          "x": 42.6875,
+          "y": 168,
+          "w": 1014.28125,
+          "h": 1559.640625,
+          "bottom": 1727.640625,
+          "cols": "325.344px 325.359px 325.344px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".project-index": {
+          "x": 1111.59375,
+          "y": 104,
+          "w": 211.71875,
+          "h": 1623.640625,
+          "bottom": 1727.640625,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".detail-hero": {
+          "x": 0,
+          "y": -608,
+          "w": 1366,
+          "h": 608,
+          "bottom": 0,
+          "cols": "202.172px 633.828px 202.188px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".detail-hero>.detail-media": {
+          "x": 366.078125,
+          "y": -394.609375,
+          "w": 504.328125,
+          "h": 339.984375,
+          "bottom": -54.625,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".detail-intro": {
+          "x": 366.078125,
+          "y": -540,
+          "w": 633.828125,
+          "h": 121.390625,
+          "bottom": -418.609375,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".detail-team": {
+          "x": 0,
+          "y": 0,
+          "w": 1366,
+          "h": 608,
+          "bottom": 608,
+          "cols": "202.172px 633.828px 202.188px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".detail-team-media": {
+          "x": 366.078125,
+          "y": 24,
+          "w": 633.828125,
+          "h": 560,
+          "bottom": 584,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".members": {
+          "x": 1122.84375,
+          "y": 304,
+          "w": 202.1875,
+          "h": 0,
+          "bottom": 304,
+          "cols": "202.188px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".detail-project-nav": {
+          "x": 40.96875,
+          "y": 620,
+          "w": 1284.0625,
+          "h": 44,
+          "bottom": 664,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        }
+      }
+    },
+    {
+      "w": 1366,
+      "h": 680,
+      "route": "student",
+      "initial": {
+        "viewport": {
+          "width": 1366,
+          "height": 680,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1366,
+            680
+          ],
+          "outer": [
+            1366,
+            680
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1366,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".student-grid": {
+          "x": 42.6875,
+          "y": 114,
+          "w": 1027.9375,
+          "h": 11454.34375,
+          "bottom": 11568.34375,
+          "cols": "244.984px 244.984px 244.984px 244.984px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".student-sidebar": {
+          "x": 1125.25,
+          "y": 114,
+          "w": 198.0625,
+          "h": 11454.34375,
+          "bottom": 11568.34375,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        }
+      },
+      "flipped": 1
+    },
+    {
+      "w": 1366,
+      "h": 680,
+      "route": "syncopate",
+      "initial": {
+        "viewport": {
+          "width": 1366,
+          "height": 680,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1366,
+            680
+          ],
+          "outer": [
+            1366,
+            680
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1366,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".archive-bottom-guide": {
+          "x": 42.6875,
+          "y": 603.90625,
+          "w": 298.4375,
+          "h": 52.09375,
+          "bottom": 656,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".archive-how-to-sync": {
+          "x": 42.6875,
+          "y": 472.90625,
+          "w": 170.75,
+          "h": 110,
+          "bottom": 582.90625,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".archive-drawing-btn": {
+          "x": 626.875,
+          "y": 621,
+          "w": 112.25,
+          "h": 35,
+          "bottom": 656,
+          "cols": "none",
+          "font": "12px",
+          "display": "flex"
+        }
+      },
+      "modal": {
+        "viewport": {
+          "width": 1366,
+          "height": 680,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1366,
+            680
+          ],
+          "outer": [
+            1366,
+            680
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1366,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".archive-bottom-guide": {
+          "x": 42.6875,
+          "y": 603.90625,
+          "w": 298.4375,
+          "h": 52.09375,
+          "bottom": 656,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".archive-how-to-sync": {
+          "x": 42.6875,
+          "y": 472.90625,
+          "w": 170.75,
+          "h": 110,
+          "bottom": 582.90625,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".archive-drawing-btn": {
+          "x": 626.875,
+          "y": 621,
+          "w": 112.25,
+          "h": 35,
+          "bottom": 656,
+          "cols": "none",
+          "font": "12px",
+          "display": "flex"
+        },
+        ".main-stage": {
+          "x": 232.21875,
+          "y": 70,
+          "w": 901.546875,
+          "h": 472,
+          "bottom": 542,
+          "cols": "523.984px 329.547px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".drawing-frame": {
+          "x": 248.21875,
+          "y": 86,
+          "w": 523.984375,
+          "h": 440,
+          "bottom": 526,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".tools-panel": {
+          "x": 788.203125,
+          "y": 86,
+          "w": 329.546875,
+          "h": 440,
+          "bottom": 526,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".share-btn": {
+          "x": 788.203125,
+          "y": 484,
+          "w": 329.546875,
+          "h": 42,
+          "bottom": 526,
+          "cols": "none",
+          "font": "14px",
+          "display": "block"
+        },
+        ".syncopate-modal-close": {
+          "x": 659,
+          "y": 562,
+          "w": 48,
+          "h": 48,
+          "bottom": 610,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        }
+      },
+      "modalScrolled": {
+        "viewport": {
+          "width": 1366,
+          "height": 680,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1366,
+            680
+          ],
+          "outer": [
+            1366,
+            680
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1366,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".archive-bottom-guide": {
+          "x": 42.6875,
+          "y": 603.90625,
+          "w": 298.4375,
+          "h": 52.09375,
+          "bottom": 656,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".archive-how-to-sync": {
+          "x": 42.6875,
+          "y": 472.90625,
+          "w": 170.75,
+          "h": 110,
+          "bottom": 582.90625,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".archive-drawing-btn": {
+          "x": 626.875,
+          "y": 621,
+          "w": 112.25,
+          "h": 35,
+          "bottom": 656,
+          "cols": "none",
+          "font": "12px",
+          "display": "flex"
+        },
+        ".main-stage": {
+          "x": 232.21875,
+          "y": 70,
+          "w": 901.546875,
+          "h": 472,
+          "bottom": 542,
+          "cols": "523.984px 329.547px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".drawing-frame": {
+          "x": 248.21875,
+          "y": 86,
+          "w": 523.984375,
+          "h": 440,
+          "bottom": 526,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".tools-panel": {
+          "x": 788.203125,
+          "y": 86,
+          "w": 329.546875,
+          "h": 440,
+          "bottom": 526,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".share-btn": {
+          "x": 788.203125,
+          "y": 484,
+          "w": 329.546875,
+          "h": 42,
+          "bottom": 526,
+          "cols": "none",
+          "font": "14px",
+          "display": "block"
+        },
+        ".syncopate-modal-close": {
+          "x": 659,
+          "y": 562,
+          "w": 48,
+          "h": 48,
+          "bottom": 610,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        }
+      },
+      "closed": true
+    },
+    {
+      "w": 1366,
+      "h": 680,
+      "route": "guestbook",
+      "initial": {
+        "viewport": {
+          "width": 1366,
+          "height": 680,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1366,
+            680
+          ],
+          "outer": [
+            1366,
+            680
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1366,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".gb-hero": {
+          "x": 42.6875,
+          "y": 108,
+          "w": 1280.625,
+          "h": 536,
+          "bottom": 644,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".gb-hero__actions": {
+          "x": 503.71875,
+          "y": 429.59375,
+          "w": 358.5625,
+          "h": 60.1875,
+          "bottom": 489.78125,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        }
+      },
+      "message": {
+        "viewport": {
+          "width": 1366,
+          "height": 680,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1366,
+            680
+          ],
+          "outer": [
+            1366,
+            680
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1366,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".gb-hero": {
+          "x": 42.6875,
+          "y": 108,
+          "w": 1280.625,
+          "h": 536,
+          "bottom": 644,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".gb-hero__actions": {
+          "x": 503.71875,
+          "y": 429.59375,
+          "w": 358.5625,
+          "h": 60.1875,
+          "bottom": 489.78125,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".gb-modal__dialog": {
+          "x": 463,
+          "y": 137.5,
+          "w": 440,
+          "h": 405,
+          "bottom": 542.5,
+          "cols": "none",
+          "font": "14px",
+          "display": "block"
+        },
+        ".gb-modal__close": {
+          "x": 661,
+          "y": 564.5,
+          "w": 44,
+          "h": 44,
+          "bottom": 608.5,
+          "cols": "44px",
+          "font": "30px",
+          "display": "grid"
+        }
+      }
+    },
+    {
+      "w": 1366,
+      "h": 680,
+      "route": "curriculum",
+      "initial": {
+        "viewport": {
+          "width": 1366,
+          "height": 680,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1366,
+            680
+          ],
+          "outer": [
+            1366,
+            680
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1366,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".curriculum-introduction": {
+          "x": 408.1875,
+          "y": 428.46875,
+          "w": 601.03125,
+          "h": 64.3125,
+          "bottom": 492.78125,
+          "cols": "133.391px 428.969px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".curriculum-scroll-cue": {
+          "x": 683,
+          "y": 628.8125,
+          "w": 0,
+          "h": 27.1875,
+          "bottom": 656,
+          "cols": "none",
+          "font": "10px",
+          "display": "block"
+        }
+      }
+    },
+    {
+      "w": 1366,
+      "h": 680,
+      "route": "credit",
+      "initial": {
+        "viewport": {
+          "width": 1366,
+          "height": 680,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1366,
+            680
+          ],
+          "outer": [
+            1366,
+            680
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1366,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".credit-wordmark": {
+          "x": 499.09375,
+          "y": 277.078125,
+          "w": 367.796875,
+          "h": 62.84375,
+          "bottom": 339.921875,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        }
+      }
+    },
+    {
+      "w": 1280,
+      "h": 640,
+      "route": "project",
+      "initial": {
+        "viewport": {
+          "width": 1280,
+          "height": 640,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1280,
+            640
+          ],
+          "outer": [
+            1280,
+            640
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1280,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".filter-bar": {
+          "x": 40,
+          "y": 774,
+          "w": 950.421875,
+          "h": 48,
+          "bottom": 822,
+          "cols": "898.25px 44.1719px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".project-grid": {
+          "x": 40,
+          "y": 858,
+          "w": 950.421875,
+          "h": 1461.46875,
+          "bottom": 2319.46875,
+          "cols": "304.859px 304.875px 304.859px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".project-index": {
+          "x": 1041.609375,
+          "y": 744,
+          "w": 198.390625,
+          "h": 1525.46875,
+          "bottom": 2269.46875,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        }
+      },
+      "list": {
+        "viewport": {
+          "width": 1280,
+          "height": 640,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1280,
+            640
+          ],
+          "outer": [
+            1280,
+            640
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1280,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".filter-bar": {
+          "x": 40,
+          "y": 104,
+          "w": 950.421875,
+          "h": 48,
+          "bottom": 152,
+          "cols": "898.25px 44.1719px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".project-grid": {
+          "x": 40,
+          "y": 168.01681518554688,
+          "w": 950.421875,
+          "h": 1461.46875,
+          "bottom": 1629.4855651855469,
+          "cols": "304.859px 304.875px 304.859px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".project-index": {
+          "x": 1041.609375,
+          "y": 104,
+          "w": 198.390625,
+          "h": 1525.46875,
+          "bottom": 1629.46875,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        }
+      },
+      "filterClear": true,
+      "projects": [
+        {
+          "name": "잘가계",
+          "overlap": false,
+          "imageBottom": 505.140625,
+          "scrollerHeight": 568,
+          "scrollHeight": 1136,
+          "reachable": true
+        },
+        {
+          "name": "LET'S SYNC!",
+          "overlap": false,
+          "imageBottom": 524.328125,
+          "scrollerHeight": 568,
+          "scrollHeight": 1136,
+          "reachable": true
+        },
+        {
+          "name": "SEESAW",
+          "overlap": false,
+          "imageBottom": 505.140625,
+          "scrollerHeight": 568,
+          "scrollHeight": 1136,
+          "reachable": true
+        },
+        {
+          "name": "아키 (aquí)",
+          "overlap": false,
+          "imageBottom": 505.140625,
+          "scrollerHeight": 568,
+          "scrollHeight": 1136,
+          "reachable": true
+        },
+        {
+          "name": "말모이",
+          "overlap": false,
+          "imageBottom": 505.140625,
+          "scrollerHeight": 568,
+          "scrollHeight": 1136,
+          "reachable": true
+        },
+        {
+          "name": "FEELD",
+          "overlap": false,
+          "imageBottom": 524.328125,
+          "scrollerHeight": 568,
+          "scrollHeight": 1136,
+          "reachable": true
+        },
+        {
+          "name": "착! (Chak!)",
+          "overlap": false,
+          "imageBottom": 505.140625,
+          "scrollerHeight": 568,
+          "scrollHeight": 1136,
+          "reachable": true
+        },
+        {
+          "name": "emora",
+          "overlap": false,
+          "imageBottom": 505.140625,
+          "scrollerHeight": 568,
+          "scrollHeight": 1136,
+          "reachable": true
+        },
+        {
+          "name": "PLEV",
+          "overlap": false,
+          "imageBottom": 543.515625,
+          "scrollerHeight": 568,
+          "scrollHeight": 1136,
+          "reachable": true
+        },
+        {
+          "name": "POP-ING",
+          "overlap": false,
+          "imageBottom": 524.328125,
+          "scrollerHeight": 568,
+          "scrollHeight": 1136,
+          "reachable": true
+        },
+        {
+          "name": "HAELON",
+          "overlap": false,
+          "imageBottom": 505.140625,
+          "scrollerHeight": 568,
+          "scrollHeight": 1136,
+          "reachable": true
+        },
+        {
+          "name": "SNOOZE",
+          "overlap": false,
+          "imageBottom": 505.140625,
+          "scrollerHeight": 568,
+          "scrollHeight": 1136,
+          "reachable": true
+        },
+        {
+          "name": "공명체",
+          "overlap": false,
+          "imageBottom": 524.328125,
+          "scrollerHeight": 568,
+          "scrollHeight": 1136,
+          "reachable": true
+        },
+        {
+          "name": "PARALLAX",
+          "overlap": false,
+          "imageBottom": 505.140625,
+          "scrollerHeight": 568,
+          "scrollHeight": 1136,
+          "reachable": true
+        },
+        {
+          "name": "인생정거장",
+          "overlap": false,
+          "imageBottom": 524.328125,
+          "scrollerHeight": 568,
+          "scrollHeight": 1136,
+          "reachable": true
+        },
+        {
+          "name": "COMPASS",
+          "overlap": false,
+          "imageBottom": 524.328125,
+          "scrollerHeight": 568,
+          "scrollHeight": 1136,
+          "reachable": true
+        },
+        {
+          "name": "오름 oreum",
+          "overlap": false,
+          "imageBottom": 524.328125,
+          "scrollerHeight": 568,
+          "scrollHeight": 1136,
+          "reachable": true
+        }
+      ],
+      "team": {
+        "viewport": {
+          "width": 1280,
+          "height": 640,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1280,
+            640
+          ],
+          "outer": [
+            1280,
+            640
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": -640,
+          "w": 1280,
+          "h": 80,
+          "bottom": -560,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".filter-bar": {
+          "x": 40,
+          "y": 104,
+          "w": 950.421875,
+          "h": 48,
+          "bottom": 152,
+          "cols": "898.25px 44.1719px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".project-grid": {
+          "x": 40,
+          "y": 168,
+          "w": 950.421875,
+          "h": 1461.46875,
+          "bottom": 1629.46875,
+          "cols": "304.859px 304.875px 304.859px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".project-index": {
+          "x": 1041.609375,
+          "y": 104,
+          "w": 198.390625,
+          "h": 1525.46875,
+          "bottom": 1629.46875,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".detail-hero": {
+          "x": 0,
+          "y": -568,
+          "w": 1280,
+          "h": 568,
+          "bottom": 0,
+          "cols": "189.438px 593.953px 189.453px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".detail-hero>.detail-media": {
+          "x": 343.015625,
+          "y": -362.859375,
+          "w": 445,
+          "h": 300,
+          "bottom": -62.859375,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".detail-intro": {
+          "x": 343.015625,
+          "y": -504,
+          "w": 593.953125,
+          "h": 117.140625,
+          "bottom": -386.859375,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".detail-team": {
+          "x": 0,
+          "y": 0,
+          "w": 1280,
+          "h": 568,
+          "bottom": 568,
+          "cols": "189.438px 593.953px 189.453px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".detail-team-media": {
+          "x": 343.015625,
+          "y": 24,
+          "w": 593.953125,
+          "h": 520,
+          "bottom": 544,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".members": {
+          "x": 1052.15625,
+          "y": 284,
+          "w": 189.453125,
+          "h": 0,
+          "bottom": 284,
+          "cols": "189.453px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".detail-project-nav": {
+          "x": 38.390625,
+          "y": 580,
+          "w": 1203.21875,
+          "h": 44,
+          "bottom": 624,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        }
+      }
+    },
+    {
+      "w": 1280,
+      "h": 640,
+      "route": "student",
+      "initial": {
+        "viewport": {
+          "width": 1280,
+          "height": 640,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1280,
+            640
+          ],
+          "outer": [
+            1280,
+            640
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1280,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".student-grid": {
+          "x": 40,
+          "y": 112,
+          "w": 963.21875,
+          "h": 10868.421875,
+          "bottom": 10980.421875,
+          "cols": "228.797px 228.812px 228.797px 228.812px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".student-sidebar": {
+          "x": 1054.40625,
+          "y": 112,
+          "w": 185.59375,
+          "h": 10868.421875,
+          "bottom": 10980.421875,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        }
+      },
+      "flipped": 1
+    },
+    {
+      "w": 1280,
+      "h": 640,
+      "route": "syncopate",
+      "initial": {
+        "viewport": {
+          "width": 1280,
+          "height": 640,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1280,
+            640
+          ],
+          "outer": [
+            1280,
+            640
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1280,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".archive-bottom-guide": {
+          "x": 40,
+          "y": 563.90625,
+          "w": 298.4375,
+          "h": 52.09375,
+          "bottom": 616,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".archive-how-to-sync": {
+          "x": 40,
+          "y": 432.90625,
+          "w": 164,
+          "h": 110,
+          "bottom": 542.90625,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".archive-drawing-btn": {
+          "x": 583.875,
+          "y": 581,
+          "w": 112.25,
+          "h": 35,
+          "bottom": 616,
+          "cols": "none",
+          "font": "12px",
+          "display": "flex"
+        }
+      },
+      "modal": {
+        "viewport": {
+          "width": 1280,
+          "height": 640,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1280,
+            640
+          ],
+          "outer": [
+            1280,
+            640
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1280,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".archive-bottom-guide": {
+          "x": 40,
+          "y": 563.90625,
+          "w": 298.4375,
+          "h": 52.09375,
+          "bottom": 616,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".archive-how-to-sync": {
+          "x": 40,
+          "y": 432.90625,
+          "w": 164,
+          "h": 110,
+          "bottom": 542.90625,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".archive-drawing-btn": {
+          "x": 583.875,
+          "y": 581,
+          "w": 112.25,
+          "h": 35,
+          "bottom": 616,
+          "cols": "none",
+          "font": "12px",
+          "display": "flex"
+        },
+        ".main-stage": {
+          "x": 217.59375,
+          "y": 70,
+          "w": 844.796875,
+          "h": 432,
+          "bottom": 502,
+          "cols": "489.141px 307.641px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".drawing-frame": {
+          "x": 233.59375,
+          "y": 86,
+          "w": 489.140625,
+          "h": 400,
+          "bottom": 486,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".tools-panel": {
+          "x": 738.734375,
+          "y": 86,
+          "w": 307.640625,
+          "h": 400,
+          "bottom": 486,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".share-btn": {
+          "x": 738.734375,
+          "y": 444,
+          "w": 307.640625,
+          "h": 42,
+          "bottom": 486,
+          "cols": "none",
+          "font": "14px",
+          "display": "block"
+        },
+        ".syncopate-modal-close": {
+          "x": 616,
+          "y": 522,
+          "w": 48,
+          "h": 48,
+          "bottom": 570,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        }
+      },
+      "modalScrolled": {
+        "viewport": {
+          "width": 1280,
+          "height": 640,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1280,
+            640
+          ],
+          "outer": [
+            1280,
+            640
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1280,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".archive-bottom-guide": {
+          "x": 40,
+          "y": 563.90625,
+          "w": 298.4375,
+          "h": 52.09375,
+          "bottom": 616,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".archive-how-to-sync": {
+          "x": 40,
+          "y": 432.90625,
+          "w": 164,
+          "h": 110,
+          "bottom": 542.90625,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".archive-drawing-btn": {
+          "x": 583.875,
+          "y": 581,
+          "w": 112.25,
+          "h": 35,
+          "bottom": 616,
+          "cols": "none",
+          "font": "12px",
+          "display": "flex"
+        },
+        ".main-stage": {
+          "x": 217.59375,
+          "y": 70,
+          "w": 844.796875,
+          "h": 432,
+          "bottom": 502,
+          "cols": "489.141px 307.641px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".drawing-frame": {
+          "x": 233.59375,
+          "y": 86,
+          "w": 489.140625,
+          "h": 400,
+          "bottom": 486,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".tools-panel": {
+          "x": 738.734375,
+          "y": 86,
+          "w": 307.640625,
+          "h": 400,
+          "bottom": 486,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".share-btn": {
+          "x": 738.734375,
+          "y": 444,
+          "w": 307.640625,
+          "h": 42,
+          "bottom": 486,
+          "cols": "none",
+          "font": "14px",
+          "display": "block"
+        },
+        ".syncopate-modal-close": {
+          "x": 616,
+          "y": 522,
+          "w": 48,
+          "h": 48,
+          "bottom": 570,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        }
+      },
+      "closed": true
+    },
+    {
+      "w": 1280,
+      "h": 640,
+      "route": "guestbook",
+      "initial": {
+        "viewport": {
+          "width": 1280,
+          "height": 640,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1280,
+            640
+          ],
+          "outer": [
+            1280,
+            640
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1280,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".gb-hero": {
+          "x": 40,
+          "y": 108,
+          "w": 1200,
+          "h": 496,
+          "bottom": 604,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".gb-hero__actions": {
+          "x": 472,
+          "y": 405.59375,
+          "w": 336,
+          "h": 60.1875,
+          "bottom": 465.78125,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        }
+      },
+      "message": {
+        "viewport": {
+          "width": 1280,
+          "height": 640,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1280,
+            640
+          ],
+          "outer": [
+            1280,
+            640
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1280,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".gb-hero": {
+          "x": 40,
+          "y": 108,
+          "w": 1200,
+          "h": 496,
+          "bottom": 604,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".gb-hero__actions": {
+          "x": 472,
+          "y": 405.59375,
+          "w": 336,
+          "h": 60.1875,
+          "bottom": 465.78125,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".gb-modal__dialog": {
+          "x": 420,
+          "y": 117.5,
+          "w": 440,
+          "h": 405,
+          "bottom": 522.5,
+          "cols": "none",
+          "font": "14px",
+          "display": "block"
+        },
+        ".gb-modal__close": {
+          "x": 618,
+          "y": 544.5,
+          "w": 44,
+          "h": 44,
+          "bottom": 588.5,
+          "cols": "44px",
+          "font": "30px",
+          "display": "grid"
+        }
+      }
+    },
+    {
+      "w": 1280,
+      "h": 640,
+      "route": "curriculum",
+      "initial": {
+        "viewport": {
+          "width": 1280,
+          "height": 640,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1280,
+            640
+          ],
+          "outer": [
+            1280,
+            640
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1280,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".curriculum-introduction": {
+          "x": 382.5,
+          "y": 407.8125,
+          "w": 563.1875,
+          "h": 64.3125,
+          "bottom": 472.125,
+          "cols": "125px 401.938px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".curriculum-scroll-cue": {
+          "x": 640,
+          "y": 590.40625,
+          "w": 0,
+          "h": 25.59375,
+          "bottom": 616,
+          "cols": "none",
+          "font": "10px",
+          "display": "block"
+        }
+      }
+    },
+    {
+      "w": 1280,
+      "h": 640,
+      "route": "credit",
+      "initial": {
+        "viewport": {
+          "width": 1280,
+          "height": 640,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1280,
+            640
+          ],
+          "outer": [
+            1280,
+            640
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1280,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".credit-wordmark": {
+          "x": 467.875,
+          "y": 259.0625,
+          "w": 344.234375,
+          "h": 58.875,
+          "bottom": 317.9375,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        }
+      }
+    },
+    {
+      "w": 1512,
+      "h": 640,
+      "route": "project",
+      "initial": {
+        "viewport": {
+          "width": 1512,
+          "height": 640,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1512,
+            640
+          ],
+          "outer": [
+            1512,
+            640
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1512,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".filter-bar": {
+          "x": 47.25,
+          "y": 774,
+          "w": 1122.671875,
+          "h": 48,
+          "bottom": 822,
+          "cols": "1070.5px 44.1719px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".project-grid": {
+          "x": 47.25,
+          "y": 858,
+          "w": 1122.671875,
+          "h": 1726.34375,
+          "bottom": 2584.34375,
+          "cols": "360.109px 360.125px 360.109px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".project-index": {
+          "x": 1230.390625,
+          "y": 744,
+          "w": 234.359375,
+          "h": 1790.34375,
+          "bottom": 2534.34375,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        }
+      },
+      "list": {
+        "viewport": {
+          "width": 1512,
+          "height": 640,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1512,
+            640
+          ],
+          "outer": [
+            1512,
+            640
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1512,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".filter-bar": {
+          "x": 47.25,
+          "y": 104,
+          "w": 1122.671875,
+          "h": 48,
+          "bottom": 152,
+          "cols": "1070.5px 44.1719px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".project-grid": {
+          "x": 47.25,
+          "y": 168.01678466796875,
+          "w": 1122.671875,
+          "h": 1726.34375,
+          "bottom": 1894.3605346679688,
+          "cols": "360.109px 360.125px 360.109px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".project-index": {
+          "x": 1230.390625,
+          "y": 104,
+          "w": 234.359375,
+          "h": 1790.34375,
+          "bottom": 1894.34375,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        }
+      },
+      "filterClear": true,
+      "projects": [
+        {
+          "name": "잘가계",
+          "overlap": false,
+          "imageBottom": 517.78125,
+          "scrollerHeight": 568,
+          "scrollHeight": 1136,
+          "reachable": true
+        },
+        {
+          "name": "LET'S SYNC!",
+          "overlap": false,
+          "imageBottom": 539.296875,
+          "scrollerHeight": 568,
+          "scrollHeight": 1136,
+          "reachable": true
+        },
+        {
+          "name": "SEESAW",
+          "overlap": false,
+          "imageBottom": 517.78125,
+          "scrollerHeight": 568,
+          "scrollHeight": 1136,
+          "reachable": true
+        },
+        {
+          "name": "아키 (aquí)",
+          "overlap": false,
+          "imageBottom": 517.78125,
+          "scrollerHeight": 568,
+          "scrollHeight": 1136,
+          "reachable": true
+        },
+        {
+          "name": "말모이",
+          "overlap": false,
+          "imageBottom": 517.78125,
+          "scrollerHeight": 568,
+          "scrollHeight": 1136,
+          "reachable": true
+        },
+        {
+          "name": "FEELD",
+          "overlap": false,
+          "imageBottom": 539.296875,
+          "scrollerHeight": 568,
+          "scrollHeight": 1136,
+          "reachable": true
+        },
+        {
+          "name": "착! (Chak!)",
+          "overlap": false,
+          "imageBottom": 517.78125,
+          "scrollerHeight": 568,
+          "scrollHeight": 1136,
+          "reachable": true
+        },
+        {
+          "name": "emora",
+          "overlap": false,
+          "imageBottom": 517.78125,
+          "scrollerHeight": 568,
+          "scrollHeight": 1136,
+          "reachable": true
+        },
+        {
+          "name": "PLEV",
+          "overlap": false,
+          "imageBottom": 560.8125,
+          "scrollerHeight": 568,
+          "scrollHeight": 1153,
+          "reachable": true
+        },
+        {
+          "name": "POP-ING",
+          "overlap": false,
+          "imageBottom": 539.296875,
+          "scrollerHeight": 568,
+          "scrollHeight": 1136,
+          "reachable": true
+        },
+        {
+          "name": "HAELON",
+          "overlap": false,
+          "imageBottom": 517.78125,
+          "scrollerHeight": 568,
+          "scrollHeight": 1136,
+          "reachable": true
+        },
+        {
+          "name": "SNOOZE",
+          "overlap": false,
+          "imageBottom": 517.78125,
+          "scrollerHeight": 568,
+          "scrollHeight": 1136,
+          "reachable": true
+        },
+        {
+          "name": "공명체",
+          "overlap": false,
+          "imageBottom": 539.296875,
+          "scrollerHeight": 568,
+          "scrollHeight": 1136,
+          "reachable": true
+        },
+        {
+          "name": "PARALLAX",
+          "overlap": false,
+          "imageBottom": 517.78125,
+          "scrollerHeight": 568,
+          "scrollHeight": 1136,
+          "reachable": true
+        },
+        {
+          "name": "인생정거장",
+          "overlap": false,
+          "imageBottom": 539.296875,
+          "scrollerHeight": 568,
+          "scrollHeight": 1136,
+          "reachable": true
+        },
+        {
+          "name": "COMPASS",
+          "overlap": false,
+          "imageBottom": 517.78125,
+          "scrollerHeight": 568,
+          "scrollHeight": 1136,
+          "reachable": true
+        },
+        {
+          "name": "오름 oreum",
+          "overlap": false,
+          "imageBottom": 517.78125,
+          "scrollerHeight": 568,
+          "scrollHeight": 1136,
+          "reachable": true
+        }
+      ],
+      "team": {
+        "viewport": {
+          "width": 1512,
+          "height": 640,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1512,
+            640
+          ],
+          "outer": [
+            1512,
+            640
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": -640,
+          "w": 1512,
+          "h": 80,
+          "bottom": -560,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".filter-bar": {
+          "x": 47.25,
+          "y": 104,
+          "w": 1122.671875,
+          "h": 48,
+          "bottom": 152,
+          "cols": "1070.5px 44.1719px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".project-grid": {
+          "x": 47.25,
+          "y": 168,
+          "w": 1122.671875,
+          "h": 1726.34375,
+          "bottom": 1894.34375,
+          "cols": "360.109px 360.125px 360.109px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".project-index": {
+          "x": 1230.390625,
+          "y": 104,
+          "w": 234.359375,
+          "h": 1790.34375,
+          "bottom": 1894.34375,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".detail-hero": {
+          "x": 0,
+          "y": -568,
+          "w": 1512,
+          "h": 568,
+          "bottom": 0,
+          "cols": "223.766px 701.578px 223.781px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".detail-hero>.detail-media": {
+          "x": 405.203125,
+          "y": -350.21875,
+          "w": 445,
+          "h": 300,
+          "bottom": -50.21875,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".detail-intro": {
+          "x": 405.203125,
+          "y": -504,
+          "w": 701.578125,
+          "h": 129.78125,
+          "bottom": -374.21875,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".detail-team": {
+          "x": 0,
+          "y": 0,
+          "w": 1512,
+          "h": 568,
+          "bottom": 568,
+          "cols": "223.766px 701.578px 223.781px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".detail-team-media": {
+          "x": 405.203125,
+          "y": 24,
+          "w": 701.578125,
+          "h": 520,
+          "bottom": 544,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".members": {
+          "x": 1242.859375,
+          "y": 284,
+          "w": 223.78125,
+          "h": 0,
+          "bottom": 284,
+          "cols": "223.781px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".detail-project-nav": {
+          "x": 45.359375,
+          "y": 580,
+          "w": 1421.28125,
+          "h": 44,
+          "bottom": 624,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        }
+      }
+    },
+    {
+      "w": 1512,
+      "h": 640,
+      "route": "student",
+      "initial": {
+        "viewport": {
+          "width": 1512,
+          "height": 640,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1512,
+            640
+          ],
+          "outer": [
+            1512,
+            640
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1512,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".student-grid": {
+          "x": 47.25,
+          "y": 112,
+          "w": 1137.796875,
+          "h": 12450.296875,
+          "bottom": 12562.296875,
+          "cols": "272.438px 272.453px 272.453px 272.453px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".student-sidebar": {
+          "x": 1245.515625,
+          "y": 112,
+          "w": 219.234375,
+          "h": 12450.296875,
+          "bottom": 12562.296875,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        }
+      },
+      "flipped": 1
+    },
+    {
+      "w": 1512,
+      "h": 640,
+      "route": "syncopate",
+      "initial": {
+        "viewport": {
+          "width": 1512,
+          "height": 640,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1512,
+            640
+          ],
+          "outer": [
+            1512,
+            640
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1512,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".archive-bottom-guide": {
+          "x": 47.25,
+          "y": 563.90625,
+          "w": 298.4375,
+          "h": 52.09375,
+          "bottom": 616,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".archive-how-to-sync": {
+          "x": 47.25,
+          "y": 448.90625,
+          "w": 189,
+          "h": 94,
+          "bottom": 542.90625,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".archive-drawing-btn": {
+          "x": 699.875,
+          "y": 581,
+          "w": 112.25,
+          "h": 35,
+          "bottom": 616,
+          "cols": "none",
+          "font": "12px",
+          "display": "flex"
+        }
+      },
+      "modal": {
+        "viewport": {
+          "width": 1512,
+          "height": 640,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1512,
+            640
+          ],
+          "outer": [
+            1512,
+            640
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1512,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".archive-bottom-guide": {
+          "x": 47.25,
+          "y": 563.90625,
+          "w": 298.4375,
+          "h": 52.09375,
+          "bottom": 616,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".archive-how-to-sync": {
+          "x": 47.25,
+          "y": 448.90625,
+          "w": 189,
+          "h": 94,
+          "bottom": 542.90625,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".archive-drawing-btn": {
+          "x": 699.875,
+          "y": 581,
+          "w": 112.25,
+          "h": 35,
+          "bottom": 616,
+          "cols": "none",
+          "font": "12px",
+          "display": "flex"
+        },
+        ".main-stage": {
+          "x": 257.046875,
+          "y": 70,
+          "w": 997.90625,
+          "h": 432,
+          "bottom": 502,
+          "cols": "583.141px 366.766px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".drawing-frame": {
+          "x": 273.046875,
+          "y": 86,
+          "w": 583.140625,
+          "h": 400,
+          "bottom": 486,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".tools-panel": {
+          "x": 872.1875,
+          "y": 86,
+          "w": 366.765625,
+          "h": 400,
+          "bottom": 486,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".share-btn": {
+          "x": 872.1875,
+          "y": 444,
+          "w": 366.765625,
+          "h": 42,
+          "bottom": 486,
+          "cols": "none",
+          "font": "14px",
+          "display": "block"
+        },
+        ".syncopate-modal-close": {
+          "x": 732,
+          "y": 522,
+          "w": 48,
+          "h": 48,
+          "bottom": 570,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        }
+      },
+      "modalScrolled": {
+        "viewport": {
+          "width": 1512,
+          "height": 640,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1512,
+            640
+          ],
+          "outer": [
+            1512,
+            640
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1512,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".archive-bottom-guide": {
+          "x": 47.25,
+          "y": 563.90625,
+          "w": 298.4375,
+          "h": 52.09375,
+          "bottom": 616,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".archive-how-to-sync": {
+          "x": 47.25,
+          "y": 448.90625,
+          "w": 189,
+          "h": 94,
+          "bottom": 542.90625,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".archive-drawing-btn": {
+          "x": 699.875,
+          "y": 581,
+          "w": 112.25,
+          "h": 35,
+          "bottom": 616,
+          "cols": "none",
+          "font": "12px",
+          "display": "flex"
+        },
+        ".main-stage": {
+          "x": 257.046875,
+          "y": 70,
+          "w": 997.90625,
+          "h": 432,
+          "bottom": 502,
+          "cols": "583.141px 366.766px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".drawing-frame": {
+          "x": 273.046875,
+          "y": 86,
+          "w": 583.140625,
+          "h": 400,
+          "bottom": 486,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".tools-panel": {
+          "x": 872.1875,
+          "y": 86,
+          "w": 366.765625,
+          "h": 400,
+          "bottom": 486,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".share-btn": {
+          "x": 872.1875,
+          "y": 444,
+          "w": 366.765625,
+          "h": 42,
+          "bottom": 486,
+          "cols": "none",
+          "font": "14px",
+          "display": "block"
+        },
+        ".syncopate-modal-close": {
+          "x": 732,
+          "y": 522,
+          "w": 48,
+          "h": 48,
+          "bottom": 570,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        }
+      },
+      "closed": true
+    },
+    {
+      "w": 1512,
+      "h": 640,
+      "route": "guestbook",
+      "initial": {
+        "viewport": {
+          "width": 1512,
+          "height": 640,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1512,
+            640
+          ],
+          "outer": [
+            1512,
+            640
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1512,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".gb-hero": {
+          "x": 47.25,
+          "y": 108,
+          "w": 1417.5,
+          "h": 496,
+          "bottom": 604,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".gb-hero__actions": {
+          "x": 557.5546875,
+          "y": 405.59375,
+          "w": 396.890625,
+          "h": 60.1875,
+          "bottom": 465.78125,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        }
+      },
+      "message": {
+        "viewport": {
+          "width": 1512,
+          "height": 640,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1512,
+            640
+          ],
+          "outer": [
+            1512,
+            640
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1512,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".gb-hero": {
+          "x": 47.25,
+          "y": 108,
+          "w": 1417.5,
+          "h": 496,
+          "bottom": 604,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".gb-hero__actions": {
+          "x": 557.5546875,
+          "y": 405.59375,
+          "w": 396.890625,
+          "h": 60.1875,
+          "bottom": 465.78125,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".gb-modal__dialog": {
+          "x": 536,
+          "y": 117.5,
+          "w": 440,
+          "h": 405,
+          "bottom": 522.5,
+          "cols": "none",
+          "font": "14px",
+          "display": "block"
+        },
+        ".gb-modal__close": {
+          "x": 734,
+          "y": 544.5,
+          "w": 44,
+          "h": 44,
+          "bottom": 588.5,
+          "cols": "44px",
+          "font": "30px",
+          "display": "grid"
+        }
+      }
+    },
+    {
+      "w": 1512,
+      "h": 640,
+      "route": "curriculum",
+      "initial": {
+        "viewport": {
+          "width": 1512,
+          "height": 640,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1512,
+            640
+          ],
+          "outer": [
+            1512,
+            640
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1512,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".curriculum-introduction": {
+          "x": 451.828125,
+          "y": 414.15625,
+          "w": 665.265625,
+          "h": 64.3125,
+          "bottom": 478.46875,
+          "cols": "147.656px 474.797px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".curriculum-scroll-cue": {
+          "x": 756,
+          "y": 590.40625,
+          "w": 0,
+          "h": 25.59375,
+          "bottom": 616,
+          "cols": "none",
+          "font": "10px",
+          "display": "block"
+        }
+      }
+    },
+    {
+      "w": 1512,
+      "h": 640,
+      "route": "credit",
+      "initial": {
+        "viewport": {
+          "width": 1512,
+          "height": 640,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1512,
+            640
+          ],
+          "outer": [
+            1512,
+            640
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1512,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".credit-wordmark": {
+          "x": 552.046875,
+          "y": 253.71875,
+          "w": 407.890625,
+          "h": 69.546875,
+          "bottom": 323.265625,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        }
+      }
+    },
+    {
+      "w": 1280,
+      "h": 550,
+      "route": "project",
+      "initial": {
+        "viewport": {
+          "width": 1280,
+          "height": 550,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1280,
+            550
+          ],
+          "outer": [
+            1280,
+            550
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1280,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".filter-bar": {
+          "x": 40,
+          "y": 754,
+          "w": 950.421875,
+          "h": 48,
+          "bottom": 802,
+          "cols": "898.25px 44.1719px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".project-grid": {
+          "x": 40,
+          "y": 838,
+          "w": 950.421875,
+          "h": 1461.46875,
+          "bottom": 2299.46875,
+          "cols": "304.859px 304.875px 304.859px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".project-index": {
+          "x": 1041.609375,
+          "y": 724,
+          "w": 198.390625,
+          "h": 1525.46875,
+          "bottom": 2249.46875,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        }
+      },
+      "list": {
+        "viewport": {
+          "width": 1280,
+          "height": 550,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1280,
+            550
+          ],
+          "outer": [
+            1280,
+            550
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1280,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".filter-bar": {
+          "x": 40,
+          "y": 104.00123596191406,
+          "w": 950.421875,
+          "h": 48,
+          "bottom": 152.00123596191406,
+          "cols": "898.25px 44.1719px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".project-grid": {
+          "x": 40,
+          "y": 168.07717895507812,
+          "w": 950.421875,
+          "h": 1461.46875,
+          "bottom": 1629.5459289550781,
+          "cols": "304.859px 304.875px 304.859px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".project-index": {
+          "x": 1041.609375,
+          "y": 104,
+          "w": 198.390625,
+          "h": 1525.46875,
+          "bottom": 1629.46875,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        }
+      },
+      "filterClear": true,
+      "projects": [
+        {
+          "name": "잘가계",
+          "overlap": false,
+          "imageBottom": 416.734375,
+          "scrollerHeight": 478,
+          "scrollHeight": 956,
+          "reachable": true
+        },
+        {
+          "name": "LET'S SYNC!",
+          "overlap": false,
+          "imageBottom": 435.921875,
+          "scrollerHeight": 478,
+          "scrollHeight": 956,
+          "reachable": true
+        },
+        {
+          "name": "SEESAW",
+          "overlap": false,
+          "imageBottom": 416.734375,
+          "scrollerHeight": 478,
+          "scrollHeight": 956,
+          "reachable": true
+        },
+        {
+          "name": "아키 (aquí)",
+          "overlap": false,
+          "imageBottom": 416.734375,
+          "scrollerHeight": 478,
+          "scrollHeight": 956,
+          "reachable": true
+        },
+        {
+          "name": "말모이",
+          "overlap": false,
+          "imageBottom": 416.734375,
+          "scrollerHeight": 478,
+          "scrollHeight": 956,
+          "reachable": true
+        },
+        {
+          "name": "FEELD",
+          "overlap": false,
+          "imageBottom": 435.921875,
+          "scrollerHeight": 478,
+          "scrollHeight": 956,
+          "reachable": true
+        },
+        {
+          "name": "착! (Chak!)",
+          "overlap": false,
+          "imageBottom": 416.734375,
+          "scrollerHeight": 478,
+          "scrollHeight": 956,
+          "reachable": true
+        },
+        {
+          "name": "emora",
+          "overlap": false,
+          "imageBottom": 416.734375,
+          "scrollerHeight": 478,
+          "scrollHeight": 956,
+          "reachable": true
+        },
+        {
+          "name": "PLEV",
+          "overlap": false,
+          "imageBottom": 455.109375,
+          "scrollerHeight": 478,
+          "scrollHeight": 957,
+          "reachable": true
+        },
+        {
+          "name": "POP-ING",
+          "overlap": false,
+          "imageBottom": 435.921875,
+          "scrollerHeight": 478,
+          "scrollHeight": 956,
+          "reachable": true
+        },
+        {
+          "name": "HAELON",
+          "overlap": false,
+          "imageBottom": 416.734375,
+          "scrollerHeight": 478,
+          "scrollHeight": 956,
+          "reachable": true
+        },
+        {
+          "name": "SNOOZE",
+          "overlap": false,
+          "imageBottom": 416.734375,
+          "scrollerHeight": 478,
+          "scrollHeight": 956,
+          "reachable": true
+        },
+        {
+          "name": "공명체",
+          "overlap": false,
+          "imageBottom": 435.921875,
+          "scrollerHeight": 478,
+          "scrollHeight": 956,
+          "reachable": true
+        },
+        {
+          "name": "PARALLAX",
+          "overlap": false,
+          "imageBottom": 416.734375,
+          "scrollerHeight": 478,
+          "scrollHeight": 956,
+          "reachable": true
+        },
+        {
+          "name": "인생정거장",
+          "overlap": false,
+          "imageBottom": 435.921875,
+          "scrollerHeight": 478,
+          "scrollHeight": 956,
+          "reachable": true
+        },
+        {
+          "name": "COMPASS",
+          "overlap": false,
+          "imageBottom": 435.921875,
+          "scrollerHeight": 478,
+          "scrollHeight": 956,
+          "reachable": true
+        },
+        {
+          "name": "오름 oreum",
+          "overlap": false,
+          "imageBottom": 435.921875,
+          "scrollerHeight": 478,
+          "scrollHeight": 956,
+          "reachable": true
+        }
+      ],
+      "team": {
+        "viewport": {
+          "width": 1280,
+          "height": 550,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1280,
+            550
+          ],
+          "outer": [
+            1280,
+            550
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": -467,
+          "w": 1280,
+          "h": 80,
+          "bottom": -387,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".filter-bar": {
+          "x": 40,
+          "y": 257,
+          "w": 950.421875,
+          "h": 48,
+          "bottom": 305,
+          "cols": "898.25px 44.1719px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".project-grid": {
+          "x": 40,
+          "y": 321,
+          "w": 950.421875,
+          "h": 1461.46875,
+          "bottom": 1782.46875,
+          "cols": "304.859px 304.875px 304.859px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".project-index": {
+          "x": 1041.609375,
+          "y": 257,
+          "w": 198.390625,
+          "h": 1525.46875,
+          "bottom": 1782.46875,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".detail-hero": {
+          "x": 0,
+          "y": -478,
+          "w": 1280,
+          "h": 478,
+          "bottom": 0,
+          "cols": "189.438px 593.953px 189.453px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".detail-hero>.detail-media": {
+          "x": 343.015625,
+          "y": -281.25,
+          "w": 326.328125,
+          "h": 219.984375,
+          "bottom": -61.265625,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".detail-intro": {
+          "x": 343.015625,
+          "y": -422,
+          "w": 593.953125,
+          "h": 116.75,
+          "bottom": -305.25,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".detail-team": {
+          "x": 0,
+          "y": 0,
+          "w": 1280,
+          "h": 478,
+          "bottom": 478,
+          "cols": "189.438px 593.953px 189.453px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".detail-team-media": {
+          "x": 343.015625,
+          "y": 24,
+          "w": 593.953125,
+          "h": 430,
+          "bottom": 454,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".members": {
+          "x": 1052.15625,
+          "y": 239,
+          "w": 189.453125,
+          "h": 0,
+          "bottom": 239,
+          "cols": "189.453px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".detail-project-nav": {
+          "x": 38.390625,
+          "y": 490,
+          "w": 1203.21875,
+          "h": 44,
+          "bottom": 534,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        }
+      }
+    },
+    {
+      "w": 1280,
+      "h": 550,
+      "route": "student",
+      "initial": {
+        "viewport": {
+          "width": 1280,
+          "height": 550,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1280,
+            550
+          ],
+          "outer": [
+            1280,
+            550
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1280,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".student-grid": {
+          "x": 40,
+          "y": 110,
+          "w": 963.21875,
+          "h": 10868.421875,
+          "bottom": 10978.421875,
+          "cols": "228.797px 228.812px 228.797px 228.812px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".student-sidebar": {
+          "x": 1054.40625,
+          "y": 110,
+          "w": 185.59375,
+          "h": 10868.421875,
+          "bottom": 10978.421875,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        }
+      },
+      "flipped": 1
+    },
+    {
+      "w": 1280,
+      "h": 550,
+      "route": "syncopate",
+      "initial": {
+        "viewport": {
+          "width": 1280,
+          "height": 550,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1280,
+            550
+          ],
+          "outer": [
+            1280,
+            550
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1280,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".archive-bottom-guide": {
+          "x": 40,
+          "y": 473.90625,
+          "w": 298.4375,
+          "h": 52.09375,
+          "bottom": 526,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".archive-how-to-sync": {
+          "x": 40,
+          "y": 342.90625,
+          "w": 164,
+          "h": 110,
+          "bottom": 452.90625,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".archive-drawing-btn": {
+          "x": 583.875,
+          "y": 491,
+          "w": 112.25,
+          "h": 35,
+          "bottom": 526,
+          "cols": "none",
+          "font": "12px",
+          "display": "flex"
+        }
+      },
+      "modal": {
+        "viewport": {
+          "width": 1280,
+          "height": 550,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1280,
+            550
+          ],
+          "outer": [
+            1280,
+            550
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1280,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".archive-bottom-guide": {
+          "x": 40,
+          "y": 473.90625,
+          "w": 298.4375,
+          "h": 52.09375,
+          "bottom": 526,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".archive-how-to-sync": {
+          "x": 40,
+          "y": 342.90625,
+          "w": 164,
+          "h": 110,
+          "bottom": 452.90625,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".archive-drawing-btn": {
+          "x": 583.875,
+          "y": 491,
+          "w": 112.25,
+          "h": 35,
+          "bottom": 526,
+          "cols": "none",
+          "font": "12px",
+          "display": "flex"
+        },
+        ".main-stage": {
+          "x": 217.59375,
+          "y": 25,
+          "w": 844.796875,
+          "h": 432,
+          "bottom": 457,
+          "cols": "489.141px 307.641px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".drawing-frame": {
+          "x": 233.59375,
+          "y": 41,
+          "w": 489.140625,
+          "h": 400,
+          "bottom": 441,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".tools-panel": {
+          "x": 738.734375,
+          "y": 41,
+          "w": 307.640625,
+          "h": 400,
+          "bottom": 441,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".share-btn": {
+          "x": 738.734375,
+          "y": 399,
+          "w": 307.640625,
+          "h": 42,
+          "bottom": 441,
+          "cols": "none",
+          "font": "14px",
+          "display": "block"
+        },
+        ".syncopate-modal-close": {
+          "x": 616,
+          "y": 477,
+          "w": 48,
+          "h": 48,
+          "bottom": 525,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        }
+      },
+      "modalScrolled": {
+        "viewport": {
+          "width": 1280,
+          "height": 550,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1280,
+            550
+          ],
+          "outer": [
+            1280,
+            550
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1280,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".archive-bottom-guide": {
+          "x": 40,
+          "y": 473.90625,
+          "w": 298.4375,
+          "h": 52.09375,
+          "bottom": 526,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".archive-how-to-sync": {
+          "x": 40,
+          "y": 342.90625,
+          "w": 164,
+          "h": 110,
+          "bottom": 452.90625,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".archive-drawing-btn": {
+          "x": 583.875,
+          "y": 491,
+          "w": 112.25,
+          "h": 35,
+          "bottom": 526,
+          "cols": "none",
+          "font": "12px",
+          "display": "flex"
+        },
+        ".main-stage": {
+          "x": 217.59375,
+          "y": 25,
+          "w": 844.796875,
+          "h": 432,
+          "bottom": 457,
+          "cols": "489.141px 307.641px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".drawing-frame": {
+          "x": 233.59375,
+          "y": 41,
+          "w": 489.140625,
+          "h": 400,
+          "bottom": 441,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".tools-panel": {
+          "x": 738.734375,
+          "y": 41,
+          "w": 307.640625,
+          "h": 400,
+          "bottom": 441,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".share-btn": {
+          "x": 738.734375,
+          "y": 399,
+          "w": 307.640625,
+          "h": 42,
+          "bottom": 441,
+          "cols": "none",
+          "font": "14px",
+          "display": "block"
+        },
+        ".syncopate-modal-close": {
+          "x": 616,
+          "y": 477,
+          "w": 48,
+          "h": 48,
+          "bottom": 525,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        }
+      },
+      "closed": true
+    },
+    {
+      "w": 1280,
+      "h": 550,
+      "route": "guestbook",
+      "initial": {
+        "viewport": {
+          "width": 1280,
+          "height": 550,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1280,
+            550
+          ],
+          "outer": [
+            1280,
+            550
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1280,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".gb-hero": {
+          "x": 40,
+          "y": 108,
+          "w": 1200,
+          "h": 406,
+          "bottom": 514,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".gb-hero__actions": {
+          "x": 472,
+          "y": 351.59375,
+          "w": 336,
+          "h": 60.1875,
+          "bottom": 411.78125,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        }
+      },
+      "message": {
+        "viewport": {
+          "width": 1280,
+          "height": 550,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1280,
+            550
+          ],
+          "outer": [
+            1280,
+            550
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1280,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".gb-hero": {
+          "x": 40,
+          "y": 108,
+          "w": 1200,
+          "h": 406,
+          "bottom": 514,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        },
+        ".gb-hero__actions": {
+          "x": 472,
+          "y": 351.59375,
+          "w": 336,
+          "h": 60.1875,
+          "bottom": 411.78125,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".gb-modal__dialog": {
+          "x": 420,
+          "y": 72.5,
+          "w": 440,
+          "h": 405,
+          "bottom": 477.5,
+          "cols": "none",
+          "font": "14px",
+          "display": "block"
+        },
+        ".gb-modal__close": {
+          "x": 618,
+          "y": 499.5,
+          "w": 44,
+          "h": 44,
+          "bottom": 543.5,
+          "cols": "44px",
+          "font": "30px",
+          "display": "grid"
+        }
+      }
+    },
+    {
+      "w": 1280,
+      "h": 550,
+      "route": "curriculum",
+      "initial": {
+        "viewport": {
+          "width": 1280,
+          "height": 550,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1280,
+            550
+          ],
+          "outer": [
+            1280,
+            550
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1280,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".curriculum-introduction": {
+          "x": 382.5,
+          "y": 371.140625,
+          "w": 563.1875,
+          "h": 64.3125,
+          "bottom": 435.453125,
+          "cols": "125px 401.938px",
+          "font": "16px",
+          "display": "grid"
+        },
+        ".curriculum-scroll-cue": {
+          "x": 640,
+          "y": 504,
+          "w": 0,
+          "h": 22,
+          "bottom": 526,
+          "cols": "none",
+          "font": "10px",
+          "display": "block"
+        }
+      }
+    },
+    {
+      "w": 1280,
+      "h": 550,
+      "route": "credit",
+      "initial": {
+        "viewport": {
+          "width": 1280,
+          "height": 550,
+          "dpr": 2,
+          "visualScale": 1,
+          "screen": [
+            1280,
+            550
+          ],
+          "outer": [
+            1280,
+            550
+          ]
+        },
+        "overflow": false,
+        ".site-header": {
+          "x": 0,
+          "y": 0,
+          "w": 1280,
+          "h": 80,
+          "bottom": 80,
+          "cols": "none",
+          "font": "16px",
+          "display": "flex"
+        },
+        ".credit-wordmark": {
+          "x": 467.875,
+          "y": 214.0625,
+          "w": 344.234375,
+          "h": 58.875,
+          "bottom": 272.9375,
+          "cols": "none",
+          "font": "16px",
+          "display": "block"
+        }
+      }
+    },
+    {
+      "w": 1920,
+      "h": 1080,
+      "route": "HOME",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 1920,
+      "h": 1080,
+      "route": "project",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 1920,
+      "h": 1080,
+      "route": "student",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 1920,
+      "h": 1080,
+      "route": "syncopate",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 1920,
+      "h": 1080,
+      "route": "guestbook",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 1920,
+      "h": 1080,
+      "route": "curriculum",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 1920,
+      "h": 1080,
+      "route": "credit",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 1800,
+      "h": 1169,
+      "route": "HOME",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 1800,
+      "h": 1169,
+      "route": "project",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 1800,
+      "h": 1169,
+      "route": "student",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 1800,
+      "h": 1169,
+      "route": "syncopate",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 1800,
+      "h": 1169,
+      "route": "guestbook",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 1800,
+      "h": 1169,
+      "route": "curriculum",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 1800,
+      "h": 1169,
+      "route": "credit",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 1024,
+      "h": 768,
+      "route": "HOME",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 1024,
+      "h": 768,
+      "route": "project",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 1024,
+      "h": 768,
+      "route": "student",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 1024,
+      "h": 768,
+      "route": "syncopate",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 1024,
+      "h": 768,
+      "route": "guestbook",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 1024,
+      "h": 768,
+      "route": "curriculum",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 1024,
+      "h": 768,
+      "route": "credit",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 820,
+      "h": 1180,
+      "route": "HOME",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 820,
+      "h": 1180,
+      "route": "project",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 820,
+      "h": 1180,
+      "route": "student",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 820,
+      "h": 1180,
+      "route": "syncopate",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 820,
+      "h": 1180,
+      "route": "guestbook",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 820,
+      "h": 1180,
+      "route": "curriculum",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 820,
+      "h": 1180,
+      "route": "credit",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 768,
+      "h": 1024,
+      "route": "HOME",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 768,
+      "h": 1024,
+      "route": "project",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 768,
+      "h": 1024,
+      "route": "student",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 768,
+      "h": 1024,
+      "route": "syncopate",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 768,
+      "h": 1024,
+      "route": "guestbook",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 768,
+      "h": 1024,
+      "route": "curriculum",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 768,
+      "h": 1024,
+      "route": "credit",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 767,
+      "h": 850,
+      "route": "HOME",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 767,
+      "h": 850,
+      "route": "project",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 767,
+      "h": 850,
+      "route": "student",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 390,
+      "h": 844,
+      "route": "HOME",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 390,
+      "h": 844,
+      "route": "project",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 390,
+      "h": 844,
+      "route": "student",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 375,
+      "h": 812,
+      "route": "HOME",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 375,
+      "h": 812,
+      "route": "project",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 375,
+      "h": 812,
+      "route": "student",
+      "preservedStyleDiffs": []
+    },
+    {
+      "w": 1280,
+      "h": 720,
+      "route": "HOME",
+      "preservedStyleDiffs": []
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,254 @@
+[
+  {
+    "test": "header",
+    "w": 1512,
+    "h": 982,
+    "route": "HOME",
+    "diffs": []
+  },
+  {
+    "test": "header",
+    "w": 1512,
+    "h": 982,
+    "route": "project",
+    "diffs": []
+  },
+  {
+    "test": "header",
+    "w": 1512,
+    "h": 982,
+    "route": "student",
+    "diffs": []
+  },
+  {
+    "test": "header",
+    "w": 1512,
+    "h": 982,
+    "route": "syncopate",
+    "diffs": []
+  },
+  {
+    "test": "header",
+    "w": 1512,
+    "h": 982,
+    "route": "guestbook",
+    "diffs": []
+  },
+  {
+    "test": "header",
+    "w": 1512,
+    "h": 982,
+    "route": "curriculum",
+    "diffs": []
+  },
+  {
+    "test": "header",
+    "w": 1512,
+    "h": 982,
+    "route": "credit",
+    "diffs": []
+  },
+  {
+    "test": "header",
+    "w": 1440,
+    "h": 900,
+    "route": "HOME",
+    "diffs": []
+  },
+  {
+    "test": "header",
+    "w": 1440,
+    "h": 900,
+    "route": "project",
+    "diffs": []
+  },
+  {
+    "test": "header",
+    "w": 1440,
+    "h": 900,
+    "route": "student",
+    "diffs": []
+  },
+  {
+    "test": "header",
+    "w": 1440,
+    "h": 900,
+    "route": "syncopate",
+    "diffs": []
+  },
+  {
+    "test": "header",
+    "w": 1440,
+    "h": 900,
+    "route": "guestbook",
+    "diffs": []
+  },
+  {
+    "test": "header",
+    "w": 1440,
+    "h": 900,
+    "route": "curriculum",
+    "diffs": []
+  },
+  {
+    "test": "header",
+    "w": 1440,
+    "h": 900,
+    "route": "credit",
+    "diffs": []
+  },
+  {
+    "test": "header",
+    "w": 1366,
+    "h": 768,
+    "route": "HOME",
+    "diffs": []
+  },
+  {
+    "test": "header",
+    "w": 1366,
+    "h": 768,
+    "route": "project",
+    "diffs": []
+  },
+  {
+    "test": "header",
+    "w": 1366,
+    "h": 768,
+    "route": "student",
+    "diffs": []
+  },
+  {
+    "test": "header",
+    "w": 1366,
+    "h": 768,
+    "route": "syncopate",
+    "diffs": []
+  },
+  {
+    "test": "header",
+    "w": 1366,
+    "h": 768,
+    "route": "guestbook",
+    "diffs": []
+  },
+  {
+    "test": "header",
+    "w": 1366,
+    "h": 768,
+    "route": "curriculum",
+    "diffs": []
+  },
+  {
+    "test": "header",
+    "w": 1366,
+    "h": 768,
+    "route": "credit",
+    "diffs": []
+  },
+  {
+    "test": "header",
+    "w": 1280,
+    "h": 640,
+    "route": "HOME",
+    "diffs": []
+  },
+  {
+    "test": "header",
+    "w": 1280,
+    "h": 640,
+    "route": "project",
+    "diffs": []
+  },
+  {
+    "test": "header",
+    "w": 1280,
+    "h": 640,
+    "route": "student",
+    "diffs": []
+  },
+  {
+    "test": "header",
+    "w": 1280,
+    "h": 640,
+    "route": "syncopate",
+    "diffs": []
+  },
+  {
+    "test": "header",
+    "w": 1280,
+    "h": 640,
+    "route": "guestbook",
+    "diffs": []
+  },
+  {
+    "test": "header",
+    "w": 1280,
+    "h": 640,
+    "route": "curriculum",
+    "diffs": []
+  },
+  {
+    "test": "header",
+    "w": 1280,
+    "h": 640,
+    "route": "credit",
+    "diffs": []
+  },
+  {
+    "test": "object-detail",
+    "w": 1512,
+    "h": 982,
+    "card": {
+      "width": 390,
+      "height": 471,
+      "imageRatio": 1,
+      "gap": 24,
+      "groupCenter": 491,
+      "viewportCenter": 491,
+      "closeBottom": 762.5
+    }
+  },
+  {
+    "test": "object-detail",
+    "w": 1440,
+    "h": 900,
+    "card": {
+      "width": 390,
+      "height": 471,
+      "imageRatio": 1,
+      "gap": 24,
+      "groupCenter": 450,
+      "viewportCenter": 450,
+      "closeBottom": 721.5
+    }
+  },
+  {
+    "test": "object-detail",
+    "w": 1366,
+    "h": 768,
+    "card": {
+      "width": 382.46875,
+      "height": 463.46875,
+      "imageRatio": 1,
+      "gap": 24,
+      "groupCenter": 384,
+      "viewportCenter": 384,
+      "closeBottom": 651.734375
+    }
+  },
+  {
+    "test": "object-detail",
+    "w": 1280,
+    "h": 640,
+    "card": {
+      "width": 340.390625,
+      "height": 421.390625,
+      "imageRatio": 1,
+      "gap": 24,
+      "groupCenter": 319.9921875,
+      "viewportCenter": 320,
+      "closeBottom": 566.6875
+    }
+  }
+]

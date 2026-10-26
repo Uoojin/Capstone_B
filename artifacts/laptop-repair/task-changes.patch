@@ -1,0 +1,237 @@
+--- before/src/components/Header/Header.css
++++ after/src/components/Header/Header.css
+@@ -395,11 +395,10 @@
+   }
+ }
+ 
+-/* Laptop only: preserve PC >=1600, tablet <=1024, mobile and HOME. */
++/* Keep the active-page marker inside the same primary button width on every laptop page. */
+ @media (min-width: 1025px) and (max-width: 1599px) {
+-  .site-header--subpage { --header-pill-height: clamp(32px, 4.5svh, 36px); padding-top: 22px; }
+-  .site-header--subpage .site-logo,
+-  .site-header--subpage .site-header-pill { height: var(--header-pill-height); }
+-  .site-header--subpage .site-header-pill { font-size: 12px; }
+-  .site-header--subpage .site-logo { font-size: 13px; }
+-}
++  .site-header-pill:not(.is-extra):not(.site-menu-toggle) {
++    width: 104px;
++    flex-basis: 104px;
++  }
++}
+--- before/src/components/Header/Header.jsx
++++ after/src/components/Header/Header.jsx
+@@ -25,7 +25,7 @@
+ 
+   return (
+     <header
+-      className={`site-header ${pathname !== '/' ? 'site-header--subpage' : ''} ${isOpen ? 'is-menu-open' : ''}`}
++      className={`site-header ${isOpen ? 'is-menu-open' : ''}`}
+       onKeyDown={(event) => {
+         if (event.key === 'Escape') setIsOpen(false)
+       }}
+--- before/src/pages/Content/DrawingEditor.css
++++ after/src/pages/Content/DrawingEditor.css
+@@ -1815,29 +1815,64 @@
+   .content-drawing-overlay .editor-screen .canvas-layer { width: 100%; }
+ }
+ 
+-/* Laptop only: preserve PC >=1600, tablet <=1024, mobile and HOME. */
++/* Laptop modal: one PC-derived 1190:626 shell, including a separate close control. */
+ @media (min-width: 1025px) and (max-width: 1599px) {
++  .content-drawing-overlay .editor-screen .content-container {
++    --modal-width: min(1190px, 78vw, calc((100dvh - 168px) * 1190 / 626));
++    padding: 24px;
++    gap: 24px;
++  }
+   .content-drawing-overlay .editor-screen .main-stage {
+-    --laptop-frame-height: max(400px, min(480px, calc(100dvh - 240px)));
+-    width: min(1050px, 66vw);
+-    gap: 16px;
+-  }
+-  .content-drawing-overlay .editor-screen .drawing-frame { height: var(--laptop-frame-height); }
+-  .content-drawing-overlay .editor-screen .canvas-layer { width: min(100%, calc((var(--laptop-frame-height) - 64px) * 700 / 630)); }
++    width: var(--modal-width);
++    aspect-ratio: 1190 / 626;
++    grid-template-columns: minmax(0, 1.59fr) minmax(0, 1fr);
++    grid-template-rows: minmax(0, 1fr);
++    padding: calc(var(--modal-width) * 20 / 1190);
++    gap: calc(var(--modal-width) * 20 / 1190);
++  }
++  .content-drawing-overlay .editor-screen .drawing-frame { height: 100%; min-height: 0; }
++  .content-drawing-overlay .editor-screen .canvas-layer {
++    width: min(100%, calc(var(--modal-width) * 602 / 1190));
++    transform: translate(-50%, calc(-50% - var(--modal-width) * 22 / 1190));
++    height: auto;
++    aspect-ratio: 700 / 630;
++  }
++  .content-drawing-overlay .editor-screen .tools-panel { height: 100%; min-height: 0; }
+   .content-drawing-overlay .editor-screen .tool-label,
+   .content-drawing-overlay .editor-screen .field-title,
+-  .content-drawing-overlay .editor-screen .editor-message-title { font-size: 12px; line-height: 18px; margin-bottom: 8px; }
+-  .content-drawing-overlay .editor-screen .settings-block { gap: 10px; }
+-  .content-drawing-overlay .editor-screen .tool-icons-row { margin-bottom: 10px; }
+-  .content-drawing-overlay .editor-screen .circle-icon-btn { width: 28px; height: 28px; }
++  .content-drawing-overlay .editor-screen .editor-message-title {
++    font-size: clamp(12px, calc(var(--modal-width) * 15 / 1190), 15px);
++    line-height: 1.35;
++    margin-bottom: calc(var(--modal-width) * 18 / 1190);
++  }
++  .content-drawing-overlay .editor-screen .tool-icons-row {
++    gap: calc(var(--modal-width) * 16 / 1190);
++    margin-bottom: calc(var(--modal-width) * 20 / 1190);
++  }
++  .content-drawing-overlay .editor-screen .settings-block { gap: calc(var(--modal-width) * 20 / 1190); }
++  .content-drawing-overlay .editor-screen .symbol-options,
++  .content-drawing-overlay .editor-screen .palette-flex { gap: calc(var(--modal-width) * 16 / 1190); }
++  .content-drawing-overlay .editor-screen .circle-icon-btn,
+   .content-drawing-overlay .editor-screen .symbol-option,
+-  .content-drawing-overlay .editor-screen .palette-dot { width: 24px; height: 24px; flex-basis: 24px; }
+-  .content-drawing-overlay .editor-screen .editor-message-box { min-height: 112px; height: 112px; padding: 12px; }
+-  .content-drawing-overlay .editor-screen .editor-message-input { font-size: 12px; }
+-  .content-drawing-overlay .editor-screen .bottom-action-wrap { margin-top: 12px; }
+-  .content-drawing-overlay .editor-screen .bottom-action-wrap .share-btn { height: 42px; font-size: 14px; }
+-  .content-drawing-overlay .editor-screen .canvas-bottom-hint { font-size: 10px; }
+-  .content-drawing-overlay .editor-screen .undo-btn svg { width: 16px; height: 16px; }
+-  .content-drawing-overlay .syncopate-modal-close { width: 38px; height: 38px; flex-basis: 38px; }
+-
+-}
++  .content-drawing-overlay .editor-screen .palette-dot {
++    width: calc(var(--modal-width) * 32 / 1190);
++    height: calc(var(--modal-width) * 32 / 1190);
++    flex-basis: calc(var(--modal-width) * 32 / 1190);
++  }
++  .content-drawing-overlay .editor-screen .editor-message-box {
++    height: calc(var(--modal-width) * 170 / 1190);
++    min-height: 0;
++    padding: calc(var(--modal-width) * 20 / 1190);
++  }
++  .content-drawing-overlay .editor-screen .editor-message-input,
++  .content-drawing-overlay .editor-screen .editor-message-count {
++    font-size: clamp(12px, calc(var(--modal-width) * 15 / 1190), 15px);
++  }
++  .content-drawing-overlay .editor-screen .bottom-action-wrap { margin-top: calc(var(--modal-width) * 20 / 1190); }
++  .content-drawing-overlay .editor-screen .bottom-action-wrap .share-btn {
++    height: calc(var(--modal-width) * 64 / 1190);
++    font-size: clamp(14px, calc(var(--modal-width) * 20 / 1190), 20px);
++  }
++  .content-drawing-overlay .editor-screen .canvas-bottom-hint { font-size: 12px; }
++  .content-drawing-overlay .editor-screen .undo-btn svg { width: 18px; height: 18px; }
++}
+--- before/src/pages/Content/Syncopate.css
++++ after/src/pages/Content/Syncopate.css
+@@ -288,9 +288,11 @@
+   .syncopate-page .archive-how-to-sync h2 { font-size: 12px; line-height: 16px; margin-bottom: 6px; }
+   .syncopate-page .archive-how-to-sync ul { font-size: 10px; line-height: 16px; padding-left: 12px; }
+   .syncopate-page .archive-drawing-btn { bottom: 24px; font-size: 12px; border-radius: 11px; padding: 10px 13px; }
+-  .syncopate-page .polaroid-modal-card { width: min(330px, calc(100svh - 170px)); padding: 14px; }
+-  .syncopate-page .polaroid-caption-text { font-size: 12px; line-height: 1.65; }
++  .syncopate-page .message-modal-backdrop { align-items: center; }
++  .syncopate-page .polaroid-image-area { max-height: none; }
++  .syncopate-page .polaroid-modal-card { width: min(390px, 28vw, calc((100svh - 180px) * .74)); padding: 18px 18px 20px; }
++  .syncopate-page .polaroid-caption-text { font-size: 15px; line-height: 1.8; }
+   .syncopate-page .polaroid-sync-info,
+   .syncopate-page .polaroid-sync-count,
+-  .syncopate-page .polaroid-date-info { font-size: 11px; }
+-}
++  .syncopate-page .polaroid-date-info { font-size: 15px; }
++}
+--- before/src/pages/Curriculum/Curriculum.css
++++ after/src/pages/Curriculum/Curriculum.css
+@@ -346,14 +346,21 @@
+   .curriculum-scroll-cue { padding-top: 3svh; }
+ }
+ 
+-/* Laptop only: preserve PC >=1600, tablet <=1024, mobile and HOME. */
++/* Laptop hero: restore the large width-based title and the original three-line alignment. */
+ @media (min-width: 1025px) and (max-width: 1599px) {
+-  .curriculum-hero { padding-top: clamp(28px, 5svh, 64px); padding-bottom: 24px; }
+-  .curriculum-symbols { margin-bottom: clamp(24px, 4svh, 52px); }
+-  .curriculum-main-title { font-size: min(7.32vw, 12svh); }
+-  .curriculum-introduction { margin-top: clamp(24px, 4svh, 52px); }
+-  .curriculum-introduction h2 { font-size: 16px; }
+-  .curriculum-introduction p { font-size: 13px; }
+-  .curriculum-scroll-cue { padding-top: 4svh; }
++  .curriculum-hero { padding-top: clamp(32px, calc(10svh - 24px), 75px); padding-bottom: 24px; }
++  .curriculum-symbols { margin-bottom: clamp(28px, calc(9svh - 18px), 66px); }
++  .curriculum-main-title { font-size: clamp(80px, 7.8vw, 125px); }
++  .curriculum-introduction { margin-top: clamp(28px, calc(8svh - 12px), 64px); }
++  .curriculum-introduction h2 { font-size: clamp(16px, 1.25vw, 20px); }
++  .curriculum-introduction p { font-size: clamp(14px, 1.05vw, 17px); line-height: 1.65; }
++  .curriculum-scroll-cue { padding-top: clamp(16px, 3svh, 30px); }
+   .curriculum-pill { font-size: clamp(11px, 1.05vw, 16px); }
+ }
++
++@media (min-width: 1025px) and (max-width: 1599px) and (max-height: 800px) {
++  .curriculum-hero { padding-top: 32px; }
++  .curriculum-symbols { margin-bottom: 28px; }
++  .curriculum-introduction { margin-top: 28px; }
++  .curriculum-scroll-cue { padding-top: 20px; }
++}
+--- before/src/pages/Project/Project.css
++++ after/src/pages/Project/Project.css
+@@ -1361,7 +1361,11 @@
+   .project-page .project-title { font-size: 18px; }
+ 
+   .detail-view { --detail-nav-space: 72px; }
+-  .detail-view .detail-scroller { height: calc(100% - var(--detail-nav-space)); }
++  /* Keep scrolling to the physical viewport edge, without a clipped footer strip. */
++  .detail-view .detail-scroller {
++    height: 100%;
++    scroll-padding-bottom: calc(var(--detail-nav-space) + 24px);
++  }
+   .detail-hero {
+     grid-template-columns: minmax(0, 14.8fr) minmax(0, 46.4fr) minmax(0, 14.8fr);
+     column-gap: 9vw;
+@@ -1390,8 +1394,9 @@
+   .detail-hero .site-link { flex-basis: 30px; width: 30px; height: 30px; margin-top: 8px; }
+ 
+   .detail-team {
+-    min-height: calc(100svh - var(--detail-nav-space));
+-    padding-block: 24px;
++    min-height: 100svh;
++    padding-top: 24px;
++    padding-bottom: calc(var(--detail-nav-space) + 24px);
+   }
+   .detail-team-media { height: min(48.94vw, calc(100svh - 120px)); }
+   .detail-team-info { width: calc(100% - 2vw); }
+@@ -1402,6 +1407,12 @@
+   .member-name { font-size: clamp(12px, .89vw, 14px); margin-bottom: 5px; }
+   .member-role { font-size: clamp(10px, .68vw, 11px); }
+   .detail-project-nav { bottom: 16px; }
+-  .detail-project-nav button { font-size: 13px; gap: 10px; }
++  .detail-project-nav button {
++    font-size: 13px;
++    gap: 10px;
++    padding-inline: 8px;
++    background: #fff;
++    border-radius: 6px;
++  }
+   .close-detail { width: 38px; height: 38px; padding: 10px; top: 3vw; right: 3vw; }
+ }
+--- before/src/pages/Student/Student.css
++++ after/src/pages/Student/Student.css
+@@ -436,8 +436,22 @@
+   .student-page .student-info { gap: 7px; }
+   .student-page .student-name { font-size: 16px; }
+   .student-page .student-meta { font-size: 12px; }
+-  .student-page .back-interview { font-size: 12px; }
+-  .student-page .back-meta-row { font-size: 11px; }
++  .student-page .card-back { padding: 25px; gap: 20px; }
++  .student-page .back-interview {
++    font-size: 16px;
++    line-height: 1.55;
++    word-break: keep-all;
++    flex-shrink: 0;
++  }
++  .student-page .back-meta-list { gap: 10px; flex-shrink: 0; }
++  .student-page .back-meta-row {
++    display: grid;
++    grid-template-columns: 54px minmax(0, 1fr);
++    align-items: start;
++    gap: 8px;
++    font-size: 14px;
++    line-height: 1.4;
++  }
+   .student-page .role-btn { font-size: 13px; }
+   .student-page .role-group { gap: 17px; }
+   .student-page .student-floating-menu { gap: 26px; }

@@ -7,7 +7,7 @@
 export const students = [
   // ========== STUDENT 001 ==========
   {
-    studentId: 'student-001',
+    studentId: '',
 
     // 01. 기본 정보
     name: '',
@@ -30,876 +30,871 @@ export const students = [
 
   // ========== STUDENT 002 ==========
   {
-    studentId: 'student-002',
+    studentId: 'KWONNAYEONG',
 
     // 01. 기본 정보
-    name: '',
-    nameEn: '',
+    name: '권나영',
 
     // 02. 이미지 파일명 생성용 (ID와 같으면 빈 문자열 유지)
     imageKey: '',
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
-    role: '',
-    interview: '',
+    role: 'PLANNER',
+    interview: '발견을 변화로 연결하는 기획자 권나영입니다.',
 
     // 04. 연락처 및 포트폴리오
-    contact: '',
-    profileUrl: null,
+    contact: 'ni9htday@gmail.com',
+    profileUrl: 'http://www.linkedin.com/in/ni9htday',
 
     // 05. 참여 프로젝트
-    projectId: '',
+    projectId: 'project-01',
   },
 
   // ========== STUDENT 003 ==========
   {
-    studentId: 'student-003',
+    studentId: 'JOOSIWON',
 
     // 01. 기본 정보
-    name: '',
-    nameEn: '',
+    name: '주시원',
 
     // 02. 이미지 파일명 생성용 (ID와 같으면 빈 문자열 유지)
     imageKey: '',
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
-    role: '',
-    interview: '',
+    role: 'PLANNER',
+    interview: '문제에 몰입해 답을 찾는 기획자 주시원입니다.',
 
     // 04. 연락처 및 포트폴리오
-    contact: '',
+    contact: 'tldnjs248@naver.com',
     profileUrl: null,
 
     // 05. 참여 프로젝트
-    projectId: '',
+    projectId: 'project-01',
   },
 
   // ========== STUDENT 004 ==========
   {
-    studentId: 'student-004',
+    studentId: 'SEOYEHYUN',
 
     // 01. 기본 정보
-    name: '',
-    nameEn: '',
+    name: '서예현',
 
     // 02. 이미지 파일명 생성용 (ID와 같으면 빈 문자열 유지)
     imageKey: '',
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
-    role: '',
-    interview: '',
+    role: 'DESIGNER',
+    interview: '다르게 보고 발견하는 디자이너 서예현입니다.',
 
     // 04. 연락처 및 포트폴리오
-    contact: '',
+    contact: 'yehyun0107@naver.com',
     profileUrl: null,
 
     // 05. 참여 프로젝트
-    projectId: '',
+    projectId: 'project-01',
   },
 
   // ========== STUDENT 005 ==========
   {
-    studentId: 'student-005',
+    studentId: 'YANGYUBIN',
 
     // 01. 기본 정보
-    name: '',
-    nameEn: '',
+    name: '양유빈',
 
     // 02. 이미지 파일명 생성용 (ID와 같으면 빈 문자열 유지)
     imageKey: '',
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
-    role: '',
-    interview: '',
+    role: 'DESIGNER',
+    interview: '낯선 감각을 연결하는 디자이너 양유빈입니다.',
 
     // 04. 연락처 및 포트폴리오
-    contact: '',
+    contact: 'ygmo24393@gmail.com',
     profileUrl: null,
 
     // 05. 참여 프로젝트
-    projectId: '',
+    projectId: 'project-01',
   },
 
   // ========== STUDENT 006 ==========
   {
-    studentId: 'student-006',
+    studentId: 'LEESEUNGYEON',
 
     // 01. 기본 정보
-    name: '',
-    nameEn: '',
+    name: '이승연',
+ 
 
     // 02. 이미지 파일명 생성용 (ID와 같으면 빈 문자열 유지)
     imageKey: '',
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
-    role: '',
-    interview: '',
+    role: 'DESIGNER',
+    interview: '개성을 피워내는 디자이너 이승연입니다.',
 
     // 04. 연락처 및 포트폴리오
-    contact: '',
-    profileUrl: null,
+    contact: 'yhl12313@naver.com',
+    profileUrl: 'https://yhl12313.github.io/blooming-designer/',
 
     // 05. 참여 프로젝트
-    projectId: '',
+    projectId: 'project-01',
   },
 
   // ========== STUDENT 007 ==========
   {
-    studentId: 'student-007',
+    studentId: 'JUNGDAEUN24',
 
     // 01. 기본 정보
-    name: '',
-    nameEn: '',
+    name: '정다은',
+  
 
     // 02. 이미지 파일명 생성용 (ID와 같으면 빈 문자열 유지)
     imageKey: '',
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
-    role: '',
-    interview: '',
+    role: 'DESIGNER',
+    interview: '고유한 결을 발견하는 디자이너 정다은입니다!',
 
     // 04. 연락처 및 포트폴리오
-    contact: '',
+    contact: 'adneue.j@gmail.com',
     profileUrl: null,
 
     // 05. 참여 프로젝트
-    projectId: '',
+    projectId: 'project-01',
   },
 
   // ========== STUDENT 008 ==========
   {
-    studentId: 'student-008',
+    studentId: 'JUNGYUJIN',
 
     // 01. 기본 정보
-    name: '',
-    nameEn: '',
+    name: '정유진',
+    
 
     // 02. 이미지 파일명 생성용 (ID와 같으면 빈 문자열 유지)
     imageKey: '',
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
-    role: '',
-    interview: '',
+    role: 'PROGRAMMER',
+    interview: '화면 너머의 경험을 연결하는 개발자 정유진입니다.',
 
     // 04. 연락처 및 포트폴리오
-    contact: '',
+    contact: 'u.ooojini@gmail.com',
     profileUrl: null,
 
     // 05. 참여 프로젝트
-    projectId: '',
+    projectId: 'project-01',
   },
 
   // ========== STUDENT 009 ==========
   {
-    studentId: 'student-009',
+    studentId: 'HANSOOHYUN',
 
     // 01. 기본 정보
-    name: '',
-    nameEn: '',
+    name: '한수현',
 
     // 02. 이미지 파일명 생성용 (ID와 같으면 빈 문자열 유지)
     imageKey: '',
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
-    role: '',
-    interview: '',
+    role: 'PLANNER',
+    interview: '작은 발견을 가치로 잇는 기획자 한수현입니다.',
 
     // 04. 연락처 및 포트폴리오
-    contact: '',
+    contact: 'sky4194119@naver.com',
     profileUrl: null,
 
     // 05. 참여 프로젝트
-    projectId: '',
+    projectId: 'project-02',
   },
 
   // ========== STUDENT 010 ==========
   {
-    studentId: 'student-010',
+    studentId: 'KANGMINHA',
 
     // 01. 기본 정보
-    name: '',
-    nameEn: '',
+    name: '강민하',
+    
 
     // 02. 이미지 파일명 생성용 (ID와 같으면 빈 문자열 유지)
     imageKey: '',
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
-    role: '',
-    interview: '',
+    role: 'DESIGNER',
+    interview: '차이를 발견하는 디자이너 강민하입니다',
 
     // 04. 연락처 및 포트폴리오
-    contact: '',
+    contact: 'miinnn027@gmail.com',
     profileUrl: null,
 
     // 05. 참여 프로젝트
-    projectId: '',
+    projectId: 'project-02',
   },
 
   // ========== STUDENT 011 ==========
   {
-    studentId: 'student-011',
+    studentId: 'KIMYERYEONG',
 
     // 01. 기본 정보
-    name: '',
-    nameEn: '',
+    name: '김예령',
+  
 
     // 02. 이미지 파일명 생성용 (ID와 같으면 빈 문자열 유지)
     imageKey: '',
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
-    role: '',
-    interview: '',
+    role: 'PROGRAMMER',
+    interview: '새로움을 발견하는 개발자 김예령입니다.',
 
     // 04. 연락처 및 포트폴리오
-    contact: '',
-    profileUrl: null,
+    contact: 'tenkakuu@gmail.com',
+    profileUrl: 'https://github.com/yaeichemil',
 
     // 05. 참여 프로젝트
-    projectId: '',
+    projectId: 'project-02',
   },
 
   // ========== STUDENT 012 ==========
   {
-    studentId: 'student-012',
+    studentId: 'SONGYEHYUN',
 
     // 01. 기본 정보
-    name: '',
-    nameEn: '',
+    name: '송예현',
+    
 
     // 02. 이미지 파일명 생성용 (ID와 같으면 빈 문자열 유지)
     imageKey: '',
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
-    role: '',
-    interview: '',
+    role: 'PLANNER',
+    interview: '개성만큼 발상도 과감한 기획자 송예현입니다.',
 
     // 04. 연락처 및 포트폴리오
-    contact: '',
+    contact: 'songyehyun15@naver.com',
     profileUrl: null,
 
     // 05. 참여 프로젝트
-    projectId: '',
+    projectId: 'project-02',
   },
 
   // ========== STUDENT 013 ==========
   {
-    studentId: 'student-013',
+    studentId: 'CHOIEUNHWA',
 
     // 01. 기본 정보
-    name: '',
-    nameEn: '',
+    name: '최은화',
+
 
     // 02. 이미지 파일명 생성용 (ID와 같으면 빈 문자열 유지)
     imageKey: '',
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
-    role: '',
-    interview: '',
+    role: 'DESIGNER',
+    interview: '의미와 감각을 연결하는 디자이너 최은화입니다.',
 
     // 04. 연락처 및 포트폴리오
-    contact: '',
+    contact: 'ewa050311@naver.com',
     profileUrl: null,
 
     // 05. 참여 프로젝트
-    projectId: '',
+    projectId: 'project-02',
   },
 
   // ========== STUDENT 014 ==========
   {
-    studentId: 'student-014',
+    studentId: 'HWANGJEONGIN',
 
     // 01. 기본 정보
-    name: '',
-    nameEn: '',
+    name: '황정인',
+  
 
     // 02. 이미지 파일명 생성용 (ID와 같으면 빈 문자열 유지)
     imageKey: '',
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
-    role: '',
-    interview: '',
+    role: 'DESIGNER',
+    interview: '몰입을 설계하는 디자이너 황정인입니다.',
 
     // 04. 연락처 및 포트폴리오
-    contact: '',
+    contact: 'zxoolv@gmail.com',
     profileUrl: null,
 
     // 05. 참여 프로젝트
-    projectId: '',
+    projectId: 'project-02',
   },
 
   // ========== STUDENT 015 ==========
   {
-    studentId: 'student-015',
+    studentId: 'JEONGSEOYEONG',
 
     // 01. 기본 정보
-    name: '',
-    nameEn: '',
+    name: '정서영',
+  
 
     // 02. 이미지 파일명 생성용 (ID와 같으면 빈 문자열 유지)
     imageKey: '',
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
-    role: '',
-    interview: '',
+    role: 'PLANNER',
+    interview: '공감과 연결로 성장하는 기획자 정서영입니다.',
 
     // 04. 연락처 및 포트폴리오
-    contact: '',
+    contact: 'richardis6551@gmail.com',
     profileUrl: null,
 
     // 05. 참여 프로젝트
-    projectId: '',
+    projectId: 'project-03',
   },
 
   // ========== STUDENT 016 ==========
   {
-    studentId: 'student-016',
+    studentId: 'KWONSERIN',
 
     // 01. 기본 정보
-    name: '',
-    nameEn: '',
+    name: '권세린',
+    
 
     // 02. 이미지 파일명 생성용 (ID와 같으면 빈 문자열 유지)
     imageKey: '',
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
-    role: '',
-    interview: '',
+    role: 'DESIGNER',
+    interview: '발견을 성장으로 잇는 디자이너 권세린입니다.',
 
     // 04. 연락처 및 포트폴리오
-    contact: '',
+    contact: 'serin030614@gmail.com',
     profileUrl: null,
 
     // 05. 참여 프로젝트
-    projectId: '',
+    projectId: 'project-03',
   },
 
   // ========== STUDENT 017 ==========
   {
-    studentId: 'student-017',
+    studentId: 'NOHSEUNGMIN',
 
     // 01. 기본 정보
-    name: '',
-    nameEn: '',
+    name: '노승민',
+  
 
     // 02. 이미지 파일명 생성용 (ID와 같으면 빈 문자열 유지)
     imageKey: '',
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
-    role: '',
-    interview: '',
+    role: 'DESIGNER',
+    interview: '발견으로 성장하는 디자이너 노승민입니다.',
 
     // 04. 연락처 및 포트폴리오
-    contact: '',
+    contact: 'sm507noh@gmail.com',
     profileUrl: null,
 
     // 05. 참여 프로젝트
-    projectId: '',
+    projectId: 'project-03',
   },
 
   // ========== STUDENT 018 ==========
   {
-    studentId: 'student-018',
+    studentId: 'YANGYUNJI',
 
     // 01. 기본 정보
-    name: '',
-    nameEn: '',
+    name: '양윤지',
+    
 
     // 02. 이미지 파일명 생성용 (ID와 같으면 빈 문자열 유지)
     imageKey: '',
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
-    role: '',
-    interview: '',
+    role: 'PLANNER',
+    interview: '연결로 가치를 찾아가는 기획자 양윤지입니다.',
 
     // 04. 연락처 및 포트폴리오
-    contact: '',
+    contact: 'yoon353yoon@gmail.com',
     profileUrl: null,
 
     // 05. 참여 프로젝트
-    projectId: '',
+    projectId: 'project-03',
   },
 
   // ========== STUDENT 019 ==========
   {
-    studentId: 'student-019',
+    studentId: 'LEEHANBYEOL',
 
     // 01. 기본 정보
-    name: '',
-    nameEn: '',
+    name: '이한별',
+    
 
     // 02. 이미지 파일명 생성용 (ID와 같으면 빈 문자열 유지)
     imageKey: '',
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
-    role: '',
-    interview: '',
+    role: 'DESIGNER',
+    interview: '낯선 연결을 발견하는 디자이너 이한별입니다.',
 
     // 04. 연락처 및 포트폴리오
-    contact: '',
+    contact: 'hanstarleeee@gmail.com',
     profileUrl: null,
 
     // 05. 참여 프로젝트
-    projectId: '',
+    projectId: 'project-03',
   },
 
   // ========== STUDENT 020 ==========
   {
-    studentId: 'student-020',
+    studentId: 'HANYOOKYUNG',
 
     // 01. 기본 정보
-    name: '',
-    nameEn: '',
+    name: '한유경',
+    
 
     // 02. 이미지 파일명 생성용 (ID와 같으면 빈 문자열 유지)
     imageKey: '',
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
-    role: '',
-    interview: '',
+    role: 'DESIGNER',
+    interview: '몰입으로 성장을 만드는 디자이너 한유경입니다.',
 
     // 04. 연락처 및 포트폴리오
-    contact: '',
+    contact: 'dyolyo28@gmail.com',
     profileUrl: null,
 
     // 05. 참여 프로젝트
-    projectId: '',
+    projectId: 'project-03',
   },
 
   // ========== STUDENT 021 ==========
   {
-    studentId: 'student-021',
+    studentId: 'KIMKIHYUN',
 
     // 01. 기본 정보
-    name: '',
-    nameEn: '',
+    name: '김기현',
+    
 
     // 02. 이미지 파일명 생성용 (ID와 같으면 빈 문자열 유지)
     imageKey: '',
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
-    role: '',
-    interview: '',
+    role: 'PLANNER',
+    interview: '온전한 완성을 위해, 작은 다시를 반복하는 기획자 김기현입니다.',
 
     // 04. 연락처 및 포트폴리오
-    contact: '',
-    profileUrl: null,
+    contact: 'rlgus2022@naver.com',
+    profileUrl: 'https://www.linkedin.com/in/kihyun-kim-aa4740424?utm_source=share_via&utm_content=profile&utm_medium=member_ios',
 
     // 05. 참여 프로젝트
-    projectId: '',
+    projectId: 'project-04',
   },
 
   // ========== STUDENT 022 ==========
   {
-    studentId: 'student-022',
+    studentId: 'KWONMINJAE',
 
     // 01. 기본 정보
-    name: '',
-    nameEn: '',
+    name: '권민재',
+    
 
     // 02. 이미지 파일명 생성용 (ID와 같으면 빈 문자열 유지)
     imageKey: '',
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
-    role: '',
-    interview: '',
+    role: 'DESIGNER',
+    interview: '새로운 워크플로우를 발견하고 성장하는 디자이너 권민재입니다',
 
     // 04. 연락처 및 포트폴리오
-    contact: '',
-    profileUrl: null,
+    contact: 'janobo964@gmail.com',
+    profileUrl: 'https://www.heunta.work',
 
     // 05. 참여 프로젝트
-    projectId: '',
+    projectId: 'project-04',
   },
 
   // ========== STUDENT 023 ==========
   {
-    studentId: 'student-023',
+    studentId: 'KIMJUNA',
 
     // 01. 기본 정보
-    name: '',
-    nameEn: '',
+    name: '김준아',
+    
 
     // 02. 이미지 파일명 생성용 (ID와 같으면 빈 문자열 유지)
     imageKey: '',
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
-    role: '',
-    interview: '',
+    role: 'PROGRAMMER',
+    interview: '아이디어를 경험으로 완성하는 개발자 김준아입니다.',
 
     // 04. 연락처 및 포트폴리오
-    contact: '',
+    contact: 'wnsdk3222@gmail.com',
     profileUrl: null,
 
     // 05. 참여 프로젝트
-    projectId: '',
+    projectId: 'project-04',
   },
 
   // ========== STUDENT 024 ==========
   {
-    studentId: 'student-024',
+    studentId: 'JANGDOIK',
 
     // 01. 기본 정보
-    name: '',
-    nameEn: '',
+    name: '장도익',
+    
 
     // 02. 이미지 파일명 생성용 (ID와 같으면 빈 문자열 유지)
     imageKey: '',
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
-    role: '',
-    interview: '',
+    role: 'DESIGNER',
+    interview: '작은 차이를 연결하는 디자이너 장도익입니다.',
 
     // 04. 연락처 및 포트폴리오
-    contact: '',
-    profileUrl: null,
+    contact: 'doikk2002@gmail.com',
+    profileUrl: 'https://0637522.cargo.site/',
 
     // 05. 참여 프로젝트
-    projectId: '',
+    projectId: 'project-04',
   },
 
   // ========== STUDENT 025 ==========
   {
-    studentId: 'student-025',
+    studentId: 'JUNGDAEUN25',
 
     // 01. 기본 정보
-    name: '',
-    nameEn: '',
+    name: '정다은',
+    
 
     // 02. 이미지 파일명 생성용 (ID와 같으면 빈 문자열 유지)
     imageKey: '',
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
-    role: '',
-    interview: '',
+    role: 'DESIGNER',
+    interview: '사소한 발견을 잇는 디자이너 정다은입니다. ',
 
     // 04. 연락처 및 포트폴리오
-    contact: '',
-    profileUrl: null,
+    contact: 'zungdaeung@gmail.com',
+    profileUrl: 'https://www.linkedin.com/in/nnya30/',
 
     // 05. 참여 프로젝트
-    projectId: '',
+    projectId: 'project-04',
   },
 
   // ========== STUDENT 026 ==========
   {
-    studentId: 'student-026',
+    studentId: 'HONGJUNSANG',
 
     // 01. 기본 정보
-    name: '',
-    nameEn: '',
+    name: '홍준상',
+    
 
     // 02. 이미지 파일명 생성용 (ID와 같으면 빈 문자열 유지)
     imageKey: '',
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
-    role: '',
-    interview: '',
+    role: 'DESIGNER',
+    interview: '개성을 담아내는 디자이너 홍준상입니다.',
 
     // 04. 연락처 및 포트폴리오
-    contact: '',
-    profileUrl: null,
+    contact: 'junsang.business@gmail.com',
+    profileUrl: 'https://www.instagram.com/junsang_mo/',
 
     // 05. 참여 프로젝트
-    projectId: '',
+    projectId: 'project-04',
   },
 
   // ========== STUDENT 027 ==========
   {
-    studentId: 'student-027',
+    studentId: 'KIMYURAN',
 
     // 01. 기본 정보
-    name: '',
-    nameEn: '',
+    name: '김유란',
+    
 
     // 02. 이미지 파일명 생성용 (ID와 같으면 빈 문자열 유지)
     imageKey: '',
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
-    role: '',
-    interview: '',
+    role: 'PLANNER',
+    interview: '새로운 발견을 설계하는 기획자 김유란입니다.',
 
     // 04. 연락처 및 포트폴리오
-    contact: '',
+    contact: 'knewrun25@gmail.com',
     profileUrl: null,
 
     // 05. 참여 프로젝트
-    projectId: '',
+    projectId: 'project-05',
   },
 
   // ========== STUDENT 028 ==========
   {
-    studentId: 'student-028',
+    studentId: 'KIMKYUMIN',
 
     // 01. 기본 정보
-    name: '',
-    nameEn: '',
+    name: '김규민',
+    
 
     // 02. 이미지 파일명 생성용 (ID와 같으면 빈 문자열 유지)
     imageKey: '',
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
-    role: '',
-    interview: '',
+    role: 'DESIGNER',
+    interview: '작은 디테일까지 책임지는 디자이너 김규민입니다.',
 
     // 04. 연락처 및 포트폴리오
-    contact: '',
+    contact: 'ejik0318@gmail.com',
     profileUrl: null,
 
     // 05. 참여 프로젝트
-    projectId: '',
+    projectId: 'project-05',
   },
 
   // ========== STUDENT 029 ==========
   {
-    studentId: 'student-029',
+    studentId: 'KIMJIYOON',
 
     // 01. 기본 정보
-    name: '',
-    nameEn: '',
+    name: '김지윤',
+    
 
     // 02. 이미지 파일명 생성용 (ID와 같으면 빈 문자열 유지)
     imageKey: '',
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
-    role: '',
-    interview: '',
+    role: 'DESIGNER',
+    interview: '변화를 빠르게 읽고, 새로운 시각으로 풀어내는 디자이너 김지윤입니다.',
 
     // 04. 연락처 및 포트폴리오
-    contact: '',
+    contact: 'jiyunie03@gmail.com',
     profileUrl: null,
 
     // 05. 참여 프로젝트
-    projectId: '',
+    projectId: 'project-05',
   },
 
   // ========== STUDENT 030 ==========
   {
-    studentId: 'student-030',
+    studentId: 'LEEJOOBIN',
 
     // 01. 기본 정보
-    name: '',
-    nameEn: '',
+    name: '이주빈',
+    
 
     // 02. 이미지 파일명 생성용 (ID와 같으면 빈 문자열 유지)
     imageKey: '',
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
-    role: '',
-    interview: '',
+    role: 'DESIGNER',
+    interview: '작은 차이를 발견하는 디자이너 이주빈입니다.',
 
     // 04. 연락처 및 포트폴리오
-    contact: '',
+    contact: 'qp2joobinqp@gmail.com',
     profileUrl: null,
 
     // 05. 참여 프로젝트
-    projectId: '',
+    projectId: 'project-05',
   },
 
   // ========== STUDENT 031 ==========
   {
-    studentId: 'student-031',
+    studentId: 'CHANGHAJIUN',
 
     // 01. 기본 정보
-    name: '',
-    nameEn: '',
+    name: '장하준',
+    
 
     // 02. 이미지 파일명 생성용 (ID와 같으면 빈 문자열 유지)
     imageKey: '',
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
-    role: '',
-    interview: '',
+    role: 'DESIGNER',
+    interview: '상상을 구현하는 디자이너 장하준입니다.',
 
     // 04. 연락처 및 포트폴리오
-    contact: '',
+    contact: 'kyounghoon.chang@gmail.com',
     profileUrl: null,
 
     // 05. 참여 프로젝트
-    projectId: '',
+    projectId: 'project-05',
   },
 
   // ========== STUDENT 032 ==========
   {
-    studentId: 'student-032',
+    studentId: 'JEONGYUMIN',
 
     // 01. 기본 정보
-    name: '',
-    nameEn: '',
+    name: '정유민',
+    
 
     // 02. 이미지 파일명 생성용 (ID와 같으면 빈 문자열 유지)
     imageKey: '',
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
-    role: '',
-    interview: '',
+    role: 'PLANNER',
+    interview: '몰입해 끝까지 파고드는 기획자 정유민입니다.',
 
     // 04. 연락처 및 포트폴리오
-    contact: '',
+    contact: 'imyuminj@gmail.com',
     profileUrl: null,
 
     // 05. 참여 프로젝트
-    projectId: '',
+    projectId: 'project-05',
   },
 
   // ========== STUDENT 033 ==========
   {
-    studentId: 'student-033',
+    studentId: 'ShonYechan',
 
     // 01. 기본 정보
-    name: '',
-    nameEn: '',
+    name: '손예찬',
+    
 
     // 02. 이미지 파일명 생성용 (ID와 같으면 빈 문자열 유지)
     imageKey: '',
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
-    role: '',
-    interview: '',
+    role: 'DESIGNER',
+    interview: '쓰는 이에 공감하는 AX 디자이너 손예찬입니다',
 
     // 04. 연락처 및 포트폴리오
-    contact: '',
-    profileUrl: null,
+    contact: 'shonzmag@gmail.com',
+    profileUrl: 'http://www.shonyechan.com/',
 
     // 05. 참여 프로젝트
-    projectId: '',
+    projectId: 'project-06',
   },
 
   // ========== STUDENT 034 ==========
   {
-    studentId: 'student-034',
+    studentId: 'KOHAEEUN',
 
     // 01. 기본 정보
-    name: '',
-    nameEn: '',
+    name: '고해은',
+    
 
     // 02. 이미지 파일명 생성용 (ID와 같으면 빈 문자열 유지)
     imageKey: '',
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
-    role: '',
-    interview: '',
+    role: 'DESIGNER',
+    interview: '낯섦과 함께 성장하는 디자이너 고해은입니다.',
 
     // 04. 연락처 및 포트폴리오
-    contact: '',
-    profileUrl: null,
+    contact: 'hello.henkoo@outlook.com',
+    profileUrl: 'https://henkoo-portfolio.vercel.app/',
 
     // 05. 참여 프로젝트
-    projectId: '',
+    projectId: 'project-06',
   },
 
   // ========== STUDENT 035 ==========
   {
-    studentId: 'student-035',
+    studentId: 'KimLia',
 
     // 01. 기본 정보
-    name: '',
-    nameEn: '',
+    name: '김리아',
+    
 
     // 02. 이미지 파일명 생성용 (ID와 같으면 빈 문자열 유지)
     imageKey: '',
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
-    role: '',
-    interview: '',
+    role: 'DESIGNER',
+    interview: '작은 발견으로 변화를 만드는 디자이너 김리아입니다.',
 
     // 04. 연락처 및 포트폴리오
-    contact: '',
+    contact: 'liakim1804@gmail.com',
     profileUrl: null,
 
     // 05. 참여 프로젝트
-    projectId: '',
+    projectId: 'project-06',
   },
 
   // ========== STUDENT 036 ==========
   {
-    studentId: 'student-036',
+    studentId: 'KimJiwook',
 
     // 01. 기본 정보
-    name: '',
-    nameEn: '',
+    name: '김지욱',
+    
 
     // 02. 이미지 파일명 생성용 (ID와 같으면 빈 문자열 유지)
     imageKey: '',
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
-    role: '',
-    interview: '',
+    role: 'DESIGNER',
+    interview: '몰입을 설계하는 UX 디자이너 김지욱입니다.',
 
     // 04. 연락처 및 포트폴리오
-    contact: '',
+    contact: '010-4052-4489',
     profileUrl: null,
 
     // 05. 참여 프로젝트
-    projectId: '',
+    projectId: 'project-06',
   },
 
   // ========== STUDENT 037 ==========
   {
-    studentId: 'student-037',
+    studentId: 'LeeSiheon',
 
     // 01. 기본 정보
-    name: '',
-    nameEn: '',
+    name: '이시헌',
+    
 
     // 02. 이미지 파일명 생성용 (ID와 같으면 빈 문자열 유지)
     imageKey: '',
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
-    role: '',
-    interview: '',
+    role: 'PLANNER',
+    interview: '몰입할 이유를 만드는 기획자 이시헌입니다.',
 
     // 04. 연락처 및 포트폴리오
-    contact: '',
+    contact: 'le2shun@naver.com',
     profileUrl: null,
 
     // 05. 참여 프로젝트
-    projectId: '',
+    projectId: 'project-06',
   },
 
   // ========== STUDENT 038 ==========
   {
-    studentId: 'student-038',
+    studentId: 'JungJaeHoon',
 
     // 01. 기본 정보
-    name: '',
-    nameEn: '',
+    name: '정재훈',
+    
 
     // 02. 이미지 파일명 생성용 (ID와 같으면 빈 문자열 유지)
     imageKey: '',
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
-    role: '',
-    interview: '',
+    role: 'DESIGNER',
+    interview: '경험을 연결하는 UX 디자이너 정재훈입니다.',
 
     // 04. 연락처 및 포트폴리오
-    contact: '',
+    contact: 'junja03@naver.com',
     profileUrl: null,
 
     // 05. 참여 프로젝트
-    projectId: '',
+    projectId: 'project-06',
   },
 
   // ========== STUDENT 039 ==========
   {
-    studentId: 'student-039',
+    studentId: 'HanJungMin',
 
     // 01. 기본 정보
-    name: '',
-    nameEn: '',
+    name: '한정민',
+    
 
     // 02. 이미지 파일명 생성용 (ID와 같으면 빈 문자열 유지)
     imageKey: '',
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
-    role: '',
-    interview: '',
+    role: 'PLANNER',
+    interview: '질문을 통해 더 나은 답을 발견하는 기획자 한정민입니다',
 
     // 04. 연락처 및 포트폴리오
-    contact: '',
+    contact: 'jungmin2209@naver.com',
     profileUrl: null,
 
     // 05. 참여 프로젝트
-    projectId: '',
+    projectId: 'project-06',
   },
 
   // ========== STUDENT 040 ==========

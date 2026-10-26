@@ -113,12 +113,7 @@ function ScrollCue({ nextSectionRef }) {
 
   return (
     <div className="curriculum-scroll-cue">
-      <button className="curriculum-scroll-button" type="button" onClick={scrollToNextSection} aria-label="CONVERGENCE EDUCATION으로 스크롤">
-        <span>SCROLL DOWN</span>
-        <svg width="16" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true">
-          <path d="m1 1 7 7 7-7" pathLength="1" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </button>
+      <button className="curriculum-scroll-button scroll-indicator" type="button" onClick={scrollToNextSection} aria-label="CONVERGENCE EDUCATION으로 스크롤" />
     </div>
   )
 }

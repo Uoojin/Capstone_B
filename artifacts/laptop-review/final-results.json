@@ -1,0 +1,1214 @@
+[
+  {
+    "w": 1512,
+    "h": 850,
+    "indexFixed": true,
+    "teams": [
+      {
+        "name": "착! (Chak!)",
+        "memberCount": 6,
+        "imageBottom": 754,
+        "membersBottom": 541.234375,
+        "smallBottom": 566.265625,
+        "scrollerHeight": 778,
+        "teamHeight": 778,
+        "heroImageBottom": 725,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "PARALLAX",
+        "memberCount": 7,
+        "imageBottom": 754,
+        "membersBottom": 568.15625,
+        "smallBottom": 566.265625,
+        "scrollerHeight": 778,
+        "teamHeight": 778,
+        "heroImageBottom": 725,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "LET'S SYNC!",
+        "memberCount": 7,
+        "imageBottom": 754,
+        "membersBottom": 577.5,
+        "smallBottom": 566.265625,
+        "scrollerHeight": 778,
+        "teamHeight": 778,
+        "heroImageBottom": 746,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "잘가계",
+        "memberCount": 0,
+        "imageBottom": 754,
+        "membersBottom": 389,
+        "smallBottom": 566.265625,
+        "scrollerHeight": 778,
+        "teamHeight": 778,
+        "heroImageBottom": 725,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "PLEV",
+        "memberCount": 6,
+        "imageBottom": 753.890625,
+        "membersBottom": 541.125,
+        "smallBottom": 540.5625,
+        "scrollerHeight": 778,
+        "teamHeight": 778,
+        "heroImageBottom": 768,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "말모이",
+        "memberCount": 0,
+        "imageBottom": 754,
+        "membersBottom": 389,
+        "smallBottom": 566.265625,
+        "scrollerHeight": 778,
+        "teamHeight": 778,
+        "heroImageBottom": 725,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "emora",
+        "memberCount": 0,
+        "imageBottom": 754,
+        "membersBottom": 389,
+        "smallBottom": 566.265625,
+        "scrollerHeight": 778,
+        "teamHeight": 778,
+        "heroImageBottom": 725,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "FEELD",
+        "memberCount": 0,
+        "imageBottom": 754,
+        "membersBottom": 389,
+        "smallBottom": 566.265625,
+        "scrollerHeight": 778,
+        "teamHeight": 778,
+        "heroImageBottom": 746,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "오름 oreum",
+        "memberCount": 0,
+        "imageBottom": 754,
+        "membersBottom": 389,
+        "smallBottom": 566.265625,
+        "scrollerHeight": 778,
+        "teamHeight": 778,
+        "heroImageBottom": 725,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "아키 (aquí)",
+        "memberCount": 6,
+        "imageBottom": 754,
+        "membersBottom": 541.234375,
+        "smallBottom": 566.265625,
+        "scrollerHeight": 778,
+        "teamHeight": 778,
+        "heroImageBottom": 725,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "POP-ING",
+        "memberCount": 0,
+        "imageBottom": 754,
+        "membersBottom": 389,
+        "smallBottom": 566.265625,
+        "scrollerHeight": 778,
+        "teamHeight": 778,
+        "heroImageBottom": 746,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "공명체",
+        "memberCount": 0,
+        "imageBottom": 754,
+        "membersBottom": 389,
+        "smallBottom": 566.265625,
+        "scrollerHeight": 778,
+        "teamHeight": 778,
+        "heroImageBottom": 746,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "인생정거장",
+        "memberCount": 0,
+        "imageBottom": 754,
+        "membersBottom": 389,
+        "smallBottom": 566.265625,
+        "scrollerHeight": 778,
+        "teamHeight": 778,
+        "heroImageBottom": 746,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "SEESAW",
+        "memberCount": 0,
+        "imageBottom": 754,
+        "membersBottom": 389,
+        "smallBottom": 566.265625,
+        "scrollerHeight": 778,
+        "teamHeight": 778,
+        "heroImageBottom": 725,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "SNOOZE",
+        "memberCount": 0,
+        "imageBottom": 754,
+        "membersBottom": 389,
+        "smallBottom": 566.265625,
+        "scrollerHeight": 778,
+        "teamHeight": 778,
+        "heroImageBottom": 725,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "HAELON",
+        "memberCount": 6,
+        "imageBottom": 754,
+        "membersBottom": 541.234375,
+        "smallBottom": 566.265625,
+        "scrollerHeight": 778,
+        "teamHeight": 778,
+        "heroImageBottom": 725,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "COMPASS",
+        "memberCount": 0,
+        "imageBottom": 754,
+        "membersBottom": 389,
+        "smallBottom": 566.265625,
+        "scrollerHeight": 778,
+        "teamHeight": 778,
+        "heroImageBottom": 725,
+        "hasHorizontalOverlap": false
+      }
+    ],
+    "intro": {
+      "descBottom": 243.65625,
+      "imageTop": 273.40625,
+      "imageBottom": 746.375,
+      "scrollerHeight": 778
+    },
+    "redo": true,
+    "backdropClose": true
+  },
+  {
+    "w": 1440,
+    "h": 780,
+    "indexFixed": true,
+    "teams": [
+      {
+        "name": "착! (Chak!)",
+        "memberCount": 6,
+        "imageBottom": 684,
+        "membersBottom": 498.9375,
+        "smallBottom": 521.546875,
+        "scrollerHeight": 708,
+        "teamHeight": 708,
+        "heroImageBottom": 665,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "LET'S SYNC!",
+        "memberCount": 7,
+        "imageBottom": 683.671875,
+        "membersBottom": 532.765625,
+        "smallBottom": 521.21875,
+        "scrollerHeight": 708,
+        "teamHeight": 708,
+        "heroImageBottom": 686,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "POP-ING",
+        "memberCount": 0,
+        "imageBottom": 683.671875,
+        "membersBottom": 353.671875,
+        "smallBottom": 521.21875,
+        "scrollerHeight": 708,
+        "teamHeight": 708,
+        "heroImageBottom": 686,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "인생정거장",
+        "memberCount": 0,
+        "imageBottom": 683.671875,
+        "membersBottom": 353.671875,
+        "smallBottom": 521.21875,
+        "scrollerHeight": 708,
+        "teamHeight": 708,
+        "heroImageBottom": 686,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "HAELON",
+        "memberCount": 6,
+        "imageBottom": 684,
+        "membersBottom": 498.9375,
+        "smallBottom": 521.546875,
+        "scrollerHeight": 708,
+        "teamHeight": 708,
+        "heroImageBottom": 665,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "잘가계",
+        "memberCount": 0,
+        "imageBottom": 684,
+        "membersBottom": 354,
+        "smallBottom": 521.546875,
+        "scrollerHeight": 708,
+        "teamHeight": 708,
+        "heroImageBottom": 665,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "오름 oreum",
+        "memberCount": 0,
+        "imageBottom": 684,
+        "membersBottom": 354,
+        "smallBottom": 521.546875,
+        "scrollerHeight": 708,
+        "teamHeight": 708,
+        "heroImageBottom": 665,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "말모이",
+        "memberCount": 0,
+        "imageBottom": 684,
+        "membersBottom": 354,
+        "smallBottom": 521.546875,
+        "scrollerHeight": 708,
+        "teamHeight": 708,
+        "heroImageBottom": 665,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "PLEV",
+        "memberCount": 6,
+        "imageBottom": 684.171875,
+        "membersBottom": 499.109375,
+        "smallBottom": 497.203125,
+        "scrollerHeight": 708,
+        "teamHeight": 708,
+        "heroImageBottom": 706,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "SNOOZE",
+        "memberCount": 0,
+        "imageBottom": 684,
+        "membersBottom": 354,
+        "smallBottom": 521.546875,
+        "scrollerHeight": 708,
+        "teamHeight": 708,
+        "heroImageBottom": 665,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "COMPASS",
+        "memberCount": 0,
+        "imageBottom": 684,
+        "membersBottom": 354,
+        "smallBottom": 521.546875,
+        "scrollerHeight": 708,
+        "teamHeight": 708,
+        "heroImageBottom": 665,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "아키 (aquí)",
+        "memberCount": 6,
+        "imageBottom": 684,
+        "membersBottom": 498.9375,
+        "smallBottom": 521.546875,
+        "scrollerHeight": 708,
+        "teamHeight": 708,
+        "heroImageBottom": 665,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "SEESAW",
+        "memberCount": 0,
+        "imageBottom": 684,
+        "membersBottom": 354,
+        "smallBottom": 521.546875,
+        "scrollerHeight": 708,
+        "teamHeight": 708,
+        "heroImageBottom": 665,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "emora",
+        "memberCount": 0,
+        "imageBottom": 684,
+        "membersBottom": 354,
+        "smallBottom": 521.546875,
+        "scrollerHeight": 708,
+        "teamHeight": 708,
+        "heroImageBottom": 665,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "FEELD",
+        "memberCount": 0,
+        "imageBottom": 683.671875,
+        "membersBottom": 353.671875,
+        "smallBottom": 521.21875,
+        "scrollerHeight": 708,
+        "teamHeight": 708,
+        "heroImageBottom": 686,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "PARALLAX",
+        "memberCount": 7,
+        "imageBottom": 684,
+        "membersBottom": 524.515625,
+        "smallBottom": 521.546875,
+        "scrollerHeight": 708,
+        "teamHeight": 708,
+        "heroImageBottom": 665,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "공명체",
+        "memberCount": 0,
+        "imageBottom": 683.671875,
+        "membersBottom": 353.671875,
+        "smallBottom": 521.21875,
+        "scrollerHeight": 708,
+        "teamHeight": 708,
+        "heroImageBottom": 686,
+        "hasHorizontalOverlap": false
+      }
+    ],
+    "intro": {
+      "descBottom": 228.390625,
+      "imageTop": 255.6875,
+      "imageBottom": 685.671875,
+      "scrollerHeight": 708
+    },
+    "redo": true,
+    "backdropClose": true
+  },
+  {
+    "w": 1366,
+    "h": 680,
+    "indexFixed": true,
+    "teams": [
+      {
+        "name": "착! (Chak!)",
+        "memberCount": 6,
+        "imageBottom": 584,
+        "membersBottom": 440.9375,
+        "smallBottom": 460.203125,
+        "scrollerHeight": 608,
+        "teamHeight": 608,
+        "heroImageBottom": 543,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "공명체",
+        "memberCount": 0,
+        "imageBottom": 584,
+        "membersBottom": 304,
+        "smallBottom": 460.203125,
+        "scrollerHeight": 608,
+        "teamHeight": 608,
+        "heroImageBottom": 563,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "아키 (aquí)",
+        "memberCount": 6,
+        "imageBottom": 584,
+        "membersBottom": 440.9375,
+        "smallBottom": 460.203125,
+        "scrollerHeight": 608,
+        "teamHeight": 608,
+        "heroImageBottom": 543,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "COMPASS",
+        "memberCount": 0,
+        "imageBottom": 584,
+        "membersBottom": 304,
+        "smallBottom": 460.203125,
+        "scrollerHeight": 608,
+        "teamHeight": 608,
+        "heroImageBottom": 543,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "인생정거장",
+        "memberCount": 0,
+        "imageBottom": 584,
+        "membersBottom": 304,
+        "smallBottom": 460.203125,
+        "scrollerHeight": 608,
+        "teamHeight": 608,
+        "heroImageBottom": 563,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "HAELON",
+        "memberCount": 6,
+        "imageBottom": 584,
+        "membersBottom": 440.9375,
+        "smallBottom": 460.203125,
+        "scrollerHeight": 608,
+        "teamHeight": 608,
+        "heroImageBottom": 543,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "SEESAW",
+        "memberCount": 0,
+        "imageBottom": 584,
+        "membersBottom": 304,
+        "smallBottom": 460.203125,
+        "scrollerHeight": 608,
+        "teamHeight": 608,
+        "heroImageBottom": 543,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "오름 oreum",
+        "memberCount": 0,
+        "imageBottom": 584,
+        "membersBottom": 304,
+        "smallBottom": 460.203125,
+        "scrollerHeight": 608,
+        "teamHeight": 608,
+        "heroImageBottom": 543,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "SNOOZE",
+        "memberCount": 0,
+        "imageBottom": 584,
+        "membersBottom": 304,
+        "smallBottom": 460.203125,
+        "scrollerHeight": 608,
+        "teamHeight": 608,
+        "heroImageBottom": 543,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "PLEV",
+        "memberCount": 6,
+        "imageBottom": 584,
+        "membersBottom": 440.9375,
+        "smallBottom": 436.78125,
+        "scrollerHeight": 608,
+        "teamHeight": 608,
+        "heroImageBottom": 582,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "POP-ING",
+        "memberCount": 0,
+        "imageBottom": 584,
+        "membersBottom": 304,
+        "smallBottom": 460.203125,
+        "scrollerHeight": 608,
+        "teamHeight": 608,
+        "heroImageBottom": 563,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "잘가계",
+        "memberCount": 0,
+        "imageBottom": 584,
+        "membersBottom": 304,
+        "smallBottom": 460.203125,
+        "scrollerHeight": 608,
+        "teamHeight": 608,
+        "heroImageBottom": 543,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "말모이",
+        "memberCount": 0,
+        "imageBottom": 584,
+        "membersBottom": 304,
+        "smallBottom": 460.203125,
+        "scrollerHeight": 608,
+        "teamHeight": 608,
+        "heroImageBottom": 543,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "PARALLAX",
+        "memberCount": 7,
+        "imageBottom": 584,
+        "membersBottom": 465.015625,
+        "smallBottom": 460.203125,
+        "scrollerHeight": 608,
+        "teamHeight": 608,
+        "heroImageBottom": 543,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "LET'S SYNC!",
+        "memberCount": 7,
+        "imageBottom": 584,
+        "membersBottom": 472.484375,
+        "smallBottom": 460.203125,
+        "scrollerHeight": 608,
+        "teamHeight": 608,
+        "heroImageBottom": 563,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "emora",
+        "memberCount": 0,
+        "imageBottom": 584,
+        "membersBottom": 304,
+        "smallBottom": 460.203125,
+        "scrollerHeight": 608,
+        "teamHeight": 608,
+        "heroImageBottom": 543,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "FEELD",
+        "memberCount": 0,
+        "imageBottom": 584,
+        "membersBottom": 304,
+        "smallBottom": 460.203125,
+        "scrollerHeight": 608,
+        "teamHeight": 608,
+        "heroImageBottom": 563,
+        "hasHorizontalOverlap": false
+      }
+    ],
+    "intro": {
+      "descBottom": 208.828125,
+      "imageTop": 232.828125,
+      "imageBottom": 562.828125,
+      "scrollerHeight": 608
+    },
+    "redo": true,
+    "backdropClose": true
+  },
+  {
+    "w": 1280,
+    "h": 640,
+    "indexFixed": true,
+    "teams": [
+      {
+        "name": "착! (Chak!)",
+        "memberCount": 6,
+        "imageBottom": 544,
+        "membersBottom": 418.1875,
+        "smallBottom": 430.703125,
+        "scrollerHeight": 568,
+        "teamHeight": 568,
+        "heroImageBottom": 495,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "HAELON",
+        "memberCount": 6,
+        "imageBottom": 544,
+        "membersBottom": 418.1875,
+        "smallBottom": 430.703125,
+        "scrollerHeight": 568,
+        "teamHeight": 568,
+        "heroImageBottom": 495,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "PARALLAX",
+        "memberCount": 7,
+        "imageBottom": 544,
+        "membersBottom": 441.734375,
+        "smallBottom": 430.703125,
+        "scrollerHeight": 568,
+        "teamHeight": 568,
+        "heroImageBottom": 495,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "인생정거장",
+        "memberCount": 0,
+        "imageBottom": 544,
+        "membersBottom": 284,
+        "smallBottom": 430.703125,
+        "scrollerHeight": 568,
+        "teamHeight": 568,
+        "heroImageBottom": 514,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "FEELD",
+        "memberCount": 0,
+        "imageBottom": 544,
+        "membersBottom": 284,
+        "smallBottom": 430.703125,
+        "scrollerHeight": 568,
+        "teamHeight": 568,
+        "heroImageBottom": 514,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "PLEV",
+        "memberCount": 6,
+        "imageBottom": 544,
+        "membersBottom": 418.1875,
+        "smallBottom": 408.578125,
+        "scrollerHeight": 568,
+        "teamHeight": 568,
+        "heroImageBottom": 534,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "emora",
+        "memberCount": 0,
+        "imageBottom": 544,
+        "membersBottom": 284,
+        "smallBottom": 430.703125,
+        "scrollerHeight": 568,
+        "teamHeight": 568,
+        "heroImageBottom": 495,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "SNOOZE",
+        "memberCount": 0,
+        "imageBottom": 544,
+        "membersBottom": 284,
+        "smallBottom": 430.703125,
+        "scrollerHeight": 568,
+        "teamHeight": 568,
+        "heroImageBottom": 495,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "LET'S SYNC!",
+        "memberCount": 7,
+        "imageBottom": 544,
+        "membersBottom": 448.765625,
+        "smallBottom": 430.703125,
+        "scrollerHeight": 568,
+        "teamHeight": 568,
+        "heroImageBottom": 514,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "SEESAW",
+        "memberCount": 0,
+        "imageBottom": 544,
+        "membersBottom": 284,
+        "smallBottom": 430.703125,
+        "scrollerHeight": 568,
+        "teamHeight": 568,
+        "heroImageBottom": 495,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "공명체",
+        "memberCount": 0,
+        "imageBottom": 544,
+        "membersBottom": 284,
+        "smallBottom": 430.703125,
+        "scrollerHeight": 568,
+        "teamHeight": 568,
+        "heroImageBottom": 514,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "COMPASS",
+        "memberCount": 0,
+        "imageBottom": 544,
+        "membersBottom": 284,
+        "smallBottom": 430.703125,
+        "scrollerHeight": 568,
+        "teamHeight": 568,
+        "heroImageBottom": 514,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "잘가계",
+        "memberCount": 0,
+        "imageBottom": 544,
+        "membersBottom": 284,
+        "smallBottom": 430.703125,
+        "scrollerHeight": 568,
+        "teamHeight": 568,
+        "heroImageBottom": 495,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "POP-ING",
+        "memberCount": 0,
+        "imageBottom": 544,
+        "membersBottom": 284,
+        "smallBottom": 430.703125,
+        "scrollerHeight": 568,
+        "teamHeight": 568,
+        "heroImageBottom": 514,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "오름 oreum",
+        "memberCount": 0,
+        "imageBottom": 544,
+        "membersBottom": 284,
+        "smallBottom": 430.703125,
+        "scrollerHeight": 568,
+        "teamHeight": 568,
+        "heroImageBottom": 514,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "아키 (aquí)",
+        "memberCount": 6,
+        "imageBottom": 544,
+        "membersBottom": 418.1875,
+        "smallBottom": 430.703125,
+        "scrollerHeight": 568,
+        "teamHeight": 568,
+        "heroImageBottom": 495,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "말모이",
+        "memberCount": 0,
+        "imageBottom": 544,
+        "membersBottom": 284,
+        "smallBottom": 430.703125,
+        "scrollerHeight": 568,
+        "teamHeight": 568,
+        "heroImageBottom": 495,
+        "hasHorizontalOverlap": false
+      }
+    ],
+    "intro": {
+      "descBottom": 200.328125,
+      "imageTop": 224.328125,
+      "imageBottom": 514.3125,
+      "scrollerHeight": 568
+    },
+    "redo": true,
+    "backdropClose": true
+  },
+  {
+    "w": 1512,
+    "h": 640,
+    "indexFixed": true,
+    "teams": [
+      {
+        "name": "착! (Chak!)",
+        "memberCount": 6,
+        "imageBottom": 544,
+        "membersBottom": 424.703125,
+        "smallBottom": 451.1875,
+        "scrollerHeight": 568,
+        "teamHeight": 568,
+        "heroImageBottom": 508,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "잘가계",
+        "memberCount": 0,
+        "imageBottom": 544,
+        "membersBottom": 284,
+        "smallBottom": 451.1875,
+        "scrollerHeight": 568,
+        "teamHeight": 568,
+        "heroImageBottom": 508,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "PLEV",
+        "memberCount": 6,
+        "imageBottom": 543.796875,
+        "membersBottom": 424.5,
+        "smallBottom": 425.390625,
+        "scrollerHeight": 568,
+        "teamHeight": 568,
+        "heroImageBottom": 551,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "COMPASS",
+        "memberCount": 0,
+        "imageBottom": 544,
+        "membersBottom": 284,
+        "smallBottom": 451.1875,
+        "scrollerHeight": 568,
+        "teamHeight": 568,
+        "heroImageBottom": 508,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "PARALLAX",
+        "memberCount": 7,
+        "imageBottom": 544,
+        "membersBottom": 449.328125,
+        "smallBottom": 451.1875,
+        "scrollerHeight": 568,
+        "teamHeight": 568,
+        "heroImageBottom": 508,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "emora",
+        "memberCount": 0,
+        "imageBottom": 544,
+        "membersBottom": 284,
+        "smallBottom": 451.1875,
+        "scrollerHeight": 568,
+        "teamHeight": 568,
+        "heroImageBottom": 508,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "공명체",
+        "memberCount": 0,
+        "imageBottom": 544,
+        "membersBottom": 284,
+        "smallBottom": 451.1875,
+        "scrollerHeight": 568,
+        "teamHeight": 568,
+        "heroImageBottom": 529,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "HAELON",
+        "memberCount": 6,
+        "imageBottom": 544,
+        "membersBottom": 424.703125,
+        "smallBottom": 451.1875,
+        "scrollerHeight": 568,
+        "teamHeight": 568,
+        "heroImageBottom": 508,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "LET'S SYNC!",
+        "memberCount": 7,
+        "imageBottom": 544,
+        "membersBottom": 456.375,
+        "smallBottom": 451.1875,
+        "scrollerHeight": 568,
+        "teamHeight": 568,
+        "heroImageBottom": 529,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "SEESAW",
+        "memberCount": 0,
+        "imageBottom": 544,
+        "membersBottom": 284,
+        "smallBottom": 451.1875,
+        "scrollerHeight": 568,
+        "teamHeight": 568,
+        "heroImageBottom": 508,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "POP-ING",
+        "memberCount": 0,
+        "imageBottom": 544,
+        "membersBottom": 284,
+        "smallBottom": 451.1875,
+        "scrollerHeight": 568,
+        "teamHeight": 568,
+        "heroImageBottom": 529,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "아키 (aquí)",
+        "memberCount": 6,
+        "imageBottom": 544,
+        "membersBottom": 424.703125,
+        "smallBottom": 451.1875,
+        "scrollerHeight": 568,
+        "teamHeight": 568,
+        "heroImageBottom": 508,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "SNOOZE",
+        "memberCount": 0,
+        "imageBottom": 544,
+        "membersBottom": 284,
+        "smallBottom": 451.1875,
+        "scrollerHeight": 568,
+        "teamHeight": 568,
+        "heroImageBottom": 508,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "오름 oreum",
+        "memberCount": 0,
+        "imageBottom": 544,
+        "membersBottom": 284,
+        "smallBottom": 451.1875,
+        "scrollerHeight": 568,
+        "teamHeight": 568,
+        "heroImageBottom": 508,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "인생정거장",
+        "memberCount": 0,
+        "imageBottom": 544,
+        "membersBottom": 284,
+        "smallBottom": 451.1875,
+        "scrollerHeight": 568,
+        "teamHeight": 568,
+        "heroImageBottom": 529,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "말모이",
+        "memberCount": 0,
+        "imageBottom": 544,
+        "membersBottom": 284,
+        "smallBottom": 451.1875,
+        "scrollerHeight": 568,
+        "teamHeight": 568,
+        "heroImageBottom": 508,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "FEELD",
+        "memberCount": 0,
+        "imageBottom": 544,
+        "membersBottom": 284,
+        "smallBottom": 451.1875,
+        "scrollerHeight": 568,
+        "teamHeight": 568,
+        "heroImageBottom": 529,
+        "hasHorizontalOverlap": false
+      }
+    ],
+    "intro": {
+      "descBottom": 215.296875,
+      "imageTop": 239.296875,
+      "imageBottom": 529.28125,
+      "scrollerHeight": 568
+    },
+    "redo": true,
+    "backdropClose": true
+  },
+  {
+    "w": 1280,
+    "h": 550,
+    "indexFixed": true,
+    "teams": [
+      {
+        "name": "착! (Chak!)",
+        "memberCount": 6,
+        "imageBottom": 454,
+        "membersBottom": 368.234375,
+        "smallBottom": 381.375,
+        "scrollerHeight": 478,
+        "teamHeight": 478,
+        "heroImageBottom": 417,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "잘가계",
+        "memberCount": 0,
+        "imageBottom": 454,
+        "membersBottom": 239,
+        "smallBottom": 381.375,
+        "scrollerHeight": 478,
+        "teamHeight": 478,
+        "heroImageBottom": 417,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "emora",
+        "memberCount": 0,
+        "imageBottom": 454,
+        "membersBottom": 239,
+        "smallBottom": 381.375,
+        "scrollerHeight": 478,
+        "teamHeight": 478,
+        "heroImageBottom": 417,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "말모이",
+        "memberCount": 0,
+        "imageBottom": 454,
+        "membersBottom": 239,
+        "smallBottom": 381.375,
+        "scrollerHeight": 478,
+        "teamHeight": 478,
+        "heroImageBottom": 417,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "PLEV",
+        "memberCount": 6,
+        "imageBottom": 454.109375,
+        "membersBottom": 368.34375,
+        "smallBottom": 359.359375,
+        "scrollerHeight": 478,
+        "teamHeight": 478,
+        "heroImageBottom": 455,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "FEELD",
+        "memberCount": 0,
+        "imageBottom": 454,
+        "membersBottom": 239,
+        "smallBottom": 381.375,
+        "scrollerHeight": 478,
+        "teamHeight": 478,
+        "heroImageBottom": 436,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "SNOOZE",
+        "memberCount": 0,
+        "imageBottom": 454,
+        "membersBottom": 239,
+        "smallBottom": 381.375,
+        "scrollerHeight": 478,
+        "teamHeight": 478,
+        "heroImageBottom": 417,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "POP-ING",
+        "memberCount": 0,
+        "imageBottom": 454,
+        "membersBottom": 239,
+        "smallBottom": 381.375,
+        "scrollerHeight": 478,
+        "teamHeight": 478,
+        "heroImageBottom": 436,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "오름 oreum",
+        "memberCount": 0,
+        "imageBottom": 454,
+        "membersBottom": 239,
+        "smallBottom": 381.375,
+        "scrollerHeight": 478,
+        "teamHeight": 478,
+        "heroImageBottom": 436,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "SEESAW",
+        "memberCount": 0,
+        "imageBottom": 454,
+        "membersBottom": 239,
+        "smallBottom": 381.375,
+        "scrollerHeight": 478,
+        "teamHeight": 478,
+        "heroImageBottom": 417,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "HAELON",
+        "memberCount": 6,
+        "imageBottom": 454,
+        "membersBottom": 368.234375,
+        "smallBottom": 381.375,
+        "scrollerHeight": 478,
+        "teamHeight": 478,
+        "heroImageBottom": 417,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "COMPASS",
+        "memberCount": 0,
+        "imageBottom": 454,
+        "membersBottom": 239,
+        "smallBottom": 381.375,
+        "scrollerHeight": 478,
+        "teamHeight": 478,
+        "heroImageBottom": 436,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "PARALLAX",
+        "memberCount": 7,
+        "imageBottom": 454,
+        "membersBottom": 390.78125,
+        "smallBottom": 381.375,
+        "scrollerHeight": 478,
+        "teamHeight": 478,
+        "heroImageBottom": 417,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "공명체",
+        "memberCount": 0,
+        "imageBottom": 454,
+        "membersBottom": 239,
+        "smallBottom": 381.375,
+        "scrollerHeight": 478,
+        "teamHeight": 478,
+        "heroImageBottom": 436,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "아키 (aquí)",
+        "memberCount": 6,
+        "imageBottom": 454,
+        "membersBottom": 368.234375,
+        "smallBottom": 381.375,
+        "scrollerHeight": 478,
+        "teamHeight": 478,
+        "heroImageBottom": 417,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "LET'S SYNC!",
+        "memberCount": 7,
+        "imageBottom": 454,
+        "membersBottom": 396.828125,
+        "smallBottom": 381.375,
+        "scrollerHeight": 478,
+        "teamHeight": 478,
+        "heroImageBottom": 436,
+        "hasHorizontalOverlap": false
+      },
+      {
+        "name": "인생정거장",
+        "memberCount": 0,
+        "imageBottom": 454,
+        "membersBottom": 239,
+        "smallBottom": 381.375,
+        "scrollerHeight": 478,
+        "teamHeight": 478,
+        "heroImageBottom": 436,
+        "hasHorizontalOverlap": false
+      }
+    ],
+    "intro": {
+      "descBottom": 191.9375,
+      "imageTop": 215.9375,
+      "imageBottom": 435.921875,
+      "scrollerHeight": 478
+    },
+    "redo": true,
+    "backdropClose": true
+  }
+]

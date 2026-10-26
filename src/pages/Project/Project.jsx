@@ -149,6 +149,11 @@ export default function Project() {
     state.cardWidth = window.matchMedia('(max-width: 900px)').matches
       ? Math.min(stageWidth * 0.62, 380)
       : clamp(stageWidth * 0.48, 380, 600)
+    // Use the rendered responsive card size for orbital spacing in the middle range.
+    // The original desktop/mobile geometry and all motion calculations stay intact.
+    if (stageWidth >= 768 && stageWidth < 1600 && cardRefs.current[0]) {
+      state.cardWidth = parseFloat(getComputedStyle(cardRefs.current[0]).width)
+    }
     state.cardHeight = state.cardWidth * 0.75
 
     if (displayProjects.length === 0) {
@@ -279,7 +284,7 @@ export default function Project() {
     setActiveDetailIndex(index)
   }, [])
 
-  const openAdjacentProject = (projectId) => {
+  const openProjectById = (projectId) => {
     const index = projects.findIndex((project) => project.id === projectId)
     if (index !== -1) openDetail(index)
   }
@@ -335,6 +340,12 @@ export default function Project() {
       frameId = requestAnimationFrame(advance)
     }
     const handleWheel = (event) => {
+      // Native scrolling owns laptop detail snapping, including scrolling inside tall sections.
+      // Repeated JS scrollTop writes would compete with the browser's snap destination.
+      if (window.matchMedia('(min-width: 1025px) and (max-width: 1599px)').matches) {
+        stop()
+        return
+      }
       if (mobileProjectViewport.matches || event.ctrlKey || event.metaKey || event.shiftKey ||
         !event.cancelable || Math.abs(event.deltaX) > Math.abs(event.deltaY) || !event.deltaY) {
         stop()
@@ -664,8 +675,8 @@ export default function Project() {
     }
 
     if (isCardClick) {
-      const originalIndex = displayProjects[clickedCardIndex]?.originalIndex
-      if (originalIndex !== undefined) openDetail(originalIndex)
+      const project = displayProjects[clickedCardIndex]?.project
+      if (project) openProjectById(project.id)
     }
   }
 
@@ -708,7 +719,7 @@ export default function Project() {
                     <span className="project-face back" style={imageBackgroundStyle(project.cardImage)} />
                   </button>
                   <div className="card-label">
-                    <div className="team-label">{`Team.${String(originalIndex + 1).padStart(2, '0')}`}</div>
+                    <div className="team-label">{project.team}</div>
                     <h1 className="project-title">{project.name}</h1>
                   </div>
                 </div>
@@ -789,8 +800,8 @@ export default function Project() {
                     type="button"
                     key={project.id}
                     hidden={hidden}
-                    aria-label={`Team.${String(index + 1).padStart(2, '0')} ${project.name}`}
-                    onClick={() => openDetail(index)}
+                    aria-label={`${project.team} ${project.name}`}
+                    onClick={() => openProjectById(project.id)}
                   >
                     <span className="list-card-media" style={imageBackgroundStyle(project.cardImage)} />
                     <span className="list-card-caption">
@@ -806,14 +817,14 @@ export default function Project() {
           <aside className="project-index" ref={indexAsideRef} aria-label="Project index">
             <div className="index-reveal">
               <div className="index-float" ref={indexFloatRef} style={{ transform: `translate3d(0, ${indexY}px, 0)` }}>
-                {shuffledProjects.map(({ project, originalIndex: index }) => (
+                {projects.map((project, index) => (
                   <button
                     type="button"
                     key={project.id}
-                    onClick={() => openDetail(index)}
+                    onClick={() => openProjectById(project.id)}
                   >
                     <span>{String(index + 1).padStart(2, '0')}</span>
-                    <span>{project.name}</span>
+                    <span>{project.team}</span>
                   </button>
                 ))}
               </div>
@@ -891,10 +902,10 @@ export default function Project() {
         </div>
         {activeDetail && previousProject && nextProject && detailProjectOrder.length > 1 && (
           <nav className="detail-project-nav" aria-label="프로젝트 상세 이동">
-            <button type="button" className="detail-previous" onClick={() => openAdjacentProject(previousProject.id)} aria-label={`이전 프로젝트: ${previousProject.name}`}>
+            <button type="button" className="detail-previous" onClick={() => openProjectById(previousProject.id)} aria-label={`이전 프로젝트: ${previousProject.name}`}>
               <span aria-hidden="true">←</span><span>{previousProject.name}</span>
             </button>
-            <button type="button" className="detail-next" onClick={() => openAdjacentProject(nextProject.id)} aria-label={`다음 프로젝트: ${nextProject.name}`}>
+            <button type="button" className="detail-next" onClick={() => openProjectById(nextProject.id)} aria-label={`다음 프로젝트: ${nextProject.name}`}>
               <span>{nextProject.name}</span><span aria-hidden="true">→</span>
             </button>
           </nav>

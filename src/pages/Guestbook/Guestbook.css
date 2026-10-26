@@ -445,3 +445,82 @@ html.gb-page-scrollbar-hidden::-webkit-scrollbar {
     padding-inline: 0;
   }
 }
+
+/* Laptop only: preserve PC >=1600, tablet <=1024, mobile and HOME. */
+@media (min-width: 1025px) and (max-width: 1599px) {
+  .gb-hero {
+    min-height: 380px;
+    height: calc(100dvh - var(--site-header-height) - 64px);
+    margin: 15px 3.125vw 0;
+  }
+
+  .gb-hero__description {
+    font-size: clamp(14px, 1.25vw, 19px);
+  }
+
+  .gb-hero__actions {
+    min-width: 300px;
+  }
+
+  .gb-hero__actions .gb-button {
+    min-height: 58px;
+    padding: 9px;
+  }
+
+  .gb-hero__button-title {
+    font-size: 19px;
+  }
+
+  .gb-hero__button-description {
+    font-size: 11px;
+  }
+
+  .gb-archive {
+    margin-inline: 3.125vw;
+  }
+
+  .gb-modal {
+    padding: 24px;
+    overflow-y: auto;
+  }
+
+  .gb-modal__dialog {
+    max-height: calc(100svh - 132px);
+    overflow-y: auto;
+  }
+
+  .gb-modal .gb-modal__dialog--message {
+    width: min(440px, 100%);
+    padding: 24px;
+    font-size: 12px;
+  }
+
+  .gb-modal .gb-button {
+    min-height: 44px;
+    font-size: 13px;
+  }
+
+  .gb-modal .gb-message-form__textarea {
+    height: 230px;
+  }
+
+  .gb-modal .gb-message-form__textarea textarea {
+    height: 168px;
+  }
+
+  .gb-modal .gb-message-form__row label {
+    min-height: 40px;
+    padding-inline: 12px;
+  }
+
+  .gb-modal .gb-message-form__textarea textarea {
+    line-height: 20px;
+  }
+
+  .gb-modal .gb-modal__close {
+    width: 36px;
+    height: 36px;
+    font-size: 26px;
+  }
+
+}

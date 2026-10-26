@@ -1,0 +1,433 @@
+[
+  {
+    "w": 1512,
+    "h": 850,
+    "undoEnabled": true,
+    "redoEnabled": true,
+    "shareVisible": true,
+    "closeBox": {
+      "x": 732,
+      "y": 687,
+      "width": 48,
+      "height": 48
+    },
+    "closed": true,
+    "backdropClosed": true
+  },
+  {
+    "w": 1440,
+    "h": 900,
+    "undoEnabled": true,
+    "redoEnabled": true,
+    "shareVisible": true,
+    "closeBox": {
+      "x": 696,
+      "y": 712,
+      "width": 48,
+      "height": 48
+    },
+    "closed": true,
+    "backdropClosed": true
+  },
+  {
+    "w": 1366,
+    "h": 768,
+    "undoEnabled": true,
+    "redoEnabled": true,
+    "shareVisible": true,
+    "closeBox": {
+      "x": 659,
+      "y": 646,
+      "width": 48,
+      "height": 48
+    },
+    "closed": true,
+    "backdropClosed": true
+  },
+  {
+    "w": 1280,
+    "h": 720,
+    "undoEnabled": true,
+    "redoEnabled": true,
+    "shareVisible": true,
+    "closeBox": {
+      "x": 616,
+      "y": 602,
+      "width": 48,
+      "height": 48
+    },
+    "closed": true,
+    "backdropClosed": true
+  },
+  {
+    "w": 1024,
+    "h": 768,
+    "undoEnabled": true,
+    "redoEnabled": true,
+    "shareVisible": true,
+    "closeBox": {
+      "x": 488,
+      "y": 641,
+      "width": 48,
+      "height": 48
+    },
+    "closed": true,
+    "backdropClosed": true
+  },
+  {
+    "w": 820,
+    "h": 1180,
+    "undoEnabled": true,
+    "redoEnabled": true,
+    "shareVisible": true,
+    "closeBox": {
+      "x": 386,
+      "y": 847,
+      "width": 48,
+      "height": 48
+    },
+    "closed": true,
+    "backdropClosed": true
+  },
+  {
+    "w": 768,
+    "h": 1024,
+    "undoEnabled": true,
+    "redoEnabled": true,
+    "shareVisible": true,
+    "closeBox": {
+      "x": 360,
+      "y": 769,
+      "width": 48,
+      "height": 48
+    },
+    "closed": true,
+    "backdropClosed": true
+  },
+  {
+    "w": 1280,
+    "h": 600,
+    "undoEnabled": true,
+    "redoEnabled": true,
+    "shareVisible": true,
+    "closeBox": {
+      "x": 616,
+      "y": 536,
+      "width": 48,
+      "height": 48
+    },
+    "closed": true,
+    "backdropClosed": true
+  },
+  {
+    "w": 768,
+    "h": 600,
+    "undoEnabled": true,
+    "redoEnabled": true,
+    "shareVisible": true,
+    "closeBox": {
+      "x": 360,
+      "y": 552,
+      "width": 48,
+      "height": 48
+    },
+    "closed": true,
+    "backdropClosed": true
+  },
+  {
+    "w": 1512,
+    "indexUnchanged": true,
+    "overlap": [
+      {
+        "name": "잘가계",
+        "overlap": false
+      },
+      {
+        "name": "LET'S SYNC!",
+        "overlap": false
+      },
+      {
+        "name": "SEESAW",
+        "overlap": false
+      },
+      {
+        "name": "아키 (aquí)",
+        "overlap": false
+      },
+      {
+        "name": "말모이",
+        "overlap": false
+      },
+      {
+        "name": "FEELD",
+        "overlap": false
+      },
+      {
+        "name": "착! (Chak!)",
+        "overlap": false
+      },
+      {
+        "name": "emora",
+        "overlap": false
+      },
+      {
+        "name": "PLEV",
+        "overlap": false
+      },
+      {
+        "name": "POP-ING",
+        "overlap": false
+      },
+      {
+        "name": "HAELON",
+        "overlap": false
+      },
+      {
+        "name": "SNOOZE",
+        "overlap": false
+      },
+      {
+        "name": "공명체",
+        "overlap": false
+      },
+      {
+        "name": "PARALLAX",
+        "overlap": false
+      },
+      {
+        "name": "인생정거장",
+        "overlap": false
+      },
+      {
+        "name": "COMPASS",
+        "overlap": false
+      },
+      {
+        "name": "오름 oreum",
+        "overlap": false
+      }
+    ]
+  },
+  {
+    "w": 1280,
+    "indexUnchanged": true,
+    "overlap": [
+      {
+        "name": "잘가계",
+        "overlap": false
+      },
+      {
+        "name": "LET'S SYNC!",
+        "overlap": false
+      },
+      {
+        "name": "SEESAW",
+        "overlap": false
+      },
+      {
+        "name": "아키 (aquí)",
+        "overlap": false
+      },
+      {
+        "name": "말모이",
+        "overlap": false
+      },
+      {
+        "name": "FEELD",
+        "overlap": false
+      },
+      {
+        "name": "착! (Chak!)",
+        "overlap": false
+      },
+      {
+        "name": "emora",
+        "overlap": false
+      },
+      {
+        "name": "PLEV",
+        "overlap": false
+      },
+      {
+        "name": "POP-ING",
+        "overlap": false
+      },
+      {
+        "name": "HAELON",
+        "overlap": false
+      },
+      {
+        "name": "SNOOZE",
+        "overlap": false
+      },
+      {
+        "name": "공명체",
+        "overlap": false
+      },
+      {
+        "name": "PARALLAX",
+        "overlap": false
+      },
+      {
+        "name": "인생정거장",
+        "overlap": false
+      },
+      {
+        "name": "COMPASS",
+        "overlap": false
+      },
+      {
+        "name": "오름 oreum",
+        "overlap": false
+      }
+    ]
+  },
+  {
+    "w": 1024,
+    "indexUnchanged": true,
+    "overlap": [
+      {
+        "name": "잘가계",
+        "overlap": false
+      },
+      {
+        "name": "LET'S SYNC!",
+        "overlap": false
+      },
+      {
+        "name": "SEESAW",
+        "overlap": false
+      },
+      {
+        "name": "아키 (aquí)",
+        "overlap": false
+      },
+      {
+        "name": "말모이",
+        "overlap": false
+      },
+      {
+        "name": "FEELD",
+        "overlap": false
+      },
+      {
+        "name": "착! (Chak!)",
+        "overlap": false
+      },
+      {
+        "name": "emora",
+        "overlap": false
+      },
+      {
+        "name": "PLEV",
+        "overlap": false
+      },
+      {
+        "name": "POP-ING",
+        "overlap": false
+      },
+      {
+        "name": "HAELON",
+        "overlap": false
+      },
+      {
+        "name": "SNOOZE",
+        "overlap": false
+      },
+      {
+        "name": "공명체",
+        "overlap": false
+      },
+      {
+        "name": "PARALLAX",
+        "overlap": false
+      },
+      {
+        "name": "인생정거장",
+        "overlap": false
+      },
+      {
+        "name": "COMPASS",
+        "overlap": false
+      },
+      {
+        "name": "오름 oreum",
+        "overlap": false
+      }
+    ]
+  },
+  {
+    "w": 768,
+    "indexUnchanged": true,
+    "overlap": [
+      {
+        "name": "잘가계",
+        "overlap": false
+      },
+      {
+        "name": "LET'S SYNC!",
+        "overlap": false
+      },
+      {
+        "name": "SEESAW",
+        "overlap": false
+      },
+      {
+        "name": "아키 (aquí)",
+        "overlap": false
+      },
+      {
+        "name": "말모이",
+        "overlap": false
+      },
+      {
+        "name": "FEELD",
+        "overlap": false
+      },
+      {
+        "name": "착! (Chak!)",
+        "overlap": false
+      },
+      {
+        "name": "emora",
+        "overlap": false
+      },
+      {
+        "name": "PLEV",
+        "overlap": false
+      },
+      {
+        "name": "POP-ING",
+        "overlap": false
+      },
+      {
+        "name": "HAELON",
+        "overlap": false
+      },
+      {
+        "name": "SNOOZE",
+        "overlap": false
+      },
+      {
+        "name": "공명체",
+        "overlap": false
+      },
+      {
+        "name": "PARALLAX",
+        "overlap": false
+      },
+      {
+        "name": "인생정거장",
+        "overlap": false
+      },
+      {
+        "name": "COMPASS",
+        "overlap": false
+      },
+      {
+        "name": "오름 oreum",
+        "overlap": false
+      }
+    ]
+  }
+]
