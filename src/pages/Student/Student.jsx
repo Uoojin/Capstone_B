@@ -1,16 +1,20 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { students } from './studentData.js'
+import { students } from '../../data/index.js'
+import { imageBackgroundStyle } from '../../data/dataUtils.js'
 import { matchesHangulName } from './hangulSearch.js'
+import { shuffle } from '../../utils/shuffle.js'
 import './Student.css'
 
 const roles = ['ALL', 'DESIGNER', 'PLANNER', 'PROGRAMMER']
 const cardBackColors = ['#FD00A0', '#00BFA3', '#8223A5', '#1D9F10', '#F7A600', '#5F50D8', '#009DEB']
 
 export default function Student() {
+  const [shuffledStudents] = useState(() => shuffle(students))
   const [activeRole, setActiveRole] = useState('ALL')
   const [searchTerm, setSearchTerm] = useState('')
-  const [flippedCards, setFlippedCards] = useState({})
+  const [flippedStudentId, setFlippedStudentId] = useState(null)
+  const [isFlipStaggered, setIsFlipStaggered] = useState(false)
   const [backColors, setBackColors] = useState({})
   const [floatingY, setFloatingY] = useState(0)
   const navigate = useNavigate()
@@ -42,7 +46,7 @@ export default function Student() {
   }, [])
 
   const displayStudents = useMemo(() => {
-    const filtered = students.filter((student) => {
+    const filtered = shuffledStudents.filter((student) => {
       const matchesRole = activeRole === 'ALL' || student.role === activeRole
       const matchesSearch = matchesHangulName(student.name, searchTerm)
       return matchesRole && matchesSearch
@@ -55,17 +59,21 @@ export default function Student() {
     }))
 
     return [...filtered, ...emptySlots]
-  }, [activeRole, searchTerm])
+  }, [activeRole, searchTerm, shuffledStudents])
+
+  // Forget a hidden card so clearing the filter cannot flip it back over.
+  if (flippedStudentId !== null && !displayStudents.some((student) => student.studentId === flippedStudentId)) {
+    setFlippedStudentId(null)
+  }
 
   const handleCardFlip = (studentId, randomValue) => {
-    if (!flippedCards[studentId]) {
+    // CSS delays only the incoming card; another click cancels its pending transition.
+    setIsFlipStaggered(flippedStudentId !== null && flippedStudentId !== studentId)
+    if (flippedStudentId !== studentId) {
       const color = cardBackColors[Math.floor(randomValue * cardBackColors.length)]
       setBackColors((current) => ({ ...current, [studentId]: color }))
     }
-    setFlippedCards((current) => ({
-      ...current,
-      [studentId]: !current[studentId],
-    }))
+    setFlippedStudentId((current) => current === studentId ? null : studentId)
   }
 
   const handleProjectClick = (event) => {
@@ -90,13 +98,13 @@ export default function Student() {
             ) : (
               <article key={item.studentId} className="student-card">
                 <button
-                  className={`student-flipper ${flippedCards[item.studentId] ? 'flipped' : ''}`}
+                  className={`student-flipper ${flippedStudentId === item.studentId ? `flipped${isFlipStaggered ? ' flip-staggered' : ''}` : ''}`}
                   type="button"
                   onClick={() => handleCardFlip(item.studentId, Math.random())}
                   aria-label={`${item.name} card`}
                 >
                   <span className="card-face card-front">
-                    <span className="student-img-placeholder" />
+                    <span className="student-img-placeholder" style={imageBackgroundStyle(item.image)} />
                   </span>
 
                   <span className="card-face card-back" style={{ backgroundColor: backColors[item.studentId] }}>

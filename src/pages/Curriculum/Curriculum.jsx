@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 import { tracks, foundation, advanced, careers, curriculumArtwork, convergenceEducation } from './curriculumData'
-import ornament from '../../assets/icon/DrawingObject.svg'
+import ornament from '../../assets/symbol/symbol_1.svg'
 import curriculumLogo from '../../assets/curriculum/logo.svg'
 import symbol1 from '../../assets/symbol/symbol_1.svg'
 import symbol2 from '../../assets/symbol/symbol_2.svg'

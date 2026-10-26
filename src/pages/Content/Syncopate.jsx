@@ -1422,8 +1422,16 @@ export default function Syncopate({ onOpenDrawing }) {
 
         {/*  좌측 하단 가이드/설명 텍스트 */}
         <div className="archive-bottom-guide">
-          <p>설명 내용이 들어가는 자리입니다.</p>
-          <p>가이드 내용이 들어가는 자리입니다.</p>
+          <aside className="archive-how-to-sync" aria-labelledby="archive-how-to-sync-title">
+            <h2 id="archive-how-to-sync-title">HOW TO SYNC?</h2>
+            <ul>
+              <li>CLICK 오브제의 SYNC 횟수 보기</li>
+              <li>PRESS 길게 눌러 모으기</li>
+              <li>DRAG 끌어서 만나기</li>
+            </ul>
+          </aside>
+          <p>당기고, 닿고, 스파크!</p>
+          <p>나만의 개성이 담긴 오브제를 만들어 다른 개성들과 연결해보세요!</p>
         </div>
 
         {/* 모달 */}

@@ -156,6 +156,10 @@
   transform: rotateY(0deg);
 }
 
+.student-flipper.flipped.flip-staggered .card-face {
+  transition-delay: 90ms;
+}
+
 .back-interview {
   color: #ffffff;
   font-size: 17px;

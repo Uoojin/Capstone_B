@@ -33,9 +33,6 @@
     background: white;
 }
 
-:host(:not([data-hero-ready])) .stage-wrap { visibility: hidden; }
-:host([data-skip-intro]) #intro { display: none; }
-
 canvas#scene {
     position: absolute;
     inset: 0;
@@ -51,83 +48,4 @@ canvas#scene {
     inset: 0;
     pointer-events: none;
 
-}
-
-#intro {
-    position: absolute;
-    inset: 0;
-    z-index: 20;
-    display: grid;
-    place-items: center;
-    background: white;
-    pointer-events: auto;
-    overflow: hidden;
-}
-
-.intro-title {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-    width: min(46cqw, 340px);
-}
-
-.intro-line {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    gap: 2px;
-}
-
-.intro-line img {
-    display: block;
-    width: 23%;
-    height: clamp(35px, 7cqw, 80px);
-    object-fit: contain;
-    transition: transform 900ms cubic-bezier(.16, 1, .3, 1), opacity 700ms ease;
-}
-
-#intro.explode .intro-line:first-child img:nth-child(1) {
-    transform: translate(-35.0cqw, -26.0cqh) scale(1.75);
-}
-
-#intro.explode .intro-line:first-child img:nth-child(2) {
-    transform: translate(22.0cqw, -35.0cqh) scale(1.75);
-}
-
-#intro.explode .intro-line:first-child img:nth-child(3) {
-    transform: translate(-7.0cqw, -12.0cqh) scale(1.75);
-}
-
-#intro.explode .intro-line:first-child img:nth-child(4) {
-    transform: translate(35.0cqw, -3.0cqh) scale(1.75);
-}
-
-#intro.explode .intro-line:last-child img:nth-child(1) {
-    transform: translate(-30.0cqw, 20.0cqh) scale(1.75);
-}
-
-#intro.explode .intro-line:last-child img:nth-child(2) {
-    transform: translate(10.0cqw, 28.0cqh) scale(1.75);
-}
-
-#intro.explode .intro-line:last-child img:nth-child(3) {
-    transform: translate(-13.0cqw, 38.0cqh) scale(1.75);
-}
-
-#intro.explode .intro-line:last-child img:nth-child(4) {
-    transform: translate(30.0cqw, 41.0cqh) scale(1.75);
-}
-
-#intro.fade {
-    opacity: 0;
-    transition: opacity 450ms ease;
-    pointer-events: none;
-}
-
-@container (max-width: 600px) {
-    .intro-title {
-        width: min(75cqw, 340px);
-    }
 }

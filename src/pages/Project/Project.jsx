@@ -1,5 +1,8 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react'
-import { categories, projects } from './projectData.js'
+import { categories, projects } from '../../data/index.js'
+import { imageBackgroundStyle } from '../../data/dataUtils.js'
+import { shuffle } from '../../utils/shuffle.js'
+import projectLinkIcon from '../../assets/project/linkIcon.svg'
 import './Project.css'
 
 const DISPLAY_CARD_COUNT = 17
@@ -23,6 +26,7 @@ const clamp = (value, min, max) => Math.min(Math.max(value, min), max)
 const signedAngleDistance = (from, to = TOP_FOCUS_ANGLE) => ((from - to + 540) % 360) - 180
 
 export default function Project() {
+  const [shuffledProjects] = useState(() => shuffle(projects.map((project, originalIndex) => ({ project, originalIndex }))))
   const isMobile = useSyncExternalStore(subscribeToMobileViewport, getMobileViewport)
   const [selectedFilters, setSelectedFilters] = useState([])
   const [openFilter, setOpenFilter] = useState(null)
@@ -38,8 +42,6 @@ export default function Project() {
   const indexFloatRef = useRef(null)
   const detailViewRef = useRef(null)
   const detailScrollerRef = useRef(null)
-  const detailTeamMediaRef = useRef(null)
-  const detailHandwritingRef = useRef(null)
   const carouselRef = useRef({
     angle: LOGICAL_ANGLE_STEP,
     orbitalAngleStep: 0,
@@ -71,10 +73,9 @@ export default function Project() {
 
   const filteredProjects = useMemo(
     () =>
-      projects
-        .map((project, originalIndex) => ({ project, originalIndex }))
+      shuffledProjects
         .filter(({ project }) => selectedFilters.length === 0 || selectedFilters.some((filter) => project.tags.includes(filter))),
-    [selectedFilters],
+    [selectedFilters, shuffledProjects],
   )
 
   const displayProjects = useMemo(() => {
@@ -87,24 +88,47 @@ export default function Project() {
   const projectLink = activeDetail?.link?.trim() || ''
   const hasProjectLink = /^https?:\/\/\S+$/i.test(projectLink)
 
-  useLayoutEffect(() => {
-    if (!isMobile || activeDetailIndex === null) return undefined
-    const teamMedia = detailTeamMediaRef.current
-    const handwriting = detailHandwritingRef.current
-    if (!teamMedia || !handwriting) return undefined
+  const isDetailOpen = activeDetail !== null
+  const detailProjectOrder = filteredProjects.some(({ project }) => project.id === activeDetail?.id)
+    ? filteredProjects
+    : shuffledProjects
+  const detailPosition = detailProjectOrder.findIndex(({ project }) => project.id === activeDetail?.id)
+  const previousProject = detailPosition < 0 ? null
+    : detailProjectOrder[(detailPosition - 1 + detailProjectOrder.length) % detailProjectOrder.length]?.project
+  const nextProject = detailPosition < 0 ? null
+    : detailProjectOrder[(detailPosition + 1) % detailProjectOrder.length]?.project
 
-    const matchTeamHeight = () => {
-      handwriting.style.setProperty('--detail-team-image-height', `${teamMedia.getBoundingClientRect().height}px`)
+  useLayoutEffect(() => {
+    if (activeDetailIndex !== null) detailScrollerRef.current.scrollTop = 0
+  }, [activeDetailIndex])
+
+  useLayoutEffect(() => {
+    if (activeDetailIndex === null) return undefined
+    const title = detailScrollerRef.current.querySelector('.detail-title')
+    const link = detailScrollerRef.current.querySelector('.site-link')
+    if (!title || !link) return undefined
+
+    let disposed = false
+    const alignLinkToFirstLine = () => {
+      if (disposed) return
+      const range = document.createRange()
+      range.selectNodeContents(title)
+      const firstLine = Array.from(range.getClientRects()).find((rect) => rect.width > 0)
+      const offset = firstLine ? Math.min(0, firstLine.right - title.getBoundingClientRect().right) : 0
+      link.style.setProperty('--project-link-offset', `${offset}px`)
     }
-    // Follow the existing photo size, including image loading and viewport changes.
-    const observer = new ResizeObserver(matchTeamHeight)
-    observer.observe(teamMedia)
-    matchTeamHeight()
+
+    alignLinkToFirstLine()
+    const observer = new ResizeObserver(alignLinkToFirstLine)
+    observer.observe(title)
+    document.fonts.ready.then(alignLinkToFirstLine)
+    document.fonts.addEventListener('loadingdone', alignLinkToFirstLine)
     return () => {
+      disposed = true
       observer.disconnect()
-      handwriting.style.removeProperty('--detail-team-image-height')
+      document.fonts.removeEventListener('loadingdone', alignLinkToFirstLine)
     }
-  }, [activeDetailIndex, isMobile])
+  }, [activeDetailIndex])
 
   const getOrbitalTheta = useCallback((index) => {
     const state = carouselRef.current
@@ -255,12 +279,17 @@ export default function Project() {
     setActiveDetailIndex(index)
   }, [])
 
+  const openAdjacentProject = (projectId) => {
+    const index = projects.findIndex((project) => project.id === projectId)
+    if (index !== -1) openDetail(index)
+  }
+
   const closeDetail = useCallback(() => {
     setActiveDetailIndex(null)
   }, [])
 
   useEffect(() => {
-    if (activeDetailIndex === null) return undefined
+    if (!isDetailOpen) return undefined
 
     const dialog = detailViewRef.current
     const root = document.documentElement
@@ -270,7 +299,6 @@ export default function Project() {
     document.body.classList.add('body-detail-open')
     root.style.overflow = 'hidden'
     dialog.showModal()
-    detailScrollerRef.current.scrollTop = 0
 
     return () => {
       dialog.close()
@@ -278,7 +306,7 @@ export default function Project() {
       document.body.classList.remove('body-detail-open')
       window.scrollTo(scrollX, scrollY)
     }
-  }, [activeDetailIndex])
+  }, [isDetailOpen])
 
   useEffect(() => {
     if (isMobile || reducedMotion || activeDetailIndex === null) return undefined
@@ -670,14 +698,14 @@ export default function Project() {
                   className="project-card"
                   data-index={index}
                   data-original-index={originalIndex}
-                  key={`${project.id}-${index}`}
+                  key={`${project.id}-${Math.floor(index / filteredProjects.length)}`}
                   ref={(element) => {
                     cardRefs.current[index] = element
                   }}
                 >
                   <button className="project-hit" type="button" aria-label={`${project.name} 상세 보기`}>
-                    <span className="project-face" />
-                    <span className="project-face back" />
+                    <span className="project-face" style={imageBackgroundStyle(project.cardImage)} />
+                    <span className="project-face back" style={imageBackgroundStyle(project.cardImage)} />
                   </button>
                   <div className="card-label">
                     <div className="team-label">{`Team.${String(originalIndex + 1).padStart(2, '0')}`}</div>
@@ -753,7 +781,7 @@ export default function Project() {
             </div>
 
             <div className={`project-grid ${gridUpdating ? 'is-updating' : ''}`}>
-              {projects.map((project, index) => {
+              {shuffledProjects.map(({ project, originalIndex: index }) => {
                 const hidden = !filteredProjects.some(({ originalIndex }) => originalIndex === index)
                 return (
                   <button
@@ -761,10 +789,10 @@ export default function Project() {
                     type="button"
                     key={project.id}
                     hidden={hidden}
-                    aria-label={`Team.${String(index + 1).padStart(2, '0')} Project Name`}
+                    aria-label={`Team.${String(index + 1).padStart(2, '0')} ${project.name}`}
                     onClick={() => openDetail(index)}
                   >
-                    <span className="list-card-media" />
+                    <span className="list-card-media" style={imageBackgroundStyle(project.cardImage)} />
                     <span className="list-card-caption">
                       <span className="list-card-name">{project.name}</span>
                       <span className="list-card-keywords">{project.tags.join(' · ')}</span>
@@ -778,14 +806,14 @@ export default function Project() {
           <aside className="project-index" ref={indexAsideRef} aria-label="Project index">
             <div className="index-reveal">
               <div className="index-float" ref={indexFloatRef} style={{ transform: `translate3d(0, ${indexY}px, 0)` }}>
-                {projects.map((project, index) => (
+                {shuffledProjects.map(({ project, originalIndex: index }) => (
                   <button
                     type="button"
                     key={project.id}
                     onClick={() => openDetail(index)}
                   >
                     <span>{String(index + 1).padStart(2, '0')}</span>
-                    <span>Project Name</span>
+                    <span>{project.name}</span>
                   </button>
                 ))}
               </div>
@@ -811,64 +839,66 @@ export default function Project() {
         <div className="detail-scroller" ref={detailScrollerRef} tabIndex={0} aria-label="프로젝트 상세 콘텐츠">
           {activeDetail && (
             <>
-              <article className="detail-section detail-hero">
-                <div className="detail-media">
-                  {activeDetail.image && <img src={activeDetail.image} alt={`${activeDetail.name} 대표 이미지`} />}
+              <article className="detail-section detail-hero" data-project-id={activeDetail.id}>
+                <div className="project-link-row detail-identity">
+                  <h1 className="detail-title" id="detail-title">{activeDetail.name}</h1>
+                  {hasProjectLink && (
+                    <a className="site-link" href={projectLink} target="_blank" rel="noopener noreferrer" aria-label={`${activeDetail.name} 외부 사이트 새 탭에서 열기`}>
+                      <img src={projectLinkIcon} alt="" aria-hidden="true" />
+                    </a>
+                  )}
                 </div>
                 <div className="detail-intro">
-                  <div className="project-link-row">
-                    <h1 className="detail-title" id="detail-title">{activeDetail.name}</h1>
-                    {hasProjectLink && (
-                      <a className="site-link" href={projectLink} target="_blank" rel="noopener noreferrer" aria-label={`${activeDetail.name} 외부 사이트 새 탭에서 열기`}>
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                          <path d="M6 18 18 6M6 6h12v12" />
-                        </svg>
-                      </a>
-                    )}
-                  </div>
                   {activeDetail.slogan && <p className="detail-slogan">{activeDetail.slogan}</p>}
                   {activeDetail.desc && <p className="detail-desc">{activeDetail.desc}</p>}
-                  <dl className="detail-metadata">
-                    {['media', 'subject', 'target'].map((key) => activeDetail[key] && (
-                      <div key={key}>
-                        <dt>{key.toUpperCase()}</dt>
-                        <dd>{Array.isArray(activeDetail[key]) ? activeDetail[key].join(', ') : activeDetail[key]}</dd>
-                      </div>
-                    ))}
-                  </dl>
                 </div>
-                <div className="detail-scroll-hint" aria-hidden="true">
-                  <span>SCROLL DOWN</span>
-                  <svg viewBox="0 0 24 16"><path d="m5 4 7 7 7-7" /></svg>
+                <dl className="detail-metadata">
+                  {['media', 'subject', 'target'].map((key) => activeDetail[key] && (
+                    <div key={key}>
+                      <dt>{key.toUpperCase()}</dt>
+                      <dd>{Array.isArray(activeDetail[key]) ? activeDetail[key].join(', ') : activeDetail[key]}</dd>
+                    </div>
+                  ))}
+                </dl>
+                <div className="detail-media">
+                  {activeDetail.image && <img src={activeDetail.image} alt={`${activeDetail.name} 대표 이미지`} />}
                 </div>
               </article>
 
               <article className="detail-section detail-team" aria-label="팀 소개">
-                <div className="detail-media detail-team-media" ref={detailTeamMediaRef}>
-                  {activeDetail.teamImage && <img src={activeDetail.teamImage} alt={`${activeDetail.team || activeDetail.name} 팀 사진`} />}
-                </div>
                 <div className="detail-team-info">
-                  <div className={`detail-handwriting${activeDetail.handwritingImage ? ' has-image' : ''}`} ref={detailHandwritingRef}>
+                  {activeDetail.team && <h2 className="team-title"><span>TEAM</span>{activeDetail.team}</h2>}
+                  <div className={`detail-handwriting${activeDetail.handwritingImage ? ' has-image' : ''}`}>
                     {activeDetail.handwritingImage && (
                       <img src={activeDetail.handwritingImage} alt={activeDetail.handwritingAlt || '팀 손글씨'} />
                     )}
                   </div>
-                  <div className="team-block">
-                    {activeDetail.team && <h2 className="team-title"><span>TEAM.</span>{activeDetail.team}</h2>}
-                    <div className="members">
-                      {(activeDetail.members || []).map(([name, role], index) => (
-                        <div key={`${name}-${role}-${index}`}>
-                          {name && <p className="member-name">{name}</p>}
-                          {role && <p className="member-role">{role}</p>}
-                        </div>
-                      ))}
+                </div>
+                <div className="detail-media detail-team-media">
+                  {activeDetail.teamImage && <img src={activeDetail.teamImage} alt={`${activeDetail.team || activeDetail.name} 팀 사진`} />}
+                </div>
+                <div className="members">
+                  {(activeDetail.members || []).map(([name, role], index) => (
+                    <div key={`${name}-${role}-${index}`}>
+                      {name && <p className="member-name">{name}</p>}
+                      {role && <p className="member-role">{role}</p>}
                     </div>
-                  </div>
+                  ))}
                 </div>
               </article>
             </>
           )}
         </div>
+        {activeDetail && previousProject && nextProject && detailProjectOrder.length > 1 && (
+          <nav className="detail-project-nav" aria-label="프로젝트 상세 이동">
+            <button type="button" className="detail-previous" onClick={() => openAdjacentProject(previousProject.id)} aria-label={`이전 프로젝트: ${previousProject.name}`}>
+              <span aria-hidden="true">←</span><span>{previousProject.name}</span>
+            </button>
+            <button type="button" className="detail-next" onClick={() => openAdjacentProject(nextProject.id)} aria-label={`다음 프로젝트: ${nextProject.name}`}>
+              <span>{nextProject.name}</span><span aria-hidden="true">→</span>
+            </button>
+          </nav>
+        )}
       </dialog>
     </main>
   )

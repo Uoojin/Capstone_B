@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars, no-unreachable, no-empty -- Preserve the legacy engine and intentionally disabled drawing paths during integration. */
 // Legacy engine retained verbatim apart from its host, assets, and lifecycle adapters.
-export default function startTypeEngine({ host, canvas, intro, assetMap, playIntro, onIntroComplete, placementSeed }) {
+import { chooseSyncMotion, createSyncMotion } from './sync-motions.js';
+
+export default function startTypeEngine({ host, canvas, assetMap, placementSeed }) {
     const events = new AbortController();
     const timers = new Set();
     let animationFrame;
@@ -47,11 +49,6 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
     cursorTrails.slice().reverse().forEach(function (trail) {
         cursorLayer.insertBefore(trail.element, clickCursor);
     });
-    var nodeHint = document.createElement('span');
-    nodeHint.className = 'type-node-hint';
-    nodeHint.textContent = '점을 움직여 SYNC를 경험해 보세요.';
-    nodeHint.dataset.visible = 'false';
-    cursorLayer.appendChild(nodeHint);
     var cursorTrailsVisible = false;
     var cursorOnCanvas = false;
     var cursorMedia = window.matchMedia('(min-width: 768px) and (hover: hover) and (pointer: fine)');
@@ -68,7 +65,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
     function hideClickCursor() {
         cursorOnCanvas = false;
         clickCursor.hidden = true;
-        nodeHint.dataset.visible = 'false';
+        host.dataset.nodeActive = 'false';
         hideCursorTrails();
         canvas.style.removeProperty('cursor');
     }
@@ -1066,6 +1063,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
 
     function triggerTeamSync(teamA, teamB, nodeA, nodeB, t) {
         if (!teamA || !teamB || teamA === teamB) return;
+        if (syncEvent && t <= syncEvent.born + syncEvent.duration) return;
         if (t - lastSyncAt < 0.55) return;
         lastSyncAt = t;
         syncSerial++;
@@ -1115,6 +1113,35 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
             spin: Math.random() < .5 ? -1 : 1,
             phase: Math.random() * Math.PI * 2
         };
+        syncEvent.motion = chooseSyncMotion();
+        if (syncEvent.motion !== 'ORIGINAL') {
+            syncEvent.physics = createSyncMotion(syncEvent, function (team) {
+                var first = Math.min(teamA.id, teamB.id);
+                var second = Math.max(teamA.id, teamB.id);
+                var images = syncPairImages[first + '-' + second] || [];
+                var replacement = images[team.id === first ? 0 : 1];
+                return {
+                    baseAngle: LETTER_VISUAL_ANGLES[team.id] * Math.PI / 180,
+                    sizes: [letterImages[team.id], replacement].filter(Boolean).map(function (image, index) {
+                        var width = image.naturalWidth || TYPOGRAPHY_SIZE;
+                        var height = image.naturalHeight || TYPOGRAPHY_SIZE;
+                        var scale = TYPOGRAPHY_SIZE / Math.max(width, height);
+                        var shape = { w: width * scale, h: height * scale, replacement: index === 1 };
+                        if (image.complete && image.naturalWidth) {
+                            var mask = document.createElement('canvas');
+                            mask.width = Math.ceil(shape.w / 2);
+                            mask.height = Math.ceil(shape.h / 2);
+                            var maskContext = mask.getContext('2d', { willReadFrequently: true });
+                            maskContext.drawImage(image, 0, 0, mask.width, mask.height);
+                            shape.maskWidth = mask.width;
+                            shape.maskHeight = mask.height;
+                            shape.pixels = maskContext.getImageData(0, 0, mask.width, mask.height)?.data;
+                        }
+                        return shape;
+                    })
+                };
+            });
+        }
     }
 
     function updateSyncInteraction(t, dt) {
@@ -1376,6 +1403,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
             // Rotate only the artwork; world coordinates and hit testing stay unchanged.
             ctx.translate(sx, sy);
             ctx.rotate(LETTER_VISUAL_ANGLES[i] * Math.PI / 180);
+            if (syncEvent && syncEvent.physics) ctx.rotate(syncEvent.physics.rotation(team));
             paintTypography(img, 1 - replacementOpacity);
             if (replacement) paintTypography(replacement, replacementOpacity);
             ctx.restore();
@@ -1836,7 +1864,7 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
     }
 
     function isPointerOverCanvas(rect) {
-        return cursorMedia.matches && cursorOnCanvas && mouse.active && host.hasAttribute('data-hero-ready') &&
+        return cursorMedia.matches && cursorOnCanvas && mouse.active &&
             document.elementFromPoint(rect.left + mouse.x, rect.top + mouse.y) === host;
     }
 
@@ -1860,27 +1888,11 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
         if (node && node !== hoverPausedNode) startNodeHoverPause(node);
     }
 
-    function updateNodeHint(overCanvas, rect) {
-        // Reuse the draggable nodes' existing hover test, never typography hits.
-        var node = hoveredNode;
-        var radius = node ? Math.max(6, node.r * (node.scale || 1)) : 0;
-        var visible = overCanvas && !!node;
-        nodeHint.dataset.visible = visible ? 'true' : 'false';
-        if (!visible) return;
-
-        var nodeX = rect.left + node.x - camera.x;
-        var nodeY = rect.top + node.y - camera.y;
-        var gap = radius + 12;
-        var width = nodeHint.offsetWidth;
-        var height = nodeHint.offsetHeight;
-        var x = nodeX + gap;
-        var y = nodeY + gap;
-        // Flip beside edge nodes while keeping the hint anchored to that node.
-        if (x + width > rect.right - 8) x = nodeX - width - gap;
-        if (y + height > rect.bottom - 8) y = nodeY - height - gap;
-        x = Math.max(rect.left + 8, Math.min(x, rect.right - width - 8));
-        y = Math.max(rect.top + 8, Math.min(y, rect.bottom - height - 8));
-        nodeHint.style.transform = 'translate3d(' + x + 'px, ' + y + 'px, 0)';
+    function updateNodeHint(overCanvas) {
+        // Read the existing hit test and drag state; node motion is untouched.
+        var active = !!draggingNode || (overCanvas && !!hoveredNode);
+        var value = active ? 'true' : 'false';
+        if (host.dataset.nodeActive !== value) host.dataset.nodeActive = value;
     }
 
     function updateClickCursor(dt) {
@@ -1941,9 +1953,16 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
 
         var i;
         var syncPositions = syncEvent ? blobs.map(function (b) { return { x: b.currentX, y: b.currentY }; }) : null;
-        for (i = 0; i < blobs.length; i++) updateTeamPosition(blobs[i], t, dt);
+        for (i = 0; i < blobs.length; i++) {
+            if (syncEvent && syncEvent.physics && (blobs[i] === syncEvent.teamA || blobs[i] === syncEvent.teamB)) continue;
+            updateTeamPosition(blobs[i], t, dt);
+        }
         separateBlobs(dt);
-        attractSyncTeams(t, dt);
+        if (syncEvent && syncEvent.physics) {
+            syncEvent.physics.update(t - syncEvent.born, dt, { x: camera.x, y: camera.y, width: W, height: H }, draggingBlob, reduceMotion);
+        } else {
+            attractSyncTeams(t, dt);
+        }
         if (syncPositions && dt > 0) {
             [syncEvent.teamA, syncEvent.teamB].forEach(function (b) {
                 var motion = reduceMotion ? 0.18 : 1;
@@ -1991,22 +2010,6 @@ export default function startTypeEngine({ host, canvas, intro, assetMap, playInt
     resize();
     layout();
 
-    if (playIntro !== false) {
-        scheduleTimeout(function () {
-            intro.classList.add('explode');
-            scheduleTimeout(function () {
-                intro.classList.add('fade');
-                scheduleTimeout(function () {
-                    // The host reveals the header and canvas together at this completion point.
-                    onIntroComplete?.();
-    host.setAttribute('data-hero-ready', '');
-    intro.remove();
-                }, 500);
-            }, 650);
-        }, 2000);
-    } else {
-        intro.remove();
-    }
     animationFrame = requestAnimationFrame(frame);
 
     return () => {

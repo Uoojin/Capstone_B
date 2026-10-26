@@ -20,11 +20,6 @@
   user-select: none;
 }
 
-/* Reveal with the existing canvas and header, without changing the intro. */
-.home-hero > .type-interaction:not([data-hero-ready]) ~ .home-hero-overlay {
-  visibility: hidden;
-}
-
 .home-hero-title {
   position: absolute;
   top: 50%;
@@ -127,7 +122,7 @@
 }
 
 
-/* Mobile MAIN has no mounted desktop hero, film, or interactive sections. */
+/* Only the mobile home poster and exhibition information use this layout. */
 @media (max-width: 767px) {
   .home-mobile-page {
     margin-top: 0;
@@ -135,53 +130,64 @@
 
   .home-mobile-poster {
     width: 100%;
-    aspect-ratio: 1 / 1.414;
-    background: #e5e5e5;
+    margin-top: 14px;
   }
 
   .home-mobile-poster img {
     display: block;
     width: 100%;
-    height: 100%;
-    object-fit: contain;
+    height: auto;
   }
 
   .home-mobile-exhibition {
-    padding: 28px var(--page-padding) 100px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+    align-items: start;
+    column-gap: 12px;
+    padding: 36px var(--page-padding) 0;
     background: #fff;
     color: #101010;
-    text-align: left;
-    overflow-wrap: anywhere;
-  }
-
-  .home-mobile-exhibition h1 {
-    margin: 0;
-    color: #fd00a0;
-    font-size: clamp(34px, 11vw, 84px);
-    font-weight: 700;
-    line-height: 1.05;
-    letter-spacing: -0.045em;
+    font-size: clamp(8px, 2.46vw, 11.5px);
+    font-weight: 400;
+    line-height: 20px;
   }
 
   .home-mobile-degree-show,
   .home-mobile-schedule {
-    font-size: clamp(12px, 2.85vw, 18px);
-    font-weight: 600;
-    line-height: 1.5;
+    margin: 0;
+    white-space: nowrap;
   }
 
-  .home-mobile-degree-show {
-    margin-top: 20px;
-  }
+  .home-mobile-degree-show { text-align: left; }
+  .home-mobile-schedule { text-align: right; }
+}
 
-  .home-mobile-slogan {
-    margin-top: 18px;
-    font-size: clamp(18px, 4.6vw, 28px);
-    font-weight: 700;
-    line-height: 1.3;
-  }
+/* The instruction belongs to the hero and scrolls with it. */
+.home-hero-hint {
+  position: absolute;
+  top: clamp(35px, 2.55vw, 52px);
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding-inline: 20px;
+  grid-template-columns: minmax(0, 1fr);
+  display: grid;
+  text-align: center;
+  color: #fd00a0;
+  font-size: clamp(16px, 1.2vw, 24px);
+  font-weight: 700;
+  line-height: 1.4;
+  --home-text-outline-width: 6px;
+  --home-text-outline-color: #fff;
+  paint-order: stroke fill;
+  pointer-events: none;
+}
+.home-hero-hint > span { grid-area: 1 / 1; justify-self: center; position: relative; isolation: isolate; }
+.home-hero-hint-active { visibility: hidden; }
+.home-hero:has(.type-interaction[data-node-active='true']) .home-hero-hint-default { visibility: hidden; }
+.home-hero:has(.type-interaction[data-node-active='true']) .home-hero-hint-active { visibility: visible; }
+body:has(.site-header.is-menu-open) .home-hero-hint { display: none; }
 
-  .home-mobile-schedule {
-    margin-top: 18px;
-  }
+@media (max-width: 1100px) {
+  .home-hero-hint { top: calc(var(--site-header-height) + 20px); }
 }

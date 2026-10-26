@@ -2,77 +2,88 @@ import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import '../Guestbook/Guestbook.css'
 import PhotoBooth from '../Guestbook/PhotoBooth.jsx'
 import Message from './Message.jsx'
+import RoundedStrokeText from '../Home/RoundedStrokeText.jsx'
 import { fetchGuestbookEntries, subscribeToGuestbookEntries, isSupabaseConfigured } from '../../lib/supabase02.js'
 
-function GuestbookHeroBackground() {
-  const orbitGroups = [
-    { x: 312, y: 500, radii: [198, 246, 294, 342], phases: [212, 242, 310, 16] },
-    { x: 1018, y: 38, radii: [152, 190, 226, 264], phases: [100, 158, 132, 45] },
-  ]
-  const floatingDots = [
-    [154, 119], [452, 99], [608, 143], [735, 94], [990, 128],
-    [229, 189], [278, 341], [200, 396], [437, 412], [272, 530],
-    [851, 397], [1081, 351], [1123, 457], [1007, 557], [1126, 607],
-  ]
-
-  return (
-    <div className="gb-hero__background" aria-hidden="true">
-      <svg viewBox="0 0 1264 632" preserveAspectRatio="xMidYMid slice" focusable="false">
-        {orbitGroups.map(({ x, y, radii, phases }, groupIndex) => (
-          <g key={groupIndex} className="gb-hero__orbit-group" style={{ transformOrigin: `${x}px ${y}px`, animationDirection: groupIndex ? 'reverse' : 'normal' }}>
-            {radii.map((radius, index) => (
-              <g key={radius}>
-                <circle className="gb-hero__orbit-track" cx={x} cy={y} r={radius} />
-                <g className="gb-hero__orbit-satellite" style={{ transformOrigin: `${x}px ${y}px`, '--gb-orbit-phase': `${phases[index]}deg`, '--gb-orbit-duration': `${52 + index * 9 + groupIndex * 5}s`, animationDirection: index % 2 ? 'reverse' : 'normal' }}>
-                  <circle className="gb-hero__background-dot" cx={x + radius} cy={y} r="3.3" />
-                </g>
-              </g>
-            ))}
-          </g>
-        ))}
-        {floatingDots.map(([x, y], index) => (
-          <g key={index} className="gb-hero__floating-dot" style={{ animationDuration: `${26 + index * 1.1}s`, animationDirection: index % 2 ? 'reverse' : 'normal', '--gb-float-x': `${(x < 632 ? 1 : -1) * (32 + index % 4 * 8)}px`, '--gb-float-y': `${Math.min(20 + index % 4 * 5, y - 12, 620 - y)}px` }}>
-            <circle className="gb-hero__background-dot" cx={x} cy={y} r="3.3" />
-          </g>
-        ))}
-      </svg>
-    </div>
-  )
-}
-
 function GuestbookHero({ onPhotoBooth, onMessage }) {
-  return (
-    <section className="gb-hero" aria-labelledby="gb-hero-title">
-      <GuestbookHeroBackground />
-      <h1 id="gb-hero-title" className="gb-hero__title">
-        SYNC UP!
-      </h1>
+  const heroRef = useRef(null)
+  const typeRef = useRef(null)
 
-      <p className="gb-hero__description">
-        서로 다른 우리가 맞이할 새로운 시작에,
-        <br />
-        응원의 한마디를 남겨주세요.
-      </p>
+  useEffect(() => {
+    const hero = heroRef.current
+    const typography = typeRef.current
+    const events = new AbortController()
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const current = { x: 0, y: 0 }
+    const target = { x: 0, y: 0 }
+    let frame = 0
+    let lastTime = 0
+
+    // Match the Home insight section's viewpoint and time-based interpolation.
+    const animate = time => {
+      const dt = lastTime ? Math.min((time - lastTime) / 1000, .05) : 1 / 60
+      lastTime = time
+      const blend = reducedMotion.matches ? 1 : 1 - Math.exp(-dt / .14)
+      let moving = false
+      for (const axis of ['x', 'y']) {
+        current[axis] += (target[axis] - current[axis]) * blend
+        if (Math.abs(target[axis] - current[axis]) > .01) moving = true
+        else current[axis] = target[axis]
+      }
+      typography.style.setProperty('--gb-tilt-x', `${current.x}deg`)
+      typography.style.setProperty('--gb-tilt-y', `${current.y}deg`)
+      if (moving) frame = requestAnimationFrame(animate)
+      else { frame = 0; lastTime = 0 }
+    }
+    const start = () => { if (!frame) frame = requestAnimationFrame(animate) }
+    const reset = () => {
+      target.x = 0
+      target.y = 0
+      start()
+    }
+    hero.addEventListener('pointermove', event => {
+      if (event.pointerType === 'touch') return
+      const rect = hero.getBoundingClientRect()
+      const x = Math.max(-1, Math.min(1, (event.clientX - rect.left) / rect.width * 2 - 1))
+      const y = Math.max(-1, Math.min(1, (event.clientY - rect.top) / rect.height * 2 - 1))
+      target.x = y * 25
+      target.y = -x * 25
+      start()
+    }, { signal: events.signal })
+    hero.addEventListener('pointerleave', reset, { signal: events.signal })
+    hero.addEventListener('pointercancel', reset, { signal: events.signal })
+    window.addEventListener('blur', reset, { signal: events.signal })
+    return () => { events.abort(); cancelAnimationFrame(frame) }
+  }, [])
+
+  return (
+    <section className="gb-hero" aria-labelledby="gb-hero-title" ref={heroRef}>
+      <h1 id="gb-hero-title" className="gb-sr-only">SYNC UP!</h1>
+      <svg className="gb-hero__type" aria-hidden="true" focusable="false"
+        viewBox="0 0 1134.6 800" ref={typeRef}>
+        <g textAnchor="middle" strokeLinejoin="round" strokeLinecap="round" paintOrder="stroke fill">
+          <text x="567.3" y="365">SYNC</text>
+          <text x="567.3" y="710">UP!</text>
+        </g>
+      </svg>
+
+      <RoundedStrokeText as="p" className="gb-hero__description">
+        <span>서로 다른 우리가 맞이할 새로운 시작에,</span>
+        <span>응원의 한마디를 남겨주세요!</span>
+      </RoundedStrokeText>
 
       <div className="gb-hero__actions" aria-label="방명록 작성 방식 선택">
-        <button
-          className="gb-button gb-button--primary"
-          onClick={onPhotoBooth}
-        >
+        <button className="gb-button gb-button--primary" onClick={onPhotoBooth}>
           <span className="gb-hero__button-title">SNAP</span>
           <span className="gb-hero__button-description">사진과 메시지 남기기</span>
         </button>
-
-        <button
-          className="gb-button gb-button--secondary"
-          onClick={onMessage}
-        >
+        <button className="gb-button gb-button--secondary" onClick={onMessage}>
           <span className="gb-hero__button-title">MESSAGE</span>
           <span className="gb-hero__button-description">메시지만 남기기</span>
         </button>
       </div>
     </section>
-  );
+  )
 }
 
 function GuestbookCard({ entry }) {

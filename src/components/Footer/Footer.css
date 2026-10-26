@@ -150,3 +150,45 @@
     margin-top: 32px;
   }
 }
+
+/* The compact footer is exclusive to the mobile home page. */
+@media (max-width: 767px) {
+  .site-footer--home {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas: 'contact socials';
+    align-items: end;
+    gap: 12px;
+    padding: 52px calc(var(--page-padding) + 6px) 52px var(--page-padding);
+    color: #7b7b7b;
+    font-size: clamp(9px, 2.4vw, 11px);
+    line-height: 24px;
+  }
+
+  .site-footer--home .site-footer__brand,
+  .site-footer--home .site-footer__heading,
+  .site-footer--home .site-footer__address,
+  .site-footer--home .site-footer__about { display: none; }
+
+  .site-footer--home .site-footer__contact {
+    grid-template-columns: 42px minmax(0, 1fr);
+    column-gap: 16px;
+  }
+
+  .site-footer--home .site-footer__socials {
+    align-self: end;
+    justify-self: end;
+    gap: clamp(10px, 3.6vw, 17px);
+    margin: 0 0 4px;
+  }
+
+  .site-footer--home .site-footer__socials img {
+    flex-basis: clamp(20px, 5.35vw, 25px);
+    width: clamp(20px, 5.35vw, 25px);
+    height: clamp(20px, 5.35vw, 25px);
+  }
+
+  @media (max-width: 374px) {
+    .site-footer--home { gap: 8px; padding-right: var(--page-padding); }
+    .site-footer--home .site-footer__contact { grid-template-columns: 32px minmax(0, 1fr); column-gap: 8px; }
+  }
+}

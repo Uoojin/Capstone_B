@@ -11,17 +11,11 @@ const typeAssets = import.meta.glob('../../assets/type/**/*.svg', {
 const assetMap = Object.fromEntries(
   Object.entries(typeAssets).map(([path, url]) => [path.split('/assets/type/')[1], url]),
 )
-const introLetters = ['L', 'E', 'T', 'S1', 'S2', 'Y', 'N', 'C']
 
 // -------------------- TYPE INTERACTION --------------------
-export default function TypeInteraction({ playIntro, onIntroComplete }) {
+export default function TypeInteraction() {
   const hostRef = useRef(null)
   const [placementSeed] = useState(() => Math.random())
-  const onIntroCompleteRef = useRef(onIntroComplete)
-
-  useLayoutEffect(() => {
-    onIntroCompleteRef.current = onIntroComplete
-  }, [onIntroComplete])
 
   useLayoutEffect(() => {
     const host = hostRef.current
@@ -33,31 +27,19 @@ export default function TypeInteraction({ playIntro, onIntroComplete }) {
     scene.className = 'type-scene'
     scene.innerHTML = `
       <div class="stage-wrap"><canvas id="scene"></canvas></div>
-      <div class="vignette"></div>
-      <div id="intro" aria-label="LETS SYNC">
-        <div class="intro-title">${[0, 4].map(offset => `
-          <div class="intro-line">${introLetters.slice(offset, offset + 4).map(letter =>
-            `<img src="${assetMap[`${letter}_default.svg`]}" alt="${letter.replace(/[12]/, '')}">`,
-          ).join('')}</div>`).join('')}
-        </div>
-      </div>`
-    host.toggleAttribute('data-hero-ready', !playIntro)
-    host.toggleAttribute('data-skip-intro', !playIntro)
+      <div class="vignette"></div>`
     root.replaceChildren(style, scene)
     const stop = startTypeEngine({
       host,
       canvas: root.getElementById('scene'),
-      intro: root.getElementById('intro'),
       assetMap,
       placementSeed,
-      playIntro,
-      onIntroComplete: () => onIntroCompleteRef.current?.(),
     })
     return () => {
       stop()
       root.replaceChildren()
     }
-  }, [playIntro, placementSeed])
+  }, [placementSeed])
 
   return <div className="type-interaction" ref={hostRef} role="group" aria-label="TYPE interaction" />
 }

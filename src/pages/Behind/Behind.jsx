@@ -35,15 +35,7 @@ export default function Behind({ videoSrc }) {
 
   useLayoutEffect(() => {
     const viewport = viewportRef.current
-    const hero = viewport.querySelector('.credit-hero')
     viewport.scrollTop = 0
-    const headerBottom = Math.max(...[...document.querySelectorAll('.site-header, .site-header .site-logo, .site-header-menu')]
-      .map((element) => element.getBoundingClientRect().bottom))
-    const firstLine = Math.min(...[...hero.querySelectorAll('.credit-wordmark, p')]
-      .map((element) => element.getBoundingClientRect().top))
-    // Only correct an actual opening overlap; the roll's height and travel stay unchanged.
-    hero.style.setProperty('--credit-opening-offset', `${Math.max(0, headerBottom + 24 - firstLine)}px`)
-    return () => hero.style.removeProperty('--credit-opening-offset')
   }, [])
 
   useEffect(() => {
@@ -129,7 +121,6 @@ export default function Behind({ videoSrc }) {
         <div className="credit-roll">
           <section className="credit-hero" aria-label="DELIGHT INSIGHT 2026 LET’S SYNC!">
             <div className="credit-wordmark">
-              <span>DELIGHT INSIGHT 2026</span>
               <strong>LET’S SYNC!</strong>
             </div>
             <p>계원예술대학교<br />디지털미디어디자인과 졸업전시회</p>

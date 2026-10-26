@@ -11,7 +11,7 @@ export default function Footer() {
   if (!footerPages.has(pathname.replace(/\/+$/, '') || '/')) return null
 
   return (
-    <footer className="site-footer" aria-label="전시 안내 및 연락처">
+    <footer className={`site-footer${(pathname.replace(/\/+$/, '') || '/') === '/' ? ' site-footer--home' : ''}`} aria-label="전시 안내 및 연락처">
       <Link className="site-footer__brand" to="/">LET’S SYNC!</Link>
       <h2 className="site-footer__heading site-footer__about-heading">About</h2>
       <h2 className="site-footer__heading site-footer__contact-heading">Contact</h2>

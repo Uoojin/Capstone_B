@@ -234,3 +234,48 @@
   }
 }
 
+
+/* Help bubble is anchored above the existing guide without moving its border or text. */
+.archive-how-to-sync {
+  position: absolute;
+  bottom: calc(100% + 30px);
+  left: -1px;
+  width: min(240px, calc(100vw - 84px));
+  padding: 16px;
+  border-radius: 23px;
+  background: #FD00A0;
+  color: #FFFFFF;
+  text-align: left;
+  pointer-events: none;
+}
+
+.archive-how-to-sync::after {
+  content: '';
+  position: absolute;
+  left: 22px;
+  bottom: -13px;
+  width: 20px;
+  height: 18px;
+  background: inherit;
+  clip-path: polygon(0 0, 100% 0, 62% 88%, 50% 100%, 38% 88%);
+}
+
+.archive-how-to-sync h2 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 18px;
+}
+
+.archive-how-to-sync ul {
+  margin: 0;
+  padding-left: 14px;
+  list-style: disc;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.archive-how-to-sync li::marker { font-size: 8px; }
