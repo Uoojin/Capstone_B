@@ -1813,6 +1813,28 @@
   .content-drawing-overlay .editor-screen .main-stage { width: min(950px, 100%); gap: 16px; }
   .content-drawing-overlay .editor-screen .drawing-frame { height: 510px; }
   .content-drawing-overlay .editor-screen .canvas-layer { width: 100%; }
+  .content-drawing-overlay .editor-screen .tools-panel {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+  }
+  .content-drawing-overlay .editor-screen .editor-tools-card {
+    flex: none;
+    padding-bottom: 16px;
+  }
+  .content-drawing-overlay .editor-screen .tool-label,
+  .content-drawing-overlay .editor-screen .field-title,
+  .content-drawing-overlay .editor-screen .editor-message-title {
+    line-height: 18px;
+    margin-bottom: 8px;
+  }
+  .content-drawing-overlay .editor-screen .tool-icons-row { margin-bottom: 16px; }
+  .content-drawing-overlay .editor-screen .settings-block { gap: 16px; }
+  .content-drawing-overlay .editor-screen .brush-controls-row { align-items: start; }
+  .content-drawing-overlay .editor-screen .brush-controls-row > .field-group { min-width: 0; }
+  .content-drawing-overlay .editor-screen .editor-message-box { margin-top: auto; }
+  .content-drawing-overlay .editor-screen .bottom-action-wrap { flex-shrink: 0; }
 }
 
 /* Laptop modal: one PC-derived 1190:626 shell, including a separate close control. */

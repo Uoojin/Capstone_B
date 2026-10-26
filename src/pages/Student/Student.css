@@ -426,6 +426,19 @@
   .student-page .role-group { flex-direction: row; flex-wrap: wrap; gap: 20px; }
   .student-page .student-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .student-page .student-search-box { max-width: 320px; }
+  .student-page .card-back { padding: 14px 12px; gap: 10px; }
+  .student-page .back-interview { font-size: 12px; line-height: 1.45; flex-shrink: 0; }
+  .student-page .back-meta-list { gap: 6px; flex-shrink: 0; }
+  .student-page .back-meta-row {
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr);
+    align-items: start;
+    gap: 6px;
+    font-size: 11px;
+    line-height: 1.4;
+  }
+  .student-page .back-value,
+  .student-page .back-link { overflow-wrap: anywhere; }
 }
 
 /* Laptop only: preserve PC >=1600, tablet <=1024, mobile and HOME. */

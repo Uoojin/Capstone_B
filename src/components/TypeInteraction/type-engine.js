@@ -6,8 +6,8 @@ export default function startTypeEngine({ host, canvas, assetMap, placementSeed 
     const events = new AbortController();
     const timers = new Set();
     let animationFrame;
-    function listen(target, type, callback) {
-        target.addEventListener(type, callback, { signal: events.signal });
+    function listen(target, type, callback, options = {}) {
+        target.addEventListener(type, callback, { ...options, signal: events.signal });
     }
     function scheduleTimeout(callback, delay) {
         const id = setTimeout(() => {
@@ -473,6 +473,17 @@ export default function startTypeEngine({ host, canvas, assetMap, placementSeed 
 
         }
     });
+
+    // Pointer hit testing runs before touchstart. Only a grabbed object owns the
+    // touch gesture; empty tablet canvas space keeps native page scrolling.
+    var tabletTouchViewport = window.matchMedia('(min-width: 768px) and (max-width: 1024px)');
+    function keepObjectTouchDrag(e) {
+        if (tabletTouchViewport.matches && (draggingNode || draggingBlob) && e.cancelable) {
+            e.preventDefault();
+        }
+    }
+    listen(canvas, 'touchstart', keepObjectTouchDrag, { passive: false });
+    listen(canvas, 'touchmove', keepObjectTouchDrag, { passive: false });
 
     listen(canvas, 'pointermove', function (e) {
         cursorOnCanvas = e.pointerType === 'mouse';
