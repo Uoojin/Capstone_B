@@ -4,6 +4,10 @@
 const SIZE = 256
 const PAD = 2
 const fields = new WeakMap()
+// Scope the pixel-write readback workaround to WebKit's canvas-to-canvas
+// path. Keep Chromium's existing rendering path unchanged.
+const webKitReadback = typeof navigator !== 'undefined' &&
+    /AppleWebKit/.test(navigator.userAgent) && !/(Chrome|Chromium|Edg|OPR)\//.test(navigator.userAgent)
 
 function distance(mask, foreground) {
     const n = SIZE, inf = 1e12
@@ -81,7 +85,7 @@ export function createSvgStateMorph() {
         if (!canvas) {
             canvas = document.createElement('canvas')
             canvas.width = canvas.height = SIZE
-            context = canvas.getContext('2d')
+            context = webKitReadback ? canvas.getContext('2d', { willReadFrequently: true }) : canvas.getContext('2d')
             pixels = context.createImageData(SIZE, SIZE)
         }
         const a = fieldFor(from), b = fieldFor(to)
@@ -96,6 +100,9 @@ export function createSvgStateMorph() {
             output[p + 3] = Math.round(alpha * 255)
         }
         context.putImageData(pixels, 0, 0)
+        // Flush pending pixel writes before the transformed destination samples
+        // this surface (WebKit bugs 240802 / 256151). No pixel data is changed.
+        if (webKitReadback) context.getImageData(0, 0, 1, 1)
         const side = maxSide * SIZE / (SIZE - PAD * 2)
         ctx.drawImage(canvas, -side / 2, -side / 2, side, side)
     }

@@ -1,0 +1,23 @@
+{
+  "svgPairs": 56,
+  "samplesPerPair": 5,
+  "worstMorphSilhouetteIoU": 0.9780854371807212,
+  "codeChanged": false,
+  "reproducedReportedFailure": false,
+  "engines": {
+    "chrome": {
+      "totalMilliseconds": 6903.300000011921,
+      "frameCount": 415,
+      "largestFrameGapMs": 16.80000000000109,
+      "errors": []
+    },
+    "webkit": {
+      "totalMilliseconds": 6909,
+      "frameCount": 416,
+      "largestFrameGapMs": 42,
+      "errors": [
+        "ResizeObserver loop completed with undelivered notifications."
+      ]
+    }
+  }
+}

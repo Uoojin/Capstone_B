@@ -21,19 +21,22 @@ export function createOrbitMorph(event) {
     event.duration = .5 + CYCLE * 2 + .16 + .6
     const teams = [event.teamA, event.teamB]
     const poses = new Map()
-    const renderer = createSvgStateMorph()
+    // Each letter owns its writable output surface. The SVG fields remain
+    // immutable/shared, but one letter must never overwrite another's bitmap.
+    const renderers = new Map(teams.map(team => [team, createSvgStateMorph()]))
 
     function update(age) {
         teams.forEach((team, index) => poses.set(team, orbitSvgState(age, index)))
     }
 
     function draw(ctx, image, interaction, maxSide, team) {
-        renderer.draw(ctx, image, interaction, poses.get(team) || 0, maxSide)
+        renderers.get(team)?.draw(ctx, image, interaction, poses.get(team) || 0, maxSide)
     }
 
     function dispose() {
         poses.clear()
-        renderer.dispose()
+        renderers.forEach(renderer => renderer.dispose())
+        renderers.clear()
     }
 
     return { update, draw, dispose, owns: team => teams.includes(team) }
