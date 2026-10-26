@@ -4,7 +4,7 @@ const clamp = (value, low, high) => Math.max(low, Math.min(high, value))
 const smooth = value => { const x = clamp(value, 0, 1); return x * x * (3 - 2 * x) }
 
 export function chooseSyncMotion() {
-    return Math.random() < .5 ? 'ORIGINAL' : 'ELASTIC BOUNCE'
+    return ['ORIGINAL', 'ORBIT MORPH'][Math.floor(Math.random() * 2)]
 }
 
 export function createSyncMotion(event, artwork) {

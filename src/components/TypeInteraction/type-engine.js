@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars, no-unreachable, no-empty -- Preserve the legacy engine and intentionally disabled drawing paths during integration. */
 // Legacy engine retained verbatim apart from its host, assets, and lifecycle adapters.
 import { chooseSyncMotion, createSyncMotion } from './sync-motions.js';
+import { registerHeroHandoff } from './heroHandoff.js';
+import { createOrbitMorph } from './orbit-morph.js';
 
 export default function startTypeEngine({ host, canvas, assetMap, placementSeed }) {
     const events = new AbortController();
@@ -1125,7 +1127,11 @@ export default function startTypeEngine({ host, canvas, assetMap, placementSeed 
             phase: Math.random() * Math.PI * 2
         };
         syncEvent.motion = chooseSyncMotion();
-        if (syncEvent.motion !== 'ORIGINAL') {
+        if (syncEvent.motion === 'ORBIT MORPH') {
+            syncEvent.morph = createOrbitMorph(syncEvent);
+            syncLink.duration = syncEvent.duration;
+        }
+        if (syncEvent.motion === 'ELASTIC BOUNCE' || syncEvent.motion === 'ORBIT MORPH') {
             syncEvent.physics = createSyncMotion(syncEvent, function (team) {
                 var first = Math.min(teamA.id, teamB.id);
                 var second = Math.max(teamA.id, teamB.id);
@@ -1294,6 +1300,7 @@ export default function startTypeEngine({ host, canvas, assetMap, placementSeed 
                         });
                     }
                 }
+                if (syncEvent.morph) syncEvent.morph.dispose();
                 syncEvent = null;
             }
             return;
@@ -1415,8 +1422,13 @@ export default function startTypeEngine({ host, canvas, assetMap, placementSeed 
             ctx.translate(sx, sy);
             ctx.rotate(LETTER_VISUAL_ANGLES[i] * Math.PI / 180);
             if (syncEvent && syncEvent.physics) ctx.rotate(syncEvent.physics.rotation(team));
-            paintTypography(img, 1 - replacementOpacity);
-            if (replacement) paintTypography(replacement, replacementOpacity);
+            if (syncEvent && syncEvent.morph && syncEvent.morph.owns(team)) {
+                ctx.globalAlpha = 1;
+                syncEvent.morph.draw(ctx, img, replacement, TYPOGRAPHY_SIZE, team);
+            } else {
+                paintTypography(img, 1 - replacementOpacity);
+                if (replacement) paintTypography(replacement, replacementOpacity);
+            }
             ctx.restore();
         }
     }
@@ -1982,6 +1994,7 @@ export default function startTypeEngine({ host, canvas, assetMap, placementSeed 
             });
         }
         relaxSyncRotations(dt);
+        if (syncEvent && syncEvent.morph) syncEvent.morph.update(t - syncEvent.born);
         syncDraggedObject();
         for (i = 0; i < nodes.length; i++) updateNodeMotion(nodes[i], dt, t);
         updateHover(dt);
@@ -2021,9 +2034,30 @@ export default function startTypeEngine({ host, canvas, assetMap, placementSeed 
     resize();
     layout();
 
+    // Expose only the existing drawTeamCores geometry; onboarding cannot write
+    // positions, camera, sizes, rotations, or any interaction/physics state.
+    const unregisterHandoff = registerHeroHandoff(canvas, () => {
+        if (letterImages.some(image => !image.complete || !image.naturalWidth)) return null;
+        const rect = canvas.getBoundingClientRect();
+        return blobs.map((team, i) => {
+            const image = letterImages[i];
+            const scale = Math.min(TYPOGRAPHY_SIZE / image.naturalWidth, TYPOGRAPHY_SIZE / image.naturalHeight);
+            return {
+                id: LETTER_FILES[i].replace('_default.svg', ''),
+                x: rect.left + (team.currentX - camera.x) * rect.width / W,
+                y: rect.top + (team.currentY - camera.y) * rect.height / H,
+                width: image.naturalWidth * scale * rect.width / W,
+                height: image.naturalHeight * scale * rect.height / H,
+                angle: LETTER_VISUAL_ANGLES[i] + (syncEvent?.physics ? syncEvent.physics.rotation(team) * 180 / Math.PI : 0),
+            };
+        });
+    });
+
     animationFrame = requestAnimationFrame(frame);
 
     return () => {
+        if (syncEvent && syncEvent.morph) syncEvent.morph.dispose();
+        unregisterHandoff();
         hideClickCursor();
         cursorLayer.remove();
         events.abort();

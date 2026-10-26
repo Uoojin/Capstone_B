@@ -1,0 +1,60 @@
+[
+  {
+    "viewport": [
+      1920,
+      1080
+    ],
+    "mode": "ORBIT MORPH",
+    "exactOriginalPositions": true,
+    "exactOriginalSizeAndRotation": true,
+    "participants": [],
+    "opaqueGeometryInterpolation": true,
+    "postEffectDrag": true,
+    "errors": []
+  },
+  {
+    "viewport": [
+      1024,
+      768
+    ],
+    "mode": "ORBIT MORPH",
+    "exactOriginalPositions": true,
+    "exactOriginalSizeAndRotation": true,
+    "participants": [],
+    "opaqueGeometryInterpolation": true,
+    "postEffectDrag": true,
+    "errors": []
+  },
+  {
+    "viewport": [
+      1920,
+      1080
+    ],
+    "mode": "POSITION SWAP",
+    "exactOriginalPositions": true,
+    "exactOriginalSizeAndRotation": true,
+    "participants": [
+      2,
+      6
+    ],
+    "opaqueGeometryInterpolation": false,
+    "postEffectDrag": true,
+    "errors": []
+  },
+  {
+    "viewport": [
+      1024,
+      768
+    ],
+    "mode": "POSITION SWAP",
+    "exactOriginalPositions": true,
+    "exactOriginalSizeAndRotation": true,
+    "participants": [
+      5,
+      6
+    ],
+    "opaqueGeometryInterpolation": false,
+    "postEffectDrag": true,
+    "errors": []
+  }
+]

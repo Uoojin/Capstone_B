@@ -1,0 +1,25 @@
+[
+  {
+    "viewport": [
+      820,
+      1180
+    ],
+    "studentProjectNavigate": true,
+    "centered": true,
+    "sourceRetainedUntilEnd": true,
+    "retargetNoShapeChange": true,
+    "noConsecutiveRepeat": true,
+    "homeWithoutOnboarding": true,
+    "reducedMotion": true,
+    "errors": []
+  },
+  {
+    "viewport": [
+      1920,
+      1080
+    ],
+    "initialAlphabetOnly": true,
+    "homeToProjectRandomOnly": true,
+    "returnHomeRandomOnly": true
+  }
+]

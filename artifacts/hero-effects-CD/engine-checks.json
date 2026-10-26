@@ -1,0 +1,134 @@
+[
+  {
+    "viewport": [
+      1920,
+      1080
+    ],
+    "mode": "ORBIT MORPH",
+    "exactOriginalPositions": true,
+    "exactOriginalSizeAndRotation": true,
+    "history": [],
+    "opaqueGeometryInterpolation": true,
+    "postEffectDrag": true,
+    "errors": []
+  },
+  {
+    "viewport": [
+      1024,
+      768
+    ],
+    "mode": "ORBIT MORPH",
+    "exactOriginalPositions": true,
+    "exactOriginalSizeAndRotation": true,
+    "history": [],
+    "opaqueGeometryInterpolation": true,
+    "postEffectDrag": true,
+    "errors": []
+  },
+  {
+    "viewport": [
+      1920,
+      1080
+    ],
+    "mode": "POSITION SWAP",
+    "exactOriginalPositions": true,
+    "exactOriginalSizeAndRotation": true,
+    "history": [
+      {
+        "a": 0,
+        "b": 7,
+        "fromA": {
+          "x": 290.8428868291526,
+          "y": 506.19669689592865
+        },
+        "fromB": {
+          "x": 2861.431483948355,
+          "y": 1389.320214535499
+        },
+        "axis": 0
+      },
+      {
+        "a": 1,
+        "b": 3,
+        "fromA": {
+          "x": 2249.385641126726,
+          "y": 283.00494309508315
+        },
+        "fromB": {
+          "x": 2774.21434370939,
+          "y": 657.5422435547479
+        },
+        "axis": 1
+      },
+      {
+        "a": 0,
+        "b": 6,
+        "fromA": {
+          "x": 2861.431483948355,
+          "y": 1389.320214535499
+        },
+        "fromB": {
+          "x": 1008.8251279890899,
+          "y": 1385.0847368737072
+        },
+        "axis": 0
+      }
+    ],
+    "opaqueGeometryInterpolation": false,
+    "postEffectDrag": true,
+    "errors": []
+  },
+  {
+    "viewport": [
+      1024,
+      768
+    ],
+    "mode": "POSITION SWAP",
+    "exactOriginalPositions": true,
+    "exactOriginalSizeAndRotation": true,
+    "history": [
+      {
+        "a": 0,
+        "b": 4,
+        "fromA": {
+          "x": -36.99765110238256,
+          "y": 343.3781579395474
+        },
+        "fromB": {
+          "x": -166.69286650519754,
+          "y": 992.822856503778
+        },
+        "axis": 2
+      },
+      {
+        "a": 2,
+        "b": 7,
+        "fromA": {
+          "x": 623.8190836857515,
+          "y": 390.03135066699105
+        },
+        "fromB": {
+          "x": 1777.7951095460014,
+          "y": 1119.1939469799672
+        },
+        "axis": 1
+      },
+      {
+        "a": 1,
+        "b": 6,
+        "fromA": {
+          "x": 1210.0546048741237,
+          "y": 71.16789907786156
+        },
+        "fromB": {
+          "x": 495.05628611162143,
+          "y": 1110.63814734795
+        },
+        "axis": 3
+      }
+    ],
+    "opaqueGeometryInterpolation": false,
+    "postEffectDrag": true,
+    "errors": []
+  }
+]

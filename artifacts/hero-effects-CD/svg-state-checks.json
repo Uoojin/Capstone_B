@@ -1,0 +1,50 @@
+[
+  {
+    "id": "L",
+    "exactEndpoints": true,
+    "repeatedStateTransitions": true,
+    "midpointOpaqueRatio": 0.944095038434661
+  },
+  {
+    "id": "E",
+    "exactEndpoints": true,
+    "repeatedStateTransitions": true,
+    "midpointOpaqueRatio": 0.9313967136150235
+  },
+  {
+    "id": "T",
+    "exactEndpoints": true,
+    "repeatedStateTransitions": true,
+    "midpointOpaqueRatio": 0.9295014290250874
+  },
+  {
+    "id": "S1",
+    "exactEndpoints": true,
+    "repeatedStateTransitions": true,
+    "midpointOpaqueRatio": 0.903246942341293
+  },
+  {
+    "id": "S2",
+    "exactEndpoints": true,
+    "repeatedStateTransitions": true,
+    "midpointOpaqueRatio": 0.9165738936821598
+  },
+  {
+    "id": "Y",
+    "exactEndpoints": true,
+    "repeatedStateTransitions": true,
+    "midpointOpaqueRatio": 0.9265901664260202
+  },
+  {
+    "id": "N",
+    "exactEndpoints": true,
+    "repeatedStateTransitions": true,
+    "midpointOpaqueRatio": 0.9244212437585111
+  },
+  {
+    "id": "C",
+    "exactEndpoints": true,
+    "repeatedStateTransitions": true,
+    "midpointOpaqueRatio": 0.9289810668552125
+  }
+]

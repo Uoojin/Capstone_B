@@ -1,0 +1,24 @@
+[
+  {
+    "viewport": [
+      1920,
+      1080
+    ],
+    "realNodeDragTriggeredC": true,
+    "nonAffineBandDraws": 10656,
+    "finishedCleanly": true,
+    "noWarpAfterEnd": true,
+    "errors": []
+  },
+  {
+    "viewport": [
+      1024,
+      768
+    ],
+    "realNodeDragTriggeredC": true,
+    "nonAffineBandDraws": 12768,
+    "finishedCleanly": true,
+    "noWarpAfterEnd": true,
+    "errors": []
+  }
+]

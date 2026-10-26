@@ -30,7 +30,13 @@ export default function Header() {
         if (event.key === 'Escape') setIsOpen(false)
       }}
     >
-      <Link className="site-logo" to="/" aria-label="SYNCOPATE Home" onClick={() => setIsOpen(false)}>
+      <Link className="site-logo" to="/" aria-label="SYNCOPATE Home" onClick={(event) => {
+        setIsOpen(false)
+        if (pathname === '/' && event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) {
+          event.preventDefault()
+          window.location.reload()
+        }
+      }}>
         LET&apos;S SYNC!
       </Link>
 

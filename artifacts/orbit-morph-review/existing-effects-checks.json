@@ -1,0 +1,28 @@
+[
+  {
+    "viewport": [
+      1440,
+      900
+    ],
+    "mode": "ORIGINAL",
+    "existingEffectTriggered": true,
+    "triggerViaEventHarness": true,
+    "nonAffineBandDraws": 0,
+    "finishedCleanly": true,
+    "noWarpAfterEnd": true,
+    "errors": []
+  },
+  {
+    "viewport": [
+      1440,
+      900
+    ],
+    "mode": "ELASTIC BOUNCE",
+    "existingEffectTriggered": true,
+    "triggerViaEventHarness": true,
+    "nonAffineBandDraws": 0,
+    "finishedCleanly": true,
+    "noWarpAfterEnd": true,
+    "errors": []
+  }
+]

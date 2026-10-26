@@ -78,7 +78,7 @@ export default function Student() {
 
   const handleProjectClick = (event) => {
     event.stopPropagation()
-    navigate('/project')
+    navigate('/project', { state: { skipPageTransition: true } })
   }
 
   const handleLinkClick = (event, url) => {

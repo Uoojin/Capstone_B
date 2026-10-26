@@ -1,0 +1,69 @@
+[
+  {
+    "target": "PROJECT",
+    "kind": "circle",
+    "duration": 5994,
+    "marks": 5,
+    "locked": true,
+    "noOnboarding": true,
+    "noReload": true
+  },
+  {
+    "target": "STUDENT",
+    "kind": "triangle",
+    "duration": 5920,
+    "marks": 5,
+    "locked": true,
+    "noOnboarding": true,
+    "noReload": true
+  },
+  {
+    "target": "SYNCOPATE",
+    "kind": "sparkle",
+    "duration": 7302,
+    "marks": 5,
+    "locked": true,
+    "noOnboarding": true,
+    "noReload": true
+  },
+  {
+    "target": "GUESTBOOK",
+    "kind": "square",
+    "duration": 6005,
+    "marks": 5,
+    "locked": true,
+    "noOnboarding": true,
+    "noReload": true
+  },
+  {
+    "target": "CURRICULUM",
+    "kind": "circle",
+    "duration": 6324,
+    "marks": 5,
+    "locked": true,
+    "noOnboarding": true,
+    "noReload": true
+  },
+  {
+    "target": "BEHIND",
+    "kind": "triangle",
+    "duration": 6312,
+    "marks": 5,
+    "locked": true,
+    "noOnboarding": true,
+    "noReload": true
+  },
+  {
+    "target": "SYNCOPATE Home",
+    "kind": "sparkle",
+    "duration": 6290,
+    "marks": 5,
+    "locked": true,
+    "noOnboarding": true,
+    "noReload": true
+  },
+  {
+    "homeLogoActualReload": true,
+    "alphabetOnboardingOnly": true
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "id": "S1",
+    "culled": true,
+    "positionError": 42.37134326171875,
+    "widthError": 0.0002727272727724994,
+    "angleError": 0
+  },
+  {
+    "id": "E",
+    "culled": false,
+    "positionError": 0.00038378906253910827,
+    "widthError": 0.00033333333328755543,
+    "angleError": 0
+  },
+  {
+    "id": "L",
+    "culled": false,
+    "positionError": 0.0002604980468845497,
+    "widthError": 0.00033333333334439885,
+    "angleError": 1.7763568394002505e-15
+  },
+  {
+    "id": "S2",
+    "culled": true,
+    "positionError": 84.3856140136719,
+    "widthError": 0.00018181818188622856,
+    "angleError": 0
+  },
+  {
+    "id": "C",
+    "culled": true,
+    "positionError": 22.46489501953124,
+    "widthError": 0.00048484848485941257,
+    "angleError": 0
+  },
+  {
+    "id": "T",
+    "culled": false,
+    "positionError": 0.000342651367191138,
+    "widthError": 0.00015789473684435507,
+    "angleError": 0
+  },
+  {
+    "id": "N",
+    "culled": false,
+    "positionError": 0.00021484374997271516,
+    "widthError": 0.00033333333334439885,
+    "angleError": 1.7763568394002505e-15
+  },
+  {
+    "id": "Y",
+    "culled": false,
+    "positionError": 0.0004287109375127329,
+    "widthError": 0.0004117647058592411,
+    "angleError": 0
+  }
+]

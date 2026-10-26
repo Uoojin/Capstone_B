@@ -1,0 +1,51 @@
+[
+  {
+    "viewport": [
+      1920,
+      1080
+    ],
+    "scrollAndTouchLocked": true,
+    "unlockedAfter": true,
+    "sessionReloadAndReturnSkip": true,
+    "assetsLoaded": true,
+    "pageErrors": []
+  },
+  {
+    "viewport": [
+      1440,
+      900
+    ],
+    "scrollAndTouchLocked": true,
+    "unlockedAfter": true,
+    "sessionReloadAndReturnSkip": true,
+    "assetsLoaded": true,
+    "pageErrors": []
+  },
+  {
+    "viewport": [
+      820,
+      1180
+    ],
+    "scrollAndTouchLocked": true,
+    "unlockedAfter": true,
+    "sessionReloadAndReturnSkip": true,
+    "assetsLoaded": true,
+    "pageErrors": []
+  },
+  {
+    "viewport": [
+      390,
+      844
+    ],
+    "scrollAndTouchLocked": true,
+    "unlockedAfter": true,
+    "sessionReloadAndReturnSkip": true,
+    "assetsLoaded": true,
+    "pageErrors": []
+  },
+  {
+    "newTabAndFirstHome": true,
+    "subpageNoSplash": true,
+    "interruptedUnmountCleanup": true
+  }
+]

@@ -4,6 +4,7 @@ import heroTitle from '../../assets/heroTitle.svg'
 import mobilePosterImage from '../../assets/mobileMain.svg'
 import HomeSections from './HomeSections.jsx'
 import RoundedStrokeText from './RoundedStrokeText.jsx'
+import FirstVisitSplash from '../../components/FirstVisitSplash/FirstVisitSplash.jsx'
 import './Home.css'
 
 const mobileHomeViewport = window.matchMedia('(max-width: 767px)')
@@ -20,7 +21,7 @@ function getMobileViewport() {
 export default function Home() {
   const isMobile = useSyncExternalStore(subscribeToMobileViewport, getMobileViewport)
   // Unmount desktop effects on mobile, rather than hiding running interactions.
-  return isMobile ? <MobileHome /> : <DesktopHome />
+  return <><FirstVisitSplash />{isMobile ? <MobileHome /> : <DesktopHome />}</>
 }
 
 function MobileHome() {

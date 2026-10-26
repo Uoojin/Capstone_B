@@ -1,0 +1,50 @@
+[
+  {
+    "id": "L",
+    "localDeformation": true,
+    "pixelIdenticalEnd": true,
+    "exactPositionRestore": true
+  },
+  {
+    "id": "E",
+    "localDeformation": true,
+    "pixelIdenticalEnd": true,
+    "exactPositionRestore": true
+  },
+  {
+    "id": "T",
+    "localDeformation": true,
+    "pixelIdenticalEnd": true,
+    "exactPositionRestore": true
+  },
+  {
+    "id": "S1",
+    "localDeformation": true,
+    "pixelIdenticalEnd": true,
+    "exactPositionRestore": true
+  },
+  {
+    "id": "S2",
+    "localDeformation": true,
+    "pixelIdenticalEnd": true,
+    "exactPositionRestore": true
+  },
+  {
+    "id": "Y",
+    "localDeformation": true,
+    "pixelIdenticalEnd": true,
+    "exactPositionRestore": true
+  },
+  {
+    "id": "N",
+    "localDeformation": true,
+    "pixelIdenticalEnd": true,
+    "exactPositionRestore": true
+  },
+  {
+    "id": "C",
+    "localDeformation": true,
+    "pixelIdenticalEnd": true,
+    "exactPositionRestore": true
+  }
+]

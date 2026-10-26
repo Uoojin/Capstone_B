@@ -1,0 +1,32 @@
+.route-loading {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483646;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  background: #fff;
+  color: #fd00a0;
+  outline: none;
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.route-loading--pink { background: #fd00a0; color: #fff; }
+.route-loading__group { display: grid; justify-items: center; gap: 22px; }
+.route-loading__row { display: flex; gap: 12px; padding-top: 60px; }
+.route-loading__mark { width: 18px; height: 18px; will-change: transform; }
+.route-loading__mark svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.route-loading__label {
+  position: relative;
+  font-family: 'Helvetica Neue', 'Archivo', Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  text-align: center;
+  user-select: none;
+}
+.route-loading__dots { position: absolute; left: 100%; top: 0; white-space: nowrap; }
