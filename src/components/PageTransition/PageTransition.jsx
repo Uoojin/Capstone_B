@@ -1,6 +1,7 @@
 import { useCallback, useLayoutEffect, useRef, useState } from 'react'
 import { createPortal, flushSync } from 'react-dom'
 import { Routes, useLocation } from 'react-router-dom'
+import { PageTransitionReadyContext } from './PageTransitionContext.js'
 import './PageTransition.css'
 
 // One sequential wave: preserve each hop, finish as soon as the fifth lands.
@@ -155,7 +156,9 @@ export default function PageTransitionRoutes({ children }) {
   }, [])
 
   return <>
-    <Routes location={displayed}>{children}</Routes>
+    <PageTransitionReadyContext.Provider value={!transition && location.key === displayed.key}>
+      <Routes location={displayed}>{children}</Routes>
+    </PageTransitionReadyContext.Provider>
     {transition && <LoadingScreen kind={transition.kind} dark={transition.dark} onFinish={finish} />}
   </>
 }

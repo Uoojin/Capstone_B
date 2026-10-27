@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { students } from '../../data/index.js'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { usePageTransitionReady } from '../../components/PageTransition/PageTransitionContext.js'
+import { projects, students } from '../../data/index.js'
 import { imageBackgroundStyle } from '../../data/dataUtils.js'
 import { matchesHangulName } from './hangulSearch.js'
 import { shuffle } from '../../utils/shuffle.js'
@@ -10,6 +11,11 @@ const roles = ['ALL', 'DESIGNER', 'PLANNER', 'PROGRAMMER']
 const cardBackColors = ['#FD00A0', '#00BFA3', '#8223A5', '#1D9F10', '#F7A600', '#5F50D8', '#009DEB']
 
 export default function Student() {
+  const location = useLocation()
+  const pageReady = usePageTransitionReady()
+  const requestedStudentId = new URLSearchParams(location.search).get('studentId')
+  const studentCardsRef = useRef(new Map())
+  const cancelAutoFlipRef = useRef(null)
   const [shuffledStudents] = useState(() => shuffle(students))
   const [activeRole, setActiveRole] = useState('ALL')
   const [searchTerm, setSearchTerm] = useState('')
@@ -66,7 +72,60 @@ export default function Student() {
     setFlippedStudentId(null)
   }
 
+  useEffect(() => {
+    if (!pageReady) return undefined
+    let frame
+    let cancelled = false
+    const cancel = () => {
+      cancelled = true
+      cancelAnimationFrame(frame)
+    }
+    cancelAutoFlipRef.current = cancel
+    // Filters and the one-card state are reset only for a new navigation.
+    frame = requestAnimationFrame(() => {
+      setFlippedStudentId(null)
+      setIsFlipStaggered(false)
+      const student = students.find((item) => item.studentId === requestedStudentId)
+      if (!student) return
+      setActiveRole('ALL')
+      setSearchTerm('')
+      document.fonts.ready.then(() => {
+        if (cancelled) return
+        frame = requestAnimationFrame(() => {
+          const card = studentCardsRef.current.get(student.studentId)
+          if (!card) return
+          const headerBottom = () => Math.max(0, document.querySelector('.site-header')?.getBoundingClientRect().bottom || 0)
+          const top = Math.max(0, card.getBoundingClientRect().top + window.scrollY - headerBottom() - 24)
+          const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+          window.scrollTo({ top, behavior: reduce ? 'instant' : 'smooth' })
+          let lastY = window.scrollY
+          let stableFrames = 0
+          let paintedFrames = 0
+          const reveal = () => {
+            if (cancelled) return
+            paintedFrames += 1
+            stableFrames = Math.abs(window.scrollY - lastY) < 0.5 ? stableFrames + 1 : 0
+            lastY = window.scrollY
+            const rect = card.getBoundingClientRect()
+            const visible = rect.top >= headerBottom() && rect.top < window.innerHeight && rect.bottom > headerBottom()
+            if (paintedFrames > 2 && stableFrames >= 3) {
+              if (visible) {
+                setBackColors((current) => ({ ...current, [student.studentId]: cardBackColors[Math.floor(Math.random() * cardBackColors.length)] }))
+                setFlippedStudentId(student.studentId)
+              }
+              return
+            }
+            frame = requestAnimationFrame(reveal)
+          }
+          frame = requestAnimationFrame(reveal)
+        })
+      })
+    })
+    return cancel
+  }, [location.key, pageReady, requestedStudentId])
+
   const handleCardFlip = (studentId, randomValue) => {
+    cancelAutoFlipRef.current?.()
     // CSS delays only the incoming card; another click cancels its pending transition.
     setIsFlipStaggered(flippedStudentId !== null && flippedStudentId !== studentId)
     if (flippedStudentId !== studentId) {
@@ -76,9 +135,12 @@ export default function Student() {
     setFlippedStudentId((current) => current === studentId ? null : studentId)
   }
 
-  const handleProjectClick = (event) => {
+  const handleProjectClick = (event, projectId) => {
     event.stopPropagation()
-    navigate('/project', { state: { skipPageTransition: true } })
+    cancelAutoFlipRef.current?.()
+    navigate(projects.some((project) => project.id === projectId)
+      ? `/project?${new URLSearchParams({ projectId })}`
+      : '/project')
   }
 
   const handleLinkClick = (event, url) => {
@@ -96,7 +158,10 @@ export default function Student() {
             item.isEmpty ? (
               <div key={item.id} className="student-empty-card" />
             ) : (
-              <article key={item.studentId} className="student-card">
+              <article key={item.studentId} className="student-card" data-student-id={item.studentId} ref={(element) => {
+                if (element) studentCardsRef.current.set(item.studentId, element)
+                else studentCardsRef.current.delete(item.studentId)
+              }}>
                 <button
                   className={`student-flipper ${flippedStudentId === item.studentId ? `flipped${isFlipStaggered ? ' flip-staggered' : ''}` : ''}`}
                   type="button"
@@ -123,7 +188,7 @@ export default function Student() {
                       </span>
                       <span className="back-meta-row">
                         <span className="back-label">Project</span>
-                        <span className="back-link" onClick={handleProjectClick}>
+                        <span className="back-link" onClick={(event) => handleProjectClick(event, item.projectId)}>
                           {item.project} &gt;
                         </span>
                       </span>
@@ -154,7 +219,7 @@ export default function Student() {
               type="text"
               placeholder="SEARCH"
               value={searchTerm}
-              onChange={(event) => setSearchTerm(event.target.value)}
+              onChange={(event) => { cancelAutoFlipRef.current?.(); setSearchTerm(event.target.value) }}
               className="student-search-input"
             />
             <svg
@@ -180,7 +245,7 @@ export default function Student() {
                 key={role}
                 className={`role-btn ${activeRole === role ? 'active' : ''}`}
                 type="button"
-                onClick={() => setActiveRole(role)}
+                onClick={() => { cancelAutoFlipRef.current?.(); setActiveRole(role) }}
               >
                 {role}
               </button>

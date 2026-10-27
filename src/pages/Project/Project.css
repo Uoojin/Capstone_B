@@ -715,6 +715,17 @@
   gap: clamp(18px, 1.6vw, 32px);
 }
 
+.member-link {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
+  cursor: pointer;
+}
+
 .member-name {
   margin: 0 0 clamp(5px, .4vw, 8px);
   font-size: 17px;

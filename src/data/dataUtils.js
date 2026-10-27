@@ -117,7 +117,7 @@ export function buildExhibitionData(projects, students, {
       members: (Array.isArray(project.memberIds) ? project.memberIds : [])
         .map((id) => studentMap.get(id))
         .filter(Boolean)
-        .map((student) => [student.name, student.role]),
+        .map((student) => ({ studentId: student.studentId, name: student.name, role: student.role })),
     })),
     students: students.map((student) => ({
       ...student,

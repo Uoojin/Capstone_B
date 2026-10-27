@@ -26,7 +26,7 @@ export const projects = [
     link: null,
 
     // 05. 참여 학생 (표시 순서대로)
-    memberIds: ['', 'KWONNAYEONG', 'JOOSIWON', 'SEOYEHYUN', 'YANGYUBIN', 'LEESEUNGYEON', 'JUNGDAEUN24', 'JUNGYUJIN'],
+    memberIds: ['LEEHANSUP', 'KWONNAYEONG', 'JOOSIWON', 'SEOYEHYUN', 'YANGYUBIN', 'LEESEUNGYEON', 'JUNGDAEUN24', 'JUNGYUJIN'],
   },
 
   // ========== PROJECT 02 ==========
@@ -338,7 +338,7 @@ export const projects = [
     link: null,
 
     // 05. 참여 학생 (표시 순서대로)
-    memberIds: ['LEECHAEYEON', 'KIMNOHEUN', 'KIMHYEONGI', 'BAEJEONGHUN', 'SIMHEAMIN ', 'YUGISANG', 'CHOGAYEON'],
+    memberIds: ['LEECHAEYEON', 'KIMNOHEUN', 'KIMHYEONGI', 'BAEJEONGHUN', 'SIMHEAMIN', 'YUGISANG', 'CHOGAYEON'],
   },
 
   // ========== PROJECT 14 ==========
@@ -442,7 +442,7 @@ export const projects = [
     link: null,
 
     // 05. 참여 학생 (표시 순서대로)
-    memberIds: ['KIM WOOSUNG', 'KANG MINJUN', 'KIMMINSEO', 'MOON JIHOON', 'PARKYEIN', 'SHINUIHYO', 'JANG SEWON'],
+    memberIds: ['KIMWOOSUNG', 'KANGMINJUN', 'KIMMINSEO', 'MOONJIHOON', 'PARKYEIN', 'SHINUIHYO', 'JANGSEWON'],
   },
 
 ]

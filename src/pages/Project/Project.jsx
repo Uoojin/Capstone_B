@@ -1,4 +1,7 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react'
+import { flushSync } from 'react-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { usePageTransitionReady } from '../../components/PageTransition/PageTransitionContext.js'
 import { categories, projects } from '../../data/index.js'
 import { imageBackgroundStyle } from '../../data/dataUtils.js'
 import { shuffle } from '../../utils/shuffle.js'
@@ -26,6 +29,10 @@ const clamp = (value, min, max) => Math.min(Math.max(value, min), max)
 const signedAngleDistance = (from, to = TOP_FOCUS_ANGLE) => ((from - to + 540) % 360) - 180
 
 export default function Project() {
+  const location = useLocation()
+  const navigate = useNavigate()
+  const pageReady = usePageTransitionReady()
+  const requestedProjectId = new URLSearchParams(location.search).get('projectId')
   const [shuffledProjects] = useState(() => shuffle(projects.map((project, originalIndex) => ({ project, originalIndex }))))
   const isMobile = useSyncExternalStore(subscribeToMobileViewport, getMobileViewport)
   const [selectedFilters, setSelectedFilters] = useState([])
@@ -291,7 +298,29 @@ export default function Project() {
 
   const closeDetail = useCallback(() => {
     setActiveDetailIndex(null)
-  }, [])
+    if (requestedProjectId !== null) {
+      const search = new URLSearchParams(location.search)
+      search.delete('projectId')
+      navigate({ pathname: location.pathname, search: search.toString(), hash: location.hash }, { replace: true, state: location.state })
+    }
+  }, [location, navigate, requestedProjectId])
+
+  useEffect(() => {
+    if (!pageReady) return undefined
+    // Run after the loading layer has released its scroll lock.
+    const frame = requestAnimationFrame(() => {
+      const index = projects.findIndex((project) => project.id === requestedProjectId)
+      if (index !== -1) openDetail(index)
+      else setActiveDetailIndex(null)
+    })
+    return () => cancelAnimationFrame(frame)
+  }, [location.key, pageReady, requestedProjectId, openDetail])
+
+  const visitStudent = (studentId) => {
+    // Release the modal scroll lock before the loading layer acquires its own.
+    flushSync(() => setActiveDetailIndex(null))
+    navigate(`/student?${new URLSearchParams({ studentId })}`)
+  }
 
   useEffect(() => {
     if (!isDetailOpen) return undefined
@@ -824,7 +853,7 @@ export default function Project() {
                     onClick={() => openProjectById(project.id)}
                   >
                     <span>{String(index + 1).padStart(2, '0')}</span>
-                    <span>{project.team}</span>
+                    <span>{project.name}</span>
                   </button>
                 ))}
               </div>
@@ -889,11 +918,11 @@ export default function Project() {
                   {activeDetail.teamImage && <img src={activeDetail.teamImage} alt={`${activeDetail.team || activeDetail.name} 팀 사진`} />}
                 </div>
                 <div className="members">
-                  {(activeDetail.members || []).map(([name, role], index) => (
-                    <div key={`${name}-${role}-${index}`}>
+                  {(activeDetail.members || []).map(({ studentId, name, role }) => (
+                    <button className="member-link" type="button" key={studentId} onClick={() => visitStudent(studentId)} aria-label={`${name} 학생 카드 보기`}>
                       {name && <p className="member-name">{name}</p>}
                       {role && <p className="member-role">{role}</p>}
-                    </div>
+                    </button>
                   ))}
                 </div>
               </article>
