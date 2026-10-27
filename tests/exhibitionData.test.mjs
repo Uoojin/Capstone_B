@@ -15,35 +15,33 @@ function fixture() {
   return { project, members }
 }
 
-test('17/113 explicit inputs have unique fixed IDs and blank editable fields', () => {
+test('existing inputs keep fixed project order and unique, reciprocal student relationships', () => {
   assert.equal(projects.length, 17)
   assert.equal(students.length, 113)
   assert.equal(new Set(projects.map((p) => p.id)).size, 17)
   assert.equal(new Set(students.map((s) => s.studentId)).size, 113)
-  projects.forEach((p, i) => {
-    assert.equal(p.id, `project-${String(i + 1).padStart(2, '0')}`)
-    assert.equal(p.team, String(i + 1).padStart(3, '0'))
-    for (const field of ['name', 'slogan', 'desc', 'imageKey', 'teamImageKey', 'media', 'subject', 'target']) assert.equal(p[field], '')
-    assert.equal(p.link, null)
-    assert.deepEqual(p.memberIds, [])
-  })
-  students.forEach((s, i) => {
-    assert.equal(s.studentId, `student-${String(i + 1).padStart(3, '0')}`)
-    for (const field of ['name', 'nameEn', 'imageKey', 'role', 'interview', 'contact', 'projectId']) assert.equal(s[field], '')
-    assert.equal(s.profileUrl, null)
-  })
+  projects.forEach((p, i) => assert.equal(p.id, `project-${String(i + 1).padStart(2, '0')}`))
   assert.deepEqual(validateData(projects, students), [])
   assert.equal(pageProjects.length, 17)
   assert.equal(pageStudents.length, 113)
+  for (const project of pageProjects) {
+    for (const member of project.members) {
+      const student = pageStudents.find((item) => item.studentId === member.studentId)
+      assert.ok(student)
+      assert.equal(student.projectId, project.id)
+      assert.equal(student.project, project.name)
+    }
+    assert.ok(project.tags.every((tag) => typeof tag === 'string'))
+  }
 })
 
 test('empty images leave existing placeholders and no invalid paths', () => {
-  for (const p of pageProjects) {
-    for (const key of ['image', 'cardImage', 'teamImage', 'handwritingImage']) assert.equal(p[key], null)
-    assert.deepEqual(p.tags, [])
-    assert.deepEqual(p.members, [])
-  }
-  for (const s of pageStudents) { assert.equal(s.image, null); assert.equal(s.project, '') }
+  const data = buildExhibitionData([{ id: 'project-01', memberIds: [] }], [{ studentId: 'student-001' }])
+  for (const key of ['image', 'cardImage', 'teamImage', 'handwritingImage']) assert.equal(data.projects[0][key], null)
+  assert.deepEqual(data.projects[0].tags, [])
+  assert.deepEqual(data.projects[0].members, [])
+  assert.equal(data.students[0].image, null)
+  assert.equal(data.students[0].project, '')
   assert.equal(imageBackgroundStyle(null), undefined)
   assert.equal(getStudentImage({ imageKey: '../bad' }), null)
   assert.equal(getProjectImages({ id: 'invalid', imageKey: 'valid' }).image, null)
@@ -68,7 +66,7 @@ test('member order, names/roles, project rename and filter tags derive from inpu
   const before = JSON.stringify({ project, members })
   const data = buildExhibitionData([project], members)
   assert.deepEqual(validateData([project], members), [])
-  assert.deepEqual(data.projects[0].members, [['두 번째', 'PLANNER'], ['첫 번째', 'DESIGNER']])
+  assert.deepEqual(data.projects[0].members, [{ studentId: 'kimyujin', name: '두 번째', role: 'PLANNER' }, { studentId: 'kwonnayeong', name: '첫 번째', role: 'DESIGNER' }])
   assert.equal(data.students[0].project, project.name)
   assert.equal(data.projects.filter((p) => p.tags.includes('APP')).length, 1)
   assert.equal(data.projects.filter((p) => p.tags.includes('WEB')).length, 0)
@@ -117,7 +115,7 @@ test('names never generate IDs; duplicate English names need explicitly distinct
   const warnings = []
   const data = buildExhibitionData([project], members, { dev: true, warn: (w) => warnings.push(w) })
   assert.deepEqual(data.students.map((s) => s.studentId), ['kimyujin', 'kimyujin2'])
-  assert.deepEqual(data.projects[0].members, [['김유진', ''], ['김유진', '']])
+  assert.deepEqual(data.projects[0].members, members.map(({ studentId, name, role }) => ({ studentId, name, role })))
   assert.equal(new Set(data.students.map((s) => s.image)).size, 2)
   assert.ok(warnings.some((w) => w.includes('학생 영문 이름 중복') && w.includes('별도의 고유 studentId')))
   assert.ok(warnings.some((w) => w.includes('존재하지 않는 학생 ID missingperson')))
@@ -127,7 +125,21 @@ test('names never generate IDs; duplicate English names need explicitly distinct
   assert.ok(duplicateIds.some((w) => w.includes('학생 ID 중복') && w.includes('별도의 고유 studentId')))
   const duplicateImage = validateData([], [{ ...members[0], projectId: '' }, { ...members[1], projectId: '', imageKey: 'kimyujin' }])
   assert.ok(duplicateImage.some((w) => w.includes('학생 이미지 키 중복')))
-  const temporary = buildExhibitionData([], [{ ...students[0], nameEn: 'KIM YUJIN' }]).students[0]
+  const temporary = buildExhibitionData([], [{ ...students[0], studentId: 'student-001', imageKey: '', nameEn: 'KIM YUJIN' }]).students[0]
   assert.equal(temporary.studentId, 'student-001')
   assert.equal(temporary.image, null)
+})
+
+
+test('array categories produce searchable string tags for the five psychology projects', () => {
+  const data = buildExhibitionData(projects, students)
+  assert.deepEqual(data.projects.filter((project) => project.tags.includes('심리/정서')).map((project) => project.id), [
+    'project-02', 'project-08', 'project-09', 'project-10', 'project-15',
+  ])
+  const project = { ...projects[0], media: ['APP', 'WEB'], subject: ['심리/정서', '교육'], target: ['대학생/청년', '일반 대중'], memberIds: [] }
+  assert.deepEqual(buildExhibitionData([project], []).projects[0].tags, ['APP', 'WEB', '심리/정서', '교육', '대학생/청년', '일반 대중'])
+  assert.deepEqual(validateData([project], []), [])
+  assert.deepEqual(validateData([{ ...project, subject: ['심리/정서', '없는 분류'] }], []), [
+    `${project.id}: 알 수 없는 subject: 없는 분류`,
+  ])
 })

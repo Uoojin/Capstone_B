@@ -293,7 +293,13 @@ export default function Project() {
 
   const openProjectById = (projectId) => {
     const index = projects.findIndex((project) => project.id === projectId)
-    if (index !== -1) openDetail(index)
+    if (index === -1) return
+    if (requestedProjectId !== null && requestedProjectId !== projectId) {
+      const search = new URLSearchParams(location.search)
+      search.set('projectId', projectId)
+      navigate({ pathname: location.pathname, search: search.toString(), hash: location.hash }, { replace: true, state: location.state })
+    }
+    openDetail(index)
   }
 
   const closeDetail = useCallback(() => {
@@ -322,8 +328,8 @@ export default function Project() {
     navigate(`/student?${new URLSearchParams({ studentId })}`)
   }
 
-  useEffect(() => {
-    if (!isDetailOpen) return undefined
+  useLayoutEffect(() => {
+    if (!isDetailOpen || !pageReady) return undefined
 
     const dialog = detailViewRef.current
     const root = document.documentElement
@@ -340,7 +346,7 @@ export default function Project() {
       document.body.classList.remove('body-detail-open')
       window.scrollTo(scrollX, scrollY)
     }
-  }, [isDetailOpen])
+  }, [isDetailOpen, pageReady])
 
   useEffect(() => {
     if (isMobile || reducedMotion || activeDetailIndex === null) return undefined

@@ -77,7 +77,9 @@ export function validateData(projects, students) {
       if (project[key] && !validKey(project[key])) warnings.push(`${project.id}: ${key}는 공백/특수기호 없이 영문과 숫자만 입력하세요.`)
     }
     for (const key of Object.keys(categories)) {
-      if (project[key] && !categories[key].includes(project[key])) warnings.push(`${project.id}: 알 수 없는 ${key}: ${project[key]}`)
+      for (const value of [project[key]].flat().filter(Boolean)) {
+        if (!categories[key].includes(value)) warnings.push(`${project.id}: 알 수 없는 ${key}: ${value}`)
+      }
     }
     const memberIds = Array.isArray(project.memberIds) ? project.memberIds : []
     if (!Array.isArray(project.memberIds)) warnings.push(`${project.id}: memberIds는 배열이어야 합니다.`)
@@ -113,7 +115,7 @@ export function buildExhibitionData(projects, students, {
     projects: projects.map((project) => ({
       ...project,
       ...getProjectImages(project, baseUrl),
-      tags: [project.media, project.subject, project.target].filter(Boolean),
+      tags: [project.media, project.subject, project.target].flat().filter(Boolean),
       members: (Array.isArray(project.memberIds) ? project.memberIds : [])
         .map((id) => studentMap.get(id))
         .filter(Boolean)
