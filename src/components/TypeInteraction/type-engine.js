@@ -1,8 +1,6 @@
 /* eslint-disable no-unused-vars, no-unreachable, no-empty -- Preserve the legacy engine and intentionally disabled drawing paths during integration. */
 // Legacy engine retained verbatim apart from its host, assets, and lifecycle adapters.
-import { chooseSyncMotion, createSyncMotion } from './sync-motions.js';
 import { registerHeroHandoff } from './heroHandoff.js';
-import { createOrbitMorph } from './orbit-morph.js';
 
 export default function startTypeEngine({ host, canvas, assetMap, placementSeed }) {
     const events = new AbortController();
@@ -1126,39 +1124,7 @@ export default function startTypeEngine({ host, canvas, assetMap, placementSeed 
             spin: Math.random() < .5 ? -1 : 1,
             phase: Math.random() * Math.PI * 2
         };
-        syncEvent.motion = chooseSyncMotion();
-        if (syncEvent.motion === 'ORBIT MORPH') {
-            syncEvent.morph = createOrbitMorph(syncEvent);
-            syncLink.duration = syncEvent.duration;
-        }
-        if (syncEvent.motion === 'ELASTIC BOUNCE' || syncEvent.motion === 'ORBIT MORPH') {
-            syncEvent.physics = createSyncMotion(syncEvent, function (team) {
-                var first = Math.min(teamA.id, teamB.id);
-                var second = Math.max(teamA.id, teamB.id);
-                var images = syncPairImages[first + '-' + second] || [];
-                var replacement = images[team.id === first ? 0 : 1];
-                return {
-                    baseAngle: LETTER_VISUAL_ANGLES[team.id] * Math.PI / 180,
-                    sizes: [letterImages[team.id], replacement].filter(Boolean).map(function (image, index) {
-                        var width = image.naturalWidth || TYPOGRAPHY_SIZE;
-                        var height = image.naturalHeight || TYPOGRAPHY_SIZE;
-                        var scale = TYPOGRAPHY_SIZE / Math.max(width, height);
-                        var shape = { w: width * scale, h: height * scale, replacement: index === 1 };
-                        if (image.complete && image.naturalWidth) {
-                            var mask = document.createElement('canvas');
-                            mask.width = Math.ceil(shape.w / 2);
-                            mask.height = Math.ceil(shape.h / 2);
-                            var maskContext = mask.getContext('2d', { willReadFrequently: true });
-                            maskContext.drawImage(image, 0, 0, mask.width, mask.height);
-                            shape.maskWidth = mask.width;
-                            shape.maskHeight = mask.height;
-                            shape.pixels = maskContext.getImageData(0, 0, mask.width, mask.height)?.data;
-                        }
-                        return shape;
-                    })
-                };
-            });
-        }
+        syncEvent.motion = 'ORIGINAL';
     }
 
     function updateSyncInteraction(t, dt) {
