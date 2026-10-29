@@ -30,7 +30,7 @@ export default function startTypeEngine({ host, canvas, assetMap, placementSeed 
     canvas.parentNode.insertBefore(particleCanvas,canvas);
     canvas.style.zIndex = '1';
     var particleContext = particleCanvas.getContext('2d');
-    var particles = createSyncParticles(Object.values(import.meta.glob('../../assets/symbol/*.svg',{eager:true,import:'default',query:'?url'})));
+    var particles = createSyncParticles();
 
     var COLOR_INK = '#0b0b0a';
     var COLOR_ACCENT = '#E2E2E2';

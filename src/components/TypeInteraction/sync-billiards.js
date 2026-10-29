@@ -28,6 +28,14 @@ export function createSyncBilliards(event,teams,geometryFor,burst,world){
  const inertia=body=>mass(body)?body.invInertia:0
  const exitBlend=()=>fadeAt===null?1:clamp(1-(time-fadeAt)/.45,0,1)
  const blend=body=>impactBlend(body.response,time)*(body.primary?exitBlend():1)
+ function renderedAngle(body){
+  if(!body?.upright)return body?.angle||0
+  const {from,velocity,target}=body.upright,u=clamp((time-fadeAt)/.45,0,1)
+  if(u===1)return target
+  // Render-only Hermite return inside the existing final fade. Keep the
+  // incoming spin continuous and end at the nearest full turn with zero spin.
+  return (2*u*u*u-3*u*u+1)*from+(u*u*u-2*u*u+u)*.45*velocity+(-2*u*u*u+3*u*u)*target
+ }
  function respond(body,other){
   if(body.primary){
    const current=impactBlend(body.response,time)
@@ -166,7 +174,10 @@ export function createSyncBilliards(event,teams,geometryFor,burst,world){
    for(let i=0;i<bodies.length;i++)for(let j=i+1;j<bodies.length;j++)if(bodies[i].awake||bodies[j].awake)depth=Math.max(depth,impact(bodies[i],bodies[j]))
    if(depth<.4)break
   }
-  if(mode==='release'&&(bodies.filter(b=>!b.primary).every(returned)||time>25)){mode='fade';fadeAt=time}
+  if(mode==='release'&&(bodies.filter(b=>!b.primary).every(returned)||time>25)){
+   mode='fade';fadeAt=time
+   for(const body of pair)body.upright={from:body.angle,velocity:body.omega,target:Math.round(body.angle/TAU)*TAU}
+  }
   if(mode==='fade'&&exitBlend()===0&&pair.every(b=>Math.hypot(b.vx,b.vy)<6&&Math.abs(b.omega)<.045)&&bodies.filter(b=>!b.primary).every(returned))done=true
  }
  return {
@@ -185,11 +196,11 @@ export function createSyncBilliards(event,teams,geometryFor,burst,world){
    if(done)event.duration=age-.001
   },
   owns(team){const b=bodies.find(b=>b.team===team);return !!b?.awake},
-  rotation(team){return bodies.find(b=>b.team===team)?.angle||0},
+  rotation(team){return renderedAngle(bodies.find(b=>b.team===team))},
   visual(team){const b=bodies.find(b=>b.team===team);return b?{blend:blend(b),otherId:b.primary?(b===a?event.teamB.id:event.teamA.id):b.response?.otherId}:null},
   finish(){
    for(const body of bodies){
-    if(body.primary){body.team.syncSettled=true;body.team.baseX=body.x;body.team.baseY=body.y;body.team.velocityX=body.team.velocityY=0;body.team.syncRestAngle=body.angle}
+    if(body.primary){body.team.syncSettled=true;body.team.baseX=body.x;body.team.baseY=body.y;body.team.velocityX=body.team.velocityY=0;body.team.syncRestAngle=renderedAngle(body)}
     else if(body.awake){body.team.currentX=body.homeX;body.team.currentY=body.homeY;body.team.syncRestAngle=body.homeAngle}
    }
   },

@@ -65,7 +65,7 @@ test('ordinary bodies cannot propagate SYNC and return after recoil',()=>{
  assert.ok(reacted&&solver.done)
  solver.finish()
  for(const b of solver.bodies.filter(b=>!b.primary&&b.awake))assert.ok(Math.hypot(b.team.currentX-b.homeX,b.team.currentY-b.homeY)<.7)
- for(const b of solver.bodies.filter(b=>b.primary)){assert.ok(teams[b.id].syncSettled);assert.equal(teams[b.id].baseX,b.x);assert.equal(teams[b.id].syncRestAngle,b.angle)}
+ for(const b of solver.bodies.filter(b=>b.primary)){assert.ok(teams[b.id].syncSettled);assert.equal(teams[b.id].baseX,b.x);assert.equal(teams[b.id].syncRestAngle,solver.rotation(b.team));assert.ok(Math.abs(Math.sin(teams[b.id].syncRestAngle))<1e-10)}
 })
 test('ordinary-to-ordinary physical contacts never emit or assign an ordinary SVG partner',()=>{
  const {solver}=scene([350,950,550,610])
@@ -165,5 +165,56 @@ test('particle origins stay exact, full radial coverage is retained, contact spr
   assert.ok(horizontal.points.reduce((sum,p)=>sum+p.x*p.x,0)>horizontal.points.reduce((sum,p)=>sum+p.y*p.y,0)*1.5)
   const weak=sample({normal:{x:1,y:0},impactSpeed:100})
   assert.ok(Math.max(...horizontal.points.map(p=>p.x))>Math.max(...weak.points.map(p=>p.x)))
+ }finally{Math.random=random;if(previousImage===undefined)delete globalThis.Image;else globalThis.Image=previousImage}
+})
+
+
+test('main artwork returns by the shortest full turn only during the existing final fade',()=>{
+ const {solver,teams}=scene([350,950,550,3000]),tau=Math.PI*2
+ let fadeStart=null,previous=null,verifiedEnd=false
+ for(let i=0;i<9000;i++){
+  solver.update((i+1)/300,1/300,{},null,false)
+  const pair=solver.bodies.filter(b=>b.primary),angles=pair.map(b=>solver.rotation(b.team))
+  if(solver.phase!=='fade')for(const [j,b] of pair.entries())assert.equal(angles[j],b.angle)
+  else {
+   if(fadeStart===null){
+    fadeStart=solver.elapsed
+    for(const [j,b] of pair.entries()){
+     assert.equal(angles[j],b.upright.from)
+     assert.equal(b.upright.target,Math.round(b.upright.from/tau)*tau)
+     assert.ok(Math.abs(b.upright.target-b.upright.from)<=Math.PI)
+    }
+   }
+   if(previous)for(const [j,angle] of angles.entries())assert.ok(Math.abs(angle-previous[j])<.15,'no instantaneous flip')
+   if(solver.elapsed-fadeStart>=.45-1e-8){
+    for(const [j,b] of pair.entries())assert.ok(Math.abs(angles[j]-b.upright.target)<1e-10)
+    verifiedEnd=true
+   }
+  }
+  previous=angles
+  if(solver.done)break
+ }
+ assert.ok(solver.done&&verifiedEnd)
+ const positions=solver.bodies.filter(b=>b.primary).map(b=>({x:b.x,y:b.y,angle:solver.rotation(b.team)}))
+ solver.finish()
+ for(const [j,t] of teams.slice(0,2).entries()){
+  assert.equal(t.baseX,positions[j].x);assert.equal(t.baseY,positions[j].y)
+  assert.equal(t.syncRestAngle,positions[j].angle)
+ }
+})
+
+test('all four particle shapes use 60 percent size without changing spread or quantity',()=>{
+ const previousImage=globalThis.Image,random=Math.random,draws=[]
+ globalThis.Image=class {complete=true;naturalWidth=26}
+ let calls=0,choice=0
+ Math.random=()=>{const n=calls++;return n>0&&(n-1)%7===6?((choice++%4)+.5)/4:.5}
+ try{
+  const particles=createSyncParticles(),ctx={save(){},restore(){},rotate(){},translate(){},drawImage(image,x,y,w,h){draws.push({image,x,y,w,h})}}
+  particles.burst(50,70,300,true,false)
+  assert.equal(particles.count,24)
+  particles.draw(ctx,.1,{x:0,y:0})
+  assert.equal(draws.length,24)
+  assert.equal(new Set(draws.map(d=>d.image)).size,4)
+  for(const d of draws){assert.equal(d.w,(10+.5*15)*.6);assert.equal(d.h,d.w);assert.equal(d.x,-d.w/2);assert.equal(d.y,-d.h/2)}
  }finally{Math.random=random;if(previousImage===undefined)delete globalThis.Image;else globalThis.Image=previousImage}
 })
