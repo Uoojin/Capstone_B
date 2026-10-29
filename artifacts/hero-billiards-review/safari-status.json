@@ -1,0 +1,6 @@
+{
+  "browser": "Safari 26.6.2",
+  "status": "blocked",
+  "reason": "Safari WebDriver: Could not create a session. Enable Allow remote automation in the Developer section of Safari Settings.",
+  "webkit_verified": true
+}

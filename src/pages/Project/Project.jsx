@@ -5,7 +5,7 @@ import { usePageTransitionReady } from '../../components/PageTransition/PageTran
 import { categories, projects } from '../../data/index.js'
 import { imageBackgroundStyle } from '../../data/dataUtils.js'
 import { shuffle } from '../../utils/shuffle.js'
-import projectLinkIcon from '../../assets/project/linkIcon.svg'
+import projectLinkIcon from '../../assets/projects/linkIcon.svg'
 import './Project.css'
 
 const DISPLAY_CARD_COUNT = 17

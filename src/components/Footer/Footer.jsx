@@ -23,7 +23,7 @@ export default function Footer() {
       <div className="site-footer__address">
         <p>16038 경기도 의왕시 계원대학로 66(내손동) 계원예술대학교</p>
         <p>66 Kaywondaehaengno (Naeson-dong), Uiwang-si, Gyeonggi-do, Korea</p>
-        <p>©2026. SYNCOPATE All Right Reserved.</p>
+        <p>©2026. LET'S SYNC! All Right Reserved.</p>
       </div>
       <div className="site-footer__about">
         <p>Kaywon University of Arts&amp;Design</p>

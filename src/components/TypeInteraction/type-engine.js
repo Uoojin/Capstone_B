@@ -1,6 +1,9 @@
 /* eslint-disable no-unused-vars, no-unreachable, no-empty -- Preserve the legacy engine and intentionally disabled drawing paths during integration. */
 // Legacy engine retained verbatim apart from its host, assets, and lifecycle adapters.
 import { registerHeroHandoff } from './heroHandoff.js';
+import { createArtworkReader } from './sync-artwork.js';
+import { createSyncBilliards } from './sync-billiards.js';
+import { createSyncParticles } from './sync-particles.js';
 
 export default function startTypeEngine({ host, canvas, assetMap, placementSeed }) {
     const events = new AbortController();
@@ -20,6 +23,14 @@ export default function startTypeEngine({ host, canvas, assetMap, placementSeed 
 
     // -------------------- TYPE INTERACTION --------------------
     var ctx = canvas.getContext('2d');
+    var particleCanvas = document.createElement('canvas');
+    particleCanvas.className = 'hero-particle-layer';
+    particleCanvas.setAttribute('aria-hidden','true');
+    particleCanvas.style.cssText = 'position:absolute;inset:0;pointer-events:none;z-index:0';
+    canvas.parentNode.insertBefore(particleCanvas,canvas);
+    canvas.style.zIndex = '1';
+    var particleContext = particleCanvas.getContext('2d');
+    var particles = createSyncParticles(Object.values(import.meta.glob('../../assets/symbol/*.svg',{eager:true,import:'default',query:'?url'})));
 
     var COLOR_INK = '#0b0b0a';
     var COLOR_ACCENT = '#E2E2E2';
@@ -80,6 +91,7 @@ export default function startTypeEngine({ host, canvas, assetMap, placementSeed 
     var LETTER_FILES = ['L_default.svg', 'E_default.svg', 'T_default.svg', 'S1_default.svg', 'S2_default.svg', 'Y_default.svg', 'N_default.svg', 'C_default.svg'];
     var letterImages = LETTER_FILES.map(function (file) { var img = new Image(); img.src = assetMap[file] || ''; return img; });
     var LETTER_VISUAL_ANGLES = [-11, 8, -6, 14, -18, 5, 12, -9];
+    var readArtwork = createArtworkReader(letterImages,LETTER_VISUAL_ANGLES,TYPOGRAPHY_SIZE);
 
 
     var SYNC_PAIR_FILES = {
@@ -139,6 +151,13 @@ export default function startTypeEngine({ host, canvas, assetMap, placementSeed 
         if (!syncEvent) return null;
         var age = t - syncEvent.born;
         if (age < 0 || age > syncEvent.duration) return null;
+        var response = syncEvent.physics?.visual(blobs[teamId]);
+        if (response && teamId !== syncEvent.teamA.id && teamId !== syncEvent.teamB.id) {
+            if (response.otherId === undefined) return null;
+            var low=Math.min(teamId,response.otherId), high=Math.max(teamId,response.otherId);
+            var additional=syncPairImages[low+'-'+high]?.[teamId===low?0:1];
+            return additional?.complete && additional.naturalWidth ? additional : null;
+        }
         var first = Math.min(syncEvent.teamA.id, syncEvent.teamB.id);
         var second = Math.max(syncEvent.teamA.id, syncEvent.teamB.id);
         if (teamId !== first && teamId !== second) return null;
@@ -172,6 +191,9 @@ export default function startTypeEngine({ host, canvas, assetMap, placementSeed 
         canvas.style.width = W + 'px';
         canvas.style.height = H + 'px';
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        particleCanvas.width=canvas.width; particleCanvas.height=canvas.height;
+        particleCanvas.style.width=W+'px'; particleCanvas.style.height=H+'px';
+        particleContext.setTransform(dpr,0,0,dpr,0,0);
     }
 
     var nodes = [];
@@ -818,6 +840,7 @@ export default function startTypeEngine({ host, canvas, assetMap, placementSeed 
     }
 
     function updateTeamPosition(b, t, dt) {
+        if (b.syncSettled && draggingBlob !== b) return;
         var wob = reduceMotion ? 0.12 : 1;
 
         var breathe =
@@ -1002,6 +1025,7 @@ export default function startTypeEngine({ host, canvas, assetMap, placementSeed 
     }
 
     function separateBlobs(dt) {
+        if (syncEvent?.physics) return; // Only the post-SYNC solver owns contacts during its event.
         var clearances = blobs.map(function (team) {
             var inner = getTypographyOrbitRadius(team.id);
             var bandWidth = team.outerRadius + 8 - (team.coreRadius + 18);
@@ -1020,6 +1044,7 @@ export default function startTypeEngine({ host, canvas, assetMap, placementSeed 
                 for (var j = i + 1; j < blobs.length; j++) {
                     var a = blobs[i];
                     var b = blobs[j];
+                    if (a.syncSettled || b.syncSettled) continue;
                     var dx = b.currentX - a.currentX;
                     var dy = b.currentY - a.currentY;
                     var distance = Math.hypot(dx, dy);
@@ -1125,6 +1150,24 @@ export default function startTypeEngine({ host, canvas, assetMap, placementSeed 
             phase: Math.random() * Math.PI * 2
         };
         syncEvent.motion = 'ORIGINAL';
+        var geometryCache = new Map();
+        var geometryFor = function(team,other) {
+            if (!other) other=team===teamA?teamB:team===teamB?teamA:null;
+            var key=team.id+':'+(other?.id??'default');
+            if (geometryCache.has(key)) return geometryCache.get(key);
+            var low=Math.min(team.id,other?.id??team.id),high=Math.max(team.id,other?.id??team.id);
+            var image=other?syncPairImages[low+'-'+high]?.[team.id===low?0:1]:null;
+            var geometry=readArtwork(team,image);
+            if (!geometry) return null;
+            geometry.orbitRadius=getTypographyOrbitRadius(team.id);
+            geometryCache.set(key,geometry); return geometry;
+        };
+        if (blobs.every(function(team) { return !!geometryFor(team); })) {
+            syncEvent.physics=createSyncBilliards(syncEvent,blobs,geometryFor,function(hit) {
+                particles.burst(hit.x,hit.y,hit.radius,hit.strong,reduceMotion,hit);
+            },{width:WORLD_W,height:WORLD_H});
+            syncLink.duration=syncEvent.duration;
+        }
     }
 
     function updateSyncInteraction(t, dt) {
@@ -1235,6 +1278,7 @@ export default function startTypeEngine({ host, canvas, assetMap, placementSeed 
     function updateAndDrawSyncPair(t, dt) {
         if (!syncEvent) return;
         var age = t - syncEvent.born;
+        if (syncLink) { syncLink.duration=syncEvent.duration; syncLink.born=syncEvent.born; }
 
         if (age < 0 || age > syncEvent.duration) {
             if (age > syncEvent.duration) {
@@ -1252,12 +1296,15 @@ export default function startTypeEngine({ host, canvas, assetMap, placementSeed 
                 }
                 syncEvent.teamA.syncEnergy = 0;
                 syncEvent.teamB.syncEnergy = 0;
+                if (syncEvent.physics) syncEvent.physics.finish();
+                else {
                 // Resume at the final world positions, with the motion actually visible at exit.
                 [syncEvent.teamA, syncEvent.teamB].forEach(function (team) {
                     team.velocityX = team.syncExitVelocityX ?? team.velocityX;
                     team.velocityY = team.syncExitVelocityY ?? team.velocityY;
                     team.syncResuming = true;
                 });
+                }
                 for (var i = 0; i < blobs.length; i++) {
                     for (var j = i + 1; j < blobs.length; j++) {
                         separationRecovery.set(i + '-' + j, {
@@ -1372,7 +1419,7 @@ export default function startTypeEngine({ host, canvas, assetMap, placementSeed 
                 var age = t - syncEvent.born;
                 var fadeIn = Math.max(0, Math.min(1, (age - 0.28) / 0.35));
                 var fadeOut = Math.max(0, Math.min(1, (syncEvent.duration - age) / 0.45));
-                replacementOpacity = Math.min(fadeIn, fadeOut);
+                replacementOpacity = syncEvent.physics ? syncEvent.physics.visual(team).blend : Math.min(fadeIn, fadeOut);
             }
             function paintTypography(image, opacity) {
                 if (opacity <= 0) return;
@@ -1388,6 +1435,7 @@ export default function startTypeEngine({ host, canvas, assetMap, placementSeed 
             ctx.translate(sx, sy);
             ctx.rotate(LETTER_VISUAL_ANGLES[i] * Math.PI / 180);
             if (syncEvent && syncEvent.physics) ctx.rotate(syncEvent.physics.rotation(team));
+            else ctx.rotate(team.syncRestAngle || 0);
             if (syncEvent && syncEvent.morph && syncEvent.morph.owns(team)) {
                 ctx.globalAlpha = 1;
                 syncEvent.morph.draw(ctx, img, replacement, TYPOGRAPHY_SIZE, team);
@@ -1943,7 +1991,7 @@ export default function startTypeEngine({ host, canvas, assetMap, placementSeed 
         var i;
         var syncPositions = syncEvent ? blobs.map(function (b) { return { x: b.currentX, y: b.currentY }; }) : null;
         for (i = 0; i < blobs.length; i++) {
-            if (syncEvent && syncEvent.physics && (blobs[i] === syncEvent.teamA || blobs[i] === syncEvent.teamB)) continue;
+            if (syncEvent?.physics?.owns(blobs[i]) && draggingBlob !== blobs[i]) continue;
             updateTeamPosition(blobs[i], t, dt);
         }
         separateBlobs(dt);
@@ -1968,6 +2016,8 @@ export default function startTypeEngine({ host, canvas, assetMap, placementSeed 
 
         ctx.clearRect(0, 0, W, H);
         drawSyncBackground(t);
+        particleContext.clearRect(0,0,W,H);
+        particles.draw(particleContext,dt,camera);
         // Orbit guide lines hidden; node movement remains unchanged.
         drawEdges(t, dt);
         drawTeamCores(t);
@@ -1975,6 +2025,7 @@ export default function startTypeEngine({ host, canvas, assetMap, placementSeed 
         labelBounds = [];
         for (i = 0; i < nodes.length; i++) drawNode(nodes[i], t);
         updateAndDrawSyncPair(t, dt);
+        maskParticles(t);
         updateClickCursor(dt);
 
 
@@ -1983,12 +2034,32 @@ export default function startTypeEngine({ host, canvas, assetMap, placementSeed 
         animationFrame = requestAnimationFrame(frame);
     }
 
+    // Mask painted silhouettes only on the rear particle canvas. Crossfading
+    // SVGs stay in front even while their individual alpha is below one.
+    function maskParticles(t) {
+        if (!particles.count) return;
+        particleContext.save(); particleContext.globalCompositeOperation='destination-out';
+        blobs.forEach(function(team) {
+            var images=[letterImages[team.id],getSyncTypographyImage(team.id,t)];
+            particleContext.save();particleContext.translate(team.currentX-camera.x,team.currentY-camera.y);
+            particleContext.rotate(LETTER_VISUAL_ANGLES[team.id]*Math.PI/180+(syncEvent?.physics?syncEvent.physics.rotation(team):team.syncRestAngle||0));
+            images.forEach(function(image) {
+                if (!image?.complete||!image.naturalWidth) return;
+                var scale=TYPOGRAPHY_SIZE/Math.max(image.naturalWidth,image.naturalHeight);
+                particleContext.drawImage(image,-image.naturalWidth*scale/2,-image.naturalHeight*scale/2,image.naturalWidth*scale,image.naturalHeight*scale);
+            });
+            particleContext.restore();
+        });
+        particleContext.restore();
+    }
+
     var resizeTimer = null;
     function scheduleResize() {
         clearTimeout(resizeTimer);
         resizeTimer = scheduleTimeout(function () {
             resize();
             layout();
+            syncEvent?.physics?.resize({width:WORLD_W,height:WORLD_H});
         }, 120);
     }
     listen(window, 'resize', scheduleResize);
@@ -2014,7 +2085,7 @@ export default function startTypeEngine({ host, canvas, assetMap, placementSeed 
                 y: rect.top + (team.currentY - camera.y) * rect.height / H,
                 width: image.naturalWidth * scale * rect.width / W,
                 height: image.naturalHeight * scale * rect.height / H,
-                angle: LETTER_VISUAL_ANGLES[i] + (syncEvent?.physics ? syncEvent.physics.rotation(team) * 180 / Math.PI : 0),
+                angle: LETTER_VISUAL_ANGLES[i] + (syncEvent?.physics ? syncEvent.physics.rotation(team) * 180 / Math.PI : (team.syncRestAngle||0)*180/Math.PI),
             };
         });
     });
@@ -2026,6 +2097,7 @@ export default function startTypeEngine({ host, canvas, assetMap, placementSeed 
         unregisterHandoff();
         hideClickCursor();
         cursorLayer.remove();
+        particles.clear(); particleCanvas.remove();
         events.abort();
         observer.disconnect();
         cancelAnimationFrame(animationFrame);

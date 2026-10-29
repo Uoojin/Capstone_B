@@ -1,0 +1,41 @@
+{
+  "name": "chrome",
+  "direct": {
+    "grabbed": true,
+    "moved": 51.06522283192103,
+    "trackingError": 1.5759694805290831,
+    "released": true,
+    "baseError": 0
+  },
+  "drag": {
+    "held": true,
+    "along": -27.580095005619082,
+    "cameraMove": 67.2111976418808,
+    "unconnected": true,
+    "coreDragTarget": null
+  },
+  "event": {
+    "motion": "ORIGINAL",
+    "born": 1.3536000000357629,
+    "duration": 5.15
+  },
+  "firstReplacement": {
+    "age": 0.30159999995231623,
+    "alpha": 0.0571428571428572,
+    "src": "http://127.0.0.1:5180/Capstone_B/src/assets/type/T/TN_T.svg"
+  },
+  "first": {
+    "age": 0.0027999999999999137,
+    "bodyMove": 0.02587739350830367,
+    "cameraMove": 0.9607000142654721
+  },
+  "mid": {
+    "age": 0.8016999999761583,
+    "bodyMove": 121.8551271446142,
+    "cameraMove": 178.53692236454197
+  },
+  "maxBodyMove": 599.1997329445848,
+  "maxCameraMove": 194.60894840805108,
+  "finished": true,
+  "errors": []
+}

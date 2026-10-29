@@ -1,0 +1,31 @@
+{
+  "finalPairStays": true,
+  "initialLetters": 8,
+  "emptyClickParticles": 14,
+  "particlesExpired": true,
+  "dragResult": {
+    "before": {
+      "src": "http://127.0.0.1:5180/Capstone_B/src/assets/type/T_default.svg",
+      "x": 279.18404549653076,
+      "y": 285.6491489668791,
+      "w": 394.7368421052632,
+      "h": 400
+    },
+    "after": {
+      "src": "http://127.0.0.1:5180/Capstone_B/src/assets/type/T_default.svg",
+      "x": 410.0818033701308,
+      "y": 335.79042614153525,
+      "w": 394.7368421052632,
+      "h": 400
+    },
+    "maxReturnParticles": 14,
+    "relativeShiftIncludingIdleMotion": 10.216655858439367
+  },
+  "syncGesture": {
+    "activeEvent": true,
+    "impactAt": 0.18299999999999983,
+    "replacementFrames": 143,
+    "peakParticles": 46
+  },
+  "errors": []
+}

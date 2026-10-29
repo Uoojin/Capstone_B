@@ -1,0 +1,16 @@
+{
+  "name": "chrome",
+  "second": {
+    "ids": [
+      2,
+      6
+    ],
+    "firstImpact": 0.03666666666666667
+  },
+  "resized": true,
+  "majorHits": 5,
+  "done": true,
+  "reason": "contacts",
+  "neighborReturn": 0,
+  "errors": []
+}

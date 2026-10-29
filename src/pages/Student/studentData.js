@@ -738,7 +738,7 @@ export const students = [
 
   // ========== STUDENT 033 ==========
   {
-    studentId: 'ShonYechan',
+    studentId: 'SHONYECHAN',
 
     // 01. 기본 정보
     name: '손예찬',
@@ -784,7 +784,7 @@ export const students = [
 
   // ========== STUDENT 035 ==========
   {
-    studentId: 'KimLia',
+    studentId: 'KIMLIA',
 
     // 01. 기본 정보
     name: '김리아',
@@ -807,7 +807,7 @@ export const students = [
 
   // ========== STUDENT 036 ==========
   {
-    studentId: 'KimJiwook',
+    studentId: 'KIMJIWOOK',
 
     // 01. 기본 정보
     name: '김지욱',
@@ -830,7 +830,7 @@ export const students = [
 
   // ========== STUDENT 037 ==========
   {
-    studentId: 'LeeSiheon',
+    studentId: 'LEESIHEON',
 
     // 01. 기본 정보
     name: '이시헌',
@@ -853,7 +853,7 @@ export const students = [
 
   // ========== STUDENT 038 ==========
   {
-    studentId: 'JungJaeHoon',
+    studentId: 'JUNGJAEHOON',
 
     // 01. 기본 정보
     name: '정재훈',
@@ -876,7 +876,7 @@ export const students = [
 
   // ========== STUDENT 039 ==========
   {
-    studentId: 'HanJungMin',
+    studentId: 'HANJUNGMIN',
 
     // 01. 기본 정보
     name: '한정민',
@@ -899,7 +899,7 @@ export const students = [
 
   // ========== STUDENT 040 ==========
   {
-    studentId: 'YoonChaewon',
+    studentId: 'YOONCHAEWON',
 
     // 01. 기본 정보
     name: '윤채원',
@@ -922,7 +922,7 @@ export const students = [
 
   // ========== STUDENT 041 ==========
   {
-    studentId: 'KimAhyeon',
+    studentId: 'KIMAHYEON',
 
     // 01. 기본 정보
     name: '김아현',
@@ -945,7 +945,7 @@ export const students = [
 
   // ========== STUDENT 042 ==========
   {
-    studentId: 'KimHaon',
+    studentId: 'KIMHAON',
 
     // 01. 기본 정보
     name: '김하온',
@@ -968,7 +968,7 @@ export const students = [
 
   // ========== STUDENT 043 ==========
   {
-    studentId: 'ShinYujin',
+    studentId: 'SHINYUJIN',
 
     // 01. 기본 정보
     name: '신유진',
@@ -991,7 +991,7 @@ export const students = [
 
   // ========== STUDENT 044 ==========
   {
-    studentId: 'YunDaeun',
+    studentId: 'YUNDAEUN',
 
     // 01. 기본 정보
     name: '윤다은',
@@ -1014,7 +1014,7 @@ export const students = [
 
   // ========== STUDENT 045 ==========
   {
-    studentId: 'JangHyeonjin',
+    studentId: 'JANGHYEONJIN',
 
     // 01. 기본 정보
     name: '장현진',
@@ -1313,7 +1313,7 @@ export const students = [
 
   // ========== STUDENT 058 ==========
   {
-    studentId: 'KwahkHyoJin',
+    studentId: 'KWAHKHYOJIN',
 
     // 01. 기본 정보
     name: '곽효진',
@@ -1382,7 +1382,7 @@ export const students = [
 
   // ========== STUDENT 061 ==========
   {
-    studentId: 'Leesuyoung',
+    studentId: 'LEESUYOUNG',
 
     // 01. 기본 정보
     name: '이수영',
@@ -1428,7 +1428,7 @@ export const students = [
 
   // ========== STUDENT 063 ==========
   {
-    studentId: 'JoTaeHee',
+    studentId: 'JOTAEHEE',
 
     // 01. 기본 정보
     name: '조태희',

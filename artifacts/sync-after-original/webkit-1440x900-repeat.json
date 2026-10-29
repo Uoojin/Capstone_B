@@ -1,0 +1,16 @@
+{
+  "name": "webkit",
+  "second": {
+    "ids": [
+      2,
+      6
+    ],
+    "firstImpact": 0.08999999999999996
+  },
+  "resized": true,
+  "majorHits": 5,
+  "done": true,
+  "reason": "contacts",
+  "neighborReturn": 0,
+  "errors": []
+}
