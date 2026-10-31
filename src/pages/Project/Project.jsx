@@ -16,6 +16,7 @@ const LOGICAL_ANGLE_STEP = 360 / DISPLAY_CARD_COUNT
 const WHEEL_RADIUS_CARD_MULTIPLIER = 2.7
 const CARD_GAP_RATIO = 0.18
 const { subscribe: subscribeToMobileViewport, getSnapshot: getMobileViewport, mediaQuery: mobileProjectViewport } = createMediaQueryStore('(max-width: 767px)')
+const { subscribe: subscribeToDesktopTitleViewport, getSnapshot: getDesktopTitleViewport } = createMediaQueryStore('(min-width: 1025px)')
 
 const clamp = (value, min, max) => Math.min(Math.max(value, min), max)
 const signedAngleDistance = (from, to = TOP_FOCUS_ANGLE) => ((from - to + 540) % 360) - 180
@@ -27,6 +28,7 @@ export default function Project() {
   const requestedProjectId = new URLSearchParams(location.search).get('projectId')
   const [shuffledProjects] = useState(() => shuffle(projects.map((project, originalIndex) => ({ project, originalIndex }))))
   const isMobile = useSyncExternalStore(subscribeToMobileViewport, getMobileViewport)
+  const isDesktopTitleViewport = useSyncExternalStore(subscribeToDesktopTitleViewport, getDesktopTitleViewport)
   const [selectedFilters, setSelectedFilters] = useState([])
   const [openFilter, setOpenFilter] = useState(null)
   const [activeDetailIndex, setActiveDetailIndex] = useState(null)
@@ -84,6 +86,9 @@ export default function Project() {
   }, [filteredProjects])
 
   const activeDetail = activeDetailIndex === null ? null : projects[activeDetailIndex]
+  const desktopTitleBreak = isDesktopTitleViewport && activeDetail && ['project-02', 'project-03', 'project-08'].includes(activeDetail.id)
+    ? activeDetail.name.indexOf(' ')
+    : -1
   const projectLink = activeDetail?.link?.trim() || ''
   const hasProjectLink = /^https?:\/\/\S+$/i.test(projectLink)
 
@@ -833,7 +838,7 @@ export default function Project() {
                     <span className="list-card-media" style={imageBackgroundStyle(project.cardImage)} />
                     <span className="list-card-caption">
                       <span className="list-card-name">{project.name}</span>
-                      <span className="list-card-keywords">{project.tags.join(' · ')}</span>
+                      <span className="list-card-keywords">{isMobile ? project.team : project.tags.join(' · ')}</span>
                     </span>
                   </button>
                 )
@@ -879,7 +884,15 @@ export default function Project() {
             <>
               <article className="detail-section detail-hero" data-project-id={activeDetail.id}>
                 <div className="project-link-row detail-identity">
-                  <h1 className="detail-title" id="detail-title">{activeDetail.name}</h1>
+                  <h1 className="detail-title" id="detail-title">
+                    {desktopTitleBreak < 0 ? activeDetail.name : (
+                      <>
+                        {activeDetail.name.slice(0, desktopTitleBreak)}{' '}
+                        <br />
+                        {activeDetail.name.slice(desktopTitleBreak + 1)}
+                      </>
+                    )}
+                  </h1>
                   {hasProjectLink && (
                     <a className="site-link" href={projectLink} target="_blank" rel="noopener noreferrer" aria-label={`${activeDetail.name} 외부 사이트 새 탭에서 열기`}>
                       <img src={projectLinkIcon} alt="" aria-hidden="true" />
@@ -894,7 +907,11 @@ export default function Project() {
                   {['media', 'subject', 'target'].map((key) => activeDetail[key] && (
                     <div key={key}>
                       <dt>{key.toUpperCase()}</dt>
-                      <dd>{Array.isArray(activeDetail[key]) ? activeDetail[key].join(', ') : activeDetail[key]}</dd>
+                      <dd>{isMobile
+                        ? (Array.isArray(activeDetail[key]) ? activeDetail[key] : [activeDetail[key]]).map((value, index) => (
+                          <span className="detail-category-pill" key={`${key}-${index}`}>{value}</span>
+                        ))
+                        : Array.isArray(activeDetail[key]) ? activeDetail[key].join(', ') : activeDetail[key]}</dd>
                     </div>
                   ))}
                 </dl>

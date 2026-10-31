@@ -158,10 +158,10 @@
     grid-template-areas: 'contact socials';
     align-items: end;
     gap: 12px;
-    padding: 52px calc(var(--page-padding) + 6px) 52px var(--page-padding);
+    padding: 52px calc(var(--page-padding) + 6px) max(20px, env(safe-area-inset-bottom)) var(--page-padding);
     color: #7b7b7b;
     font-size: clamp(9px, 2.4vw, 11px);
-    line-height: 24px;
+    line-height: 20px;
   }
 
   .site-footer--home .site-footer__brand,
@@ -178,7 +178,7 @@
     align-self: end;
     justify-self: end;
     gap: clamp(10px, 3.6vw, 17px);
-    margin: 0 0 4px;
+    margin: 0;
   }
 
   .site-footer--home .site-footer__socials img {

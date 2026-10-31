@@ -287,7 +287,15 @@
     align-items: center;
     gap: 12px;
     padding: 0 var(--page-padding);
-    background: #fff;
+    position: fixed;
+    top: 0;
+    background: transparent;
+  }
+
+  /* Keep list content at its existing start below the overlaid header. */
+  .site-header ~ .project-page,
+  .site-header ~ .student-page {
+    margin-top: var(--site-header-height);
   }
 
   .site-header .site-logo {
