@@ -1,88 +1,33 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
-import '../Guestbook/Guestbook.css'
-import PhotoBooth from '../Guestbook/PhotoBooth.jsx'
+import './Guestbook.css'
+import PhotoBooth from './PhotoBooth.jsx'
 import Message from './Message.jsx'
-import RoundedStrokeText from '../Home/RoundedStrokeText.jsx'
-import { fetchGuestbookEntries, subscribeToGuestbookEntries, isSupabaseConfigured } from '../../lib/supabase02.js'
+import { fetchGuestbookEntries, subscribeToGuestbookEntries, isSupabaseConfigured } from './guestbookApi.js'
 
-function GuestbookHero({ onPhotoBooth, onMessage }) {
-  const heroRef = useRef(null)
-  const typeRef = useRef(null)
-
-  useEffect(() => {
-    const hero = heroRef.current
-    const typography = typeRef.current
-    const events = new AbortController()
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
-    const current = { x: 0, y: 0 }
-    const target = { x: 0, y: 0 }
-    let frame = 0
-    let lastTime = 0
-
-    // Match the Home insight section's viewpoint and time-based interpolation.
-    const animate = time => {
-      const dt = lastTime ? Math.min((time - lastTime) / 1000, .05) : 1 / 60
-      lastTime = time
-      const blend = reducedMotion.matches ? 1 : 1 - Math.exp(-dt / .14)
-      let moving = false
-      for (const axis of ['x', 'y']) {
-        current[axis] += (target[axis] - current[axis]) * blend
-        if (Math.abs(target[axis] - current[axis]) > .01) moving = true
-        else current[axis] = target[axis]
-      }
-      typography.style.setProperty('--gb-tilt-x', `${current.x}deg`)
-      typography.style.setProperty('--gb-tilt-y', `${current.y}deg`)
-      if (moving) frame = requestAnimationFrame(animate)
-      else { frame = 0; lastTime = 0 }
-    }
-    const start = () => { if (!frame) frame = requestAnimationFrame(animate) }
-    const reset = () => {
-      target.x = 0
-      target.y = 0
-      start()
-    }
-    hero.addEventListener('pointermove', event => {
-      if (event.pointerType === 'touch') return
-      const rect = hero.getBoundingClientRect()
-      const x = Math.max(-1, Math.min(1, (event.clientX - rect.left) / rect.width * 2 - 1))
-      const y = Math.max(-1, Math.min(1, (event.clientY - rect.top) / rect.height * 2 - 1))
-      target.x = y * 25
-      target.y = -x * 25
-      start()
-    }, { signal: events.signal })
-    hero.addEventListener('pointerleave', reset, { signal: events.signal })
-    hero.addEventListener('pointercancel', reset, { signal: events.signal })
-    window.addEventListener('blur', reset, { signal: events.signal })
-    return () => { events.abort(); cancelAnimationFrame(frame) }
-  }, [])
-
+function GuestbookActions({ onPhotoBooth, onMessage, actionsRef, className = '', ...props }) {
   return (
-    <section className="gb-hero" aria-labelledby="gb-hero-title" ref={heroRef}>
-      <h1 id="gb-hero-title" className="gb-sr-only">SYNC UP!</h1>
-      <svg className="gb-hero__type" aria-hidden="true" focusable="false"
-        viewBox="0 0 1134.6 800" ref={typeRef}>
-        <g textAnchor="middle" strokeLinejoin="round" strokeLinecap="round" paintOrder="stroke fill">
-          <text x="567.3" y="365">SYNC</text>
-          <text x="567.3" y="710">UP!</text>
-        </g>
-      </svg>
+    <div className={`gb-hero__actions ${className}`} aria-label="방명록 작성 방식 선택" ref={actionsRef} {...props}>
+      <button className="gb-button gb-button--primary" onClick={onPhotoBooth}>
+        <span className="gb-hero__button-title">SNAP</span>
+        <span className="gb-hero__button-description">사진과 메시지 남기기</span>
+      </button>
+      <button className="gb-button gb-button--secondary" onClick={onMessage}>
+        <span className="gb-hero__button-title">MESSAGE</span>
+        <span className="gb-hero__button-description">메시지만 남기기</span>
+      </button>
+    </div>
+  )
+}
 
-      <RoundedStrokeText as="p" className="gb-hero__description">
+function GuestbookHero({ onPhotoBooth, onMessage, actionsRef }) {
+  return (
+    <section className="gb-hero" aria-labelledby="gb-hero-title">
+      <h1 id="gb-hero-title" className="gb-hero__title">SYNC UP!</h1>
+      <p className="gb-hero__description">
         <span>서로 다른 우리가 맞이할 새로운 시작에,</span>
         <span>응원의 한마디를 남겨주세요!</span>
-      </RoundedStrokeText>
-
-      <div className="gb-hero__actions" aria-label="방명록 작성 방식 선택">
-        <button className="gb-button gb-button--primary" onClick={onPhotoBooth}>
-          <span className="gb-hero__button-title">SNAP</span>
-          <span className="gb-hero__button-description">사진과 메시지 남기기</span>
-        </button>
-        <button className="gb-button gb-button--secondary" onClick={onMessage}>
-          <span className="gb-hero__button-title">MESSAGE</span>
-          <span className="gb-hero__button-description">메시지만 남기기</span>
-        </button>
-      </div>
-      <span className="scroll-indicator" aria-hidden="true" />
+      </p>
+      <GuestbookActions onPhotoBooth={onPhotoBooth} onMessage={onMessage} actionsRef={actionsRef} />
     </section>
   )
 }
@@ -193,6 +138,42 @@ function Guestbook() {
   const [status, setStatus] = useState('loading')
   const [error, setError] = useState('')
   const [activeModal, setActiveModal] = useState(null)
+  const heroActionsRef = useRef(null)
+  const [heroActionsAboveViewport, setHeroActionsAboveViewport] = useState(false)
+  const [footerInViewport, setFooterInViewport] = useState(true)
+  const showFloatingActions = heroActionsAboveViewport && !footerInViewport && activeModal === null
+
+  useEffect(() => {
+    const actions = heroActionsRef.current
+    if (!actions) return
+
+    const observer = new IntersectionObserver(([entry]) => {
+      // Only float after the original buttons leave through the top of the viewport.
+      setHeroActionsAboveViewport(!entry.isIntersecting && entry.boundingClientRect.bottom <= 0)
+    }, { threshold: 0 })
+    observer.observe(actions)
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    const footer = document.querySelector('.site-footer')
+    if (!footer) return
+
+    const observer = new IntersectionObserver(([entry]) => {
+      setFooterInViewport(entry.isIntersecting)
+    }, { threshold: 0 })
+    observer.observe(footer)
+    return () => observer.disconnect()
+  }, [])
+
+  function handleOpenPhotoBooth() {
+    setActiveModal('photo')
+  }
+
+  function handleOpenMessage() {
+    setActiveModal('message')
+  }
+
 
   useLayoutEffect(() => {
     const root = document.documentElement
@@ -282,10 +263,19 @@ function Guestbook() {
   return (
     <main className="gb-page">
       <GuestbookHero
-        onPhotoBooth={() => setActiveModal('photo')}
-        onMessage={() => setActiveModal('message')}
+        onPhotoBooth={handleOpenPhotoBooth}
+        onMessage={handleOpenMessage}
+        actionsRef={heroActionsRef}
       />
       <GuestbookArchive entries={sortedEntries} status={status} error={error} />
+      <GuestbookActions
+        className={`gb-floating-actions${showFloatingActions ? ' is-visible' : ''}`}
+        onPhotoBooth={handleOpenPhotoBooth}
+        onMessage={handleOpenMessage}
+        aria-hidden={!showFloatingActions}
+        inert={!showFloatingActions}
+        hidden={activeModal !== null}
+      />
       {activeModal === 'photo' && (
         <PhotoBooth
           onClose={() => setActiveModal(null)}

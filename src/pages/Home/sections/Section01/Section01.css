@@ -1,0 +1,123 @@
+/* Section01: base styles and the existing responsive overrides. */
+
+.home-insight {
+  padding: 6vw 3vw;
+  background: #fff;
+}
+
+.home-insight-panel {
+  position: relative;
+  aspect-ratio: 1840 / 1020;
+  overflow: hidden;
+  border-radius: clamp(24px, 2.7vw, 48px);
+  background: #fafafa;
+  isolation: isolate;
+}
+
+.home-insight-type {
+  position: absolute;
+  left: 50%;
+  top: 51%;
+  width: 73.749vw;
+  height: 37vw;
+  fill: #fff;
+  stroke: #f0f0f0;
+  stroke-width: 84.615px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 400px;
+  font-weight: 800;
+  letter-spacing: -22px;
+  transform: translate(-50%, -50%) perspective(1000px) rotateX(0deg) rotateY(0deg) rotateZ(-10deg);
+  transform-origin: center center;
+  pointer-events: none;
+  user-select: none;
+}
+
+
+.home-insight-panel h2 {
+  position: absolute;
+  top: 10%;
+  left: 7%;
+  color: #fd00a0;
+  font-size: 1.8vw;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -.045em;
+  --home-text-outline-width: 1.35vw;
+  --home-text-outline-color: #fff;
+  isolation: isolate;
+  paint-order: stroke fill;
+}
+
+.home-insight-panel h2 span {
+  display: block;
+  
+}
+
+.home-insight-description {
+  position: absolute;
+  top: 80%;
+  left: 59%;
+  right: 5%;
+  color: #fd00a0;
+  font-size: 1.02vw;
+  line-height: 1.75;
+  font-weight: 500;
+  letter-spacing: -.045em;
+  --home-text-outline-width: 1.1vw;
+  --home-text-outline-color: #fff;
+  isolation: isolate;
+  paint-order: stroke fill;
+}
+
+.home-insight-description span {
+  display: block;
+}
+
+@media (max-width: 767px) {
+  .home-insight {
+    padding: 20px;
+  }
+
+  .home-insight-panel {
+    min-height: 600px;
+    aspect-ratio: auto;
+    border-radius: 24px;
+  }
+
+  .home-insight-type {
+    width: 136.152vw;
+    height: 82.56vw;
+    stroke-width: 75px;
+  }
+
+  .home-insight-panel h2 {
+    top: 24%;
+    left: 10%;
+    font-size: clamp(27px, 6vw, 44px);
+    --home-text-outline-width: 12px;
+  }
+
+  .home-insight-description {
+    top: auto;
+    bottom: 14%;
+    left: 10%;
+    right: 10%;
+    font-size: 14px;
+    --home-text-outline-width: 8px;
+  }
+
+  .home-insight-description span {
+    display: inline;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1100px) {
+  .home-insight-panel {
+    min-height: 520px;
+  }
+
+  .home-insight-description {
+    font-size: 12px;
+  }
+}

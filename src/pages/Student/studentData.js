@@ -22,7 +22,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'been.tct@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://beentc.thdbwk723.chatgpt.site/ ',
 
     // 05. 참여 프로젝트
     projectId: 'project-01',
@@ -66,7 +66,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'tldnjs248@naver.com',
-    profileUrl: null,
+    profileUrl: 'https://tldnjs248.github.io/checkmate/',
 
     // 05. 참여 프로젝트
     projectId: 'project-01',
@@ -88,7 +88,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'yehyun0107@naver.com',
-    profileUrl: null,
+    profileUrl: 'https://yehyun-portfolio.vercel.app/',
 
     // 05. 참여 프로젝트
     projectId: 'project-01',
@@ -110,7 +110,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'ygmo24393@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://www.behance.net/d70cd7ea',
 
     // 05. 참여 프로젝트
     projectId: 'project-01',
@@ -179,7 +179,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'u.ooojini@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://uoojin.github.io/portfolio/',
 
     // 05. 참여 프로젝트
     projectId: 'project-01',
@@ -201,7 +201,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'sky4194119@naver.com',
-    profileUrl: null,
+    profileUrl: 'https://www.linkedin.com/in/수현-한-30472943b ',
 
     // 05. 참여 프로젝트
     projectId: 'project-02',
@@ -220,11 +220,11 @@ export const students = [
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
     role: 'DESIGNER',
-    interview: '차이를 발견하는 디자이너 강민하입니다',
+    interview: '차이를 발견하는 디자이너 강민하입니다.',
 
     // 04. 연락처 및 포트폴리오
     contact: 'miinnn027@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://mportfolio2026.figma.site',
 
     // 05. 참여 프로젝트
     projectId: 'project-02',
@@ -270,7 +270,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'songyehyun15@naver.com',
-    profileUrl: null,
+    profileUrl: 'https://app.notion.com/p/3f5eb31443f181a3b812d5915dd87607',
 
     // 05. 참여 프로젝트
     projectId: 'project-02',
@@ -293,7 +293,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'ewa050311@naver.com',
-    profileUrl: null,
+    profileUrl: 'https://www.behance.net/aaa0c892',
 
     // 05. 참여 프로젝트
     projectId: 'project-02',
@@ -316,7 +316,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'zxoolv@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://freshjun.figma.site/',
 
     // 05. 참여 프로젝트
     projectId: 'project-02',
@@ -339,7 +339,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'richardis6551@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://sichardis.github.io',
 
     // 05. 참여 프로젝트
     projectId: 'project-03',
@@ -362,7 +362,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'serin030614@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://www.behance.net/kwonserin',
 
     // 05. 참여 프로젝트
     projectId: 'project-03',
@@ -385,7 +385,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'sm507noh@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://www.behance.net/nohseungmin',
 
     // 05. 참여 프로젝트
     projectId: 'project-03',
@@ -408,7 +408,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'yoon353yoon@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://yang-yoonji-asterisk-portfolio.poket353.chatgpt.site/',
 
     // 05. 참여 프로젝트
     projectId: 'project-03',
@@ -431,7 +431,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'hanstarleeee@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://hanstarlee.github.io/portfolio/',
 
     // 05. 참여 프로젝트
     projectId: 'project-03',
@@ -454,7 +454,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'dyolyo28@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://dyolyo28-rgb.github.io/yookyung-portfolio/',
 
     // 05. 참여 프로젝트
     projectId: 'project-03',
@@ -473,7 +473,7 @@ export const students = [
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
     role: 'PLANNER',
-    interview: '온전한 완성을 위해, 작은 다시를 반복하는 기획자 김기현입니다.',
+    interview: '경험을 연결하는 기획자 김기현입니다.',
 
     // 04. 연락처 및 포트폴리오
     contact: 'rlgus2022@naver.com',
@@ -496,7 +496,7 @@ export const students = [
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
     role: 'DESIGNER',
-    interview: '새로운 워크플로우를 발견하고 성장하는 디자이너 권민재입니다',
+    interview: '몰입하고, 성장하는 디자이너 권민재입니다.',
 
     // 04. 연락처 및 포트폴리오
     contact: 'janobo964@gmail.com',
@@ -519,11 +519,11 @@ export const students = [
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
     role: 'PROGRAMMER',
-    interview: '아이디어를 경험으로 완성하는 개발자 김준아입니다.',
+    interview: '발견하고, 경험으로 완성하는 개발자 김준아입니다.',
 
     // 04. 연락처 및 포트폴리오
     contact: 'wnsdk3222@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://www.linkedin.com/in/kim-juna/',
 
     // 05. 참여 프로젝트
     projectId: 'project-04',
@@ -565,7 +565,7 @@ export const students = [
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
     role: 'DESIGNER',
-    interview: '사소한 발견을 잇는 디자이너 정다은입니다. ',
+    interview: '사소한 발견을 잇는 디자이너 정다은입니다.',
 
     // 04. 연락처 및 포트폴리오
     contact: 'zungdaeung@gmail.com',
@@ -615,7 +615,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'knewrun25@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://planner-kimyuran.github.io/YOLK/',
 
     // 05. 참여 프로젝트
     projectId: 'project-05',
@@ -634,11 +634,11 @@ export const students = [
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
     role: 'DESIGNER',
-    interview: '작은 디테일까지 책임지는 디자이너 김규민입니다.',
+    interview: '공감을 연결하는 디자이너 김규민입니다.',
 
     // 04. 연락처 및 포트폴리오
     contact: 'ejik0318@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://www.behance.net/0c628505',
 
     // 05. 참여 프로젝트
     projectId: 'project-05',
@@ -661,7 +661,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'jiyunie03@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://www.behance.net/550ecaa5',
 
     // 05. 참여 프로젝트
     projectId: 'project-05',
@@ -684,7 +684,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'qp2joobinqp@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://www.behance.net/joobinlee4 ',
 
     // 05. 참여 프로젝트
     projectId: 'project-05',
@@ -707,7 +707,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'kyounghoon.chang@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://www.behance.net/hahajun',
 
     // 05. 참여 프로젝트
     projectId: 'project-05',
@@ -730,7 +730,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'imyuminj@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://ski2mo.github.io/portfolio/',
 
     // 05. 참여 프로젝트
     projectId: 'project-05',
@@ -749,7 +749,7 @@ export const students = [
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
     role: 'DESIGNER',
-    interview: '쓰는 이에 공감하는 AX 디자이너 손예찬입니다',
+    interview: '쓰는 이에 공감하는 AX 디자이너 손예찬입니다.',
 
     // 04. 연락처 및 포트폴리오
     contact: 'shonzmag@gmail.com',
@@ -799,7 +799,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'liakim1804@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://lia-kim-portfolio-2026.o1os15.chatgpt.site/',
 
     // 05. 참여 프로젝트
     projectId: 'project-06',
@@ -821,8 +821,8 @@ export const students = [
     interview: '몰입을 설계하는 UX 디자이너 김지욱입니다.',
 
     // 04. 연락처 및 포트폴리오
-    contact: '010-4052-4489',
-    profileUrl: null,
+    contact: 'rlawldnr4052@gmail.com',
+    profileUrl: 'https://kimjiwook-portfolio.vercel.app',
 
     // 05. 참여 프로젝트
     projectId: 'project-06',
@@ -845,7 +845,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'le2shun@naver.com',
-    profileUrl: null,
+    profileUrl: 'https://leesiheon.vercel.app/',
 
     // 05. 참여 프로젝트
     projectId: 'project-06',
@@ -868,7 +868,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'junja03@naver.com',
-    profileUrl: null,
+    profileUrl: 'https://portfolio-web-blond-gamma-31.vercel.app/',
 
     // 05. 참여 프로젝트
     projectId: 'project-06',
@@ -891,7 +891,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'jungmin2209@naver.com',
-    profileUrl: null,
+    profileUrl: 'https://hangnar.github.io/portfolio/',
 
     // 05. 참여 프로젝트
     projectId: 'project-06',
@@ -914,7 +914,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'y8nchaewon@naver.com',
-    profileUrl: null,
+    profileUrl: 'www.linkedin.com/in/chaewon-yoon-017a66433',
 
     // 05. 참여 프로젝트
     projectId: 'project-07',
@@ -937,7 +937,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'kwzzah@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://www.linkedin.com/in/%EC%95%84%ED%98%84-%EA%B9%80-6b751b447/',
 
     // 05. 참여 프로젝트
     projectId: 'project-07',
@@ -960,7 +960,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'haon0922@naver.com',
-    profileUrl: null,
+    profileUrl: 'https://www.behance.net/73ba99f1',
 
     // 05. 참여 프로젝트
     projectId: 'project-07',
@@ -983,7 +983,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'syj21300@naver.com',
-    profileUrl: null,
+    profileUrl: 'https://www.linkedin.com/in/yujin-shin-248b3242a/?isSelfProfile=true',
 
     // 05. 참여 프로젝트
     projectId: 'project-07',
@@ -1006,7 +1006,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'dbsekdms8291@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://www.linkedin.com/in/%EB%8B%A4%EC%9D%80-%EC%9C%A4-89b71b447/',
 
     // 05. 참여 프로젝트
     projectId: 'project-07',
@@ -1029,7 +1029,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'satofeel@naver.com',
-    profileUrl: null,
+    profileUrl: 'https://www.linkedin.com/in/janghyeonjin/',
 
     // 05. 참여 프로젝트
     projectId: 'project-07',
@@ -1052,7 +1052,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'oatrice100@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://www.linkedin.com/in/귀리-undefined-340766447 ',
 
     // 05. 참여 프로젝트
     projectId: 'project-08',
@@ -1075,7 +1075,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'bms060321@naver.com',
-    profileUrl: null,
+    profileUrl: 'https://www.figma.com/proto/l4zBEDKs0SeuVBdFxSVyY1/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8?node-id=1-2&viewport=234%2C219%2C0.16&t=pYMjfjzVuwEWS3As-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1',
 
     // 05. 참여 프로젝트
     projectId: 'project-08',
@@ -1098,7 +1098,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'n2k2256@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://www.behance.net/edfebf33',
 
     // 05. 참여 프로젝트
     projectId: 'project-08',
@@ -1121,7 +1121,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'yeonjuu.114@gmial.com',
-    profileUrl: null,
+    profileUrl: 'https://portfolio-y47s.onrender.com/',
 
     // 05. 참여 프로젝트
     projectId: 'project-08',
@@ -1144,7 +1144,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'leejs30top2@gmail.com',
-    profileUrl: null,
+    profileUrl: 'www.linkedin.com/in/준석-이-6a6a42427',
 
     // 05. 참여 프로젝트
     projectId: 'project-08',
@@ -1167,7 +1167,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'jeonyerin2006@naver.com',
-    profileUrl: null,
+    profileUrl: 'https://www.figma.com/proto/3V12B5QC6FR90yRddFjKlx/PORTFOLIO?node-id=378-336&viewport=209%2C311%2C0.05&t=m8nauu7dKAIKY47G-1&scaling=min-zoom&content-scaling=fixed&page-id=378%3A335',
 
     // 05. 참여 프로젝트
     projectId: 'project-08',
@@ -1190,7 +1190,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'yunjeong.cho.design@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://www.behance.net/58163e39',
 
     // 05. 참여 프로젝트
     projectId: 'project-09',
@@ -1209,11 +1209,11 @@ export const students = [
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
     role: 'PROGRAMMER',
-    interview: '큰 가능성을 그리는 디자이너 김희정입니다.',
+    interview: '가능성을 발견하는 디자이너 김희정입니다.',
 
     // 04. 연락처 및 포트폴리오
     contact: 'gimhuijeong680@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://www.behance.net/4195208c',
 
     // 05. 참여 프로젝트
     projectId: 'project-09',
@@ -1236,7 +1236,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'minseop4077@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://www.behance.net/8cc9da72',
 
     // 05. 참여 프로젝트
     projectId: 'project-09',
@@ -1255,11 +1255,11 @@ export const students = [
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
     role: 'DESIGNER',
-    interview: '생각을 시각화하는 디자이너 이유진입니다.',
+    interview: '생각에 개성을 더하는 디자이너 이유진입니다.',
 
     // 04. 연락처 및 포트폴리오
     contact: 'leeyujin060804@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://www.behance.net/fee7053e',
 
     // 05. 참여 프로젝트
     projectId: 'project-09',
@@ -1282,7 +1282,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'lee-jiyoung0826@naver.com',
-    profileUrl: null,
+    profileUrl: 'https://www.behance.net/6d711b2b',
 
     // 05. 참여 프로젝트
     projectId: 'project-09',
@@ -1305,7 +1305,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'iris0512original@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://www.behance.net/f9a3de39',
 
     // 05. 참여 프로젝트
     projectId: 'project-09',
@@ -1466,7 +1466,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'annie040224@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://xjustjunex-portfolio.qshop.ai/',
 
     // 05. 참여 프로젝트
     projectId: 'project-11',
@@ -1485,11 +1485,11 @@ export const students = [
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
     role: 'DESIGNER',
-    interview: 'UIUX 전공인 정리하고 성장하는 디자이너, 노남수입니다.',
+    interview: '정리하고 성장하는 UIUX 디자이너 노남수입니다.',
 
     // 04. 연락처 및 포트폴리오
     contact: 'jujono2@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://nams-archive.pages.dev/',
 
     // 05. 참여 프로젝트
     projectId: 'project-11',
@@ -1508,11 +1508,11 @@ export const students = [
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
     role: 'DESIGNER',
-    interview: '개성적인 캐릭터 일러스트 전문 배채원입니다.',
+    interview: '개성적인 캐릭터 일러스트 디자이너 배채원입니다.',
 
     // 04. 연락처 및 포트폴리오
     contact: 'fiesta1022@naver.com',
-    profileUrl: null,
+    profileUrl: 'https://flash-market-0b6.notion.site/40929563f2aa80788d72c702d91ccd8d?source=copy_link ',
 
     // 05. 참여 프로젝트
     projectId: 'project-11',
@@ -1535,7 +1535,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'queenhwq7700@naver.com',
-    profileUrl: null,
+    profileUrl: 'https://yielding-beret-104.notion.site/3d4df16850598002bfd1f0224e38f7c1?source=copy_link ',
 
     // 05. 참여 프로젝트
     projectId: 'project-11',
@@ -1554,11 +1554,11 @@ export const students = [
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
     role: 'PROGRAMMER',
-    interview: '도전을 발견하여 끝까지 해내는 개발자입니다.',
+    interview: '도전을 발견하여 끝까지 해내는 개발자 이재범입니다.',
 
     // 04. 연락처 및 포트폴리오
     contact: 'jb2jjang@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://kwdmd.github.io/Portfolio/',
 
     // 05. 참여 프로젝트
     projectId: 'project-11',
@@ -1581,7 +1581,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'harry04le@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://www.youtube.com/@ballturret190',
 
     // 05. 참여 프로젝트
     projectId: 'project-11',
@@ -1589,7 +1589,7 @@ export const students = [
 
   // ========== STUDENT 070 ==========
   {
-    studentId: 'YOONSEOJIN',
+    studentId: 'YUNSEOJIN',
 
     // 01. 기본 정보
     name: '윤서진',
@@ -1600,7 +1600,7 @@ export const students = [
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
     role: 'PROGRAMMER',
-    interview: '개성있는 개발자 윤서진 입니다',
+    interview: '개성있는 개발자 윤서진입니다',
 
     // 04. 연락처 및 포트폴리오
     contact: '010-8337-6425',
@@ -1627,7 +1627,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'ganghee0508@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://www.behance.net/4a032f1d',
 
     // 05. 참여 프로젝트
     projectId: 'project-12',
@@ -1646,11 +1646,11 @@ export const students = [
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
     role: 'DESIGNER',
-    interview: '연결 속 가능성을 찾는 디자이너 조강희입니다.',
+    interview: '발견을 번역하는 디자이너 고서현입니다.',
 
     // 04. 연락처 및 포트폴리오
-    contact: 'seohyunn.go@gmail.com',
-    profileUrl: null,
+    contact: 'go.seohyunn@gmail.com',
+    profileUrl: 'https://www.behance.net/011648e5',
 
     // 05. 참여 프로젝트
     projectId: 'project-12',
@@ -1669,11 +1669,11 @@ export const students = [
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
     role: 'PLANNER',
-    interview: '해결의 버튼을 누르는 기획자 민명혜입니다. ',
+    interview: '해결버튼을 발견하는 기획자 민명혜입니다.',
 
     // 04. 연락처 및 포트폴리오
     contact: 'lois.min02@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://www.behance.net/1bf8a93f',
 
     // 05. 참여 프로젝트
     projectId: 'project-12',
@@ -1696,7 +1696,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'youkh0503@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://leeyoujoungg.github.io/YOUJUNG-PORTFOLIO/',
 
     // 05. 참여 프로젝트
     projectId: 'project-12',
@@ -1719,7 +1719,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'sylvie29@naver.com',
-    profileUrl: null,
+    profileUrl: 'https://www.instagram.com/heavenlynagi/',
 
     // 05. 참여 프로젝트
     projectId: 'project-12',
@@ -1742,7 +1742,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'xeexon27@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://app.notion.com/p/ad360e0dd9b54350bd8956b398cfb837?source=copy_link',
 
     // 05. 참여 프로젝트
     projectId: 'project-12',
@@ -1765,7 +1765,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'songjoo0531@naver.com',
-    profileUrl: null,
+    profileUrl: 'https://songjoochoi.github.io/portfoliomiddle/',
 
     // 05. 참여 프로젝트
     projectId: 'project-12',
@@ -1788,7 +1788,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'sjin.c.26@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://www.behance.net/323e4701',
 
     // 05. 참여 프로젝트
     projectId: 'project-12',
@@ -1807,11 +1807,11 @@ export const students = [
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
     role: 'PLANNER',
-    interview: '한 겹 더 깊이 보는 기획자 이채연입니다.',
+    interview: '본질을 발견하는 기획자 이채연입니다.',
 
     // 04. 연락처 및 포트폴리오
     contact: 'lcyeooon@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://app.notion.com/p/4063df3dbd2681c79263c91a04ca02a5?source=copy_link',
 
     // 05. 참여 프로젝트
     projectId: 'project-13',
@@ -1834,7 +1834,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'noeun0815@naver.com',
-    profileUrl: null,
+    profileUrl: 'https://www.behance.net/9a64c210/moodboards',
 
     // 05. 참여 프로젝트
     projectId: 'project-13',
@@ -1853,11 +1853,11 @@ export const students = [
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
     role: 'DESIGNER',
-    interview: '집요함으로 완성하는 디자이너 김현기입니다.',
+    interview: '집요하게 성장하는 디자이너 김현기입니다.',
 
     // 04. 연락처 및 포트폴리오
     contact: 'dokgiworker@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://www.behance.net/wjdgns426532af',
 
     // 05. 참여 프로젝트
     projectId: 'project-13',
@@ -1880,7 +1880,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'wjdgns4265@naver.com',
-    profileUrl: null,
+    profileUrl: 'https://www.behance.net/wjdgns426532af/projects',
 
     // 05. 참여 프로젝트
     projectId: 'project-13',
@@ -1899,11 +1899,11 @@ export const students = [
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
     role: 'DESIGNER',
-    interview: '몰입을 만드는 3d 디자이너 심혜민입니다.',
+    interview: '몰입을 만드는 3D 디자이너 심혜민입니다.',
 
     // 04. 연락처 및 포트폴리오
     contact: 'tlagpals134@naver.com',
-    profileUrl: null,
+    profileUrl: 'https://www.behance.net/b06bac24/projects',
 
     // 05. 참여 프로젝트
     projectId: 'project-13',
@@ -1922,11 +1922,11 @@ export const students = [
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
     role: 'PROGRAMMER',
-    interview: '움직임을 경험으로 만드는 개발자 유기상입니다.',
+    interview: '경험을 연결하는 개발자 유기상입니다.',
 
     // 04. 연락처 및 포트폴리오
     contact: 'yu2647921@naver.com',
-    profileUrl: null,
+    profileUrl: 'https://gisangyu.github.io/portfolio_2026/',
 
     // 05. 참여 프로젝트
     projectId: 'project-13',
@@ -1949,7 +1949,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'yelloww1114@naver.com',
-    profileUrl: null,
+    profileUrl: 'https://www.behance.net/e9df6dc9/projects',
 
     // 05. 참여 프로젝트
     projectId: 'project-13',
@@ -1972,7 +1972,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'jacobsungju@naver.com',
-    profileUrl: null,
+    profileUrl: 'https://www.linkedin.com/in/sungju-hong-5523a0447/',
 
     // 05. 참여 프로젝트
     projectId: 'project-14',
@@ -1995,7 +1995,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'kkiowl@naver.com',
-    profileUrl: null,
+    profileUrl: 'https://www.instagram.com/boycalledkeem/',
 
     // 05. 참여 프로젝트
     projectId: 'project-14',
@@ -2014,11 +2014,11 @@ export const students = [
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
     role: 'DESIGNER',
-    interview: '연결과 공감을 그리는 디자이너 문예지 입니다.',
+    interview: '연결과 공감을 그리는 디자이너 문예지입니다.',
 
     // 04. 연락처 및 포트폴리오
     contact: 'only.er0179@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://www.behance.net/c9a39857',
 
     // 05. 참여 프로젝트
     projectId: 'project-14',
@@ -2041,7 +2041,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'bbi524429@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://www.behance.net/ef235395',
 
     // 05. 참여 프로젝트
     projectId: 'project-14',
@@ -2064,7 +2064,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'urihyewon@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://app.notion.com/p/HEY-407e4d353d8d809082cff4bd1406fa4f?source=copy_link',
 
     // 05. 참여 프로젝트
     projectId: 'project-14',
@@ -2087,7 +2087,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'dkrdjehfdl0602@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://soyun22461093.github.io/IMSOYUN_Portfoilo/ ',
 
     // 05. 참여 프로젝트
     projectId: 'project-14',
@@ -2110,7 +2110,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'iftaurrisitdo@gmail.com',
-    profileUrl: null,
+    profileUrl: 'http://www.linkedin.com/in/yejin-jeon-2b7480447',
 
     // 05. 참여 프로젝트
     projectId: 'project-14',
@@ -2133,7 +2133,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'zxxcvvbnnm@naver.com',
-    profileUrl: null,
+    profileUrl: 'https://claude.ai/artifact/1K6C79zLDuJd5wjzyHAYKc',
 
     // 05. 참여 프로젝트
     projectId: 'project-14',
@@ -2156,7 +2156,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'wjsdudtj1209@naver.com',
-    profileUrl: null,
+    profileUrl: 'https://junyoungseo.notion.site/',
 
     // 05. 참여 프로젝트
     projectId: 'project-15',
@@ -2179,7 +2179,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'kangmk3220@naver.com',
-    profileUrl: null,
+    profileUrl: 'https://myong-k.github.io/Portfolio/',
 
     // 05. 참여 프로젝트
     projectId: 'project-15',
@@ -2202,7 +2202,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'koyebum@kaywon.ac.kr',
-    profileUrl: null,
+    profileUrl: 'http://yebum.github.io/portfolio/',
 
     // 05. 참여 프로젝트
     projectId: 'project-15',
@@ -2248,7 +2248,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: '22161092@kaywon.ac.kr',
-    profileUrl: null,
+    profileUrl: 'https://andante-plan.notion.site/3ff1e384932580e6b473dcf23251e820',
 
     // 05. 참여 프로젝트
     projectId: 'project-15',
@@ -2267,7 +2267,7 @@ export const students = [
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
     role: 'DESIGNER',
-    interview: '경험으로 성장하는 영상디자이너 이혜윤입니다.',
+    interview: '경험으로 성장하는 영상 디자이너 이혜윤입니다.',
 
     // 04. 연락처 및 포트폴리오
     contact: '2eeyoo643@gmail.com',
@@ -2294,7 +2294,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'jtt0226@kaywon.ac.kr',
-    profileUrl: null,
+    profileUrl: 'https://hyejinn226.github.io/hyejin-portfolio/',
 
     // 05. 참여 프로젝트
     projectId: 'project-15',
@@ -2317,7 +2317,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'jeongsijin0@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://www.behance.net/b01ed737',
 
     // 05. 참여 프로젝트
     projectId: 'project-16',
@@ -2340,7 +2340,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'singsonghmm@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://www.behance.net/f1ed08e5 ',
 
     // 05. 참여 프로젝트
     projectId: 'project-16',
@@ -2363,7 +2363,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'moonsy553@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://www.behance.net/c8f88382 ',
 
     // 05. 참여 프로젝트
     projectId: 'project-16',
@@ -2386,7 +2386,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'chun65984@naver.com',
-    profileUrl: null,
+    profileUrl: 'https://brown-music-596547.framer.app/',
 
     // 05. 참여 프로젝트
     projectId: 'project-16',
@@ -2405,11 +2405,11 @@ export const students = [
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
     role: 'DESIGNER',
-    interview: '실패를 두려워하지 않는 디자이너 조보경 입니다.',
+    interview: '실패를 딛고 성장하는 디자이너 조보경 입니다.',
 
     // 04. 연락처 및 포트폴리오
     contact: 'happyday184@naver.com',
-    profileUrl: null,
+    profileUrl: 'https://www.behance.net/1bd24f44 ',
 
     // 05. 참여 프로젝트
     projectId: 'project-16',
@@ -2432,7 +2432,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'yejin.haa00@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://yejinhaa00.github.io/yejinhaa00/',
 
     // 05. 참여 프로젝트
     projectId: 'project-16',
@@ -2451,11 +2451,11 @@ export const students = [
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
     role: 'DESIGNER',
-    interview: '시선을 장면으로 만드는 디자이너 김우성입니다.',
+    interview: '시선과 장면을 연결하는 디자이너 김우성입니다.',
 
     // 04. 연락처 및 포트폴리오
     contact: 'rladntjd9980@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://boostershot-studio.vercel.app/',
 
     // 05. 참여 프로젝트
     projectId: 'project-17',
@@ -2474,11 +2474,11 @@ export const students = [
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
     role: 'PLANNER',
-    interview: '감각의 경계를 허무는 기획자 강민준입니다.',
+    interview: '본질을 발견하는 기획자 강민준입니다.',
 
     // 04. 연락처 및 포트폴리오
     contact: 'opuskyle@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://www.behance.net/19f17247',
 
     // 05. 참여 프로젝트
     projectId: 'project-17',
@@ -2497,11 +2497,11 @@ export const students = [
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
     role: 'DESIGNER',
-    interview: '장면을 깨우는 디자이너 김민서 입니다.',
+    interview: '컷마다 몰입을 담는 디자이너 김민서입니다.',
 
     // 04. 연락처 및 포트폴리오
     contact: 'kms201208@naver.com',
-    profileUrl: null,
+    profileUrl: 'https://www.linkedin.com/in/min-seo-kim-303167350',
 
     // 05. 참여 프로젝트
     projectId: 'project-17',
@@ -2520,11 +2520,11 @@ export const students = [
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
     role: 'PLANNER',
-    interview: '다음 가능성을 질문하는 기획자 문지훈입니다.',
+    interview: '다음 가능성을 연결하는 기획자 문지훈입니다.',
 
     // 04. 연락처 및 포트폴리오
     contact: 'jihoon031214@naver.com',
-    profileUrl: null,
+    profileUrl: 'https://www.behance.net/36e26ded',
 
     // 05. 참여 프로젝트
     projectId: 'project-17',
@@ -2543,11 +2543,11 @@ export const students = [
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
     role: 'PLANNER',
-    interview: '세상을 고민하는 기획자, 박예인입니다.',
+    interview: '세상 속 연결을 발견하는 기획자 박예인입니다.',
 
     // 04. 연락처 및 포트폴리오
     contact: 'yein_050202@naver.com',
-    profileUrl: null,
+    profileUrl: 'https://portfolio-oct27-k8m4.hswzrwjgfn.chatgpt.site/',
 
     // 05. 참여 프로젝트
     projectId: 'project-17',
@@ -2566,11 +2566,11 @@ export const students = [
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
     role: 'DESIGNER',
-    interview: '경험에 재미를 더하는 디자이너 신의효입니다.',
+    interview: '경험과 재미를 연결하는 디자이너 신의효입니다.',
 
     // 04. 연락처 및 포트폴리오
     contact: 'shinui1219@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://shinuihyokr.youngalder4.chatgpt.site/',
 
     // 05. 참여 프로젝트
     projectId: 'project-17',
@@ -2589,11 +2589,11 @@ export const students = [
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
     role: 'DESIGNER',
-    interview: '큰 꿈을 위해 투자 하는 디자이너 장세원입니다.',
+    interview: '큰 꿈을 위해 성장 하는 디자이너 장세원입니다.',
 
     // 04. 연락처 및 포트폴리오
     contact: 'nnk1225@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://www.instagram.com/se1i.z/?utm_source=ig_web_button_share_sheet',
 
     // 05. 참여 프로젝트
     projectId: 'project-17',

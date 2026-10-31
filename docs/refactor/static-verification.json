@@ -1,0 +1,14 @@
+{
+  "lint": "passed",
+  "build": "passed",
+  "movedExecutionBodiesChecked": 21,
+  "unexpectedBodyChanges": [],
+  "css": {
+    "selectorContexts": 1237,
+    "differences": []
+  },
+  "builtMediaCount": 179,
+  "builtMediaByteIdentical": true,
+  "previousMovedPathsRemoved": true,
+  "routeEntrypointsExist": true
+}

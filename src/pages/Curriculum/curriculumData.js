@@ -15,6 +15,11 @@ export const advanced = [
   { semester: '4-2', courses: [['퍼블리셔'], ['포트폴리오 연구'], ['마케팅 & 브랜딩'], [], ['이노베이션 스튜디오']] },
 ]
 
+export const curriculumByYear = {
+  2026: { tracks, foundation, advanced },
+  2027: null,
+}
+
 export const careers = [
   { title: '디지털미디어 에이전시', jobs: ['서비스·콘텐츠 기획자', 'UI/UX 기획자', 'SNS 마케팅 / 운영 기획자', '서비스 경험 디자이너', '웹 / 모바일 디자이너', 'GUI 디자이너'] },
   { title: '크리에이터', jobs: ['1인 크리에이터', '유튜브 크리에이터', 'SNS 크리에이터', '라이브커머스 크리에이터'] },

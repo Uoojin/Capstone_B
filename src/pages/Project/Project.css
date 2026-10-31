@@ -549,7 +549,6 @@
   align-self: start;
   overflow: hidden;
   border-radius: clamp(16px, 1.2vw, 25px);
-  background: #f7f7f7;
 }
 
 .detail-media img {
@@ -661,7 +660,6 @@
   grid-area: media;
   height: min(48.94vw, calc(100svh - 7.5vw));
   aspect-ratio: auto;
-  background: #fafafa;
 }
 
 .detail-team-info {
@@ -1403,7 +1401,7 @@
   .detail-hero > .detail-media {
     width: min(100%, calc(max(220px, 100svh - 350px) * 890 / 600));
     height: auto;
-    aspect-ratio: 890 / 600;
+    aspect-ratio: 4 / 3;
     border-radius: 16px;
   }
   .detail-hero > .detail-media img { object-fit: contain; }

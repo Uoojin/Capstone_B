@@ -1,0 +1,298 @@
+{
+  "layouts": [
+    {
+      "width": 1440,
+      "route": "home",
+      "identical": true,
+      "counts": [
+        68,
+        68
+      ]
+    },
+    {
+      "width": 1440,
+      "route": "project",
+      "identical": true,
+      "counts": [
+        185,
+        185
+      ]
+    },
+    {
+      "width": 1440,
+      "route": "student",
+      "identical": true,
+      "counts": [
+        2161,
+        2161
+      ]
+    },
+    {
+      "width": 1440,
+      "route": "curriculum",
+      "identical": true,
+      "counts": [
+        192,
+        192
+      ]
+    },
+    {
+      "width": 1440,
+      "route": "credit",
+      "identical": true,
+      "counts": [
+        2,
+        2
+      ]
+    },
+    {
+      "width": 1440,
+      "route": "syncopate",
+      "identical": true,
+      "counts": [
+        12,
+        12
+      ]
+    },
+    {
+      "width": 1440,
+      "route": "guestbook",
+      "identical": true,
+      "counts": [
+        15,
+        15
+      ]
+    },
+    {
+      "width": 820,
+      "route": "home",
+      "identical": true,
+      "counts": [
+        68,
+        68
+      ]
+    },
+    {
+      "width": 820,
+      "route": "project",
+      "identical": true,
+      "counts": [
+        185,
+        185
+      ]
+    },
+    {
+      "width": 820,
+      "route": "student",
+      "identical": true,
+      "counts": [
+        2161,
+        2161
+      ]
+    },
+    {
+      "width": 820,
+      "route": "curriculum",
+      "identical": true,
+      "counts": [
+        192,
+        192
+      ]
+    },
+    {
+      "width": 820,
+      "route": "credit",
+      "identical": true,
+      "counts": [
+        2,
+        2
+      ]
+    },
+    {
+      "width": 820,
+      "route": "syncopate",
+      "identical": true,
+      "counts": [
+        12,
+        12
+      ]
+    },
+    {
+      "width": 820,
+      "route": "guestbook",
+      "identical": true,
+      "counts": [
+        15,
+        15
+      ]
+    },
+    {
+      "width": 390,
+      "route": "home",
+      "identical": true,
+      "counts": [
+        7,
+        7
+      ]
+    },
+    {
+      "width": 390,
+      "route": "project",
+      "identical": true,
+      "counts": [
+        185,
+        185
+      ]
+    },
+    {
+      "width": 390,
+      "route": "student",
+      "identical": true,
+      "counts": [
+        2161,
+        2161
+      ]
+    },
+    {
+      "width": 390,
+      "route": "curriculum",
+      "identical": true,
+      "counts": [
+        7,
+        7
+      ]
+    },
+    {
+      "width": 390,
+      "route": "credit",
+      "identical": true,
+      "counts": [
+        7,
+        7
+      ]
+    },
+    {
+      "width": 390,
+      "route": "syncopate",
+      "identical": true,
+      "counts": [
+        7,
+        7
+      ]
+    },
+    {
+      "width": 390,
+      "route": "guestbook",
+      "identical": true,
+      "counts": [
+        7,
+        7
+      ]
+    }
+  ],
+  "interactions": [
+    {
+      "port": 4185,
+      "name": "Hero canvas and Section01 pointer motion",
+      "passed": true
+    },
+    {
+      "port": 4185,
+      "name": "Video entry playback and exit pause",
+      "passed": true
+    },
+    {
+      "port": 4185,
+      "name": "Pull hold, balls mode, header restoration",
+      "passed": true
+    },
+    {
+      "port": 4185,
+      "name": "Student flip and search",
+      "passed": true
+    },
+    {
+      "port": 4185,
+      "name": "Project detail opens and closes",
+      "passed": true
+    },
+    {
+      "port": 4185,
+      "name": "Curriculum diagram focus",
+      "passed": true
+    },
+    {
+      "port": 4185,
+      "name": "Credit automatic scroll",
+      "passed": true
+    },
+    {
+      "port": 4185,
+      "name": "Drawing editor opens and closes",
+      "passed": true
+    },
+    {
+      "port": 4185,
+      "name": "Guestbook message validation and focus cleanup",
+      "passed": true
+    },
+    {
+      "port": 4185,
+      "name": "PhotoBooth open/close and mobile redirect",
+      "passed": true
+    },
+    {
+      "port": 4186,
+      "name": "Hero canvas and Section01 pointer motion",
+      "passed": true
+    },
+    {
+      "port": 4186,
+      "name": "Video entry playback and exit pause",
+      "passed": true
+    },
+    {
+      "port": 4186,
+      "name": "Pull hold, balls mode, header restoration",
+      "passed": true
+    },
+    {
+      "port": 4186,
+      "name": "Student flip and search",
+      "passed": true
+    },
+    {
+      "port": 4186,
+      "name": "Project detail opens and closes",
+      "passed": true
+    },
+    {
+      "port": 4186,
+      "name": "Curriculum diagram focus",
+      "passed": true
+    },
+    {
+      "port": 4186,
+      "name": "Credit automatic scroll",
+      "passed": true
+    },
+    {
+      "port": 4186,
+      "name": "Drawing editor opens and closes",
+      "passed": true
+    },
+    {
+      "port": 4186,
+      "name": "Guestbook message validation and focus cleanup",
+      "passed": true
+    },
+    {
+      "port": 4186,
+      "name": "PhotoBooth open/close and mobile redirect",
+      "passed": true
+    }
+  ],
+  "pageErrors": [],
+  "requestFailures": [],
+  "limitations": "Supabase HTTP uses empty-list fixtures; layout samples exclude SVG/shadow/canvas internals and continuously animated project overview/credit roll. Actual SYNC collisions, upload, camera, QR and live backend are unverified."
+}

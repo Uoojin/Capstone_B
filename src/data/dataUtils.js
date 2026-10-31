@@ -1,6 +1,11 @@
 import { categories } from './categories.js'
 
 const validKey = (key) => typeof key === 'string' && /^[a-zA-Z0-9]+$/.test(key)
+const validProjectImageKey = (key) => typeof key === 'string' && /^[\p{L}\p{M}\p{N}-]+$/u.test(key)
+const projectImages = Object.fromEntries(
+  Object.entries(import.meta.glob('../assets/projects/*.webp', { eager: true, query: '?url', import: 'default' }))
+    .map(([path, url]) => [path.normalize('NFC'), url]),
+)
 const validStudentNameId = (id) => typeof id === 'string' && /^[a-z][a-z0-9]*$/i.test(id)
 const temporaryStudentId = (id) => /^student-(00[1-9]|0[1-9]\d|10\d|11[0-3])$/.test(id)
 const projectNumber = (id) => /^project-\d{2}$/.test(id) ? id.slice(-2) : null
@@ -12,13 +17,14 @@ function assetPath(folder, filename, baseUrl) {
 
 export function getProjectImages(project, baseUrl = import.meta.env?.BASE_URL || '/') {
   const number = projectNumber(project.id)
-  const projectPath = (suffix) => number && validKey(project.imageKey)
-    ? assetPath('projects', `project${number}_${project.imageKey}_${suffix}`, baseUrl)
+  const projectPath = (suffix = '') => number && validProjectImageKey(project.imageKey)
+    ? projectImages[`../assets/projects/project${number}_${project.imageKey}${suffix}.webp`.normalize('NFC')] || null
     : null
+  const image = projectPath('_info') || projectPath() || projectPath('_card')
   return {
-    cardImage: projectPath('card'),
-    image: projectPath('info'),
-    handwritingImage: projectPath('hand'),
+    cardImage: projectPath('_card') || image,
+    image,
+    handwritingImage: projectPath('_hand'),
     handwritingAlt: project.name ? `${project.name} 팀 손글씨` : '',
     teamImage: number && validKey(project.teamImageKey)
       ? assetPath('teams', `team${number}_${project.teamImageKey}`, baseUrl)
@@ -74,7 +80,9 @@ export function validateData(projects, students) {
   for (const project of projects) {
     if (!/^project-(0[1-9]|1[0-7])$/.test(project.id)) warnings.push(`프로젝트 ID 형식 오류: ${project.id}`)
     for (const key of ['imageKey', 'teamImageKey']) {
-      if (project[key] && !validKey(project[key])) warnings.push(`${project.id}: ${key}는 공백/특수기호 없이 영문과 숫자만 입력하세요.`)
+      if (key === 'imageKey') {
+        if (project[key] && !validProjectImageKey(project[key])) warnings.push(`${project.id}: imageKey는 실제 파일명의 이름 부분을 한글/영문/숫자/하이픈으로 입력하세요.`)
+      } else if (project[key] && !validKey(project[key])) warnings.push(`${project.id}: ${key}는 공백/특수기호 없이 영문과 숫자만 입력하세요.`)
     }
     for (const key of Object.keys(categories)) {
       for (const value of [project[key]].flat().filter(Boolean)) {

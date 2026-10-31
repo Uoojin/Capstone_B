@@ -1,0 +1,59 @@
+/* Section03: base styles and the existing responsive overrides. */
+.home-sync-video {
+  min-height: 100vh;
+  min-height: 65dvh;
+  background: #fff;
+}
+
+.home-sync-video {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(40px, 5vw, 80px);
+  padding-bottom: clamp(40px, 5vw, 80px);
+}
+
+.home-sync-video video {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.home-sync-video-description {
+  align-self: flex-end;
+  max-width: 76%;
+  margin:0 150px;
+  color: #000;
+  font-family: var(--font-family);
+  font-size: clamp(14px, .94vw, 18px);
+  font-weight: 400;
+  line-height: 1.85;
+  text-align: left;
+}
+
+.home-sync-video-description span {
+  display: block;
+  white-space: nowrap;
+}
+
+@media (max-width: 767px) {
+  .home-sync-video {
+    gap: 32px;
+  }
+
+  .home-sync-video-description {
+    max-width: calc(100% - 40px);
+    margin: auto 20px 0;
+  }
+
+  .home-sync-video-description span {
+    white-space: normal;
+    word-break: keep-all;
+  }
+}
+@media (min-width: 1101px) {
+
+  .home-sync-video-description {
+    transform: translateX(calc(var(--home-description-left) - 100vw + 150px + 100%));
+  }
+}

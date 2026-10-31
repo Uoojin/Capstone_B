@@ -1,3 +1,4 @@
+import createMediaQueryStore from '../../utils/createMediaQueryStore.js'
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react'
 import { flushSync } from 'react-dom'
 import { useLocation, useNavigate } from 'react-router-dom'
@@ -14,16 +15,7 @@ const FOCUS_RANGE = 92
 const LOGICAL_ANGLE_STEP = 360 / DISPLAY_CARD_COUNT
 const WHEEL_RADIUS_CARD_MULTIPLIER = 2.7
 const CARD_GAP_RATIO = 0.18
-const mobileProjectViewport = window.matchMedia('(max-width: 767px)')
-
-function subscribeToMobileViewport(onChange) {
-  mobileProjectViewport.addEventListener('change', onChange)
-  return () => mobileProjectViewport.removeEventListener('change', onChange)
-}
-
-function getMobileViewport() {
-  return mobileProjectViewport.matches
-}
+const { subscribe: subscribeToMobileViewport, getSnapshot: getMobileViewport, mediaQuery: mobileProjectViewport } = createMediaQueryStore('(max-width: 767px)')
 
 const clamp = (value, min, max) => Math.min(Math.max(value, min), max)
 const signedAngleDistance = (from, to = TOP_FOCUS_ANGLE) => ((from - to + 540) % 360) - 180

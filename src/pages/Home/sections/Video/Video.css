@@ -1,0 +1,13 @@
+/* Video: base styles and the existing responsive overrides. */
+.home-film {
+  width: 100%;
+  background: #fff;
+}
+
+.home-film video {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 15vw;
+}

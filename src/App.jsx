@@ -1,3 +1,4 @@
+import createMediaQueryStore from './utils/createMediaQueryStore.js'
 import { useSyncExternalStore } from 'react'
 import { BrowserRouter, Navigate, Outlet, Route } from 'react-router-dom'
 import Header from './components/Header/Header.jsx'
@@ -5,23 +6,14 @@ import Project from './pages/Project/Project.jsx'
 import Student from './pages/Student/Student.jsx'
 import Behind from './pages/Behind/Behind.jsx'
 import Curriculum from './pages/Curriculum/Curriculum.jsx'
-import Syncopate from './pages/Content/Syncopate.jsx'
+import Syncopate from './pages/Syncopate/Syncopate.jsx'
 import Guestbook from './pages/Guestbook/Guestbook.jsx'
 import Footer from './components/Footer/Footer.jsx'
 import Home from './pages/Home/Home.jsx'
 import ScrollToTop from './components/ScrollToTop.jsx'
 import PageTransitionRoutes from './components/PageTransition/PageTransition.jsx'
 
-const mobileViewport = window.matchMedia('(max-width: 767px)')
-
-function subscribeToMobileViewport(onChange) {
-  mobileViewport.addEventListener('change', onChange)
-  return () => mobileViewport.removeEventListener('change', onChange)
-}
-
-function getMobileViewport() {
-  return mobileViewport.matches
-}
+const { subscribe: subscribeToMobileViewport, getSnapshot: getMobileViewport } = createMediaQueryStore('(max-width: 767px)')
 
 function App() {
   const isMobile = useSyncExternalStore(subscribeToMobileViewport, getMobileViewport)

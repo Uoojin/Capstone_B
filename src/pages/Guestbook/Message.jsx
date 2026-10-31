@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
-import { GuestbookModal } from '../Guestbook/PhotoBooth.jsx'
-import { createGuestbookEntry } from '../../lib/supabase02.js'
-import '../Guestbook/Message.css'
+import GuestbookModal from './GuestbookModal.jsx'
+import { createGuestbookEntry } from './guestbookApi.js'
+import './Message.css'
 
 
 const MAX_TEXT_MESSAGE = 250

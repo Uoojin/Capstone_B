@@ -1,14 +1,16 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
-import { createPortal } from 'react-dom'
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
+import GuestbookModal from './GuestbookModal.jsx'
 import QRCode from 'qrcode'
 import { Camera, Upload } from 'lucide-react'
 import { toCanvas } from 'html-to-image'
 import AdjustablePhoto from './AdjustablePhoto.jsx'
-import { createGuestbookEntry, uploadGuestbookImage } from '../../lib/supabase02.js'
+import shareIcon from '../../assets/guestbook/upload.svg'
+import qrIcon from '../../assets/guestbook/qr.svg'
+import { createGuestbookEntry, uploadGuestbookImage } from './guestbookApi.js'
 // Restore this import, the palette UI, and the CSS color variable to re-enable frame colors.
-// import { PASTEL_COLORS } from '../../lib/supabase02.js'
-import '../Guestbook/Guestbook.css'
-import '../Guestbook/PhotoBooth.css'
+// import { PASTEL_COLORS } from './guestbookApi.js'
+import './Guestbook.css'
+import './PhotoBooth.css'
 
 const DEFAULT_PHOTO_FORM = {
   toName: '',
@@ -19,6 +21,65 @@ const DEFAULT_PHOTO_FORM = {
 }
 
 const MAX_UPLOAD_SIZE = 8 * 1024 * 1024
+
+function useTemporaryMessage() {
+  const [message, setMessage] = useState('')
+  const timerRef = useRef(null)
+  const revisionRef = useRef(0)
+  const mountedRef = useRef(true)
+
+  const showMessage = useCallback((text, { persistent = false } = {}) => {
+    if (!mountedRef.current) return
+    window.clearTimeout(timerRef.current)
+    timerRef.current = null
+    const revision = ++revisionRef.current
+    setMessage(text)
+    if (text && !persistent) {
+      timerRef.current = window.setTimeout(() => {
+        if (mountedRef.current && revision === revisionRef.current) {
+          timerRef.current = null
+          setMessage('')
+        }
+      }, 2000)
+    }
+  }, [])
+
+  useEffect(() => {
+    mountedRef.current = true
+    return () => {
+      mountedRef.current = false
+      revisionRef.current += 1
+      window.clearTimeout(timerRef.current)
+    }
+  }, [])
+
+  return [message, showMessage]
+}
+
+function PhotoBoothMessage({ message }) {
+  const messageRef = useRef(null)
+  const [reservedHeight, setReservedHeight] = useState(0)
+
+  useLayoutEffect(() => {
+    if (message) setReservedHeight((height) => Math.max(height, messageRef.current.offsetHeight))
+  }, [message])
+
+  return (
+    <p
+      className="gb-modal-error"
+      ref={messageRef}
+      role="status"
+      aria-hidden={!message}
+      style={{
+        minHeight: reservedHeight || undefined,
+        marginTop: message || reservedHeight ? undefined : 0,
+        visibility: message ? 'visible' : 'hidden',
+      }}
+    >
+      {message}
+    </p>
+  )
+}
 
 async function renderPolaroidToBlob(element) {
   if (!element) throw new Error('완성할 폴라로이드를 찾을 수 없습니다.')
@@ -111,70 +172,6 @@ async function renderPolaroidToBlob(element) {
   }
 }
 
-function GuestbookModal({ children, onClose, className = '', labelledBy }) {
-  const closeRef = useRef(null)
-  const modalRef = useRef(null)
-
-  useEffect(() => {
-    const previousOverflow = document.body.style.overflow
-    const previousFocus = document.activeElement
-    const pageRoot = document.getElementById('root')
-    const wasInert = pageRoot?.inert
-    if (pageRoot) pageRoot.inert = true
-    document.body.style.overflow = 'hidden'
-    closeRef.current?.focus()
-
-    function handleKeyDown(event) {
-      if (event.key === 'Escape') onClose()
-      if (event.key === 'Tab') {
-        const controls = [...modalRef.current.querySelectorAll('button, input, textarea, [tabindex]')]
-          .filter((element) => !element.disabled && element.tabIndex >= 0 && element.getClientRects().length)
-        const first = controls[0]
-        const last = controls[controls.length - 1]
-        if (event.shiftKey && document.activeElement === first) {
-          event.preventDefault()
-          last?.focus()
-        } else if (!event.shiftKey && document.activeElement === last) {
-          event.preventDefault()
-          first?.focus()
-        }
-      }
-    }
-
-    window.addEventListener('keydown', handleKeyDown)
-
-    return () => {
-      document.body.style.overflow = previousOverflow
-      if (pageRoot) pageRoot.inert = wasInert
-      previousFocus?.focus()
-      window.removeEventListener('keydown', handleKeyDown)
-    }
-  }, [onClose])
-
-  return createPortal(
-    <div className="gb-modal" role="presentation" ref={modalRef}>
-      <div className="gb-modal__overlay" aria-hidden="true" />
-      <div
-        aria-labelledby={labelledBy}
-        aria-modal="true"
-        className={`gb-modal__dialog ${className}`}
-        role="dialog"
-      >
-        {children}
-      </div>
-      <button
-        aria-label="닫기"
-        className="gb-modal__close"
-        onClick={onClose}
-        ref={closeRef}
-        type="button"
-      >
-        ×
-      </button>
-    </div>,
-    document.body,
-  )
-}
 
 function captureVideoFrame(video) {
   const canvas = document.createElement('canvas')
@@ -476,12 +473,15 @@ function PolaroidEditor({
 
 function QRModal({ imageUrl, onBack, onClose }) {
   const [qrDataUrl, setQrDataUrl] = useState('')
-  const [error, setError] = useState('')
+  const [error, setError] = useTemporaryMessage()
+  const [isGenerating, setIsGenerating] = useState(Boolean(imageUrl))
 
   useEffect(() => {
     let ignore = false
 
     async function makeCode() {
+      setIsGenerating(true)
+      setError('')
       try {
         const dataUrl = await QRCode.toDataURL(imageUrl, {
           margin: 1,
@@ -491,9 +491,15 @@ function QRModal({ imageUrl, onBack, onClose }) {
             light: '#ffffff',
           },
         })
-        if (!ignore) setQrDataUrl(dataUrl)
+        if (!ignore) {
+          setQrDataUrl(dataUrl)
+          setIsGenerating(false)
+        }
       } catch (requestError) {
-        if (!ignore) setError(requestError.message)
+        if (!ignore) {
+          setError(requestError.message)
+          setIsGenerating(false)
+        }
       }
     }
 
@@ -502,7 +508,7 @@ function QRModal({ imageUrl, onBack, onClose }) {
     return () => {
       ignore = true
     }
-  }, [imageUrl])
+  }, [imageUrl, setError])
 
   return (
     <div className="gb-qr" role="dialog" aria-modal="true">
@@ -510,7 +516,7 @@ function QRModal({ imageUrl, onBack, onClose }) {
         {qrDataUrl ? (
           <img src={qrDataUrl} alt="완성 이미지로 연결되는 QR 코드" />
         ) : (
-          <p>{error || 'QR 코드를 준비하는 중입니다.'}</p>
+          <p role="status">{error || (isGenerating ? 'QR 코드를 준비하는 중입니다.' : '')}</p>
         )}
       </div>
       <div className="gb-qr__actions">
@@ -518,7 +524,7 @@ function QRModal({ imageUrl, onBack, onClose }) {
           ↩
         </button>
         <button aria-label="닫기" onClick={onClose} type="button">
-          ×
+          <span className="gb-close-icon" aria-hidden="true">×</span>
         </button>
       </div>
     </div>
@@ -533,7 +539,7 @@ function PhotoBooth({ onClose, onCreated }) {
   const [imageSrc, setImageSrc] = useState('')
   const [form, setForm] = useState(DEFAULT_PHOTO_FORM)
   const [isSaving, setIsSaving] = useState(false)
-  const [error, setError] = useState('')
+  const [error, setError] = useTemporaryMessage()
   const [publicImageUrl, setPublicImageUrl] = useState('')
   const [resultUrl, setResultUrl] = useState('')
   const [resultAspectRatio, setResultAspectRatio] = useState(undefined)
@@ -552,7 +558,7 @@ function PhotoBooth({ onClose, onCreated }) {
     setPublicImageUrl('')
     setError('')
     setStep('edit')
-  }, [])
+  }, [setError])
 
   function updateForm(field, value) {
     setForm((current) => ({ ...current, [field]: value }))
@@ -572,7 +578,7 @@ function PhotoBooth({ onClose, onCreated }) {
       setResultAspectRatio(aspectRatio)
       setStep('preview')
     } catch (requestError) {
-      setError(requestError.message)
+      setError(requestError.message, { persistent: true })
     } finally {
       renderingRef.current = false
     }
@@ -693,7 +699,7 @@ function PhotoBooth({ onClose, onCreated }) {
               onClick={handleShare}
               type="button"
             >
-              ⤴
+              <img src={shareIcon} width="20" height="20" alt="" aria-hidden="true" />
             </button>
             <button
               aria-label="QR 코드"
@@ -701,7 +707,7 @@ function PhotoBooth({ onClose, onCreated }) {
               onClick={handleOpenQr}
               type="button"
             >
-              ▦
+              <img src={qrIcon} width="24" height="24" alt="" aria-hidden="true" />
             </button>
           </div>
         </>
@@ -715,10 +721,9 @@ function PhotoBooth({ onClose, onCreated }) {
         />
       )}
 
-      {error && <p className="gb-modal-error">{error}</p>}
+      <PhotoBoothMessage key={step} message={error} />
     </GuestbookModal>
   )
 }
 
-export { GuestbookModal }
 export default PhotoBooth

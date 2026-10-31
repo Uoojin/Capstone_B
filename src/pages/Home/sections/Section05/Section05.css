@@ -1,0 +1,56 @@
+/* Section05: base styles and the existing responsive overrides. */
+.home-sync-finale {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 8vw;
+  background: #fff;
+}
+
+.home-sync-finale-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(32px, 3.5vw, 72px);
+}
+
+.home-sync-finale-description {
+  max-width: 100%;
+  color: #000;
+  font-family: var(--font-family);
+  font-size: clamp(14px, 1vw, 20px);
+  font-weight: 500;
+  line-height: 1.85;
+  text-align: center;
+}
+
+.home-sync-finale-description span {
+  display: block;
+  white-space: nowrap;
+}
+
+@media (max-width: 767px) {
+  .home-sync-finale-description span {
+    white-space: normal;
+    word-break: keep-all;
+  }
+}
+
+.home-sync-finale img {
+  display: block;
+  width: 60%;
+  height: auto;
+}
+
+@media (max-width: 767px) {
+
+  .home-sync-finale {
+    padding: 20px;
+  }
+
+  .home-sync-finale img {
+    width: 100%;
+  }
+}
