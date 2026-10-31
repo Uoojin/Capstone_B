@@ -20,11 +20,36 @@ export default function Footer() {
         <img src={youtubeIcon} alt="YouTube" width="24" height="24" />
         <img src={socialIcon} alt="추가 SNS" width="24" height="24" />
       </div>
-      <div className="site-footer__address">
-        <p>16038 경기도 의왕시 계원대학로 66(내손동) 계원예술대학교</p>
-        <p>66 Kaywondaehaengno (Naeson-dong), Uiwang-si, Gyeonggi-do, Korea</p>
-        <p>©2026. LET'S SYNC! All Right Reserved.</p>
+
+      <div className="site-footer__socials" aria-label="SNS">
+        <a
+          href="https://www.instagram.com/kw_dmd/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram"
+        >
+          <img src={instagramIcon} alt="" width="24" height="24" />
+        </a>
+
+        <a
+          href="https://www.youtube.com/@계원예술대학교디지털"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="YouTube"
+        >
+          <img src={youtubeIcon} alt="" width="24" height="24" />
+        </a>
+
+        <a
+          href="https://m.blog.naver.com/PostList.naver?blogId=kaywon_dmd&tab=1"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="추가 SNS"
+        >
+          <img src={socialIcon} alt="" width="24" height="24" />
+        </a>
       </div>
+
       <div className="site-footer__about">
         <p>Kaywon University of Arts&amp;Design</p>
         <p>Digital Media Design</p>

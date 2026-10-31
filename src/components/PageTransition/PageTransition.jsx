@@ -10,7 +10,7 @@ const STAGGER = 140
 const LIFT = 54
 const MARK_COUNT = 5
 const WAVE_MS = STAGGER * (MARK_COUNT - 1) + HOP
-const LOADING_DESTINATIONS = new Set(['/', '/project', '/student', '/syncopate', '/guestbook'])
+const LOADING_DESTINATIONS = new Set(['/', '/project', '/student', '/syncopate', '/guestbook', '/curriculum', '/credit'])
 const SHAPES = ['circle', 'triangle', 'sparkle', 'square']
 const TURNS = { circle: 0, triangle: 120, sparkle: 90, square: 90 }
 const pathOf = location => location.pathname.replace(/\/+$/, '') || '/'
