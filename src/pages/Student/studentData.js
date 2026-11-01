@@ -1328,7 +1328,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'hjinkwahk@gmail.com ',
-    profileUrl: null,
+    profileUrl: 'https://wise-flamingo-43d.notion.site/UX-3955cbe66216801f9e0cd537596bcf61',
 
     // 05. 참여 프로젝트
     projectId: 'project-10',
@@ -1350,8 +1350,8 @@ export const students = [
     interview: '한눈에 읽히도록 연결하는 디자이너 김민찬입니다.',
 
     // 04. 연락처 및 포트폴리오
-    contact: 'rbnawoz@gmail.com',
-    profileUrl: null,
+    contact: 'kmchello@naver.com',
+    profileUrl: 'https://kmchello.github.io/',
 
     // 05. 참여 프로젝트
     projectId: 'project-10',
@@ -1374,7 +1374,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'kimth8025#gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://gkrtkf1.github.io/',
 
     // 05. 참여 프로젝트
     projectId: 'project-10',
@@ -1397,7 +1397,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'leesy040711@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://claude.ai/artifact/43VZbWsJcWDCxCP7qirokA',
 
     // 05. 참여 프로젝트
     projectId: 'project-10',
@@ -1420,7 +1420,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'henry1227@naver.com',
-    profileUrl: null,
+    profileUrl: 'https://hoeyoon-chung-artbook.honeymesa130.chatgpt.site/',
 
     // 05. 참여 프로젝트
     projectId: 'project-10',
@@ -1439,11 +1439,11 @@ export const students = [
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
     role: 'DESIGNER',
-    interview: '시각적 즐거움과 명확한 메시지를 전하는 디자이너 조태희입니다.',
+    interview: '즐거운 몰입을 만드는 디자이너 조태희입니다.',
 
     // 04. 연락처 및 포트폴리오
     contact: 'anikajo0316@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://www.figma.com/proto/1rwv4hA38JQ2BIcpIMJvfT/Untitled?node-id=2012-240&starting-point-node-id=2012%3A240&t=CBJ49zxS3xyVZPdF-1',
 
     // 05. 참여 프로젝트
     projectId: 'project-10',
@@ -1600,11 +1600,11 @@ export const students = [
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
     role: 'PROGRAMMER',
-    interview: '개성있는 개발자 윤서진입니다',
+    interview: '직접 만들고 나은 방법을 발견하는 개발자 윤서진 입니다.',
 
     // 04. 연락처 및 포트폴리오
     contact: '010-8337-6425',
-    profileUrl: null,
+    profileUrl: '',
 
     // 05. 참여 프로젝트
     projectId: 'project-11',
