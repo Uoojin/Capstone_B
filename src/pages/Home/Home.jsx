@@ -5,6 +5,8 @@ import mobilePosterImage from '../../assets/mobileMain.svg'
 import Hero from './sections/Hero/Hero.jsx'
 import Section01 from './sections/Section01/Section01.jsx'
 import Video from './sections/Video/Video.jsx'
+import DesignMotifs from './sections/DesignMotifs/DesignMotifs.jsx'
+import RollingTypography from './sections/RollingTypography/RollingTypography.jsx'
 import Section03 from './sections/Section03/Section03.jsx'
 import Section05 from './sections/Section05/Section05.jsx'
 import './Home.css'
@@ -25,6 +27,8 @@ function DesktopHome() {
       <Hero />
       <Section01 />
       <Video filmRef={filmRef} />
+      <DesignMotifs />
+      <RollingTypography />
       <Section03 />
       <Section05 />
     </main>

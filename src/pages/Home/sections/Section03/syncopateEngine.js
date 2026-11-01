@@ -6,7 +6,7 @@ export function startSyncopate(canvas) {
   const W = 1920, H = 320;
   const BG = [255, 255, 255];
   const INK = [253, 0, 160];
-  const FONT_FAMILY = '"Helvetica Neue", Helvetica, Arial, sans-serif';
+  const FONT_FAMILY = '"Helvetica Neue", "Pretendard"';
   const FONT_WEIGHT = 500;
 
   // Timeline is laid out in 59.94 fps ticks; the video is one motion-blurred exposure per 29.97 fps frame.

@@ -1,7 +1,7 @@
 :root {
   --page-padding: 60px;
   --site-header-height: 80px;
-  --font-family: 'Pretendard', Arial, Helvetica, sans-serif;
+  --font-family: var(--font-family-en);
   --color-black: #101010;
   --color-muted: #b3b3b3;
   --color-line: #d8d8d8;

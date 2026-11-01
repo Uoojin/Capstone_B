@@ -1,0 +1,477 @@
+.design-motifs {
+    font-family: var(--font-family);
+    color: #454545;
+    background: #fff;
+    font-synthesis: none
+}
+
+.design-motifs * {
+    box-sizing: border-box
+}
+
+.design-motifs {
+    height: 100svh;
+    position: relative;
+    overflow: hidden;
+    background: #fff
+}
+
+.design-motifs .header {
+    position: absolute;
+    z-index: 2;
+    left: 3.125%;
+    right: 3.125%;
+    top: 3.7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: clamp(8px, .84vw, 16px);
+    font-weight: 600;
+    letter-spacing: -.03em
+}
+
+.design-motifs .brand {
+    background: #fd00a0;
+    color: #fff;
+    border-radius: 999px;
+    padding: clamp(8px, .8vw, 16px) clamp(13px, 1.25vw, 24px)
+}
+
+.design-motifs .header-actions {
+    display: flex;
+    align-items: stretch;
+    color: #fd00a0
+}
+
+.design-motifs .header-actions span {
+    border: 1px solid #fd00a0;
+    padding: clamp(8px, .8vw, 16px) clamp(13px, 1.25vw, 24px);
+    border-radius: 999px
+}
+
+.design-motifs .header-actions .plus {
+    font-size: 1.6em;
+    line-height: .6;
+    padding-inline: .45em;
+    font-weight: 300
+}
+
+.design-motifs .side-label {
+    position: absolute;
+    top: 50%;
+    left: 3.125%;
+    transform: translateY(-50%);
+    font-size: clamp(10px, 1.04vw, 20px);
+    font-weight: 600;
+    letter-spacing: -.06em
+}
+
+.design-motifs .object-holder {
+    position: absolute;
+    left: calc(29.17% + 1.07vw);
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: min(22.65vw, 435px);
+    aspect-ratio: 1
+}
+
+.design-motifs .object-art {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 435px;
+    height: 435px;
+    transform-origin: 0 0;
+    animation: home-design-motifs-enter .6s both
+}
+
+.design-motifs .object-root {
+    position: absolute;
+    inset: 0;
+    width: 435px;
+    height: 435px
+}
+
+.design-motifs .object-root[data-name="object"] {
+    transform: translate(-50%, -50%)
+}
+
+.design-motifs .motif-nav {
+    position: absolute;
+    left: calc(50% + .52vw);
+    top: 50%;
+    transform: translateY(-50%);
+    height: 100vh;
+    width: 23%;
+    overflow: hidden;
+    --step: min(14.375vw, 276px);
+    pointer-events: none;
+    mask-image: linear-gradient(to bottom, transparent, #000 9%, #000 91%, transparent)
+}
+
+.design-motifs .nav-track {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    transition: transform .8s cubic-bezier(.22, 1, .36, 1);
+    pointer-events: auto
+}
+
+.design-motifs .nav-track button {
+    border: 0;
+    background: none;
+    padding: 0;
+    height: var(--step);
+    display: flex;
+    align-items: flex-start;
+    transform: translateY(-.52em);
+    font: 500 clamp(25px, 3.34vw, 64px)/1 var(--font-family);
+    letter-spacing: -.06em;
+    color: #eaeaea;
+    cursor: pointer;
+    text-align: left;
+    transition: color .5s;
+    white-space: nowrap
+}
+
+.design-motifs .nav-track button.active {
+    color: #454545;
+}
+
+.design-motifs .description {
+    position: absolute;
+    left: calc(87.5% - 13.28vw);
+    top: 50%;
+    transform: translateY(-50%);
+    width: min(22.65vw, 435px);
+    font: 400 clamp(11px, 1.04vw, 20px)/1.55 var(--font-family);
+    letter-spacing: -.03em;
+    word-break: keep-all;
+    animation: home-design-motifs-desc .65s both
+}
+
+.design-motifs .page-count {
+    position: absolute;
+    bottom: 4%;
+    right: 3.125%;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: #b7b7b7;
+    font-size: 10px;
+    letter-spacing: .05em
+}
+
+.design-motifs .page-count span:first-child {
+    color: #fd00a0
+}
+
+.design-motifs .count-line {
+    width: 28px;
+    height: 1px;
+    background: #ddd
+}
+
+.design-motifs .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0)
+}
+
+@keyframes home-design-motifs-enter {
+    from {
+        opacity: 0;
+        filter: blur(4px)
+    }
+
+    to {
+        opacity: 1;
+        filter: blur(0)
+    }
+}
+
+@keyframes home-design-motifs-desc {
+    from {
+        opacity: 0;
+        transform: translateY(calc(-50% + 8px))
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(-50%)
+    }
+}
+
+@media(max-width:700px) {
+    .design-motifs .header {
+        top: 24px;
+        left: 20px;
+        right: 20px
+    }
+
+    .design-motifs .side-label {
+        top: 16%;
+        left: 20px;
+        font-size: 10px
+    }
+
+    .design-motifs .object-holder {
+        top: 38%;
+        left: 50%;
+        width: min(55vw, 280px)
+    }
+
+    .design-motifs .motif-nav {
+        top: 66%;
+        left: 20px;
+        width: calc(100% - 40px);
+        height: 80px;
+        --step: 70px;
+        mask-image: linear-gradient(to bottom, transparent, #000 20%, #000 80%, transparent)
+    }
+
+    .design-motifs .nav-track button {
+        font-size: 32px
+    }
+
+    .design-motifs .description {
+        left: 20px;
+        top: 78%;
+        transform: none;
+        width: calc(100% - 40px);
+        font-size: 14px;
+        max-width: 400px;
+        animation: none
+        
+    }
+
+    .design-motifs .page-count {
+        bottom: 24px;
+        right: 20px
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+
+    .design-motifs *,
+    .design-motifs *::before,
+    .design-motifs *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .001ms !important
+    }
+}
+
+.design-motifs .object-root[data-name="object"] {
+    transform: none
+}
+
+.design-motifs [data-node-id="14021:18297"] {
+    translate: -50% 0
+}
+
+.design-motifs .particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0
+}
+
+.design-motifs .particle {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    width: 18px;
+    height: 18px;
+    margin: -9px;
+    color: #e7e7e7;
+    opacity: .52;
+    will-change: transform
+}
+
+.design-motifs .particle svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    transform: rotate(var(--angle))
+}
+
+.design-motifs .particle path {
+    fill: currentColor
+}
+
+.design-motifs .side-label,
+.design-motifs .object-holder,
+.design-motifs .motif-nav,
+.design-motifs .description,
+.design-motifs .page-count {
+    z-index: 1
+}
+
+.design-motifs .description {
+    left: auto;
+    right: 3.125%;
+    width: min(20.3vw, 390px);
+    text-align: justify;
+    text-wrap: balance
+}
+
+@media(max-width:700px) {
+    .design-motifs .description {
+        left: auto;
+        right: 20px;
+        width: calc(100% - 60px);
+        max-width: 360px
+    }
+}
+
+.design-motifs {
+    transition: background-color .45s, color .45s
+}
+
+.design-motifs .object-art img {
+    transition: filter .45s
+}
+
+.design-motifs .color-toggle {
+    position: absolute;
+    z-index: 2;
+    left: 3.125%;
+    bottom: 4%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 0;
+    border: 0;
+    background: none;
+    color: #0f0f0f;
+    font: 600 10px var(--font-family);
+    letter-spacing: .04em;
+    cursor: pointer;
+    transition: color .45s
+}
+
+.design-motifs .color-toggle__swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #fd00a0;
+    transition: background-color .45s
+}
+
+.design-motifs .color-toggle:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px
+}
+
+.design-motifs.page--pink {
+    background: #fd00a0;
+    color: #fff
+}
+
+.design-motifs.page--pink .object-art img {
+    filter: brightness(0) invert(1)
+}
+
+.design-motifs.page--pink .brand {
+    background: #fff;
+    color: #fd00a0
+}
+
+.design-motifs.page--pink .header-actions {
+    color: #fff
+}
+
+.design-motifs.page--pink .header-actions span {
+    border-color: #fff
+}
+
+.design-motifs.page--pink .nav-track button {
+    color: rgba(255, 255, 255, .25)
+}
+
+.design-motifs.page--pink .nav-track button.active {
+    color: #fff
+}
+
+.design-motifs.page--pink .particle {
+    color: #fff;
+    opacity: .2
+}
+
+.design-motifs.page--pink .page-count {
+    color: rgba(255, 255, 255, .55)
+}
+
+.design-motifs.page--pink .page-count span:first-child {
+    color: #fff
+}
+
+.design-motifs.page--pink .count-line {
+    background: rgba(255, 255, 255, .45)
+}
+
+.design-motifs.page--pink .color-toggle {
+    color: #fff
+}
+
+.design-motifs.page--pink .color-toggle__swatch {
+    background: #fff
+}
+
+.design-motifs .display-toggles {
+    position: absolute;
+    z-index: 2;
+    left: 3.125%;
+    bottom: 4%;
+    display: flex;
+    align-items: center;
+    gap: 24px
+}
+
+.design-motifs .display-toggles .color-toggle {
+    position: static
+}
+
+.design-motifs .particle-toggle {
+    padding: 7px 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: 600 10px var(--font-family);
+    letter-spacing: .04em;
+    cursor: pointer
+}
+
+.design-motifs .particle-toggle:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px
+}
+
+@media(max-width:700px) {
+    .design-motifs .display-toggles {
+        left: 20px;
+        bottom: 24px;
+        gap: 16px
+    }
+}
+
+/* Four source input stages, with the artwork itself fixed to the viewport. */
+.design-motifs-scroll {
+    position: relative;
+    height: 400svh;
+}
+
+.design-motifs-scroll>.design-motifs {
+    position: sticky;
+    top: 0;
+    height: 100svh;
+}

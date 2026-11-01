@@ -46,7 +46,7 @@
 
 .route-loading__label {
   position: relative;
-  font-family: 'Helvetica Neue', 'Archivo', Helvetica, Arial, sans-serif;
+  font-family: var(--font-family);
   font-weight: 500;
   font-size: 14px;
   letter-spacing: .02em;

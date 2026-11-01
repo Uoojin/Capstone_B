@@ -9,7 +9,7 @@
   overflow: hidden;
   position: relative;
   user-select: none;
-  font-family: -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif;
+  font-family: var(--font-family);
   cursor: default;
 }
 

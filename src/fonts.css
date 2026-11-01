@@ -1,0 +1,24 @@
+@font-face {
+  font-family: 'Pretendard';
+  src: url('./assets/fonts/PretendardVariable.woff2') format('woff2');
+  font-weight: 45 920;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-family-en: 'Helvetica Neue', 'Pretendard';
+  --font-family-ko: 'Pretendard';
+}
+
+[data-text-font='en'] {
+  --font-family: var(--font-family-en);
+  font-family: var(--font-family) !important;
+}
+[data-text-font='ko'] {
+  --font-family: var(--font-family-ko);
+  font-family: var(--font-family) !important;
+}
+input, textarea, select, option { font-family: var(--font-family); }
+/* The generated outline must mirror the family of its complete HTML label. */
+[data-text-font] .home-rounded-stroke-layer text { font-family: var(--font-family) !important; }

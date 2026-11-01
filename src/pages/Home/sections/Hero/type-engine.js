@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars, no-unreachable, no-empty -- Preserve the legacy engine and intentionally disabled drawing paths during integration. */
 // Legacy engine retained verbatim apart from its host, assets, and lifecycle adapters.
+import { fontFamilyForText } from '../../../../utils/textFonts.js';
 import { createArtworkMasks, createContactMotion, createContactParticles, stepSecondaryRecoil } from './sync-contact-motion.js';
 
 export default function startTypeEngine({ host, canvas, assetMap, placementSeed }) {
@@ -1474,15 +1475,15 @@ export default function startTypeEngine({ host, canvas, assetMap, placementSeed 
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
             ctx.fillStyle = 'rgba(11,11,10,0.62)';
-            ctx.font = '600 16px "JetBrains Mono", ui-monospace, sans-serif';
+            ctx.font = `600 16px ${fontFamilyForText(info.name)}`;
             ctx.fillText(info.name, sx, textY - 18);
 
             ctx.fillStyle = 'rgba(11,11,10,0.62)';
-            ctx.font = '400 13px "JetBrains Mono", ui-monospace, sans-serif';
+            ctx.font = `400 13px ${fontFamilyForText(info.category)}`;
             ctx.fillText(info.category, sx, textY + 4);
 
             ctx.fillStyle = 'rgba(11,11,10,0.62)';
-            ctx.font = '400 12px "JetBrains Mono", ui-monospace, sans-serif';
+            ctx.font = `400 12px ${fontFamilyForText(info.category)}`;
             ctx.restore();
         }
     }
