@@ -522,9 +522,9 @@ function ArchiveGuide() {
       <aside ref={bubbleRef} id="archive-how-to-sync" className={`archive-how-to-sync${isOpen ? ' is-open' : ''}`} role="tooltip" aria-hidden={!isOpen} aria-labelledby="archive-how-to-sync-title">
         <h2 id="archive-how-to-sync-title">HOW TO SYNC?</h2>
         <ul>
-          <li>CLICK 오브제의 SYNC 횟수 보기</li>
-          <li>PRESS 길게 눌러 모으기</li>
-          <li>DRAG 끌어서 만나기</li>
+          <li>CLICK: 오브제의 SYNC 횟수 보기</li>
+          <li>PRESS: 길게 눌러 모으기</li>
+          <li>DRAG: 끌어서 만나기</li>
         </ul>
       </aside>
       <p>당기고, 닿고, 스파크!</p>

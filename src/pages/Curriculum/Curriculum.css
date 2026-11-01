@@ -106,6 +106,12 @@
   object-fit: contain;
 }
 
+#curriculum-convergence-title span {
+  flex-basis: .625em;
+  width: .625em;
+  height: .625em;
+}
+
 .curriculum-convergence {
   margin-top: calc(220 / 19.2 * var(--curriculum-scale));
 }

@@ -103,10 +103,6 @@ export default function Project() {
     : detailProjectOrder[(detailPosition + 1) % detailProjectOrder.length]?.project
 
   useLayoutEffect(() => {
-    if (activeDetailIndex !== null) detailScrollerRef.current.scrollTop = 0
-  }, [activeDetailIndex])
-
-  useLayoutEffect(() => {
     if (activeDetailIndex === null) return undefined
     const title = detailScrollerRef.current.querySelector('.detail-title')
     const link = detailScrollerRef.current.querySelector('.site-link')
@@ -344,6 +340,14 @@ export default function Project() {
       window.scrollTo(scrollX, scrollY)
     }
   }, [isDetailOpen, pageReady])
+
+  useLayoutEffect(() => {
+    if (!isDetailOpen || !pageReady) return
+    // Reset after showModal(), when the internal scroller has a visible layout.
+    const scroller = detailScrollerRef.current
+    scroller.scrollTop = 0
+    scroller.scrollLeft = 0
+  }, [activeDetailIndex, isDetailOpen, pageReady])
 
   useEffect(() => {
     if (isMobile || reducedMotion || activeDetailIndex === null) return undefined
@@ -879,7 +883,8 @@ export default function Project() {
             <path d="m5 5 14 14M19 5 5 19" />
           </svg>
         </button>
-        <div className="detail-scroller" ref={detailScrollerRef} tabIndex={0} aria-label="프로젝트 상세 콘텐츠">
+        {/* A fresh scroller also discards the previous project's native scroll-snap/anchor state. */}
+        <div key={activeDetail?.id ?? 'closed'} className="detail-scroller" ref={detailScrollerRef} tabIndex={0} aria-label="프로젝트 상세 콘텐츠">
           {activeDetail && (
             <>
               <article className="detail-section detail-hero" data-project-id={activeDetail.id}>
