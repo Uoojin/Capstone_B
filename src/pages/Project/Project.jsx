@@ -21,6 +21,15 @@ const { subscribe: subscribeToDesktopTitleViewport, getSnapshot: getDesktopTitle
 const clamp = (value, min, max) => Math.min(Math.max(value, min), max)
 const signedAngleDistance = (from, to = TOP_FOCUS_ANGLE) => ((from - to + 540) % 360) - 180
 
+function cardImageStyle(project, hoverImage) {
+  const style = imageBackgroundStyle(project.cardImage)
+  return hoverImage ? {
+    ...style,
+    backgroundImage: `var(--project-hover-background, ${style.backgroundImage})`,
+    '--project-hover-source': imageBackgroundStyle(hoverImage).backgroundImage,
+  } : style
+}
+
 export default function Project() {
   const location = useLocation()
   const navigate = useNavigate()
@@ -32,6 +41,7 @@ export default function Project() {
   const [selectedFilters, setSelectedFilters] = useState([])
   const [openFilter, setOpenFilter] = useState(null)
   const [activeDetailIndex, setActiveDetailIndex] = useState(null)
+  const [loadedHoverImages, setLoadedHoverImages] = useState({})
   const [isListVisible, setIsListVisible] = useState(false)
   const [gridUpdating, setGridUpdating] = useState(false)
   const [indexY, setIndexY] = useState(0)
@@ -101,6 +111,20 @@ export default function Project() {
     : detailProjectOrder[(detailPosition - 1 + detailProjectOrder.length) % detailProjectOrder.length]?.project
   const nextProject = detailPosition < 0 ? null
     : detailProjectOrder[(detailPosition + 1) % detailProjectOrder.length]?.project
+
+  useEffect(() => {
+    let active = true
+    projects.forEach((project) => {
+      if (!project.hoverImage) return
+      const image = new Image()
+      image.src = project.hoverImage
+      // Keep the original image until the hover asset is decoded and ready to paint.
+      image.decode().then(() => {
+        if (active) setLoadedHoverImages((loaded) => ({ ...loaded, [project.id]: project.hoverImage }))
+      }).catch(() => {})
+    })
+    return () => { active = false }
+  }, [])
 
   useLayoutEffect(() => {
     if (activeDetailIndex === null) return undefined
@@ -751,8 +775,8 @@ export default function Project() {
                   }}
                 >
                   <button className="project-hit" type="button" aria-label={`${project.name} 상세 보기`}>
-                    <span className="project-face" style={imageBackgroundStyle(project.cardImage)} />
-                    <span className="project-face back" style={imageBackgroundStyle(project.cardImage)} />
+                    <span className="project-face" style={cardImageStyle(project, loadedHoverImages[project.id])} />
+                    <span className="project-face back" style={cardImageStyle(project, loadedHoverImages[project.id])} />
                   </button>
                   <div className="card-label">
                     <div className="team-label">{project.team}</div>
@@ -839,7 +863,7 @@ export default function Project() {
                     aria-label={`${project.team} ${project.name}`}
                     onClick={() => openProjectById(project.id)}
                   >
-                    <span className="list-card-media" style={imageBackgroundStyle(project.cardImage)} />
+                    <span className="list-card-media" style={cardImageStyle(project, loadedHoverImages[project.id])} />
                     <span className="list-card-caption">
                       <span className="list-card-name">{project.name}</span>
                       <span className="list-card-keywords">{isMobile ? project.team : project.tags.join(' · ')}</span>

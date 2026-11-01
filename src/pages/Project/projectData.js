@@ -1,3 +1,5 @@
+import letsSyncHoverImage from '../../assets/projects/hover/project01_LETSSYNC_hover.webp'
+
 // 실제 정보는 이 파일에 입력합니다. ID는 이름과 무관한 고정 식별자입니다.
 // 이미지 키: 실제 파일명의 이름 부분만 입력 (대소문자 유지, 예: aqui / Chak / POP-ING).
 // memberIds: 학생 ID를 표시할 순서대로 입력 (예: ['student-001', 'student-002']).
@@ -15,6 +17,7 @@ export const projects = [
 
     // 02. 이미지 파일명 생성용 (확장자 및 경로 제외)
     imageKey: 'LETSSYNC',
+    hoverImage: letsSyncHoverImage,
     teamImageKey: 'LETSSYNC',
 
     // 03. 프로젝트 카테고리 (categories.js 참고)

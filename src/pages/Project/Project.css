@@ -78,6 +78,11 @@
   filter: brightness(0.72);
 }
 
+.project-hit:hover .project-face,
+.list-card:hover .list-card-media {
+  --project-hover-background: var(--project-hover-source);
+}
+
 .card-label {
   position: absolute;
   top: calc(100% + 60px);
