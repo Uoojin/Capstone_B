@@ -4,45 +4,56 @@
   min-height: 65dvh;
   display: flex;
   flex-direction: column;
-  gap: clamp(100px, 12.8vw, 246px);
-  padding-top: clamp(120px, 12vw, 230px);
+  /* Move only the intro upward; compensate the gap to preserve the canvas position. */
+  gap: calc(clamp(100px, 12.8vw, 246px) + clamp(120px, 12vw, 230px) - clamp(80px, 8vw, 154px));
+  padding-top: clamp(80px, 8vw, 154px);
   padding-bottom: clamp(40px, 5vw, 80px);
   background: #fff;
 }
 
 .home-sync-video-intro {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  column-gap: 17.2vw;
-  align-items: end;
-  margin-inline: 12vw;
+  position: relative;
+  /* Match Rolling Typography stage width so cqw typography resolves identically. */
+  container-type: inline-size;
+  margin-inline: 3.17vw;
+  /* Preserve the old heading's two-line height so the motion canvas stays put. */
+  min-height: calc(clamp(28px, 3.76cqw, 68px) * 2.04);
 }
 
 .home-sync-video-title {
+  position: absolute;
+  top: 0;
+  left: 8.15%;
   margin: 0;
   width: max-content;
   color: #434343;
   font-family: var(--font-family-en);
-  font-size: clamp(40px, 3.65vw, 68px);
-  font-weight: 500;
-  line-height: 1.02;
-  letter-spacing: -.065em;
+  font-size: clamp(28px, 3.76cqw, 68px);
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -.075em;
   text-align: left;
 }
 
 .home-sync-video-title span {
   display: block;
-  margin-left: 2.15em;
+  margin-left: 90px;
 }
 
 .home-sync-video-description {
+  position: absolute;
+  /* Rolling intro offsets: description 20% minus heading 14.5% of stage height. */
+  top: calc((100svh - 6.34vw) * .055);
+  left: 58.8%;
+  width: 30.5%;
   margin: 0;
   min-width: 0;
   color: #000;
   font-family: var(--font-family-ko);
-  font-size: clamp(14px, .94vw, 18px);
-  font-weight: 400;
-  line-height: 1.85;
+  font-size: clamp(11px, 1.05cqw, 20px);
+  font-weight: 500;
+  line-height: 1.65;
+  letter-spacing: -.042em;
   text-align: left;
   word-break: keep-all;
 }
