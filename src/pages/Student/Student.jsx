@@ -181,7 +181,7 @@ export default function Student() {
                         <span className="back-value">{item.contact}</span>
                       </span>
                       <span className="back-meta-row">
-                        <span className="back-label">Profile</span>
+                        <span className="back-label">Portfolio</span>
                         <span className="back-link" onClick={(event) => handleLinkClick(event, item.profileUrl)}>
                           site &gt;
                         </span>

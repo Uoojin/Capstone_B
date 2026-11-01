@@ -85,8 +85,8 @@ html.gb-page-scrollbar-hidden::-webkit-scrollbar {
   margin: 0;
   color: var(--gb-pink);
   font-family: var(--font-family);
-  font-size: clamp(48px, 4.167vw, 80px);
-  font-weight: 800;
+  font-size: clamp(48px, 15vw, 100px);
+  font-weight: 600;
   line-height: 1.1;
   letter-spacing: -.045em;
 }
@@ -94,9 +94,9 @@ html.gb-page-scrollbar-hidden::-webkit-scrollbar {
 .gb-hero__description {
   max-width: 100%;
   margin: 20px 0 0;
-  color: var(--gb-pink);
-  font-size: clamp(16px, 1.28vw, 24px);
-  font-weight: 500;
+  color:  #8d878f;
+  font-size: clamp(16px, 1vw, 24px);
+  font-weight: 400;
   line-height: 1.55;
   letter-spacing: -.045em;
   word-break: keep-all;
@@ -111,10 +111,10 @@ html.gb-page-scrollbar-hidden::-webkit-scrollbar {
   display: flex;
   flex-shrink: 0;
   justify-content: center;
-  gap: clamp(14px, 1.3vw, 24px);
-  width: min(calc(100% - 40px), 26.25vw);
+  gap: clamp(14px, 1vw, 20px);
+  width: min(calc(100% - 40px), 20vw);
   min-width: 360px;
-  margin-top: 44px;
+  margin-top: 60px;
 }
 
 .gb-floating-actions {
@@ -152,14 +152,14 @@ html.gb-page-scrollbar-hidden::-webkit-scrollbar {
   display: flex;
   flex: 1;
   min-width: 0;
-  min-height: clamp(68px, 4.6vw, 88px);
+  min-height: clamp(68px, 4vw, 88px);
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 2px;
   padding: 12px;
   border: 1px solid var(--gb-pink);
-  border-radius: clamp(14px, 1.15vw, 22px);
+  border-radius: clamp(14px, 2vw, 2px);
 }
 
 .gb-hero__actions .gb-button--secondary {
@@ -178,7 +178,7 @@ html.gb-page-scrollbar-hidden::-webkit-scrollbar {
 }
 
 .gb-hero__button-title {
-  font-size: clamp(20px, 1.4vw, 27px);
+  font-size: clamp(20px, 1vw, 25px);
   font-weight: 500;
   line-height: 1.3;
   letter-spacing: -.045em;
@@ -186,7 +186,7 @@ html.gb-page-scrollbar-hidden::-webkit-scrollbar {
 }
 
 .gb-hero__button-description {
-  font-size: clamp(12px, .875vw, 16px);
+  font-size: clamp(12px, .8vw, 15px);
   font-weight: 400;
   line-height: 1.4;
   letter-spacing: -.045em;
@@ -451,7 +451,7 @@ html.gb-page-scrollbar-hidden::-webkit-scrollbar {
 
   .gb-hero {
     min-height: 380px;
-    height: calc(61.3svh - var(--site-header-height));
+    height: calc(71svh - var(--site-header-height));
   }
 
   .gb-hero__description {
