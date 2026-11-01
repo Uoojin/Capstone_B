@@ -104,9 +104,9 @@
     height: 100vh;
     width: 23%;
     overflow: hidden;
-    --step: min(14.375vw, 276px);
+    --step: 14.375vw;
     pointer-events: none;
-    mask-image: linear-gradient(to bottom, transparent, #000 9%, #000 91%, transparent)
+    mask-image: linear-gradient(to bottom, transparent, #454545 9%, #454545 91%, transparent)
 }
 
 .design-motifs .nav-track {
@@ -126,9 +126,11 @@
     padding: 0;
     height: var(--step);
     display: flex;
+    flex-direction: column;
     align-items: flex-start;
-    transform: translateY(-.52em);
-    font: 500 clamp(25px, 3.34vw, 64px)/1 var(--font-family);
+    gap: clamp(6px, .78125vw, 16px);
+    transform: translateY(-.9em);
+    font: 700 clamp(25px, 3.125vw, 64px)/1 var(--font-family-en);
     letter-spacing: -.06em;
     color: #eaeaea;
     cursor: pointer;
@@ -141,13 +143,25 @@
     color: #454545;
 }
 
+.design-motifs .motif-subtitle {
+    font: 600 clamp(16px, 1.5625vw, 32px)/1.2 var(--font-family-ko);
+    letter-spacing: -.03em;
+    color: inherit;
+    transition: color .5s;
+}
+
+.design-motifs .nav-track button.active .motif-subtitle {
+    color: #b3b3b3;
+}
+
 .design-motifs .description {
     position: absolute;
     left: calc(87.5% - 13.28vw);
-    top: 50%;
+    top: 49%;
     transform: translateY(-50%);
     width: min(22.65vw, 435px);
-    font: 400 clamp(11px, 1.04vw, 20px)/1.55 var(--font-family);
+    font: 400 clamp(11px, .78125vw, 16px)/1.55 var(--font-family-ko);
+    color: #454545;
     letter-spacing: -.03em;
     word-break: keep-all;
     animation: home-design-motifs-desc .65s both
@@ -232,7 +246,7 @@
         width: calc(100% - 40px);
         height: 80px;
         --step: 70px;
-        mask-image: linear-gradient(to bottom, transparent, #000 20%, #000 80%, transparent)
+        mask-image: linear-gradient(to bottom, transparent, #454545 20%, #454545 80%, transparent)
     }
 
     .design-motifs .nav-track button {
@@ -317,11 +331,10 @@
 }
 
 .design-motifs .description {
-    left: auto;
-    right: 3.125%;
-    width: min(20.3vw, 390px);
-    text-align: justify;
-    text-wrap: balance
+    left: 74%;
+    right: auto;
+    width: min(22.65vw, 435px);
+    text-align: left;
 }
 
 @media(max-width:700px) {
@@ -352,7 +365,7 @@
     padding: 7px 0;
     border: 0;
     background: none;
-    color: #0f0f0f;
+    color: #454545;
     font: 600 10px var(--font-family);
     letter-spacing: .04em;
     cursor: pointer;
@@ -399,6 +412,14 @@
 }
 
 .design-motifs.page--pink .nav-track button.active {
+    color: #fff
+}
+
+.design-motifs.page--pink .nav-track button.active .motif-subtitle {
+    color: rgba(255, 255, 255, .65)
+}
+
+.design-motifs.page--pink .description {
     color: #fff
 }
 

@@ -2,7 +2,7 @@
  * Section imports follow the existing base-style order, after interaction CSS. */
 @import "./sections/Video/Video.css";
 @import "./sections/Section01/Section01.css";
-@import "./sections/Section03/Section03.css";
+@import "./sections/typeVideo/typeVideo.css";
 @import "./sections/Section05/Section05.css";
 @import "./sections/Hero/Hero.css";
 

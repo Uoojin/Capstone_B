@@ -22,3 +22,9 @@
 input, textarea, select, option { font-family: var(--font-family); }
 /* The generated outline must mirror the family of its complete HTML label. */
 [data-text-font] .home-rounded-stroke-layer text { font-family: var(--font-family) !important; }
+
+/* Page-specific exception, including the Project dialog in the top layer. */
+:is(.project-page, .credit, .student-page, .detail-view),
+:is(.project-page, .credit, .student-page, .detail-view) * {
+  font-family: 'Pretendard', sans-serif !important;
+}

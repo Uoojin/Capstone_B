@@ -305,6 +305,20 @@
   height: calc(100% + 115 / 19.2 * var(--curriculum-scale));
 }
 
+.curriculum-chart[data-year="2027"] .curriculum-foundation .curriculum-track-headings > :first-child,
+.curriculum-chart[data-year="2027"] .curriculum-foundation .curriculum-course-cell:first-of-type,
+.curriculum-chart[data-year="2027"] .curriculum-foundation-lines i:first-child {
+  grid-column: 2;
+}
+
+.curriculum-chart[data-year="2027"] .curriculum-foundation-lines i {
+  height: calc(100% - 4 * (var(--curriculum-pill-height) + 24 / 19.2 * var(--curriculum-scale)));
+}
+
+.curriculum-chart[data-year="2027"] .curriculum-foundation-lines i:last-child {
+  height: 100%;
+}
+
 .curriculum-advanced {
   margin-top: calc(115 / 19.2 * var(--curriculum-scale));
 }

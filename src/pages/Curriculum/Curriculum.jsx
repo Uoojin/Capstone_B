@@ -53,14 +53,14 @@ function CurriculumChart({ data, year }) {
   // Keep the existing chart's space while a year's course data is pending.
   const { tracks, foundation, advanced } = data || curriculumByYear[2026]
   return (
-    <div className="curriculum-chart" aria-label="학년별 커리큘럼">
+    <div className="curriculum-chart" data-year={year} aria-label="학년별 커리큘럼">
       <div style={{ visibility: data ? undefined : 'hidden' }} aria-hidden={!data || undefined}>
         <div className="curriculum-foundation">
           <div className="curriculum-track-headings">
             {tracks.map((track) => <h3 className="curriculum-pill curriculum-pill--pink" key={track}>{track}</h3>)}
           </div>
           <div className="curriculum-foundation-lines" aria-hidden="true">
-            {[0, 1, 2, 3, 4].map((track) => <i key={track} />)}
+            {tracks.map((track) => <i key={track} />)}
           </div>
           <SemesterRows rows={foundation} tracks={tracks} />
         </div>
@@ -71,7 +71,7 @@ function CurriculumChart({ data, year }) {
           </div>
           <svg className="curriculum-advanced-lines" viewBox="0 0 1000 480" preserveAspectRatio="none" aria-hidden="true">
             <g fill="none" stroke="currentColor" strokeWidth="1" vectorEffect="non-scaling-stroke">
-              <path d="M90 0 V455 M500 0 V455 M295 125 V455 M705 125 V190 M295 125 H705 M910 0 V455" />
+              <path d={`M90 0 V455 M500 0 V455 M295 125 V455 M705 125 V190 M295 125 H705 M910 ${year === 2027 ? 190 : 0} V455`} />
             </g>
           </svg>
           <SemesterRows rows={advanced} tracks={tracks} />

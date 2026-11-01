@@ -152,14 +152,14 @@ html.gb-page-scrollbar-hidden::-webkit-scrollbar {
   display: flex;
   flex: 1;
   min-width: 0;
-  min-height: clamp(68px, 4vw, 88px);
+  min-height: clamp(68px, 2vw, 88px);
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 2px;
   padding: 12px;
   border: 1px solid var(--gb-pink);
-  border-radius: clamp(14px, 2vw, 2px);
+  border-radius: clamp(20px, 2vw, 2px);
 }
 
 .gb-hero__actions .gb-button--secondary {
@@ -223,8 +223,6 @@ html.gb-page-scrollbar-hidden::-webkit-scrollbar {
   max-width: 1180px;
   margin: 28px auto;
   padding: 28px;
-  border: 1px solid #ffd3ec;
-  border-radius: 8px;
   text-align: center;
 }
 

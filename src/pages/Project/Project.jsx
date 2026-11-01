@@ -21,6 +21,15 @@ const { subscribe: subscribeToDesktopTitleViewport, getSnapshot: getDesktopTitle
 const clamp = (value, min, max) => Math.min(Math.max(value, min), max)
 const signedAngleDistance = (from, to = TOP_FOCUS_ANGLE) => ((from - to + 540) % 360) - 180
 
+function isExternalProjectLink(link) {
+  if (!/^https?:\/\/\S+$/i.test(link)) return false
+  try {
+    return ['http:', 'https:'].includes(new URL(link).protocol)
+  } catch {
+    return false
+  }
+}
+
 function cardImageStyle(project, hoverImage) {
   const style = imageBackgroundStyle(project.cardImage)
   return hoverImage ? {
@@ -99,8 +108,8 @@ export default function Project() {
   const desktopTitleBreak = isDesktopTitleViewport && activeDetail && ['project-02', 'project-03', 'project-08'].includes(activeDetail.id)
     ? activeDetail.name.indexOf(' ')
     : -1
-  const projectLink = activeDetail?.link?.trim() || ''
-  const hasProjectLink = /^https?:\/\/\S+$/i.test(projectLink)
+  const projectLink = typeof activeDetail?.link === 'string' ? activeDetail.link.trim() : ''
+  const hasProjectLink = isExternalProjectLink(projectLink)
 
   const isDetailOpen = activeDetail !== null
   const detailProjectOrder = filteredProjects.some(({ project }) => project.id === activeDetail?.id)
@@ -125,34 +134,6 @@ export default function Project() {
     })
     return () => { active = false }
   }, [])
-
-  useLayoutEffect(() => {
-    if (activeDetailIndex === null) return undefined
-    const title = detailScrollerRef.current.querySelector('.detail-title')
-    const link = detailScrollerRef.current.querySelector('.site-link')
-    if (!title || !link) return undefined
-
-    let disposed = false
-    const alignLinkToFirstLine = () => {
-      if (disposed) return
-      const range = document.createRange()
-      range.selectNodeContents(title)
-      const firstLine = Array.from(range.getClientRects()).find((rect) => rect.width > 0)
-      const offset = firstLine ? Math.min(0, firstLine.right - title.getBoundingClientRect().right) : 0
-      link.style.setProperty('--project-link-offset', `${offset}px`)
-    }
-
-    alignLinkToFirstLine()
-    const observer = new ResizeObserver(alignLinkToFirstLine)
-    observer.observe(title)
-    document.fonts.ready.then(alignLinkToFirstLine)
-    document.fonts.addEventListener('loadingdone', alignLinkToFirstLine)
-    return () => {
-      disposed = true
-      observer.disconnect()
-      document.fonts.removeEventListener('loadingdone', alignLinkToFirstLine)
-    }
-  }, [activeDetailIndex])
 
   const getOrbitalTheta = useCallback((index) => {
     const state = carouselRef.current
@@ -223,7 +204,10 @@ export default function Project() {
       const y = state.wheelCenterY - state.radius * Math.cos(thetaRad)
       const focusWeight = clamp(1 - absDistance / orbitalFocusRange, 0, 1)
       const hoverBoost = index === state.hoveredIndex ? 0.06 : 0
-
+      const dimProgress = clamp((absDistance / (state.orbitalAngleStep || 1) - 0.1) / 0.8, 0, 1)
+      // Follow the same position as the card, with a soft start/end at 0 and 0.7.
+      card.style.setProperty('--card-dim-opacity', String(0.7 * dimProgress * dimProgress * (3 - 2 * dimProgress)))
+      
       card.classList.toggle('is-active', index === activeIndex)
       card.style.zIndex = String(Math.round(focusWeight * 1000))
       card.style.transform = `
@@ -232,11 +216,8 @@ export default function Project() {
         rotateZ(${signedDistance}deg)
         translateZ(0)
       `
-      card.style.opacity = String(0.18 + focusWeight * 0.82)
-      card.style.filter = `
-        brightness(${0.56 + focusWeight * 0.44})
-        saturate(${0.42 + focusWeight * 0.58})
-      `
+      card.style.opacity = '1'
+      card.style.filter = 'none'
       if (hit) {
         hit.style.transform = `scale(${0.9 + focusWeight * 0.155 + hoverBoost})`
       }
@@ -912,7 +893,7 @@ export default function Project() {
           {activeDetail && (
             <>
               <article className="detail-section detail-hero" data-project-id={activeDetail.id}>
-                <div className="project-link-row detail-identity">
+                <div className={`project-link-row detail-identity${hasProjectLink ? ' has-project-link' : ''}`}>
                   <h1 className="detail-title" id="detail-title">
                     {desktopTitleBreak < 0 ? activeDetail.name : (
                       <>
@@ -922,14 +903,23 @@ export default function Project() {
                       </>
                     )}
                   </h1>
-                  {hasProjectLink && (
-                    <a className="site-link" href={projectLink} target="_blank" rel="noopener noreferrer" aria-label={`${activeDetail.name} 외부 사이트 새 탭에서 열기`}>
-                      <img src={projectLinkIcon} alt="" aria-hidden="true" />
-                    </a>
-                  )}
                 </div>
                 <div className="detail-intro">
-                  {activeDetail.slogan && <p className="detail-slogan">{activeDetail.slogan}</p>}
+                  {activeDetail.slogan && (
+                    <p className="detail-slogan">
+                      <span className="detail-slogan-sizing" aria-hidden="true">{activeDetail.slogan}</span>
+                      <span className="detail-slogan-row">
+                        <span className="detail-slogan-copy">{activeDetail.slogan}</span>
+                        {hasProjectLink && (
+                          <span className="detail-slogan-action">
+                            <a className="site-link" href={projectLink} target="_blank" rel="noopener noreferrer" aria-label={`${activeDetail.name} 외부 사이트 새 탭에서 열기`}>
+                              <img src={projectLinkIcon} alt="" aria-hidden="true" />
+                            </a>
+                          </span>
+                        )}
+                      </span>
+                    </p>
+                  )}
                   {activeDetail.desc && <p className="detail-desc">{activeDetail.desc}</p>}
                 </div>
                 <dl className="detail-metadata">
@@ -947,6 +937,7 @@ export default function Project() {
                 <div className="detail-media">
                   {activeDetail.image && <img src={activeDetail.image} alt={`${activeDetail.name} 대표 이미지`} />}
                 </div>
+                <button className="scroll-indicator" type="button" aria-label="Scroll to project list" />
               </article>
 
               <article className="detail-section detail-team" aria-label="팀 소개">

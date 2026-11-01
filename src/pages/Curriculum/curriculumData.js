@@ -1,5 +1,5 @@
 // Content transcribed from the existing Curriculum.png design, in display order.
-export const tracks = ['직무 공통', '기획', '디자인', '프로그래밍', '스튜디오']
+export const tracks = ['직무 공통', '기획', '디자인', '프로그래밍', '디지털 콘텐츠 제작']
 
 export const foundation = [
   { semester: '1-1', courses: [['영상 기초'], ['기획 기초'], ['디자인 기초'], ['실감미디어 기초'], []] },
@@ -15,9 +15,26 @@ export const advanced = [
   { semester: '4-2', courses: [['퍼블리셔'], ['포트폴리오 연구'], ['마케팅 & 브랜딩'], [], ['이노베이션 스튜디오']] },
 ]
 
+
+export const newTracks = ['기획', '디자인', '디지털 콘텐츠 제작']
+
+export const newFoundation = [
+  { semester: '1-1', courses: [['UX 기획 기초'], ['UX 디자인 기초', '영상 AI 기초'], ['실감미디어 AI 기초']] },
+  { semester: '1-2', courses: [['UX 콘텐츠 기획'], ['UX 콘텐츠 디자인', '3D 모션그래픽스'], ['AI 바이브 코딩']] },
+  { semester: '2-1', courses: [['미디어 프로토타이핑', '프로젝트 기획'], ['비주얼 커뮤니케이션', 'UI/UX 디자인'], ['융합 프로젝트', '소셜 크리에이팅', '실감형 3D 디자인', 'XR 인터랙티브 콘텐츠']] },
+  { semester: '2-2', courses: [['프로젝트 프로포절', '프로젝트 매니징'], ['경험 디자인', '인터랙션 스튜디오'], ['캡스톤 디자인', '포트폴리오 제작', '데이터 시각화', '실감형 3D 모션', 'XR 융합 프로덕션', '졸업작품 심사']] },
+]
+
+export const newAdvanced = [
+  { semester: '3-1', courses: [['동시대 예술과 디자인'], ['타이포그래피'], ['디지털 미디어 세미나'], ['스타트업 프로젝트'], ['피지컬 컴퓨팅 스튜디오']] },
+  { semester: '3-2', courses: [['디자인과 인간심리'], ['커뮤니케이션 디자인'], ['디지털 미디어 프로토타이핑'], [], ['컨버전스 스튜디오']] },
+  { semester: '4-1', courses: [['UX 라이팅 워크숍'], ['뉴미디어 디자인'], ['디지털 미디어 프로젝트'], [], ['캡스톤 디자인 스튜디오']] },
+  { semester: '4-2', courses: [['퍼블리셔'], ['포트폴리오 연구'], ['마케팅 & 브랜딩'], [], ['이노베이션 스튜디오']] },
+]
+
 export const curriculumByYear = {
   2026: { tracks, foundation, advanced },
-  2027: null,
+  2027: { tracks: newTracks, foundation: newFoundation, advanced: newAdvanced },
 }
 
 export const careers = [

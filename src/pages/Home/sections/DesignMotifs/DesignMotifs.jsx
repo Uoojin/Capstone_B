@@ -19,7 +19,7 @@ export default function DesignMotifs() {
   const previousMixed = useRef(false)
   const [active, setActive] = useState(0)
   const [pink, setPink] = useState(false)
-  const [mixed, setMixed] = useState(false)
+  const [mixed] = useState(false)
   const { selectMotif, entryKey } = useMotifPin(rootRef, setActive, items.length)
 
   useEffect(() => {
@@ -61,13 +61,18 @@ export default function DesignMotifs() {
         <div className="object-holder"><div key={`${active}-${entryKey}`} className="object-art"><MotifArtwork index={item.motif} /></div></div>
         <nav className="motif-nav" aria-label="디자인 모티프">
           <div className="nav-track" style={{ transform: `translateY(calc(${-active} * var(--step)))` }}>
-            {items.map((entry, index) => <button key={entry.name} type="button" className={index === active ? 'active' : undefined} aria-current={index === active ? 'true' : undefined} onClick={() => selectMotif(index)}>{entry.name}</button>)}
+            {items.map((entry, index) => (
+              <button key={entry.name} type="button" className={index === active ? 'active' : undefined} aria-current={index === active ? 'true' : undefined} onClick={() => selectMotif(index)}>
+                <span className="motif-title" data-text-font="en">{entry.name}</span>
+                <span className="motif-subtitle" data-text-font="ko">{entry.ko}</span>
+              </button>
+            ))}
           </div>
         </nav>
         <div key={`description-${active}-${entryKey}`} className="description"><span className="sr-only">{item.ko}. </span>{item.description}</div>
         <div className="display-toggles">
           <button className="color-toggle" type="button" aria-pressed={pink} onClick={() => setPink(value => !value)}><span className="color-toggle__swatch" aria-hidden="true" /> COLOR VERSION</button>
-          <button className="particle-toggle" type="button" aria-pressed={mixed} onClick={() => setMixed(value => !value)}>PARTICLES: {mixed ? 'MIXED' : 'BY SECTION'}</button>
+          
         </div>
       </section>
     </div>

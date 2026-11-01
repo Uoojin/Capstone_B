@@ -191,6 +191,7 @@
   place-items: center;
   transform: rotate(0deg);
   transform-origin: center;
+  font-weight: 400;
   transition: transform 300ms ease-in-out;
 }
 
