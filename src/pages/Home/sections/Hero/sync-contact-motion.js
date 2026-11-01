@@ -30,7 +30,21 @@ export function createArtworkMasks(size, angles, sampleSize = 4) {
                     }
                 }
             }
-            mask = { width, height, columns: canvas.width, rows: canvas.height, pixels, points, outlinePoints };
+            // Consecutive outline spans preserve contact-point order. Their bounds
+            // only reject spans that cannot reach the other mask's rectangle.
+            const outlineSpans = [];
+            for (let start = 0; start < outlinePoints.length; start += 32) {
+                const end = Math.min(start + 32, outlinePoints.length);
+                let left = Infinity, right = -Infinity, top = Infinity, bottom = -Infinity;
+                for (let i = start; i < end; i++) {
+                    const [x, y] = outlinePoints[i];
+                    left = Math.min(left, x); right = Math.max(right, x);
+                    top = Math.min(top, y); bottom = Math.max(bottom, y);
+                }
+                outlineSpans.push({ start, end, x: (left + right) / 2, y: (top + bottom) / 2,
+                    halfW: (right - left) / 2, halfH: (bottom - top) / 2 });
+            }
+            mask = { width, height, outlineSpans, columns: canvas.width, rows: canvas.height, pixels, points, outlinePoints };
             cache.set(image, mask);
         }
         const angle = angles[team.id] * Math.PI / 180 + (visual.angle || 0);
@@ -60,7 +74,29 @@ export function artworkContact(a, b) {
     const bw = Math.abs(b.cos) * b.width / 2 + Math.abs(b.sin) * b.height / 2;
     const bh = Math.abs(b.sin) * b.width / 2 + Math.abs(b.cos) * b.height / 2;
     if (Math.abs(a.x - b.x) > aw + bw || Math.abs(a.y - b.y) > ah + bh) return null;
-    for (const [x, y] of a.outlinePoints || a.points) {
+    const points = a.outlinePoints || a.points;
+    const relativeCos = a.cos * b.cos + a.sin * b.sin;
+    const relativeSin = a.sin * b.cos - a.cos * b.sin;
+    let spanIndex = 0;
+    for (let i = 0; i < points.length; i++) {
+        const span = a.outlineSpans?.[spanIndex];
+        if (span && i === span.start) {
+            spanIndex++;
+            const dx = a.x + span.x * a.cos - span.y * a.sin - b.x;
+            const dy = a.y + span.x * a.sin + span.y * a.cos - b.y;
+            const cx = dx * b.cos + dy * b.sin;
+            const cy = -dx * b.sin + dy * b.cos;
+            const halfW = Math.abs(relativeCos) * span.halfW + Math.abs(relativeSin) * span.halfH;
+            const halfH = Math.abs(relativeSin) * span.halfW + Math.abs(relativeCos) * span.halfH;
+            // Conservative tolerance: exact per-point alpha tests below still
+            // determine every contact, including the original first hit.
+            if (cx + halfW < -b.width / 2 - 1e-7 || cx - halfW > b.width / 2 + 1e-7 ||
+                cy + halfH < -b.height / 2 - 1e-7 || cy - halfH > b.height / 2 + 1e-7) {
+                i = span.end - 1;
+                continue;
+            }
+        }
+        const [x, y] = points[i];
         const dx = a.x + x * a.cos - y * a.sin - b.x;
         const dy = a.y + x * a.sin + y * a.cos - b.y;
         const u = Math.floor((dx * b.cos + dy * b.sin + b.width / 2) / b.width * b.columns);
@@ -139,8 +175,14 @@ export function createContactMotion({ pair, teams, pose, burst, bounds, protecte
         get vy() { return drivenVelocity.get(team)?.y ?? (team.velocityY || 0); },
         set vy(value) { if (!driven(team)) team.velocityY = value; }
     });
-    const shape = (body, precise = false, painted = false) => body.fixed ? body.mask
-        : pose(body.team, primaryBodies.has(body) ? body : visual(body.team) || {}, precise, painted);
+    let constraintShapes = null;
+    const shape = (body, precise = false, painted = false) => {
+        if (body.fixed) return body.mask;
+        if (constraintShapes && precise && painted && constraintShapes.has(body)) return constraintShapes.get(body);
+        const mask = pose(body.team, primaryBodies.has(body) ? body : visual(body.team) || {}, precise, painted);
+        if (constraintShapes && precise && painted) constraintShapes.set(body, mask);
+        return mask;
+    };
 
     function shifted(mask, dx, dy) {
         return {
@@ -238,6 +280,9 @@ export function createContactMotion({ pair, teams, pose, burst, bounds, protecte
             other.team.currentX += nx * correction * shareB;
             other.team.currentY += ny * correction * shareB;
         }
+        // Only corrected bodies changed pose during this constraint pass.
+        constraintShapes?.delete(body);
+        constraintShapes?.delete(other);
         // Remove only inward normal velocity. Tangential travel and spin survive.
         const closing = (other.vx - body.vx) * nx + (other.vy - body.vy) * ny;
         if (closing < 0) {
@@ -264,6 +309,8 @@ export function createContactMotion({ pair, teams, pose, burst, bounds, protecte
 
     function finalize(force = false) {
         if (!impactCount && !force) return;
+        // Other bodies retain their exact painted pose across pair checks.
+        constraintShapes = new Map();
         const box = protectedArea();
         const obstacle = box && {
             fixed: true, vx: 0, vy: 0, mask: {
@@ -284,6 +331,7 @@ export function createContactMotion({ pair, teams, pose, burst, bounds, protecte
             }
             if (!changed) break;
         }
+        constraintShapes = null;
     }
 
     // Reuse the same mask constraints for externally integrated motion: drag,
