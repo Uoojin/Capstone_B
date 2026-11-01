@@ -2,12 +2,14 @@ import { useEffect, useLayoutEffect, useRef } from 'react'
 import { committee, DMD, professors } from './behindData'
 import schoolLogo from '../../assets/behind/KW Logo.svg'
 import './Behind.css'
+import behindFilm from '../../assets/behind/behindTest.webm'
 
 // Set videoSrc to a 1920×1080 video URL when the background film is ready.
-function BehindBackground({ videoSrc }) {
+
+function BehindBackground({ behindFilm }) {
   return (
     <div className="credit-background" aria-hidden="true">
-      {videoSrc && <video src={videoSrc} autoPlay muted loop playsInline />}
+      {behindFilm && <video src={behindFilm} autoPlay muted loop playsInline />}
     </div>
   )
 }
@@ -30,7 +32,7 @@ function BehindSection({ title, data }) {
   )
 }
 
-export default function Behind({ videoSrc }) {
+export default function Behind() {
   const viewportRef = useRef(null)
 
   useLayoutEffect(() => {
@@ -116,7 +118,7 @@ export default function Behind({ videoSrc }) {
 
   return (
     <main className="credit" aria-label="전시 크레딧">
-      <BehindBackground videoSrc={videoSrc} />
+      <BehindBackground behindFilm={behindFilm} />
       <div className="credit-viewport" ref={viewportRef} tabIndex={0} role="region" aria-label="크레딧 스크롤 영역">
         <div className="credit-roll">
           <section className="credit-hero" aria-label="DELIGHT INSIGHT 2026 LET’S SYNC!">

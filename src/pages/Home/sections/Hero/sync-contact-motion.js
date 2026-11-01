@@ -489,7 +489,7 @@ export function createContactMotion({ pair, teams, pose, burst, bounds, protecte
     return { step, sweep, visual, capture, finalize, get impactCount() { return impactCount; } };
 }
 
-export function createContactParticles(random = Math.random) {
+function createParticleEmitter(random = Math.random) {
     const particles = [];
     const colors = ['#FD00A0', '#5F50D8', '#009DEB', '#00BFA3', '#F7A600'];
     return {
@@ -571,5 +571,105 @@ export function createContactParticles(random = Math.random) {
                 ctx.fill(); ctx.restore();
             }
         },
+    };
+}
+
+function createHaloEmitter(random = Math.random) {
+    const blooms = [];
+    const TAU = Math.PI * 2;
+    const clamp = v => Math.max(0, Math.min(1, v));
+    const ease = t => 1 - Math.pow(1 - clamp(t), 3);
+
+    function filament(ctx, x, y, r, seed, time, layer) {
+        const count = 112;
+        ctx.beginPath();
+        for (let i = 0; i <= count; i++) {
+            const a = i / count * TAU;
+            const n = Math.sin(a * 7 + seed + time * 1.8) * .032
+                + Math.sin(a * 15 - seed * 1.4 - time * 2.4) * .020
+                + Math.sin(a * 29 + seed * 2.2 + time * 3.1) * .009;
+            const rr = r * (1 + n + layer * .016);
+            const px = x + Math.cos(a) * rr;
+            const py = y + Math.sin(a) * rr;
+            if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+        }
+        ctx.closePath();
+    }
+    return {
+        burst(team, visual = {}, impact = null) {
+            blooms.push({
+                x: team.currentX + (visual.x || 0),
+                y: team.currentY + (visual.y || 0),
+                radius: team.outerRadius || 250,
+                age: 0, life: .83,
+                seed: random() * TAU,
+                strength: Math.min(1.2, Math.max(.75, impact?.strength ?? 1))
+            });
+        },
+        draw(ctx, camera, dt) {
+            for (let i = blooms.length - 1; i >= 0; i--) {
+                const b = blooms[i];
+                b.age += Math.max(0, dt);
+                if (b.age >= b.life) { blooms.splice(i, 1); continue; }
+                const t = clamp(b.age / b.life);
+                const enter = clamp(t / .075);
+                const fade = Math.pow(1 - t, 1.65);
+                const power = enter * fade * b.strength;
+                const r = b.radius * (.18 + ease(t) * 1.30);
+                const x = b.x - camera.x, y = b.y - camera.y;
+                ctx.save();
+                ctx.globalCompositeOperation = 'screen';
+                // Diffuse luminous atmosphere, not a solid pink disc.
+                const ambient = ctx.createRadialGradient(x, y, r * .12, x, y, r * 1.35);
+                ambient.addColorStop(0, `rgba(255,198,237,${.14 * power})`);
+                ambient.addColorStop(.34, `rgba(255,88,195,${.095 * power})`);
+                ambient.addColorStop(.68, `rgba(253,0,160,${.065 * power})`);
+                ambient.addColorStop(1, 'rgba(253,0,160,0)');
+                ctx.fillStyle = ambient;
+                ctx.beginPath(); ctx.arc(x, y, r * 1.35, 0, TAU); ctx.fill();
+
+                // One broad, feathered wavefront. Fine translucent threads
+                // supply the organic electric texture without obvious spokes.
+                for (let layer = 0; layer < 13; layer++) {
+                    const spread = (layer - 6) / 6;
+                    const rr = r * (1 + spread * .105);
+                    filament(ctx, x, y, rr, b.seed + layer * .37, b.age, spread);
+                    ctx.strokeStyle = `rgba(${layer % 3 === 0 ? '255,194,235' : '253,37,179'},${power * (.038 + .035 * (1 - Math.abs(spread)))})`;
+                    ctx.lineWidth = Math.max(1.1, r * (.013 + .011 * (1 - Math.abs(spread))));
+                    ctx.shadowColor = '#FD00A0';
+                    ctx.shadowBlur = Math.max(8, r * .075);
+                    ctx.stroke();
+                }
+                ctx.shadowBlur = 0;
+                // A restrained pearlescent edge flashes at impact then melts.
+                filament(ctx, x, y, r * .98, b.seed, b.age, 0);
+                ctx.strokeStyle = `rgba(255,205,241,${power * .23})`;
+                ctx.lineWidth = Math.max(1, r * .009);
+                ctx.stroke();
+                ctx.restore();
+            }
+        }
+    };
+}
+
+
+// Keep the original emitters intact. One random style is selected per SYNC,
+// so repeated contacts in that SYNC use the same visual treatment.
+export function createContactParticles(random = Math.random) {
+    const particle = createParticleEmitter(random);
+    const halo = createHaloEmitter(random);
+    let current = particle;
+    return {
+        selectRandomInteraction() {
+            current = random() < 0.5 ? particle : halo;
+        },
+        burst(team, visual = {}, impact = null) {
+            current.burst(team, visual, impact);
+        },
+        draw(ctx, camera, dt) {
+            // Both queues keep rendering while a previous effect fades out.
+            particle.draw(ctx, camera, dt);
+            halo.draw(ctx, camera, dt);
+        }
     };
 }

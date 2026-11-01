@@ -58,9 +58,12 @@ export default function DelightInsight() {
       // xPercent is relative to each fixed slot, so resizing needs no reflow or
       // timeline rebuild. Every glyph shares the same spatial contraction.
       const contracted = index => (497 - (slots[index][0] + slots[index][2] / 2)) * .78 / slots[index][2] * 100
-      const resetLetters = () => letters.forEach(group => gsap.set(group, {
-        xPercent: contracted, opacity: 0, scaleX: 1, scaleY: 1,
-      }))
+      const resetLetters = () => {
+        gsap.set(layers, { visibility: index => index === 0 ? 'visible' : 'hidden' })
+        letters.forEach(group => gsap.set(group, {
+          xPercent: contracted, opacity: 0, scaleX: 1, scaleY: 1,
+        }))
+      }
       resetLetters()
       if (context.conditions.reduced) {
         gsap.set(letters[0], { xPercent: 0, opacity: 1 })
@@ -80,16 +83,17 @@ export default function DelightInsight() {
           return motion
         },
       })
-      const expand = (timeline, group, at, duration) => {
+      const expand = (timeline, group, at, duration, initialOpacity = 0) => {
         timeline.fromTo(group, { xPercent: contracted }, {
           xPercent: 0, duration, ease: 'back.out(1.08)', immediateRender: false,
-        }, at).fromTo(group, { opacity: 0 }, {
+        }, at).fromTo(group, { opacity: initialOpacity }, {
           opacity: 1, duration: duration * .8, ease: 'sine.out', immediateRender: false,
         }, at)
       }
       const entrance = gsap.timeline({ paused: true })
       expand(entrance, letters[0], 0, 1.4)
       const loop = gsap.timeline({ paused: true, repeat: -1 })
+      loop.set(layers, { visibility: index => index === 0 ? 'visible' : 'hidden' }, 0)
       loop.set(letters[0], { xPercent: 0, opacity: 1 }, 0)
       letters.slice(1).forEach(group => loop.set(group, { xPercent: contracted, opacity: 0 }, 0))
       let at = 1.8
@@ -107,23 +111,23 @@ export default function DelightInsight() {
             duration: .94 - lag, ease: 'power3.inOut',
           }, at + lag)
         })
-        // Start the next original entrance before the pull finishes. The old
-        // outlines travel back out along the same curve during the handoff,
-        // rather than continuing inward behind an already expanding new set.
-        // Their starting positions are sampled in flight (no position reset).
+        // At maximum compression, switch the entire visible set in one tick.
+        // Hidden layers keep their existing transforms, with no crossfade.
+        loop.set(layers, {
+          visibility: index => index === (i + 1) % 4 ? 'visible' : 'hidden',
+        }, release)
         loop.to(current, {
           xPercent: 0, scaleX: 1, scaleY: 1,
           duration: 1.4, ease: 'back.out(1.08)',
         }, release)
-          .to(current, { opacity: 0, duration: .3, ease: 'sine.in' }, release + .18)
           .fromTo(next, { scaleX: .94, scaleY: 1.02 }, {
             scaleX: 1, scaleY: 1, duration: 1.4,
             ease: 'back.out(1.08)', immediateRender: false,
           }, release)
-        // Reuse the entrance's exact spatial/opacity curves AND its 1.4s timing.
-        // The entrance itself and this helper remain unchanged.
-        expand(loop, next, release, 1.4)
-        at = release + 1.4 + 1.8
+        // Preserve the exact expansion motion. Only repeat swaps are opaque;
+        // the initial entrance retains its original opacity reveal.
+        expand(loop, next, release, 1.4, 1)
+        at = release + 1 + 1.3
       }
       // Repeat starts with DEFAULT already settled, followed by its hold.
       loop.to({}, { duration: 0 }, at - 1.8)
