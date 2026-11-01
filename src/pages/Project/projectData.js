@@ -1,4 +1,5 @@
 import letsSyncHoverImage from '../../assets/projects/hover/project01_LETSSYNC_hover.webp'
+import parallaxHoverImage from '../../assets/projects/hover/project06_PARALLAX_hover.webp'
 
 // 실제 정보는 이 파일에 입력합니다. ID는 이름과 무관한 고정 식별자입니다.
 // 이미지 키: 실제 파일명의 이름 부분만 입력 (대소문자 유지, 예: aqui / Chak / POP-ING).
@@ -148,10 +149,11 @@ export const projects = [
 
     // 02. 이미지 파일명 생성용 (확장자 및 경로 제외)
     imageKey: 'PARALLAX',
+    hoverImage: parallaxHoverImage,
     teamImageKey: 'PARALLAX',
 
     // 03. 프로젝트 카테고리 (categories.js 참고)
-    media: ['APP', 'WEB', '실감미디어', '공간/전시', '웨어러블', '모빌리티', '브랜딩'],
+    media: ['APP', 'WEB', '실감미디어', '공간/전시', '웨어러블', '모빌리티'],
     subject: ['사회/공공'],
     target: ['일반 대중', '특수/공공기관', '전시 관람객'],
 
@@ -229,7 +231,7 @@ export const projects = [
     teamImageKey: 'EMORA',
 
     // 03. 프로젝트 카테고리 (categories.js 참고)
-    media: ['APP', 'WEB', '공간/전시', '웨어러블', '브랜딩'],
+    media: ['APP', 'WEB', '공간/전시', '웨어러블'],
     subject: ['심리/정서', '일상/라이프'],
     target: ['대학생/청년', '일반 대중'],
 

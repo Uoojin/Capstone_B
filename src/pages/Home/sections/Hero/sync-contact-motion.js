@@ -20,7 +20,7 @@ export function createArtworkMasks(size, angles, sampleSize = 4) {
                 for (let x = 0; x < canvas.width; x++) {
                     if (pixels[(y * canvas.width + x) * 4 + 3] > 48) {
                         const point = [(x + 0.5) / canvas.width * width - width / 2,
-                            (y + 0.5) / canvas.height * height - height / 2];
+                        (y + 0.5) / canvas.height * height - height / 2];
                         points.push(point);
                         if (x === 0 || y === 0 || x === canvas.width - 1 || y === canvas.height - 1 ||
                             pixels[(y * canvas.width + x - 1) * 4 + 3] <= 48 ||
@@ -34,8 +34,10 @@ export function createArtworkMasks(size, angles, sampleSize = 4) {
             cache.set(image, mask);
         }
         const angle = angles[team.id] * Math.PI / 180 + (visual.angle || 0);
-        return { ...mask, x: team.currentX + (visual.x || 0), y: team.currentY + (visual.y || 0),
-            cos: Math.cos(angle), sin: Math.sin(angle) };
+        return {
+            ...mask, x: team.currentX + (visual.x || 0), y: team.currentY + (visual.y || 0),
+            cos: Math.cos(angle), sin: Math.sin(angle)
+        };
     };
 }
 
@@ -141,16 +143,20 @@ export function createContactMotion({ pair, teams, pose, burst, bounds, protecte
         : pose(body.team, primaryBodies.has(body) ? body : visual(body.team) || {}, precise, painted);
 
     function shifted(mask, dx, dy) {
-        return { ...mask, x: mask.x + dx, y: mask.y + dy,
-            ...(mask.parts ? { parts: mask.parts.map(part => shifted(part, dx, dy)) } : {}) };
+        return {
+            ...mask, x: mask.x + dx, y: mask.y + dy,
+            ...(mask.parts ? { parts: mask.parts.map(part => shifted(part, dx, dy)) } : {})
+        };
     }
 
     function capture() {
         for (const team of teams) {
             if (pair.includes(team)) continue;
-            previous.set(team, { x: team.currentX, y: team.currentY,
+            previous.set(team, {
+                x: team.currentX, y: team.currentY,
                 angle: visual(team)?.angle || 0, response: team.contactResponse,
-                visual: visual(team), offsetX: visual(team)?.x || 0, offsetY: visual(team)?.y || 0 });
+                visual: visual(team), offsetX: visual(team)?.x || 0, offsetY: visual(team)?.y || 0
+            });
         }
     }
 
@@ -259,11 +265,13 @@ export function createContactMotion({ pair, teams, pose, burst, bounds, protecte
     function finalize(force = false) {
         if (!impactCount && !force) return;
         const box = protectedArea();
-        const obstacle = box && { fixed: true, vx: 0, vy: 0, mask: {
-            x: (box.left + box.right) / 2, y: (box.top + box.bottom) / 2,
-            width: box.right - box.left, height: box.bottom - box.top,
-            cos: 1, sin: 0, columns: 1, rows: 1, solid: true, points: [[0, 0]]
-        } };
+        const obstacle = box && {
+            fixed: true, vx: 0, vy: 0, mask: {
+                x: (box.left + box.right) / 2, y: (box.top + box.bottom) / 2,
+                width: box.right - box.left, height: box.bottom - box.top,
+                cos: 1, sin: 0, columns: 1, rows: 1, solid: true, points: [[0, 0]]
+            }
+        };
         // All 28 pairs, including ordinary/ordinary and a still-touching primary
         // pair. Effects remain exclusively in the existing impact handlers.
         for (let pass = 0; pass < 24; pass++) {
@@ -287,10 +295,14 @@ export function createContactMotion({ pair, teams, pose, burst, bounds, protecte
         ignored = options.ignore || (() => false);
         const travel = teams.map(team => {
             const v = visual(team);
-            const from = previous.get(team) || { x: team.currentX, y: team.currentY,
-                angle: v?.angle || 0, offsetX: v?.x || 0, offsetY: v?.y || 0 };
-            const move = { team, from, v, dx: team.currentX - from.x, dy: team.currentY - from.y,
-                angle: v?.angle || 0, offsetX: v?.x || 0, offsetY: v?.y || 0 };
+            const from = previous.get(team) || {
+                x: team.currentX, y: team.currentY,
+                angle: v?.angle || 0, offsetX: v?.x || 0, offsetY: v?.y || 0
+            };
+            const move = {
+                team, from, v, dx: team.currentX - from.x, dy: team.currentY - from.y,
+                angle: v?.angle || 0, offsetX: v?.x || 0, offsetY: v?.y || 0
+            };
             team.currentX = from.x; team.currentY = from.y;
             if (driven(team)) drivenVelocity.set(team, { x: dt > 0 ? move.dx / dt : 0, y: dt > 0 ? move.dy / dt : 0 });
             return move;
@@ -343,8 +355,10 @@ export function createContactMotion({ pair, teams, pose, burst, bounds, protecte
         let maxTravel = 0;
         for (const team of teams) {
             if (pair.includes(team)) continue;
-            const from = previous.get(team) || { x: team.currentX, y: team.currentY,
-                angle: visual(team)?.angle || 0, response: team.contactResponse };
+            const from = previous.get(team) || {
+                x: team.currentX, y: team.currentY,
+                angle: visual(team)?.angle || 0, response: team.contactResponse
+            };
             const angle = visual(team)?.angle || 0;
             const dx = team.currentX - from.x, dy = team.currentY - from.y;
             travel.push({ team, from, dx, dy, angle });
@@ -441,12 +455,14 @@ export function createContactMotion({ pair, teams, pose, burst, bounds, protecte
                     const previousResponse = team.contactResponse;
                     const idleVX = previousResponse?.idleVX ?? (team.velocityX || 0);
                     const idleVY = previousResponse?.idleVY ?? (team.velocityY || 0);
-                    const response = { x: 0, y: 0, phase: 'coast', idleVX, idleVY,
+                    const response = {
+                        x: 0, y: 0, phase: 'coast', idleVX, idleVY,
                         returnSpeed: Math.max(90, Math.hypot(idleVX, idleVY) * 4),
                         homeX: previousResponse?.homeX ?? team.currentX,
                         homeY: previousResponse?.homeY ?? team.currentY,
                         angle: targetVisual.angle || 0,
-                        spin: -Math.sign(body.spin || 1) * 3.8, age: 0, otherId: body.team.id };
+                        spin: -Math.sign(body.spin || 1) * 3.8, age: 0, otherId: body.team.id
+                    };
                     team.velocityX = idleVX + dx / length * kickSpeed;
                     team.velocityY = idleVY + dy / length * kickSpeed;
                     team.contactResponse = response;
@@ -492,14 +508,16 @@ export function createContactParticles(random = Math.random) {
                 const distance = radius * (0.3 + Math.pow(random(), 0.65) * 1.05);
                 const life = 0.5 + random() * 0.65;
                 const drag = 1.4 + random() * 3.8;
-                particles.push({ x: team.currentX + (visual.x || 0), y: team.currentY + (visual.y || 0),
+                particles.push({
+                    x: team.currentX + (visual.x || 0), y: team.currentY + (visual.y || 0),
                     distance, direction: angle, drag,
                     speed: distance * drag / (1 - Math.exp(-drag * life)),
                     biasX: impact ? Math.cos(impact.direction) * radius * 0.28 * impact.strength : 0,
                     biasY: impact ? Math.sin(impact.direction) * radius * 0.28 * impact.strength : 0,
                     age: 0, life, size: 7 + random() * 6,
                     shape: Math.floor(random() * 4), angle: random() * Math.PI,
-                    spin: (random() - 0.5) * 7, color: palette[i] });
+                    spin: (random() - 0.5) * 7, color: palette[i]
+                });
             }
         },
         draw(ctx, camera, dt) {
@@ -520,17 +538,34 @@ export function createContactParticles(random = Math.random) {
                 ctx.fillStyle = p.color;
                 ctx.beginPath();
                 if (p.shape === 0) {
-                    ctx.moveTo(0, -p.size); ctx.lineTo(p.size, p.size); ctx.lineTo(-p.size, p.size); ctx.closePath();
+                    const s = p.size;
+                    const h = Math.sqrt(3) * s / 2;
+
+                    ctx.moveTo(-s * 0.2, -h * 0.65);
+                    ctx.quadraticCurveTo(0, -h * 1.15, s * 0.2, -h * 0.65);
+
+                    ctx.lineTo(s * 0.78, h * 0.55);
+                    ctx.quadraticCurveTo(s * 1.05, h, s * 0.55, h);
+
+                    ctx.lineTo(-s * 0.55, h);
+                    ctx.quadraticCurveTo(-s * 1.05, h, -s * 0.78, h * 0.55);
+
+                    ctx.closePath();
                 } else if (p.shape === 1) {
-                    ctx.rect(-p.size / 2, -p.size / 2, p.size, p.size);
+                    ctx.roundRect(-p.size / 2, -p.size / 2, p.size, p.size, p.size * 0.17);
                 } else if (p.shape === 2) {
                     ctx.arc(0, 0, p.size / 2, 0, Math.PI * 2);
                 } else {
-                    for (let j = 0; j < 8; j++) {
-                        const r = j % 2 ? p.size * 0.28 : p.size;
-                        const x = Math.cos(j * Math.PI / 4) * r, y = Math.sin(j * Math.PI / 4) * r;
-                        if (j === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
-                    }
+                    const s = p.size;
+                    ctx.moveTo(-s * 0.08, -s * 0.9);
+                    ctx.quadraticCurveTo(0, -s * 1.1, s * 0.08, -s * 0.9);
+                    ctx.bezierCurveTo(s * 0.18, -s * 0.42, s * 0.42, -s * 0.18, s * 0.9, -s * 0.08);
+                    ctx.quadraticCurveTo(s * 1.1, 0, s * 0.9, s * 0.08);
+                    ctx.bezierCurveTo(s * 0.42, s * 0.18, s * 0.18, s * 0.42, s * 0.08, s * 0.9);
+                    ctx.quadraticCurveTo(0, s * 1.1, -s * 0.08, s * 0.9);
+                    ctx.bezierCurveTo(-s * 0.18, s * 0.42, -s * 0.42, s * 0.18, -s * 0.9, s * 0.08);
+                    ctx.quadraticCurveTo(-s * 1.1, 0, -s * 0.9, -s * 0.08);
+                    ctx.bezierCurveTo(-s * 0.42, -s * 0.18, -s * 0.18, -s * 0.42, -s * 0.08, -s * 0.9);
                     ctx.closePath();
                 }
                 ctx.fill(); ctx.restore();

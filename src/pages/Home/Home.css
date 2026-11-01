@@ -1,10 +1,21 @@
 /* Page/mobile layout and conservatively retained dormant rules.
  * Section imports follow the existing base-style order, after interaction CSS. */
 @import "./sections/Video/Video.css";
-@import "./sections/Section01/Section01.css";
-@import "./sections/typeVideo/typeVideo.css";
-@import "./sections/Section05/Section05.css";
+@import "./sections/DelightInsight/DelightInsight.css";
+@import "./sections/LastSec/LastSec.css";
 @import "./sections/Hero/Hero.css";
+
+/* Space regular sections outside their content and sticky input ranges. */
+@media (min-width: 768px) {
+  .home-page > .home-insight {
+    margin-top: clamp(24px, 2.5vw, 64px);
+  }
+
+
+  .home-page > .home-pull-play + .typeVideo {
+    margin-top: clamp(72px, 8vw, 160px);
+  }
+}
 
 
 .home-spark {

@@ -58,11 +58,11 @@
 
 .design-motifs .side-label {
     position: absolute;
-    top: 50%;
+    top: 48%;
     left: 3.125%;
     transform: translateY(-50%);
     font-size: clamp(10px, 1.04vw, 20px);
-    font-weight: 600;
+    font-weight: 400;
     letter-spacing: -.06em
 }
 
@@ -144,14 +144,14 @@
 }
 
 .design-motifs .motif-subtitle {
-    font: 600 clamp(16px, 1.5625vw, 32px)/1.2 var(--font-family-ko);
+    font: 500 clamp(16px, 1.5625vw, 32px)/1.2 var(--font-family-ko);
     letter-spacing: -.03em;
     color: inherit;
     transition: color .5s;
 }
 
 .design-motifs .nav-track button.active .motif-subtitle {
-    color: #b3b3b3;
+    color: #d9d9d9;
 }
 
 .design-motifs .description {
@@ -160,7 +160,7 @@
     top: 49%;
     transform: translateY(-50%);
     width: min(22.65vw, 435px);
-    font: 400 clamp(11px, .78125vw, 16px)/1.55 var(--font-family-ko);
+    font: 400 clamp(11px, calc((100vw - 2 * 3.17vw) * 1.05 / 100), 20px)/1.65 var(--font-family-ko);
     color: #454545;
     letter-spacing: -.03em;
     word-break: keep-all;
@@ -331,9 +331,9 @@
 }
 
 .design-motifs .description {
-    left: 74%;
+    left: 73%;
     right: auto;
-    width: min(22.65vw, 435px);
+    width: min(23.4vw, 476px);
     text-align: left;
 }
 
@@ -366,7 +366,7 @@
     border: 0;
     background: none;
     color: #454545;
-    font: 600 10px var(--font-family);
+    font: 500 13px var(--font-family);
     letter-spacing: .04em;
     cursor: pointer;
     transition: color .45s
@@ -495,4 +495,22 @@
     position: sticky;
     top: 0;
     height: 100svh;
+}
+
+/* This layer belongs only to the existing TypeVideo cover timeline. */
+@media (min-width: 768px) {
+    .design-motifs-scroll > .design-motifs {
+        isolation: isolate;
+        translate: 0 var(--motif-cover-hold, 0px);
+    }
+
+    .design-motifs-scroll > .design-motifs::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: 3;
+        background: #000;
+        opacity: var(--motif-cover-dim, 0);
+        pointer-events: none;
+    }
 }

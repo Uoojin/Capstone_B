@@ -3,12 +3,11 @@ import { useSyncExternalStore } from 'react'
 import useExhibitionFilm from './sections/Video/useExhibitionFilm.js'
 import mobilePosterImage from '../../assets/mobileMain.svg'
 import Hero from './sections/Hero/Hero.jsx'
-import Section01 from './sections/Section01/Section01.jsx'
+import DelightInsight from './sections/DelightInsight/DelightInsight.jsx'
 import Video from './sections/Video/Video.jsx'
 import DesignMotifs from './sections/DesignMotifs/DesignMotifs.jsx'
-import RollingTypography from './sections/RollingTypography/RollingTypography.jsx'
-import TypeVideo from './sections/typeVideo/typeVideo.jsx'
-import Section05 from './sections/Section05/Section05.jsx'
+
+import LastSec from './sections/LastSec/LastSec.jsx'
 import './Home.css'
 
 const { subscribe: subscribeToMobileViewport, getSnapshot: getMobileViewport } = createMediaQueryStore('(max-width: 767px)')
@@ -25,12 +24,10 @@ function DesktopHome() {
   return (
     <main className="home-page" aria-label="Home">
       <Hero />
-      <Section01 />
+      <DelightInsight />
       <Video filmRef={filmRef} />
-      <DesignMotifs />
-      <RollingTypography />
-      <TypeVideo />
-      <Section05 />
+      <DesignMotifs />   
+      <LastSec />
     </main>
   )
 }

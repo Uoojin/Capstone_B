@@ -129,7 +129,7 @@
   left: 50%;
   z-index: 10;
   width: 24px;
-  height: 48px;
+  height: 30px;
   padding: 0;
   opacity: 0.6;
   transform: translateX(-50%);
@@ -141,7 +141,7 @@
   left: 11px;
   top: 0;
   width: 1px;
-  height: 34px;
+  height: 20px;
   background: #FD00A0;
   transform-origin: top;
   animation: scroll-line 2s ease-in-out infinite;
@@ -151,7 +151,7 @@
   content: '';
   position: absolute;
   left: 9px;
-  top: 38px;
+  top: 25px;
   width: 5px;
   height: 5px;
   border-radius: 50%;
@@ -642,7 +642,7 @@
 .detail-view .detail-slogan .site-link {
   align-self: center;
   margin-top: 0;
-  transform: none;
+  transform: translateX(10px);
 }
 
 .detail-desc {

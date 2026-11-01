@@ -1,37 +1,85 @@
 import { useEffect, useRef } from 'react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-// Keep the observer effect in the page parent, after all child interaction effects.
+gsap.registerPlugin(ScrollTrigger)
+
 export default function useExhibitionFilm() {
   const filmRef = useRef(null)
 
   useEffect(() => {
     const video = filmRef.current
     let inside = false
-    const observer = new IntersectionObserver(entries => {
-      for (const entry of entries) {
-        // Measure against the available height when the film is taller than the viewport.
-        const visibleHeight = Math.min(entry.boundingClientRect.height, entry.rootBounds?.height ?? window.innerHeight)
-        const visibility = visibleHeight > 0 ? entry.intersectionRect.height / visibleHeight : 0
+    let requested = false
+    let playAttempt = 0
+    let disposed = false
+    const resetToStart = () => {
+      if (video.readyState >= 1 && video.currentTime !== 0) video.currentTime = 0
+    }
 
-        if (!entry.isIntersecting || visibility <= 0.15) {
-          inside = false
-          video.pause()
-        } else if (!inside && visibility >= 0.6) {
-          // Stay inside after playback ends, preserving its last frame until the next entry.
-          inside = true
-          video.currentTime = 0
-          video.play().catch(() => {})
-        }
+    const syncPlayback = () => {
+      if (disposed) return
+      if (!inside) {
+        playAttempt++
+        requested = false
+        video.pause()
+        resetToStart()
+        return
       }
-    }, { threshold: Array.from({ length: 21 }, (_, index) => index / 20) })
-
-    observer.observe(video)
+      if (video.readyState < 2 || requested) return
+      requested = true
+      const attempt = ++playAttempt
+      video.play().catch(() => { if (attempt === playAttempt) requested = false })
+    }
+    const setInside = active => {
+      if (disposed || inside === active) return
+      inside = active
+      if (active) {
+        requested = false
+        resetToStart()
+      }
+      syncPlayback()
+    }
+    const frameReady = () => {
+      if (video.readyState >= 2) video.dataset.frameReady = 'true'
+      syncPlayback()
+    }
+    const guardAutoplay = () => {
+      if (!inside) syncPlayback()
+      else requested = true
+    }
+    video.addEventListener('play', guardAutoplay)
+    video.addEventListener('loadedmetadata', syncPlayback)
+    video.addEventListener('loadeddata', frameReady)
+    video.addEventListener('canplay', frameReady)
+    frameReady()
+    // Cover the whole section, including the initial approach and the exit
+    // after its sticky stage. The expansion trigger ends earlier, so it cannot
+    // define playback eligibility. This trigger never pins or animates layout.
+    const playback = ScrollTrigger.create({
+      id: 'home-film-playback',
+      trigger: video.closest('.home-film'),
+      start: 'top bottom',
+      end: 'bottom top',
+      onEnter: () => setInside(true),
+      onEnterBack: () => setInside(true),
+      onLeave: () => setInside(false),
+      onLeaveBack: () => setInside(false),
+      onRefresh: self => setInside(self.isActive),
+    })
+    setInside(playback.isActive)
     return () => {
-      observer.disconnect()
+      disposed = true
+      playAttempt++
+      playback.kill()
+      video.removeEventListener('play', guardAutoplay)
+      video.removeEventListener('loadedmetadata', syncPlayback)
+      video.removeEventListener('loadeddata', frameReady)
+      video.removeEventListener('canplay', frameReady)
       video.pause()
+      resetToStart()
     }
   }, [])
-
 
   return filmRef
 }

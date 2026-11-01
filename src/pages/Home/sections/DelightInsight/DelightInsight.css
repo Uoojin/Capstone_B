@@ -1,45 +1,52 @@
-/* Section01: base styles and the existing responsive overrides. */
+/* All layout and motion styling stays local to DelightInsight. */
 
 .home-insight {
   padding: 6vw 3vw;
-  background: #fff;
+  
 }
 
 .home-insight-panel {
   position: relative;
-  aspect-ratio: 1840 / 1020;
+  aspect-ratio: 1356 / 730;
   overflow: hidden;
-  border-radius: clamp(24px, 2.7vw, 48px);
-  background: #fafafa;
+  border-radius: clamp(30px, 1vw, 50px);
+  background: #F0F0F0;
   isolation: isolate;
 }
 
 .home-insight-type {
   position: absolute;
-  left: 50%;
-  top: 51%;
-  width: 73.749vw;
-  height: 37vw;
-  fill: #fff;
-  stroke: #f0f0f0;
-  stroke-width: 84.615px;
-  font-family: var(--font-family);
-  font-size: 400px;
-  font-weight: 800;
-  letter-spacing: -22px;
-  transform: translate(-50%, -50%) perspective(1000px) rotateX(0deg) rotateY(0deg) rotateZ(-10deg);
-  transform-origin: center center;
+  left: 13.2743%;
+  top: 34.5209%;
+  width: 73.3038%;
+  aspect-ratio: 994 / 249;
   pointer-events: none;
   user-select: none;
 }
 
+.home-insight-type-set {
+  position: absolute;
+  inset: 0;
+}
+
+.home-insight-letter {
+  position: absolute;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.home-insight-letter svg {
+  position: absolute;
+  display: block;
+  overflow: visible;
+}
 
 .home-insight-panel h2 {
   position: absolute;
-  top: 10%;
-  left: 7%;
-  color: #fd00a0;
-  font-size: 1.8vw;
+  top: 12.16%;
+  left: 3.98%;
+  color: #454545;
+  font-size: 2.07vw;
   font-weight: 500;
   line-height: 1.25;
   letter-spacing: -.045em;
@@ -56,10 +63,10 @@
 
 .home-insight-description {
   position: absolute;
-  top: 80%;
-  left: 59%;
+  top: 78.6%;
+  left: 59.22%;
   right: 5%;
-  color: #fd00a0;
+  color: #454545;
   font-size: 1.02vw;
   line-height: 1.75;
   font-weight: 500;
@@ -86,9 +93,7 @@
   }
 
   .home-insight-type {
-    width: 136.152vw;
-    height: 82.56vw;
-    stroke-width: 75px;
+    top: 43%;
   }
 
   .home-insight-panel h2 {

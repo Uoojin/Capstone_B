@@ -27,7 +27,10 @@ export default function useMotifPin(rootRef, setActive, count) {
     }
     const fullyPinned = () => {
       const rect = root.getBoundingClientRect()
-      return Math.abs(rect.top) <= 1 && rect.bottom >= Math.min(root.clientHeight, window.innerHeight) - 1
+      // The final viewport of the range belongs to the TypeVideo cover.
+      // Keep the artwork pinned there, but let native scrolling own its input.
+      const beforeCover = range.getBoundingClientRect().bottom >= root.clientHeight * 2 - 1
+      return beforeCover && Math.abs(rect.top) <= 1 && rect.bottom >= Math.min(root.clientHeight, window.innerHeight) - 1
     }
     const select = (index, restart = false) => {
       const next = Math.max(0, Math.min(count - 1, index))
@@ -65,7 +68,7 @@ export default function useMotifPin(rootRef, setActive, count) {
       const full = fullyPinned()
       if (full && !inside) {
         const start = range.getBoundingClientRect().top + y
-        const end = start + range.offsetHeight - root.clientHeight
+        const end = start + range.offsetHeight - root.clientHeight * 2
         const fromBelow = previousY > end + .5 || (previousY >= start && y < previousY)
         select(fromBelow ? count - 1 : 0, true)
         // The event that brought the section in must not also skip EMPATHY

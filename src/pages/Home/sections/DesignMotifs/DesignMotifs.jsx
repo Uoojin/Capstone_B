@@ -48,7 +48,7 @@ export default function DesignMotifs() {
 
   const item = items[active]
   return (
-    <div className="design-motifs-scroll" style={{ height: '200svh' }}>
+    <div className="design-motifs-scroll" style={{ height: '300svh' }}>
       <section data-mixed={mixed} data-active={active} ref={rootRef} className={`design-motifs${pink ? ' page--pink' : ''}`} aria-label="Design Motifs">
         <div ref={particleRef} className="particles" aria-hidden="true">
           {particles.map((particle, index) => (
