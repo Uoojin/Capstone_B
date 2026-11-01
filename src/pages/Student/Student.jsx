@@ -183,13 +183,13 @@ export default function Student() {
                       <span className="back-meta-row">
                         <span className="back-label">Portfolio</span>
                         <span className="back-link" onClick={(event) => handleLinkClick(event, item.profileUrl)}>
-                          site &gt;
+                          site
                         </span>
                       </span>
                       <span className="back-meta-row">
                         <span className="back-label">Project</span>
                         <span className="back-link" onClick={(event) => handleProjectClick(event, item.projectId)}>
-                          {item.project} &gt;
+                          {item.project} 
                         </span>
                       </span>
                     </span>
