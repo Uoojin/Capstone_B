@@ -26,12 +26,12 @@ export default function Hero() {
               <p className="home-hero-info-korean"><span>계원예술대학교 디지털미디어디자인과 졸업전시회</span></p>
             </div>
             <div className="home-hero-schedule">
-              <p className="home-hero-info-heading"><span>Let’s Exhibit!</span></p>
+              <p className="home-hero-info-heading"><span>LET’S EXHIBIT!</span></p>
               <p><span>11. 20. ( FRI ) - 22. ( SUN )</span></p>
               <p className="home-hero-info-korean"><span>계원예술대학교 디자인관 5층</span></p>
             </div>
             <div className="home-hero-schedule">
-              <p className="home-hero-info-heading"><span>Let’s Open!</span></p>
+              <p className="home-hero-info-heading"><span>LET’S OPEN!</span></p>
               <p><span>11. 20. ( FRI ) PM 4:00</span></p>
               <p className="home-hero-info-korean"><span>계원예술대학교 디자인관 5층</span></p>
             </div>

@@ -937,7 +937,7 @@ export default function Project() {
                 <div className="detail-media">
                   {activeDetail.image && <img src={activeDetail.image} alt={`${activeDetail.name} 대표 이미지`} />}
                 </div>
-                <button className="scroll-indicator" type="button" aria-label="Scroll to project list" />
+               
               </article>
 
               <article className="detail-section detail-team" aria-label="팀 소개">

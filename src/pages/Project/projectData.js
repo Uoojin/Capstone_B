@@ -41,7 +41,7 @@ export const projects = [
     name: '아키 (aquí)',
     team: '끼잉끼잉클럽',
     slogan: '반려동물과의 이별 전후를 잇는 펫로스 케어',
-    desc: '아키는 사별 전 마지막 돌봄부터 사별 이후까지 이어지는 펫로스 케어 서비스입니다. 생전에는 반려동물과 함께한 시간을 기록하고, 사후에는 필요한 절차와 다른 보호자의 이야기를 살펴보며 각자의 속도로 이별을 받아들이고 일상을 회복할 수 있도록 돕습니다.',
+    desc: '아키는 사별 전 마지막 돌봄부터 사별 이후까지 이어지는 펫로스 케어 서비스입니다. 생전에는 반려동물과의 추억 기록하고, 사후에는 필요한 절차와 다른 보호자의 이야기를 살펴보며 각자의 속도로 이별을 받아들이고 일상을 회복하도록 돕습니다.',
 
     // 02. 이미지 파일명 생성용 (확장자 및 경로 제외)
     imageKey: 'aqui',
@@ -291,7 +291,7 @@ export const projects = [
     link: 'http://localhost:5173/Capstone_B/',
 
     // 05. 참여 학생 (표시 순서대로)
-    memberIds: ['LEEJUNE', 'NOHNAMSU', 'BAECHAEWON', 'ONSEOYOUNG', 'LEEJAEBEOM', 'LEEHYUNGGYU', 'YOONSEOJIN'],
+    memberIds: ['LEEJUNE', 'NOHNAMSU', 'BAECHAEWON', 'ONSEOYOUNG', 'LEEJAEBEOM', 'LEEHYUNGGYU', 'YUNSEOJIN'],
   },
 
   // ========== PROJECT 12 ==========

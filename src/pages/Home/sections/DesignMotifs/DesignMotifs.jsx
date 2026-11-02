@@ -71,7 +71,7 @@ export default function DesignMotifs() {
         </nav>
         <div key={`description-${active}-${entryKey}`} className="description"><span className="sr-only">{item.ko}. </span>{item.description}</div>
         <div className="display-toggles">
-          <button className="color-toggle" type="button" aria-pressed={pink} onClick={() => setPink(value => !value)}><span className="color-toggle__swatch" aria-hidden="true" /> COLOR VERSION</button>
+          <button className="color-toggle" type="button" aria-pressed={pink} onClick={() => setPink(value => !value)}><span className="color-toggle__swatch" aria-hidden="true" /> COLOR</button>
           
         </div>
       </section>

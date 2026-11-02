@@ -1,128 +1,126 @@
-/* All layout and motion styling stays local to DelightInsight. */
-
 .home-insight {
-  padding: 6vw 3vw;
-  
+  position: relative;
+  width: 100%;
+  padding: 40px 2.95% 34px;
+  box-sizing: border-box;
+  background: #fff;
 }
 
 .home-insight-panel {
   position: relative;
-  aspect-ratio: 1356 / 730;
+  width: 100%;
+  aspect-ratio: 1000 / 540;
+  background: #f8f8f8;
+  border-radius: 22px;
   overflow: hidden;
-  border-radius: clamp(30px, 1vw, 50px);
-  background: #F0F0F0;
   isolation: isolate;
+  container-type: inline-size;
 }
 
-.home-insight-type {
-  position: absolute;
-  left: 13.2743%;
-  top: 34.5209%;
-  width: 73.3038%;
-  aspect-ratio: 994 / 249;
-  pointer-events: none;
-  user-select: none;
-}
-
-.home-insight-type-set {
+.home-insight-network {
   position: absolute;
   inset: 0;
-}
-
-.home-insight-letter {
-  position: absolute;
-  opacity: 0;
-  will-change: transform, opacity;
-}
-
-.home-insight-letter svg {
-  position: absolute;
+  width: 100%;
+  height: 100%;
   display: block;
-  overflow: visible;
+  z-index: 0;
+  pointer-events: none;
 }
 
-.home-insight-panel h2 {
+.home-insight-title {
   position: absolute;
-  top: 12.16%;
-  left: 3.98%;
-  color: #454545;
-  font-size: 2.07vw;
-  font-weight: 500;
-  line-height: 1.25;
-  letter-spacing: -.045em;
-  --home-text-outline-width: 1.35vw;
-  --home-text-outline-color: #fff;
-  isolation: isolate;
-  paint-order: stroke fill;
+  top: 48.2%;
+  left: 50%;
+  width: 69%;
+  margin: 0;
+  z-index: 1;
+  transform: translate(-50%, -50%) rotate(-10.5deg);
+  pointer-events: none;
 }
 
-.home-insight-panel h2 span {
+.home-insight-title img {
   display: block;
-  
+  width: 100%;
+  height: auto;
 }
 
-.home-insight-description {
+.home-insight-info {
   position: absolute;
-  top: 78.6%;
-  left: 59.22%;
-  right: 5%;
-  color: #454545;
-  font-size: 1.02vw;
-  line-height: 1.75;
-  font-weight: 500;
-  letter-spacing: -.045em;
-  --home-text-outline-width: 1.1vw;
-  --home-text-outline-color: #fff;
-  isolation: isolate;
-  paint-order: stroke fill;
+  left: 41.5%;
+  right: 5.8%;
+  top: 79.8%;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: start;
+  z-index: 2;
 }
 
+.home-insight-project {
+  margin: 0;
+  color: #fd00a0;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 1.48cqw;
+  font-weight: 700;
+  line-height: 1.28;
+  letter-spacing: -0.045em;
+}
+
+.home-insight-project span,
 .home-insight-description span {
   display: block;
 }
 
-@media (max-width: 767px) {
-  .home-insight {
-    padding: 20px;
-  }
-
-  .home-insight-panel {
-    min-height: 600px;
-    aspect-ratio: auto;
-    border-radius: 24px;
-  }
-
-  .home-insight-type {
-    top: 43%;
-  }
-
-  .home-insight-panel h2 {
-    top: 24%;
-    left: 10%;
-    font-size: clamp(27px, 6vw, 44px);
-    --home-text-outline-width: 12px;
-  }
-
-  .home-insight-description {
-    top: auto;
-    bottom: 14%;
-    left: 10%;
-    right: 10%;
-    font-size: 14px;
-    --home-text-outline-width: 8px;
-  }
-
-  .home-insight-description span {
-    display: inline;
-  }
+.home-insight-description {
+  margin: 0;
+  color: #111;
+  font-family: Pretendard, sans-serif;
+  font-size: 1.08cqw;
+  font-weight: 400;
+  line-height: 1.8;
+  letter-spacing: -0.055em;
+  word-break: keep-all;
 }
 
-@media (min-width: 768px) and (max-width: 1100px) {
+.home-insight-description span {
+  white-space: nowrap;
+}
+
+@media (max-width: 767px) {
+  .home-insight {
+    padding: 24px 16px;
+  }
+
   .home-insight-panel {
-    min-height: 520px;
+    aspect-ratio: auto;
+    min-height: 560px;
+    border-radius: 16px;
+  }
+
+  .home-insight-title {
+    top: 36%;
+    width: 87%;
+  }
+
+  .home-insight-info {
+    left: 8%;
+    right: 8%;
+    top: auto;
+    bottom: 9%;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .home-insight-project {
+    font-size: 15px;
   }
 
   .home-insight-description {
     font-size: 12px;
+    letter-spacing: -0.035em;
+  }
+
+  .home-insight-description span {
+    display: inline;
+    white-space: normal;
   }
 }

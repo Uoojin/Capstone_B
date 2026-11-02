@@ -123,13 +123,13 @@ class Artifact {
     this.syncCount = typeof syncCount === 'number' ? syncCount : 0;
 
     this.directionX = Math.random() < 0.5 ? -1 : 1;
-    this.baseSpeed = 2.35 + Math.random() * 0.95;
-    this.minSpeed = 2.0 + Math.random() * 0.35;
-    this.maxSpeed = 3.45 + Math.random() * 0.35;
+    this.baseSpeed = (2.35 + Math.random() * 0.95) * 0.75;
+    this.minSpeed = (2.0 + Math.random() * 0.35) * 0.75;
+    this.maxSpeed = (3.45 + Math.random() * 0.35) * 0.75;
     this.vx = this.directionX * this.baseSpeed;
 
     this.verticalSeed = Math.random() * Math.PI * 2;
-    this.verticalStrength = 0.14 + Math.random() * 0.28;
+    this.verticalStrength = (0.14 + Math.random() * 0.28) * 0.75;
     this.verticalFrequency = 0.38 + Math.random() * 0.34;
     this.vy = (Math.random() - 0.5) * 0.18;
 

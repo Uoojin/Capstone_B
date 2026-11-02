@@ -53,14 +53,13 @@ export default function useExhibitionFilm() {
     video.addEventListener('loadeddata', frameReady)
     video.addEventListener('canplay', frameReady)
     frameReady()
-    // Cover the whole section, including the initial approach and the exit
-    // after its sticky stage. The expansion trigger ends earlier, so it cannot
-    // define playback eligibility. This trigger never pins or animates layout.
+    // Play only while the section fills the viewport, excluding partial entry
+    // and exit. This trigger never pins or animates layout.
     const playback = ScrollTrigger.create({
       id: 'home-film-playback',
       trigger: video.closest('.home-film'),
-      start: 'top bottom',
-      end: 'bottom top',
+      start: 'top top',
+      end: 'bottom bottom',
       onEnter: () => setInside(true),
       onEnterBack: () => setInside(true),
       onLeave: () => setInside(false),

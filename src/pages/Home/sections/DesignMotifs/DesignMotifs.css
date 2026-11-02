@@ -361,20 +361,20 @@
     bottom: 4%;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 13px;
     padding: 7px 0;
     border: 0;
     background: none;
     color: #454545;
-    font: 500 13px var(--font-family);
+    font: 500 17px var(--font-family);
     letter-spacing: .04em;
     cursor: pointer;
     transition: color .45s
 }
 
 .design-motifs .color-toggle__swatch {
-    width: 14px;
-    height: 14px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     background: #fd00a0;
     transition: background-color .45s

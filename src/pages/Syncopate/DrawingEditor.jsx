@@ -270,47 +270,51 @@ export default function DrawingEditor({ onShareComplete, onCancel }) {
 
           <div className="tools-panel">
             <div className="editor-tools-card">
-            <div className="tool-label">Tools</div>
-            <div className="tool-icons-row">
-              <button
-                className={`circle-icon-btn ${activeTool === 'pen' ? 'active' : ''}`}
-                onClick={() => handleToolClick('pen')}
-              >
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
-                </svg>
-              </button>
+            <div className="editor-tools-header">
+              <div className="editor-tool-group">
+                <div className="tool-label">Tools</div>
+                <div className="tool-icons-row">
+                  <button
+                    className={`circle-icon-btn ${activeTool === 'pen' ? 'active' : ''}`}
+                    onClick={() => handleToolClick('pen')}
+                  >
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+                    </svg>
+                  </button>
 
-              <button
-                className={`circle-icon-btn ${activeTool === 'eraser' ? 'active' : ''}`}
-                onClick={() => handleToolClick('eraser')}
-              >
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21" />
-                  <path d="M22 21H7" /><path d="m5 11 9 9" />
-                </svg>
-              </button>
+                  <button
+                    className={`circle-icon-btn ${activeTool === 'eraser' ? 'active' : ''}`}
+                    onClick={() => handleToolClick('eraser')}
+                  >
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21" />
+                      <path d="M22 21H7" /><path d="m5 11 9 9" />
+                    </svg>
+                  </button>
 
+                </div>
+              </div>
+              {activeTool === 'pen' && (
+                <div className="field-group symbol-field">
+                  <span className="field-title">Symbol</span>
+                  <div className="symbol-options">
+                    {SYMBOLS.map(symbol => (
+                      <button key={symbol.id} type="button"
+                        className={`symbol-option ${selectedSymbol === symbol.id ? 'selected' : ''}`}
+                        onClick={() => setSelectedSymbol(symbol.id)} title={symbol.label}
+                        aria-label={symbol.label} aria-pressed={selectedSymbol === symbol.id}>
+                        <span className="symbol-preview" aria-hidden="true" style={{ maskImage: `url("${symbol.src}")`, WebkitMaskImage: `url("${symbol.src}")` }} />
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* 펜/지우개 */}
             {(activeTool === 'pen' || activeTool === 'eraser') && (
               <div className="settings-block">
-                {activeTool === 'pen' && (
-                  <div className="field-group symbol-field">
-                    <span className="field-title">Symbol</span>
-                    <div className="symbol-options">
-                      {SYMBOLS.map(symbol => (
-                        <button key={symbol.id} type="button"
-                          className={`symbol-option ${selectedSymbol === symbol.id ? 'selected' : ''}`}
-                          onClick={() => setSelectedSymbol(symbol.id)} title={symbol.label}
-                          aria-label={symbol.label} aria-pressed={selectedSymbol === symbol.id}>
-                          <span className="symbol-preview" aria-hidden="true" style={{ maskImage: `url("${symbol.src}")`, WebkitMaskImage: `url("${symbol.src}")` }} />
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                )}
                 <div className="brush-controls-row">
                   <div className="field-group">
                     <span className="field-title">{activeTool === 'pen' ? 'Size' : 'Eraser Size'}</span>
