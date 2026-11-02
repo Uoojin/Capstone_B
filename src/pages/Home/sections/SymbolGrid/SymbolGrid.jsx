@@ -38,8 +38,8 @@ function SymbolImage({ item, preview = false }) {
 }
 
 export default function SymbolGrid() {
-  const [activeCategory, setActiveCategory] = useState('L')
-  const [selectedId, setSelectedId] = useState(() => symbols.find(item => categoryOf(item) === 'L').id)
+  const [activeCategory, setActiveCategory] = useState('ALL')
+  const [selectedId, setSelectedId] = useState(() => symbols[0].id)
   const [previewVersion, setPreviewVersion] = useState(0)
   const gridRef = useRef(null)
   const items = activeCategory === 'ALL' ? symbols : symbols.filter(item => categoryOf(item) === activeCategory)
