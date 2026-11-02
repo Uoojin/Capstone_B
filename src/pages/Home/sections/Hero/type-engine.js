@@ -961,7 +961,6 @@ export default function startTypeEngine({ host, canvas, assetMap, placementSeed 
             if (!syncEvent.contactMotion) {
                 // Sweep this frame's idle/drag travel before handing off ownership.
                 resolveArtworkMotion(t, dt);
-                contactParticles.selectRandomInteraction();
                 syncEvent.contactMotion = createContactMotion({
                     pair: [a, b], teams: blobs,
                     pose: function (team, visual, precise, painted) {
