@@ -58,7 +58,8 @@ function lockTransition(layer) {
       else element.style.removeProperty(property)
     })
     root.inert = wasInert
-    window.scrollTo({ left: x, top: y, behavior: 'instant' })
+    // A completed route transition starts at the top, never at the outgoing page's position.
+    window.scrollTo({ left: 0, top: 0, behavior: 'instant' })
     if (focus?.isConnected) focus.focus({ preventScroll: true })
   }
 }

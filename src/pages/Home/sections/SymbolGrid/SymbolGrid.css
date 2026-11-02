@@ -1,0 +1,217 @@
+.home-symbols__symbol-section {
+    font-family: Pretendard, 'Apple SD Gothic Neo', sans-serif;
+    color: #0f0f0f;
+    font-synthesis: none
+}
+
+.home-symbols__symbol-section,
+.home-symbols__symbol-section * {
+    box-sizing: border-box
+}
+
+.home-symbols__symbol-section {
+    min-height: 100svh;
+    padding: 100px 60px;
+    background: #fff;
+    display: flex;
+    align-items: center
+}
+
+.home-symbols__symbol-content {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 1800px;
+    margin-inline: auto;
+    align-items: start;
+    container-type: inline-size
+}
+
+.home-symbols__preview-column {
+    grid-column: 1 / span 2;
+    min-width: 0
+}
+
+.home-symbols__section-heading {
+    height: 48px;
+    display: flex;
+    align-items: flex-start
+}
+
+.home-symbols__preview {
+    min-width: 0
+}
+
+.home-symbols__symbol-image {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    aspect-ratio: 1;
+    background: #fafafa;
+    border-radius: 16px
+}
+
+.home-symbols__preview .home-symbols__symbol-image {
+    max-height: calc(100svh - 245px);
+    background: transparent
+}
+
+.home-symbols__symbol-art {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 100%;
+    max-width: 100%;
+    aspect-ratio: 1;
+    transform: translate(-50%, -50%)
+}
+
+.home-symbols__symbol-art img {
+    position: absolute;
+    display: block;
+    max-width: none
+}
+
+.home-symbols__preview .home-symbols__symbol-art {
+    animation: home-symbols-preview-in .35s ease both
+}
+
+@keyframes home-symbols-preview-in {
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+.home-symbols__symbol-list {
+    grid-column: 3 / span 2;
+    min-width: 0
+}
+
+.home-symbols__filters {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 4px 20px;
+    min-height: 48px
+}
+
+.home-symbols__filter-chip {
+    position: relative;
+    min-height: 32px;
+    padding: 0 12px 0 0;
+    border: 0;
+    background: transparent;
+    color: #b3b3b3;
+    font: 500 clamp(16px, 1.05vw, 20px)/1.2 'Helvetica Neue', Arial, Pretendard, sans-serif;
+    letter-spacing: -.045em;
+    text-align: left;
+    cursor: pointer;
+    transition: color .25s
+}
+
+.home-symbols__filter-chip:hover,
+.home-symbols__filter-chip[aria-pressed="true"] {
+    color: #fd00a0
+}
+
+.home-symbols__filter-chip:focus-visible,
+.home-symbols__symbol-option:focus-visible {
+    outline: 2px solid #fd00a0;
+    outline-offset: 3px
+}
+
+.home-symbols__symbol-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+    align-content: start;
+    max-height: min(calc(50cqw - 10px), calc(100svh - 245px));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: #d4d4d4 transparent
+}
+
+.home-symbols__symbol-option {
+    position: relative;
+    display: block;
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer
+}
+
+.home-symbols__symbol-option .home-symbols__symbol-image {
+    background: #fafafa;
+    transition: background-color .2s
+}
+
+.home-symbols__symbol-option:hover .home-symbols__symbol-image {
+    background: #f3f3f3
+}
+
+.home-symbols__symbol-option[aria-pressed="true"] .home-symbols__symbol-image {
+    box-shadow: inset 0 0 0 2px #fd00a0
+}
+
+@media(max-width:1100px) {
+    .home-symbols__symbol-section {
+        padding: 40px
+    }
+}
+
+@media(max-width:700px) {
+    .home-symbols__symbol-section {
+        padding: 40px 20px
+    }
+
+    .home-symbols__symbol-content {
+        grid-template-columns: 1fr;
+        gap: 32px
+    }
+
+    .home-symbols__preview-column,
+    .home-symbols__symbol-list {
+        grid-column: 1
+    }
+
+    .home-symbols__section-heading {
+        height: 36px
+    }
+
+    .home-symbols__preview .home-symbols__symbol-image {
+        max-height: none
+    }
+
+    .home-symbols__filters {
+        gap: 4px 14px;
+        min-height: 44px
+    }
+
+    .home-symbols__filter-chip {
+        font-size: 16px
+    }
+
+    .home-symbols__symbol-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        max-height: none;
+        overflow: visible
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+    .home-symbols__preview .home-symbols__symbol-art {
+        animation: none
+    }
+
+    .home-symbols__filter-chip,
+    .home-symbols__symbol-option .home-symbols__symbol-image {
+        transition: none
+    }
+}

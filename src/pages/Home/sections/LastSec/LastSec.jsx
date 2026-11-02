@@ -30,7 +30,7 @@ export default function LastSec() {
       gsap.set(title, { opacity: 0, scale: .87, rotation: -3, y: 10 })
       gsap.set(description, { opacity: 1 })
       gsap.set(letters, { opacity: 0, scaleX: .55, scaleY: .7 })
-      gsap.set(entries, { opacity: 0, scale: .94 })
+      gsap.set(entries, { opacity: 1, scale: 1 })
       const tilt = createTitleTilt(
         root.querySelector('.home-sync-finale-title'),
         root.querySelector('.home-sync-finale-tilt'),
@@ -78,16 +78,8 @@ export default function LastSec() {
         },
       })
 
-      // Reveal on a separate layer so the unit-to-type transforms stay intact.
-      // Keep every existing overlap and ease, stretching playback time by 18%.
+      // Keep the original delay and playback speed without the initial pattern reveal.
       const timeline = gsap.timeline({ paused: true }).timeScale(1 / 1.18)
-        .to(order.map(index => entries[index]), {
-          opacity: 1,
-          scale: 1,
-          duration: .28,
-          stagger: { amount: .18 },
-          ease: 'power2.out',
-        }, 0)
         .add(motion, .6)
 
       let started = false

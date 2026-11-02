@@ -6,6 +6,7 @@ import Hero from './sections/Hero/Hero.jsx'
 import DelightInsight from './sections/DelightInsight/DelightInsight.jsx'
 import Video from './sections/Video/Video.jsx'
 import DesignMotifs from './sections/DesignMotifs/DesignMotifs.jsx'
+import SymbolGrid from './sections/SymbolGrid/SymbolGrid.jsx'
 
 import LastSec from './sections/LastSec/LastSec.jsx'
 import './Home.css'
@@ -27,6 +28,7 @@ function DesktopHome() {
       <DelightInsight />
       <Video filmRef={filmRef} />
       <DesignMotifs />   
+      <SymbolGrid />
       <LastSec />
     </main>
   )

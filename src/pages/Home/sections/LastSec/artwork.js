@@ -5,8 +5,8 @@ import titleSvg from '../../../../assets/heroTitle.svg?raw'
 export const titleImage = `data:image/svg+xml,${encodeURIComponent(titleSvg
   .replace('viewBox="0 0 487 128"', 'viewBox="0 10 487 95"')
   .replace('height="128"', 'height="95"')
-  .replaceAll('#FD00A0', '#949494')
-  .replaceAll('#FAFAFA', '#f0f0f0')
+  .replaceAll('#FD00A0', '#FFFFFF')
+  .replaceAll('#FAFAFA', '#FD00A0')
   .replace('stroke-width="30"', 'stroke-width="24"'))}`
 
 const assets = import.meta.glob('../../../../assets/type/*/*.svg', {
