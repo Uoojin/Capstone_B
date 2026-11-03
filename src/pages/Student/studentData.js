@@ -179,7 +179,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'u.ooojini@gmail.com',
-    profileUrl: 'https://uoojin.github.io/portfolio/',
+    profileUrl: '',
 
     // 05. 참여 프로젝트
     projectId: 'project-01',
