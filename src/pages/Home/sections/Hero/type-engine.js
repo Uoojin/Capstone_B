@@ -1527,15 +1527,17 @@ export default function startTypeEngine({ host, canvas, assetMap, placementSeed 
         }
 
         // Compute the moving home/orbit target first.
-        n.orbitAngle += n.orbitSpeed * n.orbitDirection * dt * motionFactor;
-        var angularOffset = Math.sin(motionTime * n.driftSpeed + n.driftPhase) * n.angularDrift * motionFactor;
-        var radialOffset = Math.sin(motionTime * (n.driftSpeed * 0.73) + n.driftPhase * 1.7) * n.driftAmount * motionFactor;
+        var floatRate = 0.88;
+        var floatTime = motionTime * floatRate;
+        n.orbitAngle += n.orbitSpeed * n.orbitDirection * dt * motionFactor * floatRate;
+        var angularOffset = Math.sin(floatTime * n.driftSpeed + n.driftPhase) * n.angularDrift * motionFactor;
+        var radialOffset = Math.sin(floatTime * (n.driftSpeed * 0.73) + n.driftPhase * 1.7) * n.driftAmount * motionFactor;
         var radius = Math.max(n.minRadius, Math.min(n.maxRadius, n.homeRadius + radialOffset));
         var angle = n.orbitAngle + angularOffset;
         n.homeLocalX = Math.cos(n.orbitAngle) * n.homeRadius;
         n.homeLocalY = Math.sin(n.orbitAngle) * n.homeRadius;
-        var driftX = Math.sin(motionTime * 0.14 + n.driftPhase * 2.1) * n.driftAmount * 0.45 * motionFactor;
-        var driftY = Math.cos(motionTime * 0.12 + n.driftPhase * 1.3) * n.driftAmount * 0.40 * motionFactor;
+        var driftX = Math.sin(floatTime * 0.14 + n.driftPhase * 2.1) * n.driftAmount * 0.45 * motionFactor;
+        var driftY = Math.cos(floatTime * 0.12 + n.driftPhase * 1.3) * n.driftAmount * 0.40 * motionFactor;
         var targetX = team.currentX + Math.cos(angle) * radius + driftX;
         var targetY = team.currentY + Math.sin(angle) * radius + driftY;
 

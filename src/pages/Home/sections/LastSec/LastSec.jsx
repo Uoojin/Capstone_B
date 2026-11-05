@@ -14,23 +14,15 @@ export default function LastSec() {
 
   useLayoutEffect(() => {
     const interaction = createFinaleInteraction(svg.current)
-    const entry = ScrollTrigger.create({
-      trigger: section.current,
-      start: 'top top',
-      end: 'bottom bottom',
-      onEnter: () => interaction.activate(),
-      onEnterBack: () => interaction.activate(),
-    })
     const visibility = ScrollTrigger.create({
       trigger: section.current,
       start: 'top bottom',
       end: 'bottom top',
-      onLeave: () => interaction.deactivate(),
+      onEnter: () => interaction.activate(),
       onLeaveBack: () => interaction.deactivate(),
     })
-    if (entry.isActive) interaction.activate()
+    if (visibility.isActive) interaction.activate()
     return () => {
-      entry.kill()
       visibility.kill()
       interaction.dispose()
     }

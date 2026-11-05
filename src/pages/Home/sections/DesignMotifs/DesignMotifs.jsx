@@ -17,10 +17,10 @@ export default function DesignMotifs() {
   const particleRef = useRef(null)
   const changeShapes = useRef(null)
   const previousMixed = useRef(false)
-  const [active, setActive] = useState(0)
   const [pink, setPink] = useState(false)
   const [mixed] = useState(false)
-  const { selectMotif, entryKey } = useMotifPin(rootRef, setActive, items.length)
+  const { current, outgoing, selectMotif, finishTransition } = useMotifPin(rootRef, items.length)
+  const { index: active, key: entryKey } = current
 
   useEffect(() => {
     const change = createParticles(particleRef.current)
@@ -36,19 +36,16 @@ export default function DesignMotifs() {
 
   useLayoutEffect(() => {
     const holder = rootRef.current.querySelector('.object-holder')
-    const scaleObject = () => {
-      const art = holder.querySelector('.object-art')
-      if (art) art.style.transform = `scale(${holder.clientWidth / 435})`
-    }
+    const scaleObject = () => holder.style.setProperty('--object-scale', holder.clientWidth / 435)
     const observer = new ResizeObserver(scaleObject)
     observer.observe(holder)
     scaleObject()
     return () => observer.disconnect()
-  }, [active, entryKey])
+  }, [])
 
   const item = items[active]
   return (
-    <div className="design-motifs-scroll" style={{ height: '300svh' }}>
+    <div className="design-motifs-scroll">
       <section data-mixed={mixed} data-active={active} ref={rootRef} className={`design-motifs${pink ? ' page--pink' : ''}`} aria-label="Design Motifs">
         <div ref={particleRef} className="particles" aria-hidden="true">
           {particles.map((particle, index) => (
@@ -58,7 +55,20 @@ export default function DesignMotifs() {
           ))}
         </div>
         <div className="side-label">DESIGN MOTIF</div>
-        <div className="object-holder"><div key={`${active}-${entryKey}`} className="object-art"><MotifArtwork index={item.motif} /></div></div>
+        <div className="object-holder">
+          {(outgoing ? [outgoing, current] : [current]).map(layer => (
+            <div
+              key={layer.key}
+              className="object-layer"
+              data-outgoing={layer === outgoing}
+              onTransitionEnd={event => {
+                if (event.target === event.currentTarget && event.propertyName === 'opacity') finishTransition(layer.key)
+              }}
+            >
+              <div className="object-art"><MotifArtwork index={items[layer.index].motif} /></div>
+            </div>
+          ))}
+        </div>
         <nav className="motif-nav" aria-label="디자인 모티프">
           <div className="nav-track" style={{ transform: `translateY(calc(${-active} * var(--step)))` }}>
             {items.map((entry, index) => (

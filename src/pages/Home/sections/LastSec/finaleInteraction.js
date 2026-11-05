@@ -8,7 +8,9 @@ export default function createFinaleInteraction(svg) {
   const SHUFFLE_DELAY  = 700;   // 앞 글자가 다 나온 뒤 배경이 바뀌기 시작하기까지 딜레이
   const SHUFFLE_EVERY  = [260, 620]; // 랜덤 교체 간격(ms) 범위
   const SWAP_MS        = 1100;  // 글자 하나가 바뀌는 데 걸리는 시간
-  const RESET_ON_LEAVE = true;  // 마우스가 나가면 ㅋㅋㅋㅋ 상태로 되돌림
+  const SWAP_HANDOFF   = .42;
+  const EASE_BLEND     = 'cubic-bezier(.45,0,.3,1)';
+  const EASE_SETTLE    = 'cubic-bezier(.22,.7,.3,1)';
   // 앞 글자 등장 순서(문서 순서 기준 인덱스): L E T ' S S Y N C .
   // eslint-disable-next-line no-unused-vars -- The reference uses POP delays below.
   const FG_ORDER = [3, 0, 6, 9, 7, 5, 2, 8, 1, 4];
@@ -101,12 +103,26 @@ export default function createFinaleInteraction(svg) {
   // ---- 애니메이션 관리 --------------------------------------------------
   let token = 0;
   const running = new Set(), timers = new Set();
+  const swapping = new Set();
   let disposed = false;
   const later = (fn, ms) => { const t = setTimeout(() => { timers.delete(t); if (!disposed) fn(); }, ms); timers.add(t); };
-  const play = (el, frames, opts) => {
+  const play = (el, frames, opts, onFinish) => {
     const a = el.animate(frames, { fill: 'forwards', ...opts });
     running.add(a);
-    a.onfinish = () => { try { a.commitStyles(); } catch { /* Some browsers cannot commit SVG animation styles. */ } a.cancel(); running.delete(a); };
+    a.onfinish = () => {
+      if (!running.has(a)) return;
+      try {
+        a.commitStyles();
+      } catch {
+        // These animations end on explicit transform and opacity values.
+        const { transform, opacity } = frames.at(-1);
+        el.style.transform = transform;
+        el.style.opacity = opacity;
+      }
+      a.cancel();
+      running.delete(a);
+      onFinish?.();
+    };
     return a;
   };
 
@@ -147,30 +163,29 @@ export default function createFinaleInteraction(svg) {
     clusters.forEach((c, i) => {
       const d = Math.hypot(slots[i].x - px, slots[i].y - py) / maxD * BG_RIPPLE_MS + rnd(0, 60);
       later(() => {
-        play(ph[i], [{ transform: 'scale(1) rotate(0)', opacity: 1 },
-                     { transform: 'scale(1.3) rotate(45deg)', opacity: 1, offset: .35 },
-                     { transform: 'scale(0) rotate(120deg)', opacity: 0 }],
-             { duration: 380, easing: 'ease-in' });
+        play(ph[i], [
+          { transform: 'scale(1)', opacity: 1 },
+          { transform: 'scale(.93)', opacity: 0 },
+        ], { duration: 440, easing: EASE_BLEND });
       }, d);
       later(() => {
-        play(c.pop, [{ transform: 'scale(0) rotate(-40deg)', opacity: 0 },
-                     { transform: 'scale(1.25) rotate(8deg)', opacity: 1, offset: .6 },
-                     { transform: 'scale(1) rotate(0)', opacity: 1 }],
-             { duration: 520, easing: 'cubic-bezier(.2,.8,.3,1)' });
-      }, d + 180);
+        play(c.pop, [
+          { transform: 'scale(.93)', opacity: 0 },
+          { transform: 'scale(1)', opacity: 1 },
+        ], { duration: 570, easing: EASE_SETTLE });
+      }, d + 340);
     });
 
-    // 2) 앞 글자가 순서대로 팡!
+    // 2) 앞 글자가 순서대로 제자리에 안착
     if (SHOW_FG) letters.forEach((g, i) => {
       const p = POP[i], r = p.r;
       later(() => {
         g.style.transformBox = 'view-box';
         g.style.transformOrigin = `${p.x}px ${p.y}px`;
         play(g, [
-          { transform: `scale(0) rotate(${r}deg)`, opacity: 0, easing: 'cubic-bezier(.2,.9,.35,1)' },
-          { opacity: 1, offset: .1, easing: 'cubic-bezier(.2,.9,.35,1)' },
-          { transform: `scale(1.13,1.1) rotate(${-r * .2}deg)`, opacity: 1, offset: .42, easing: 'cubic-bezier(.35,0,.25,1)' },
-          { transform: 'none', opacity: 1 }], { duration: 850 });
+          { transform: `scale(.94) rotate(${r * .25}deg)`, opacity: 0 },
+          { transform: 'none', opacity: 1 },
+        ], { duration: 850, easing: EASE_SETTLE });
       }, FG_START_MS + p.d * 1000);
     });
     const fgEnd = SHOW_FG ? FG_START_MS + 850 + 840 : BG_RIPPLE_MS + 700;
@@ -192,26 +207,36 @@ export default function createFinaleInteraction(svg) {
   }
 
   function swap() {
-    const a = clusters[Math.floor(rnd(0, clusters.length))];
-    let b; do { b = clusters[Math.floor(rnd(0, clusters.length))]; } while (b === a);
-    [a, b].forEach(c => play(c.pop, [
-      { transform: 'scale(1)', opacity: 1, easing: 'cubic-bezier(.4,0,.6,1)' },
-      { transform: 'scale(.55)', opacity: 0, offset: .42, easing: 'cubic-bezier(.3,0,.2,1)' },
-      { transform: 'scale(1.08)', opacity: 1, offset: .78, easing: 'ease-out' },
-      { transform: 'scale(1)', opacity: 1 }], { duration: SWAP_MS }));
-    later(() => {
+    const available = clusters.filter(c => !swapping.has(c));
+    if (available.length < 2) return;
+    const [a] = available.splice(Math.floor(rnd(0, available.length)), 1);
+    const b = available[Math.floor(rnd(0, available.length))];
+    const pair = [a, b];
+    pair.forEach(c => swapping.add(c));
+
+    const resting = { transform: 'scale(1)', opacity: 1 };
+    const contracted = { transform: 'scale(.92)', opacity: 0 };
+    const handoff = () => {
       [a.slotIdx, b.slotIdx] = [b.slotIdx, a.slotIdx];
-      [a, b].forEach(c => {
+      pair.forEach(c => {
         const s = slots[c.slotIdx];
         c.slot.style.transform = `translate(${s.x - c.x}px,${s.y - c.y}px)`;
+        play(c.pop, [contracted, resting], {
+          duration: SWAP_MS * (1 - SWAP_HANDOFF), easing: EASE_SETTLE,
+        }, () => swapping.delete(c));
       });
-    }, SWAP_MS * .42);
+    };
+    let pending = pair.length;
+    pair.forEach(c => play(c.pop, [resting, contracted], {
+      duration: SWAP_MS * SWAP_HANDOFF, easing: EASE_BLEND,
+    }, () => { if (--pending === 0) handoff(); }));
   }
 
   function reset() {
     token++;
     timers.forEach(clearTimeout); timers.clear();
     running.forEach(a => a.cancel()); running.clear();
+    swapping.clear();
     clusters.forEach(c => { HIDDEN(c.pop); c.slot.style.transform = ''; c.slotIdx = clusters.indexOf(c); });
     letters.forEach(HIDDEN);
     caption.style.opacity = '0'; caption.style.transform = '';
@@ -220,40 +245,23 @@ export default function createFinaleInteraction(svg) {
     fx.replaceChildren();
   }
 
-  // Scope the original document-level pointer behavior to this SVG stage.
-  let active = false;
-  let enabled = false;
-  let isTouch = false;
-  const toSvg = event => new DOMPoint(event.clientX, event.clientY)
-    .matrixTransform(svg.getScreenCTM().inverse());
-  function start(event) {
-    if (disposed || !enabled || active) return;
-    active = true;
-    const point = event ? toSvg(event) : { x: 960, y: 540 };
-    reveal(point.x, point.y);
-  }
-  const leave = () => {
-    if (isTouch || !RESET_ON_LEAVE) return;
-    active = false;
-    reset();
-  };
-  const pointerDown = event => { isTouch = event.pointerType === 'touch'; };
-  svg.addEventListener('pointerenter', start);
-  svg.addEventListener('pointermove', start);
-  svg.addEventListener('pointerleave', leave);
-  svg.addEventListener('pointerdown', pointerDown);
+  let revealed = false;
 
   return {
-    activate() { enabled = true; start(); },
-    deactivate() { enabled = false; active = false; reset(); },
+    activate() {
+      if (disposed || revealed) return;
+      revealed = true;
+      reveal(960, 540);
+    },
+    deactivate() {
+      if (!revealed) return;
+      revealed = false;
+      reset();
+    },
     dispose() {
       if (disposed) return;
       disposed = true;
       reset();
-      svg.removeEventListener('pointerenter', start);
-      svg.removeEventListener('pointermove', start);
-      svg.removeEventListener('pointerleave', leave);
-      svg.removeEventListener('pointerdown', pointerDown);
       // Restore React-owned nodes before a StrictMode re-run or unmount.
       originalGroups.forEach(([group, children]) => group.replaceChildren(...children));
       originalStyles.forEach(([element, style]) => {

@@ -26,8 +26,8 @@ function DesktopHome() {
     <main className="home-page" aria-label="Home">
       <Hero />
       <DelightInsight />
-      <Video filmRef={filmRef} />
-      <DesignMotifs />   
+       <Video filmRef={filmRef} />
+      <DesignMotifs />
       <SymbolGrid />
       <LastSec />
     </main>

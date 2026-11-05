@@ -1,10 +1,21 @@
-import { useRef, useState } from 'react'
+import { useLayoutEffect, useRef, useState } from 'react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { usePageTransitionReady } from '../../components/PageTransition/PageTransitionContext.js'
 import { curriculumByYear, careers, curriculumArtwork } from './curriculumData'
 import unitStar from '../../assets/curriculum/unit-star.svg'
 import unitTriangle from '../../assets/curriculum/unit-triangle.svg'
 import unitCircle from '../../assets/curriculum/unit-circle.svg'
 import ConvergenceDiagram from './ConvergenceDiagram.jsx'
 import './Curriculum.css'
+
+gsap.registerPlugin(ScrollTrigger)
+
+const revealSections = [
+  ['.curriculum-convergence', '.curriculum-diagram'],
+  ['.curriculum-program', '.curriculum-year-selector, .curriculum-chart'],
+  ['.curriculum-career', '.curriculum-career-grid'],
+]
 
 function SectionTitle({ children, id, symbol }) {
   return <h2 className="curriculum-title" id={id}><span aria-hidden="true"><img src={symbol} alt="" /></span>{children}<span aria-hidden="true"><img src={symbol} alt="" /></span></h2>
@@ -83,10 +94,50 @@ function CurriculumChart({ data, year }) {
 }
 
 export default function Curriculum() {
+  const pageRef = useRef(null)
   const nextSectionRef = useRef(null)
   const [selectedYear, setSelectedYear] = useState(2026)
+  const ready = usePageTransitionReady()
+
+  useLayoutEffect(() => {
+    if (!ready) return
+
+    const page = pageRef.current
+    const media = gsap.matchMedia()
+    media.add('(prefers-reduced-motion: no-preference)', () => {
+      const cleanupFocus = revealSections.map(([sectionSelector, contentSelector]) => {
+        const section = page.querySelector(sectionSelector)
+        const title = section.querySelector('.curriculum-title')
+        const content = section.querySelectorAll(contentSelector)
+        const initial = { opacity: 0, y: 30 }
+        const timeline = gsap.timeline({
+          paused: true,
+          defaults: { duration: 0.95, ease: 'power3.out' },
+        })
+          .from(title, { ...initial, immediateRender: true }, 0)
+          .from(content, { ...initial, immediateRender: true }, 0.15)
+
+        const trigger = ScrollTrigger.create({
+          trigger: section,
+          start: 'top bottom',
+          end: 'bottom top',
+          onEnter: () => timeline.play(),
+          onLeaveBack: () => timeline.pause(0),
+        })
+        if (trigger.isActive) timeline.play()
+
+        // Keep keyboard focus visible even when it moves ahead of the reveal.
+        const showOnFocus = () => timeline.progress(1).pause()
+        section.addEventListener('focusin', showOnFocus)
+        return () => section.removeEventListener('focusin', showOnFocus)
+      })
+      return () => cleanupFocus.forEach(remove => remove())
+    })
+    return () => media.revert()
+  }, [ready])
+
   return (
-    <main className="curriculum">
+    <main className="curriculum" ref={pageRef}>
       <section className="curriculum-hero" aria-labelledby="curriculum-main-title">
         <CurriculumHeroArtwork />
         <div className="curriculum-introduction">

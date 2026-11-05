@@ -75,6 +75,18 @@
     aspect-ratio: 1
 }
 
+.design-motifs .object-layer {
+    position: absolute;
+    inset: 0;
+    opacity: 1;
+    transition: opacity .6s var(--motif-ease);
+}
+
+.design-motifs .object-layer[data-outgoing="true"] {
+    opacity: 0;
+    pointer-events: none;
+}
+
 .design-motifs .object-art {
     position: absolute;
     top: 0;
@@ -82,7 +94,8 @@
     width: 435px;
     height: 435px;
     transform-origin: 0 0;
-    animation: home-design-motifs-enter .6s both
+    transform: scale(var(--object-scale, 1));
+    animation: home-design-motifs-enter .6s var(--motif-ease) both
 }
 
 .design-motifs .object-root {
@@ -116,7 +129,7 @@
     display: flex;
     flex-direction: column;
     gap: 0;
-    transition: transform .8s cubic-bezier(.22, 1, .36, 1);
+    transition: transform .8s var(--motif-ease);
     pointer-events: auto
 }
 
@@ -164,7 +177,7 @@
     color: #454545;
     letter-spacing: -.03em;
     word-break: keep-all;
-    animation: home-design-motifs-desc .65s both
+    animation: home-design-motifs-desc .65s var(--motif-ease) both
 }
 
 .design-motifs .page-count {
@@ -347,6 +360,7 @@
 }
 
 .design-motifs {
+    --motif-ease: cubic-bezier(.45, 0, .25, 1);
     transition: background-color .45s, color .45s
 }
 
@@ -485,10 +499,10 @@
     }
 }
 
-/* Four source input stages, with the artwork itself fixed to the viewport. */
+/* The four input stages share a viewport with a short entry range in both directions. */
 .design-motifs-scroll {
     position: relative;
-    height: 400svh;
+    height: calc(100svh + 24px);
 }
 
 .design-motifs-scroll>.design-motifs {

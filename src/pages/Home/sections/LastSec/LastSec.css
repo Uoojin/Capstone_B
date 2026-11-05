@@ -1,14 +1,10 @@
-/* Preserve the existing section's native sticky scroll range. */
 .home-sync-finale {
   position: relative;
-  height: 340svh;
-  margin-bottom: 200px;
   background: #fff;
 }
 
 .home-sync-finale-stage {
-  position: sticky;
-  top: 0;
+  position: relative;
   height: 100svh;
   overflow: hidden;
   isolation: isolate;
@@ -26,8 +22,4 @@
 .home-sync-finale .fg {
   transform-box: fill-box;
   transform-origin: center;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .home-sync-finale { height: 100svh; }
 }
