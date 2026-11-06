@@ -6,6 +6,7 @@ import { usePageTransitionReady } from '../../components/PageTransition/PageTran
 import { categories, projects } from '../../data/index.js'
 import { imageBackgroundStyle } from '../../data/dataUtils.js'
 import { shuffle } from '../../utils/shuffle.js'
+import useScrollReveal from '../../utils/useScrollReveal.js'
 import projectLinkIcon from '../../assets/projects/linkIcon.svg'
 import './Project.css'
 
@@ -58,6 +59,8 @@ export default function Project() {
   const ringRef = useRef(null)
   const cardRefs = useRef([])
   const projectListRef = useRef(null)
+  const projectGridRef = useRef(null)
+  useScrollReveal(projectGridRef, pageReady, 3)
   const indexAsideRef = useRef(null)
   const indexFloatRef = useRef(null)
   const detailViewRef = useRef(null)
@@ -110,6 +113,11 @@ export default function Project() {
     : -1
   const projectLink = typeof activeDetail?.link === 'string' ? activeDetail.link.trim() : ''
   const hasProjectLink = isExternalProjectLink(projectLink)
+  const projectSiteLink = hasProjectLink && (
+    <a className="site-link" href={projectLink} target="_blank" rel="noopener noreferrer" aria-label={`${activeDetail.name} 외부 사이트 새 탭에서 열기`}>
+      <img src={projectLinkIcon} alt="" aria-hidden="true" />
+    </a>
+  )
 
   const isDetailOpen = activeDetail !== null
   const detailProjectOrder = filteredProjects.some(({ project }) => project.id === activeDetail?.id)
@@ -832,24 +840,25 @@ export default function Project() {
               </button>
             </div>
 
-            <div className={`project-grid ${gridUpdating ? 'is-updating' : ''}`}>
+            <div className={`project-grid ${gridUpdating ? 'is-updating' : ''}`} ref={projectGridRef}>
               {shuffledProjects.map(({ project, originalIndex: index }) => {
                 const hidden = !filteredProjects.some(({ originalIndex }) => originalIndex === index)
                 return (
-                  <button
-                    className="list-card"
-                    type="button"
-                    key={project.id}
-                    hidden={hidden}
-                    aria-label={`${project.team} ${project.name}`}
-                    onClick={() => openProjectById(project.id)}
-                  >
-                    <span className="list-card-media" style={cardImageStyle(project, loadedHoverImages[project.id])} />
-                    <span className="list-card-caption">
-                      <span className="list-card-name">{project.name}</span>
-                      <span className="list-card-keywords">{isMobile ? project.team : project.tags.join(' · ')}</span>
-                    </span>
-                  </button>
+                  <div key={project.id} className="project-list-item" data-scroll-reveal={project.id} hidden={hidden && !isMobile}>
+                    <button
+                      className="list-card"
+                      type="button"
+                      hidden={hidden}
+                      aria-label={`${project.team} ${project.name}`}
+                      onClick={() => openProjectById(project.id)}
+                    >
+                      <span className="list-card-media" style={cardImageStyle(project, loadedHoverImages[project.id])} />
+                      <span className="list-card-caption">
+                        <span className="list-card-name">{project.name}</span>
+                        <span className="list-card-keywords">{isMobile ? project.team : project.tags.join(' · ')}</span>
+                      </span>
+                    </button>
+                  </div>
                 )
               })}
             </div>
@@ -903,6 +912,7 @@ export default function Project() {
                       </>
                     )}
                   </h1>
+                  {isMobile && projectSiteLink}
                 </div>
                 <div className="detail-intro">
                   {activeDetail.slogan && (
@@ -910,11 +920,9 @@ export default function Project() {
                       <span className="detail-slogan-sizing" aria-hidden="true">{activeDetail.slogan}</span>
                       <span className="detail-slogan-row">
                         <span className="detail-slogan-copy">{activeDetail.slogan}</span>
-                        {hasProjectLink && (
+                        {!isMobile && hasProjectLink && (
                           <span className="detail-slogan-action">
-                            <a className="site-link" href={projectLink} target="_blank" rel="noopener noreferrer" aria-label={`${activeDetail.name} 외부 사이트 새 탭에서 열기`}>
-                              <img src={projectLinkIcon} alt="" aria-hidden="true" />
-                            </a>
+                            {projectSiteLink}
                           </span>
                         )}
                       </span>

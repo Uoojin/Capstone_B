@@ -5,6 +5,7 @@ import { projects, students } from '../../data/index.js'
 import { imageBackgroundStyle } from '../../data/dataUtils.js'
 import { matchesHangulName } from './hangulSearch.js'
 import { shuffle } from '../../utils/shuffle.js'
+import useScrollReveal from '../../utils/useScrollReveal.js'
 import './Student.css'
 
 const roles = ['ALL', 'DESIGNER', 'PLANNER', 'PROGRAMMER']
@@ -15,6 +16,8 @@ export default function Student() {
   const pageReady = usePageTransitionReady()
   const requestedStudentId = new URLSearchParams(location.search).get('studentId')
   const studentCardsRef = useRef(new Map())
+  const gridRef = useRef(null)
+  useScrollReveal(gridRef, pageReady, undefined, { showVisibleImmediately: true })
   const cancelAutoFlipRef = useRef(null)
   const [shuffledStudents] = useState(() => shuffle(students))
   const [activeRole, setActiveRole] = useState('ALL')
@@ -153,12 +156,12 @@ export default function Student() {
   return (
     <main className="student-page">
       <section className="student-content" aria-label="Student list">
-        <div className="student-grid">
+        <div className="student-grid" ref={gridRef}>
           {displayStudents.map((item) =>
             item.isEmpty ? (
               <div key={item.id} className="student-empty-card" />
             ) : (
-              <article key={item.studentId} className="student-card" data-student-id={item.studentId} ref={(element) => {
+              <article key={item.studentId} className="student-card" data-student-id={item.studentId} data-scroll-reveal={item.studentId} ref={(element) => {
                 if (element) studentCardsRef.current.set(item.studentId, element)
                 else studentCardsRef.current.delete(item.studentId)
               }}>

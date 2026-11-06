@@ -367,7 +367,7 @@
   }
 
   .student-page .back-interview {
-    font-size: clamp(10px, 2.6vw, 14px);
+    font-size: clamp(11px, 2.86vw, 15.4px);
     line-height: 1.5;
     overflow-wrap: anywhere;
   }

@@ -2,6 +2,7 @@ import { useRef, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { symbolItems as symbols } from './symbolAssets.js'
 import { categories } from './categories.js'
+import { previewOffsets } from './previewOffsets.js'
 import './SymbolGrid.css'
 
 const assets = import.meta.glob('../../../../assets/type/**/*.svg', {
@@ -20,8 +21,10 @@ function missingDescription(item) {
 }
 
 function SymbolImage({ item, preview = false, version = 0, reducedMotion = false, background = item.background, onExitComplete }) {
+  const [offsetX, offsetY] = previewOffsets[item.id] ?? [0, 0]
+  const alignment = preview ? { '--symbol-center-x': `${offsetX}%`, '--symbol-center-y': `${offsetY}%` } : undefined
   const artwork = (
-    <div className="home-symbols__symbol-art">
+    <div className="home-symbols__symbol-art" style={alignment}>
       {item.parts.map((part, index) => {
         const src = sourceFor(part)
         const style = { left: `${part.x}%`, top: `${part.y}%`, width: `${part.width}%`, height: `${part.height}%` }

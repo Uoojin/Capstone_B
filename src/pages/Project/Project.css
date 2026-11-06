@@ -369,6 +369,14 @@
   transform: translateY(4px);
 }
 
+.project-list-item {
+  min-width: 0;
+}
+
+.project-list-item .list-card {
+  display: block;
+}
+
 .list-card {
   position: relative;
   width: 100%;
@@ -1694,6 +1702,8 @@
   .detail-view .detail-identity {
     width: 100%;
     margin-bottom: 8px;
+    align-items: center;
+    gap: 12px;
   }
 
   .detail-view .detail-identity.has-project-link {
@@ -1704,23 +1714,15 @@
     font-size: 30px;
   }
 
+  .detail-view .detail-identity .site-link {
+    align-self: center;
+    margin-top: 0;
+    transform: none;
+  }
+
   .detail-view .detail-slogan {
     font-size: 18px;
-    position: relative;
     display: block;
-  }
-
-  .detail-view .detail-slogan-sizing {
-    display: block;
-    visibility: hidden;
-  }
-
-  .detail-view .detail-slogan-row {
-    position: absolute;
-    inset: 0 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 14px;
   }
 
   .detail-view .detail-desc {
@@ -1799,6 +1801,17 @@
   .detail-view .members {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 24px 12px;
+  }
+
+  .detail-view .members:has(> .member-link:nth-child(7)) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: clamp(6px, 2vw, 12px);
+  }
+
+  .detail-view .member-link {
+    min-width: 0;
+    align-self: start;
+    text-align: left;
   }
 
   .detail-view .member-name {

@@ -210,15 +210,16 @@
     padding: 24px var(--page-padding) 0;
     background: #fff;
     color: #101010;
-    font-size: clamp(8px, 2.46vw, 11.5px);
+    font-size: clamp(8.56px, 2.6322vw, 12.305px);
     font-weight: 400;
-    line-height: 20px;
+    line-height: 21px;
   }
 
   .home-mobile-degree-show,
   .home-mobile-schedule {
     margin: 0;
-    white-space: nowrap;
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
 
   .home-mobile-degree-show {

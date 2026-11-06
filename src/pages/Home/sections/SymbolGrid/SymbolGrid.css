@@ -125,7 +125,8 @@
 }
 
 .home-symbols__preview .home-symbols__symbol-art {
-    height: 90%
+    height: 90%;
+    transform: translate(calc(-50% + var(--symbol-center-x)), calc(-50% + var(--symbol-center-y)))
 }
 
 .home-symbols__preview-motion {
