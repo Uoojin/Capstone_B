@@ -197,9 +197,9 @@ export default function DrawingEditor({ onShareComplete, onCancel }) {
     ]).select();
 
     try {
-      const { error } = await uploadPromise;
+      const { data, error } = await uploadPromise;
       if (error) throw error;
-      onShareComplete();
+      onShareComplete(data?.[0]?.id ?? null);
     } catch (err) {
       console.error(err);
     } finally {

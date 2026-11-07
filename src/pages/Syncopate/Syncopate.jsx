@@ -5,6 +5,61 @@ import './Syncopate.css';
 
 const ARTIFACT_ID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const pendingSyncWrites = new Map();
+const SAVED_OBJECT_RAY_TONES = [
+  { color: '#FD00A0', delay: '0ms' },
+  { color: '#FF58B9', delay: '24ms' },
+  { color: '#FF91D0', delay: '36ms' },
+];
+const SAVED_OBJECT_RAYS = [
+  // Angle offset (degrees), length at 150px, and tone index.
+  [-3, 12, 0], [2, 10, 2], [-1, 9, 1], [4, 13, 0],
+  [-2, 11, 2], [1, 10, 1], [3, 12, 1], [-3, 9, 0],
+  [2, 11, 2], [-2, 13, 0], [3, 10, 1], [-3, 12, 0],
+  [2, 9, 2], [-1, 11, 1], [4, 13, 2], [-3, 10, 0],
+  [2, 12, 1], [-2, 9, 2],
+];
+
+function positionSavedObjectRays(group, artifact) {
+  const { alphaHull, radius, flipX } = artifact;
+  const xs = alphaHull?.map(point => point.x) ?? [-radius, radius];
+  const ys = alphaHull?.map(point => point.y) ?? [-radius, radius];
+  const left = Math.min(...xs);
+  const right = Math.max(...xs);
+  const top = Math.min(...ys);
+  const bottom = Math.max(...ys);
+  const centerX = (left + right) / 2;
+  const centerY = (top + bottom) / 2;
+  const span = Math.max(right - left, bottom - top);
+  const count = span < 135 ? 16 : 18;
+  const lengthScale = Math.min(1.1, Math.max(0.65, span / 150));
+
+  // Fit the ring to the visible ink, including off-center drawings.
+  const minRadius = Math.max(9, span * 0.24);
+  const halfWidth = Math.max(minRadius, (right - left) / 2);
+  const halfHeight = Math.max(minRadius, (bottom - top) / 2);
+  const fit = alphaHull ? Math.max(1, ...alphaHull.map(({ x, y }) =>
+    Math.hypot((x - centerX) / halfWidth, (y - centerY) / halfHeight)
+  )) : Math.SQRT2;
+  const gap = 13 + Math.min(4, span / 45);
+  const radiusX = halfWidth * fit + gap;
+  const radiusY = halfHeight * fit + gap;
+  const anchorX = flipX ? -centerX : centerX;
+
+  SAVED_OBJECT_RAYS.forEach(([angleOffset, length], index) => {
+    const ray = group.children[index];
+    if (index >= count) {
+      ray.setAttribute('display', 'none');
+      return;
+    }
+
+    const angle = (-90 + index * 360 / count + angleOffset) * Math.PI / 180;
+    const x = radiusX * Math.cos(angle);
+    const y = radiusY * Math.sin(angle);
+    const direction = Math.atan2(y, x) * 180 / Math.PI;
+    ray.setAttribute('transform', `translate(${anchorX + x} ${centerY + y}) rotate(${direction})`);
+    ray.firstElementChild.setAttribute('x2', length * lengthScale);
+  });
+}
 
 function incrementSyncInDB(id) {
   // Persisted artifacts use UUIDs; the installed RPC expects bigint.
@@ -536,9 +591,11 @@ function ArchiveGuide() {
 export default function Syncopate({ onOpenDrawing }) {
   const canvasRef = useRef(null);
   const artifactsRef = useRef([]);
+  const savedObjectHighlightRef = useRef(null);
   const cameraRef = useRef({ x: 0, y: 0 });
   const activeHoldPairsRef = useRef(new Set());
   const [isDrawingOpen, setIsDrawingOpen] = useState(false);
+  const [latestSavedObjectId, setLatestSavedObjectId] = useState(null);
 
   const dragStateRef = useRef({
     target: null,
@@ -706,6 +763,8 @@ export default function Syncopate({ onOpenDrawing }) {
       .subscribe();
 
     let animationId;
+    let positionedHighlight;
+    let positionedFlip;
 
     const loop = (currentTime) => {
       const all = artifactsRef.current;
@@ -1158,6 +1217,7 @@ export default function Syncopate({ onOpenDrawing }) {
         }
       }
 
+      const highlight = savedObjectHighlightRef.current;
       for (let i = 0; i < all.length; i++) {
         const item = all[i];
         const isDragging = dragStateRef.current.target === item;
@@ -1215,6 +1275,24 @@ export default function Syncopate({ onOpenDrawing }) {
         }
 
         item.draw(ctx);
+
+        if (highlight?.dataset.objectId === item.id) {
+          const viewBox = highlight.viewBox.baseVal;
+          if (viewBox.width !== width || viewBox.height !== height) {
+            highlight.setAttribute('viewBox', `0 0 ${width} ${height}`);
+          }
+          const group = highlight.firstElementChild;
+          const camera = cameraRef.current;
+          group.setAttribute('transform',
+            `translate(${item.x - camera.x} ${item.y - camera.y}) rotate(${item.tilt * 180 / Math.PI}) scale(${item.scale})`
+          );
+          if (positionedHighlight !== highlight || positionedFlip !== item.flipX) {
+            positionSavedObjectRays(group, item);
+            highlight.setAttribute('data-positioned', '');
+            positionedHighlight = highlight;
+            positionedFlip = item.flipX;
+          }
+        }
       }
 
       if (mouse.x > 0 && mouse.y > 0) {
@@ -1510,6 +1588,11 @@ export default function Syncopate({ onOpenDrawing }) {
     setIsDrawingOpen(false);
   };
 
+  const handleDrawingSaved = (id) => {
+    if (id !== null) setLatestSavedObjectId(id);
+    handleCloseDrawing();
+  };
+
   return (
     <div className="content-page-flow syncopate-page">
       <div className="archive-viewport">
@@ -1586,12 +1669,36 @@ export default function Syncopate({ onOpenDrawing }) {
           onTouchEnd={handleTouchEnd}
           onTouchCancel={handleMouseLeave}
         />
+        {latestSavedObjectId !== null && (
+          <svg
+            key={latestSavedObjectId}
+            ref={savedObjectHighlightRef}
+            data-object-id={latestSavedObjectId}
+            className="archive-saved-object-highlight"
+            aria-hidden="true"
+            preserveAspectRatio="none"
+            fill="none"
+            strokeWidth="1.75"
+            strokeLinecap="round"
+          >
+            <g>
+              {SAVED_OBJECT_RAYS.map(([, , tone], index) => {
+                const { color, delay } = SAVED_OBJECT_RAY_TONES[tone];
+                return (
+                  <g key={index}>
+                    <line stroke={color} style={{ '--ray-delay': delay }} vectorEffect="non-scaling-stroke" />
+                  </g>
+                );
+              })}
+            </g>
+          </svg>
+        )}
       </div>
 
       {isDrawingOpen && (
         <div className="content-drawing-overlay">
           <DrawingEditor
-            onShareComplete={handleCloseDrawing}
+            onShareComplete={handleDrawingSaved}
             onCancel={handleCloseDrawing}
           />
         </div>

@@ -102,6 +102,40 @@
   cursor: grabbing;
 }
 
+.archive-saved-object-highlight {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.archive-saved-object-highlight[data-positioned] {
+  visibility: visible;
+}
+
+.archive-saved-object-highlight[data-positioned] line {
+  animation: archive-saved-object-rays 390ms ease-out var(--ray-delay) both;
+}
+
+@keyframes archive-saved-object-rays {
+  from {
+    opacity: 0;
+    transform: translateX(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .archive-saved-object-highlight[data-positioned] line {
+    animation: none;
+  }
+}
+
 /* 모달  */
 .content-page-flow .message-modal-backdrop {
   position: fixed;
