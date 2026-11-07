@@ -210,9 +210,9 @@
     padding: 24px var(--page-padding) 0;
     background: #fff;
     color: #101010;
-    font-size: clamp(8.56px, 2.6322vw, 12.305px);
+    font-size:13px;
     font-weight: 400;
-    line-height: 21px;
+    line-height: 18px;
   }
 
   .home-mobile-degree-show,

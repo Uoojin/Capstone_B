@@ -26,7 +26,7 @@ function DesktopHome() {
     <main className="home-page" aria-label="Home">
       <Hero />
       <DelightInsight />
-       <Video filmRef={filmRef} />
+      <Video filmRef={filmRef} />
       <DesignMotifs />
       <SymbolGrid />
       <LastSec />
@@ -42,12 +42,12 @@ function MobileHome() {
       </div>
       <section className="home-mobile-exhibition" aria-label="전시 정보">
         <p className="home-mobile-degree-show">
-          KAYWON UNIVERSITY OF ART &amp; DESIGN<br />
-          33RD DEGREE SHOW
+          계원예술대학교 <br />
+          디지털미디어디자인과 졸업전시회
         </p>
         <p className="home-mobile-schedule">
-          KAYWON DESIGN HALL 5F<br />
-          NOV. 22 (FRI) - NOV. 24 (SUN)
+          2026 Delight Insight <br />
+          11.20 FRI - 11.22 SUN
         </p>
       </section>
     </main>

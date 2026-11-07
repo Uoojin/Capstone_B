@@ -312,7 +312,7 @@ export const students = [
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
     role: 'DESIGNER',
-    interview: '몰입을 설계하는 디자이너 황정인입니다.',
+    interview: '인간을 관찰해 성장하는 디자이너 황정인입니다.',
 
     // 04. 연락처 및 포트폴리오
     contact: 'zxoolv@gmail.com',
