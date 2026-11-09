@@ -156,7 +156,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'adneue.j@gmail.com',
-    profileUrl: null,
+    profileUrl: 'https://www.behance.net/daeunjeong22',
 
     // 05. 참여 프로젝트
     projectId: 'project-01',
@@ -179,7 +179,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'u.ooojini@gmail.com',
-    profileUrl: '',
+    profileUrl: 'https://www.behance.net/uoojin',
 
     // 05. 참여 프로젝트
     projectId: 'project-01',
