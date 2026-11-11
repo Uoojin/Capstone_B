@@ -44,7 +44,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'ni9htday@gmail.com',
-    profileUrl: 'http://www.linkedin.com/in/ni9htday',
+    profileUrl: 'https://catnip-woodpecker-d6d.notion.site/405f75c567d5819684f0c7b0c70a0d72?source=copy_link',
 
     // 05. 참여 프로젝트
     projectId: 'project-01',
@@ -1144,7 +1144,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'leejs30top2@gmail.com',
-    profileUrl: 'www.linkedin.com/in/준석-이-6a6a42427',
+    profileUrl: 'https://junseok-portfolio.notion.site/',
 
     // 05. 참여 프로젝트
     projectId: 'project-08',
