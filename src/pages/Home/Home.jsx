@@ -1,7 +1,7 @@
 import createMediaQueryStore from '../../utils/createMediaQueryStore.js'
 import { useSyncExternalStore } from 'react'
 import useExhibitionFilm from './sections/Video/useExhibitionFilm.js'
-import mobilePosterImage from '../../assets/mobileMain.svg'
+import mobilePosterImage from '../../assets/mobileMain.webp'
 import Hero from './sections/Hero/Hero.jsx'
 import DelightInsight from './sections/DelightInsight/DelightInsight.jsx'
 import Video from './sections/Video/Video.jsx'

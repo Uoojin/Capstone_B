@@ -1,4 +1,4 @@
-import exhibitionFilm from '../../../../assets/sync_story.webm'
+import exhibitionFilm from '../../../../assets/sync_story.mp4'
 
 export default function Video({ filmRef }) {
   return (

@@ -7,6 +7,7 @@ import parallaxHoverImage from '../../assets/projects/hover/project06_PARALLAX_h
 import compassHoverImage from '../../assets/projects/hover/project07_COMPASS_hover.webp?no-inline'
 import oreumHoverImage from '../../assets/projects/hover/project08_oreum_hover.webp?no-inline'
 import emoraHoverImage from '../../assets/projects/hover/project09_EMORA_hover.webp?no-inline'
+import popIngHoverImage from '../../assets/projects/hover/project11_POP-ING_hover.webp?no-inline'
 import malmoiHoverImage from '../../assets/projects/hover/project12_MALMOI_hover.webp?no-inline'
 import limenHoverImage from '../../assets/projects/hover/project13_LIMEN_hover.webp?no-inline'
 import gongmyeongcheHoverImage from '../../assets/projects/hover/project14_42_hover.webp?no-inline'
@@ -121,7 +122,7 @@ export const projects = [
     target: ['일반 대중'],
 
     // 04. 외부 링크
-    link: '',
+    link: 'https://www.plev.info/',
 
     // 05. 참여 학생
     memberIds: ['KIMKIHYUN', 'KWONMINJAE', 'KIMJUNA', 'JANGDOIK', 'JUNGDAEUN25', 'HONGJUNSANG'],
@@ -300,6 +301,7 @@ export const projects = [
 
     // 02. 이미지 파일명 생성용 (확장자 및 경로 제외)
     imageKey: 'POP-ING',
+    hoverImage: popIngHoverImage,
     teamImageKey: 'POPING',
 
     // 03. 프로젝트 카테고리 (categories.js 참고)
@@ -308,7 +310,7 @@ export const projects = [
     target: ['전시 관람객'],
 
     // 04. 외부 링크 (없으면 null)
-    link: '',
+    link: 'https://pop-ing-corporate.pages.dev/',
 
     // 05. 참여 학생 (표시 순서대로)
     memberIds: ['LEEJUNE', 'NOHNAMSU', 'BAECHAEWON', 'ONSEOYOUNG', 'LEEJAEBEOM', 'LEEHYUNGGYU', 'YUNSEOJIN'],
