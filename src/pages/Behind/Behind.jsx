@@ -2,14 +2,12 @@ import { useEffect, useLayoutEffect, useRef } from 'react'
 import { committee, DMD, professors } from './behindData'
 import schoolLogo from '../../assets/behind/KW Logo.svg'
 import './Behind.css'
-import behindFilm from '../../assets/behind/behindTest.webm'
-
-// Set videoSrc to a 1920×1080 video URL when the background film is ready.
+import behindFilm from '../../assets/behind/behindTest.mp4'
 
 function BehindBackground({ behindFilm }) {
   return (
     <div className="credit-background" aria-hidden="true">
-      {behindFilm && <video src={behindFilm} autoPlay muted loop playsInline />}
+      {behindFilm && <video src={behindFilm} autoPlay muted loop playsInline preload="metadata" />}
     </div>
   )
 }
@@ -122,7 +120,7 @@ export default function Behind() {
       <div className="credit-viewport" ref={viewportRef} tabIndex={0} role="region" aria-label="크레딧 스크롤 영역">
         <div className="credit-roll">
           <section className="credit-hero" aria-label="DELIGHT INSIGHT 2026 LET’S SYNC!">
-            <div className="credit-wordmark">
+            <div className="credit-wordmark" data-font="display">
               <strong>LET’S SYNC!</strong>
             </div>
             <p>계원예술대학교<br />디지털미디어디자인과 졸업전시회</p>

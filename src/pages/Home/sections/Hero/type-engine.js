@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars, no-unreachable, no-empty -- Preserve the legacy engine and intentionally disabled drawing paths during integration. */
 // Legacy engine retained verbatim apart from its host, assets, and lifecycle adapters.
-import { fontFamilyForText } from '../../../../utils/textFonts.js';
 import { createArtworkMasks, createContactMotion, createContactParticles, stepSecondaryRecoil } from './sync-contact-motion.js';
 
 export default function startTypeEngine({ host, canvas, assetMap, placementSeed }) {
@@ -21,6 +20,7 @@ export default function startTypeEngine({ host, canvas, assetMap, placementSeed 
 
     // -------------------- TYPE INTERACTION --------------------
     var ctx = canvas.getContext('2d');
+    const labelFontFamily = getComputedStyle(canvas).fontFamily;
 
     var COLOR_INK = '#0b0b0a';
     var COLOR_ACCENT = '#EBEBEB';
@@ -1475,15 +1475,15 @@ export default function startTypeEngine({ host, canvas, assetMap, placementSeed 
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
             ctx.fillStyle = 'rgba(11,11,10,0.62)';
-            ctx.font = `600 16px ${fontFamilyForText(info.name)}`;
+            ctx.font = `600 16px ${labelFontFamily}`;
             ctx.fillText(info.name, sx, textY - 18);
 
             ctx.fillStyle = 'rgba(11,11,10,0.62)';
-            ctx.font = `400 13px ${fontFamilyForText(info.category)}`;
+            ctx.font = `400 13px ${labelFontFamily}`;
             ctx.fillText(info.category, sx, textY + 4);
 
             ctx.fillStyle = 'rgba(11,11,10,0.62)';
-            ctx.font = `400 12px ${fontFamilyForText(info.category)}`;
+            ctx.font = `400 12px ${labelFontFamily}`;
             ctx.restore();
         }
     }

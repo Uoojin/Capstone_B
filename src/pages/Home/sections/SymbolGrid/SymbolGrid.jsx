@@ -100,7 +100,7 @@ export default function SymbolGrid() {
     <section className="home-symbols__symbol-section" aria-label="심볼 목록">
       <div className="home-symbols__panel">
         <header className="home-symbols__heading">
-          <h2 className="home-symbols__title"><span>Key Visual</span><span>Typography</span></h2>
+          <h2 className="home-symbols__title" data-font="display"><span>Key Visual</span><span>Typography</span></h2>
           <p className="home-symbols__description">
             <span>저마다의 개성이 모여 LET’S SYNC!에 새로운 색을 더합니다.</span>
             <span>각자의 감각으로 글자를 조합하며 나만의 방식으로 연결의 의미를 발견해 보세요.</span>

@@ -87,9 +87,23 @@
   pointer-events: none;
 }
 
-.project-hit:hover .project-face,
-.list-card:hover .list-card-media {
-  --project-hover-background: var(--project-hover-source);
+.project-hover-image {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 400ms ease-in-out;
+}
+
+.project-hit:hover .project-hover-image.is-ready,
+.list-card:hover .project-hover-image.is-ready {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-hover-image {
+    transition: none;
+  }
 }
 
 .card-label {
@@ -114,6 +128,12 @@
   color: #707070;
   font-size: 17px;
   line-height: 1;
+}
+
+.project-title,
+.list-card-name,
+.detail-title {
+  font-family: Arial, "Pretendard", sans-serif;
 }
 
 .project-title {
@@ -426,6 +446,7 @@
 }
 
 .project-index button {
+  font-family: var(--font-body);
   width: 100%;
   min-height: 30px;
   display: grid;
@@ -1046,7 +1067,7 @@
     display: block;
     min-height: max(100svh, calc(1080 * var(--figma-unit)));
     padding: 0;
-    font-family: var(--font-family);
+    font-family: var(--font-body);
   }
 
   .detail-hero .detail-identity {
@@ -1104,7 +1125,7 @@
     width: calc(587 * var(--figma-unit));
     max-width: none;
     margin: 0;
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 500;
     line-height: 1.6;
     letter-spacing: -.03em;
@@ -1335,7 +1356,7 @@
     row-gap: clamp(32px, 4vw, 64px);
     min-height: 100svh;
     padding: clamp(88px, 12svh, 150px) 3.125vw 96px;
-    font-family: var(--font-family);
+    font-family: var(--font-body);
   }
 
   .detail-hero .detail-identity {

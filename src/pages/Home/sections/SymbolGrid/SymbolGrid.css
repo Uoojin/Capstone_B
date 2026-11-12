@@ -1,5 +1,5 @@
 .home-symbols__symbol-section {
-    font-family: Pretendard, 'Apple SD Gothic Neo', sans-serif;
+    font-family: var(--font-body);
     color: #0f0f0f;
     font-synthesis: none
 }
@@ -44,8 +44,8 @@
 .home-symbols__title {
     grid-column: 1;
     margin: 0 0 0 -4.42cqw;
-    font-size: clamp(20px, 2.06cqw, 38px);
-    font-weight: 500;
+    font-size: clamp(20px, 2cqw, 30px);
+    font-weight: 600;
     line-height: 1.14;
     letter-spacing: -.045em
 }
@@ -168,7 +168,7 @@
     border: 0;
     background: transparent;
     color: #b3b3b3;
-    font: 500 clamp(14px, 1.48cqw, 26px)/1.2 'Helvetica Neue', Arial, Pretendard, sans-serif;
+    font: 500 clamp(14px, 1.48cqw, 26px)/1.2 var(--font-body);
     letter-spacing: -.045em;
     text-align: left;
     cursor: pointer;

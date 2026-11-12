@@ -38,7 +38,7 @@ function MobileHome() {
   return (
     <main className="home-page home-mobile-page" aria-label="Home">
       <div className="home-mobile-poster">
-        <img src={mobilePosterImage} alt="LET’S SYNC! 전시 포스터" width="440" height="623" />
+        <img src={mobilePosterImage} alt="LET’S SYNC! 전시 포스터" width="440" height="623" fetchPriority="high" />
       </div>
       <section className="home-mobile-exhibition" aria-label="전시 정보">
         <p className="home-mobile-degree-show">

@@ -18,7 +18,7 @@ const revealSections = [
 ]
 
 function SectionTitle({ children, id, symbol }) {
-  return <h2 className="curriculum-title" id={id}><span aria-hidden="true"><img src={symbol} alt="" /></span>{children}<span aria-hidden="true"><img src={symbol} alt="" /></span></h2>
+  return <h2 className="curriculum-title" id={id} data-font="display"><span aria-hidden="true"><img src={symbol} alt="" /></span>{children}<span aria-hidden="true"><img src={symbol} alt="" /></span></h2>
 }
 
 function CurriculumHeroArtwork() {
@@ -141,7 +141,7 @@ export default function Curriculum() {
       <section className="curriculum-hero" aria-labelledby="curriculum-main-title">
         <CurriculumHeroArtwork />
         <div className="curriculum-introduction">
-          <h2>WE ARE</h2>
+          <h2 data-font="display">WE ARE</h2>
           <p>디지털미디어디자인과는 디자인과 과학기술, 그리고 미디어의 융합 교육과 산업 수요를 반영한 스튜디오 중심의 교육을 통해 디지털 미디어 산업의 창조적인 문화콘텐츠를 생산할 수 있는 융합형 인재를 양성한다.</p>
         </div>
         <ScrollCue nextSectionRef={nextSectionRef} />

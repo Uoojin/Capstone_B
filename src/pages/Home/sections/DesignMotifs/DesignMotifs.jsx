@@ -73,8 +73,8 @@ export default function DesignMotifs() {
           <div className="nav-track" style={{ transform: `translateY(calc(${-active} * var(--step)))` }}>
             {items.map((entry, index) => (
               <button key={entry.name} type="button" className={index === active ? 'active' : undefined} aria-current={index === active ? 'true' : undefined} onClick={() => selectMotif(index)}>
-                <span className="motif-title" data-text-font="en">{entry.name}</span>
-                <span className="motif-subtitle" data-text-font="ko">{entry.ko}</span>
+                <span className="motif-title">{entry.name}</span>
+                <span className="motif-subtitle">{entry.ko}</span>
               </button>
             ))}
           </div>

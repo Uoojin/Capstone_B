@@ -1,5 +1,5 @@
 .design-motifs {
-    font-family: var(--font-family);
+    font-family: var(--font-body);
     color: #454545;
     background: #fff;
     font-synthesis: none
@@ -57,6 +57,7 @@
 }
 
 .design-motifs .side-label {
+    font-family: var(--font-display);
     position: absolute;
     top: 48%;
     left: 3.125%;
@@ -119,6 +120,7 @@
     overflow: hidden;
     --step: 14.375vw;
     pointer-events: none;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #454545 9%, #454545 91%, transparent);
     mask-image: linear-gradient(to bottom, transparent, #454545 9%, #454545 91%, transparent)
 }
 
@@ -143,7 +145,7 @@
     align-items: flex-start;
     gap: clamp(6px, .78125vw, 16px);
     transform: translateY(-.9em);
-    font: 700 clamp(25px, 3.125vw, 64px)/1 var(--font-family-en);
+    font: 700 clamp(25px, 3.125vw, 64px)/1 var(--font-body);
     letter-spacing: -.06em;
     color: #eaeaea;
     cursor: pointer;
@@ -156,8 +158,12 @@
     color: #454545;
 }
 
+.design-motifs .motif-title {
+    font-family: var(--font-display);
+}
+
 .design-motifs .motif-subtitle {
-    font: 500 clamp(16px, 1.5625vw, 32px)/1.2 var(--font-family-ko);
+    font: 500 clamp(16px, 1.5625vw, 32px)/1.2 var(--font-body);
     letter-spacing: -.03em;
     color: inherit;
     transition: color .5s;
@@ -173,7 +179,7 @@
     top: 49%;
     transform: translateY(-50%);
     width: min(22.65vw, 435px);
-    font: 400 clamp(11px, calc((100vw - 2 * 3.17vw) * 1.05 / 100), 20px)/1.65 var(--font-family-ko);
+    font: 400 clamp(11px, calc((100vw - 2 * 3.17vw) * 1.05 / 100), 20px)/1.65 var(--font-body);
     color: #454545;
     letter-spacing: -.03em;
     word-break: keep-all;
@@ -259,6 +265,7 @@
         width: calc(100% - 40px);
         height: 80px;
         --step: 70px;
+        -webkit-mask-image: linear-gradient(to bottom, transparent, #454545 20%, #454545 80%, transparent);
         mask-image: linear-gradient(to bottom, transparent, #454545 20%, #454545 80%, transparent)
     }
 
@@ -380,7 +387,7 @@
     border: 0;
     background: none;
     color: #454545;
-    font: 500 17px var(--font-family);
+    font: 500 17px var(--font-body);
     letter-spacing: .04em;
     cursor: pointer;
     transition: color .45s
@@ -481,7 +488,7 @@
     border: 0;
     background: none;
     color: inherit;
-    font: 600 10px var(--font-family);
+    font: 600 10px var(--font-body);
     letter-spacing: .04em;
     cursor: pointer
 }

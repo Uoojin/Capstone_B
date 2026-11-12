@@ -34,6 +34,13 @@ export default function createWheelMotion(root, getEntryLimit) {
     if (!event.cancelable || !canMove()) return
 
     const y = window.scrollY
+    const max = scroller.scrollHeight - scroller.clientHeight
+    // Safari can report positions outside the document during rubber-banding.
+    if (y < 0 || y > max) {
+      stop()
+      return
+    }
+
     const unit = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? window.innerHeight : 1
     const delta = event.deltaY * unit
     if (y !== lastY || (target - y) * delta < 0) stop()
@@ -42,7 +49,6 @@ export default function createWheelMotion(root, getEntryLimit) {
       velocity = 0
       lastTime = performance.now()
     }
-    const max = scroller.scrollHeight - scroller.clientHeight
     const limit = getEntryLimit(y, Math.sign(delta))
     target = Math.max(0, Math.min(max, target + delta))
     if (limit !== null) target = delta > 0 ? Math.min(target, limit) : Math.max(target, limit)

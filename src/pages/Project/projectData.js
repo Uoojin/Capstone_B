@@ -1,5 +1,18 @@
-import letsSyncHoverImage from '../../assets/projects/hover/project01_LETSSYNC_hover.webp'
-import parallaxHoverImage from '../../assets/projects/hover/project06_PARALLAX_hover.webp'
+import letsSyncHoverImage from '../../assets/projects/hover/project01_LETSSYNC_hover.webp?no-inline'
+import aquiHoverImage from '../../assets/projects/hover/project02_aqui_hover.webp?no-inline'
+import chakHoverImage from '../../assets/projects/hover/project03_Chak!_hover.webp?no-inline'
+import plevHoverImage from '../../assets/projects/hover/project04_PLEV_hover.webp?no-inline'
+import haelonHoverImage from '../../assets/projects/hover/project05_HAELON_hover.webp?no-inline'
+import parallaxHoverImage from '../../assets/projects/hover/project06_PARALLAX_hover.webp?no-inline'
+import compassHoverImage from '../../assets/projects/hover/project07_COMPASS_hover.webp?no-inline'
+import oreumHoverImage from '../../assets/projects/hover/project08_oreum_hover.webp?no-inline'
+import emoraHoverImage from '../../assets/projects/hover/project09_EMORA_hover.webp?no-inline'
+import malmoiHoverImage from '../../assets/projects/hover/project12_MALMOI_hover.webp?no-inline'
+import limenHoverImage from '../../assets/projects/hover/project13_LIMEN_hover.webp?no-inline'
+import gongmyeongcheHoverImage from '../../assets/projects/hover/project14_42_hover.webp?no-inline'
+import feeldHoverImage from '../../assets/projects/hover/project15_FEELD_hover.webp?no-inline'
+import lifeStationHoverImage from '../../assets/projects/hover/project16_LIFESTATION_hover.webp?no-inline'
+import seesawHoverImage from '../../assets/projects/hover/project17_SEESAW_hover.webp?no-inline'
 
 // 실제 정보는 이 파일에 입력합니다. ID는 이름과 무관한 고정 식별자입니다.
 // 이미지 키: 실제 파일명의 이름 부분만 입력 (대소문자 유지, 예: aqui / Chak / POP-ING).
@@ -14,7 +27,7 @@ export const projects = [
     name: "LET'S SYNC!",
     team: '탄탄대로',
     slogan: 'Pull Play SYNCOPATE',
-    desc: 'LET’S SYNC!는 113개의 서로 다른 개성이 만들어 내는 당김에서 시작합니다. 각자의 관점과 작업 방식은 서로를 움직이며 이전에 없던 리듬과 결과로 확장됩니다. 서로 다른 개성이 당기고 반응하며 만들어 낸 하나의 SYNC는 지금의 우리를 넘어 더 큰 가능성으로 나아가는 새로운 움직임이 됩니다.',
+    desc: 'LET’S SYNC!는 113개의 서로 다른 개성이 만들어 내는 당김에서 시작합니다. 각자의 관점과 작업 방식은 서로를 움직이며 이전에 없던 리듬과 결과로 확장됩니다. 서로 다른 개성이 당기고 반응해 만들어 낸 하나의 SYNC는 지금을 넘어 더 큰 가능성으로 나아가는 움직임이 됩니다.',
 
     // 02. 이미지 파일명 생성용 (확장자 및 경로 제외)
     imageKey: 'LETSSYNC',
@@ -27,7 +40,7 @@ export const projects = [
     target: ['대학생/청년', '일반 대중', '전시 관람객'],
 
     // 04. 외부 링크 (없으면 null)
-    link: 'http://localhost:5173/Capstone_B/',
+    link: 'https://www.digital-media.kr/degreeshow/2026/',
 
     // 05. 참여 학생 (표시 순서대로)
     memberIds: ['LEEHANSUP', 'KWONNAYEONG', 'JOOSIWON', 'SEOYEHYUN', 'YANGYUBIN', 'LEESEUNGYEON', 'JUNGDAEUN24', 'JUNGYUJIN'],
@@ -45,6 +58,7 @@ export const projects = [
 
     // 02. 이미지 파일명 생성용 (확장자 및 경로 제외)
     imageKey: 'aqui',
+    hoverImage: aquiHoverImage,
     teamImageKey: 'AQUI',
 
     // 03. 프로젝트 카테고리 (categories.js 참고)
@@ -53,7 +67,7 @@ export const projects = [
     target: ['일반 대중'],
 
     // 04. 외부 링크 (없으면 null)
-    link: 'http://localhost:5173/Capstone_B/',
+    link: 'https://yaeichemil.github.io/aqui/',
 
     // 05. 참여 학생 (표시 순서대로)
     memberIds: ['HANSOOHYUN', 'KANGMINHA', 'KIMYERYEONG', 'SONGYEHYUN', 'CHOIEUNHWA', 'HWANGJEONGIN'],
@@ -67,10 +81,11 @@ export const projects = [
     name: '착! (Chak!)',
     team: '차칸 사람들',
     slogan: '선행의 즐거움을 발견하는 선행 캠페인 서비스',
-    desc: '착!(Chak!)은 작은 선행을 일상 문화로 이어가는 캠페인 프로젝트입니다. 현장 캠페인과 SNS, 앱을 통해 배려를 가볍게 실천하고 경험과 감정을 기록하며 서로를 응원합니다. 한 사람의 실천이 다음 사람의 참여로 이어지는 일상을 만들어갑니다.',
+    desc: '착!(Chak!)은 가벼운 선행을 일상 문화로 이어가는 캠페인 프로젝트입니다. 현장 캠페인과 SNS, 앱을 통해 배려를 가볍게 실천하고 경험과 감정을 기록하며 서로를 응원합니다. 한 사람의 실천이 다음 사람의 참여로 이어지는 일상을 만들어갑니다.',
 
     // 02. 이미지 파일명 생성용 (확장자 및 경로 제외)
     imageKey: 'Chak',
+    hoverImage: chakHoverImage,
     teamImageKey: 'CHAK',
 
     // 03. 프로젝트 카테고리 (categories.js 참고)
@@ -79,7 +94,7 @@ export const projects = [
     target: ['아동/청소년', '대학생/청년', '일반 대중'],
 
     // 04. 외부 링크 (없으면 null)
-    link: 'http://localhost:5173/Capstone_B/',
+    link: 'https://story.chak.today/',
 
     // 05. 참여 학생 (표시 순서대로)
     memberIds: ['JEONGSEOYEONG', 'KWONSERIN', 'NOHSEUNGMIN', 'YANGYUNJI', 'LEEHANBYEOL', 'HANYOOKYUNG'],
@@ -93,10 +108,11 @@ export const projects = [
     name: 'PLEV',
     team: 'NODE',
     slogan: '흩어진 사고 이후의 경험을, 단 하나의 흐름으로',
-    desc: "PLEV는 단절된 이륜차의 사고 처리 및 정비 과정을 PV5를 통해 하나의 흐름으로 제공하는 서비스입니다.'이동수단을 넘어, 현장을 연결하는 서비스 거점' PLEV는 PV5의 적재 공간과 모듈형 구조를 활용해 사고 현장에서의 조치와 이륜차 적재, 안전한 운송을 지원합니다. 이어 차량 디스플레이와 모바일, 정비소 시스템을 연계해 이동 과정과 사고 처리를 하나로 연결합니다",
+    desc: "PLEV는 PV5를 기반으로 이륜차의 사고 처리 및 정비를 지원하는 서비스입니다. 적재 공간과 모듈형 구조로 현장 조치와 운송을 지원하고, 차량 디스플레이와 모바일, 정비소 시스템을 연계해 사고 접수부터 정비까지 하나의 흐름으로 잇습니다.",
 
     // 02. 이미지 파일명 생성용
     imageKey: 'PLEV',
+    hoverImage: plevHoverImage,
     teamImageKey: 'PLEV',
 
     // 03. 프로젝트 카테고리
@@ -105,7 +121,7 @@ export const projects = [
     target: ['일반 대중'],
 
     // 04. 외부 링크
-    link: 'http://localhost:5173/Capstone_B/',
+    link: '',
 
     // 05. 참여 학생
     memberIds: ['KIMKIHYUN', 'KWONMINJAE', 'KIMJUNA', 'JANGDOIK', 'JUNGDAEUN25', 'HONGJUNSANG'],
@@ -123,6 +139,7 @@ export const projects = [
 
     // 02. 이미지 파일명 생성용 (확장자 및 경로 제외)
     imageKey: 'HAELON',
+    hoverImage: haelonHoverImage,
     teamImageKey: 'HAELON',
 
     // 03. 프로젝트 카테고리 (categories.js 참고)
@@ -131,7 +148,7 @@ export const projects = [
     target: ['일반 대중', '특수/공공기관'],
 
     // 04. 외부 링크 (없으면 null)
-    link: 'http://localhost:5173/Capstone_B/',
+    link: 'https://haelon-airport.github.io/',
 
     // 05. 참여 학생 (표시 순서대로)
     memberIds: ['KIMYURAN', 'KIMKYUMIN', 'KIMJIYOON', 'LEEJOOBIN', 'CHANGHAJIUN', 'JEONGYUMIN'],
@@ -143,9 +160,9 @@ export const projects = [
 
     // 01. 프로젝트 기본 정보 (팀 번호만 입력, TEAM 표시는 화면에서 처리)
     name: 'PARALLAX',
-    team: '렛츠꺼어워',
+    team: '레츠꺼어워',
     slogan: '사건의 모든 시선을, 하나의 흐름으로',
-    desc: 'PARALLAX는 현장과 관제, 지휘부, 후속 투입 인력 사이의 정보 격차를 줄이는 경찰 작전 지원 서비스입니다. 현장에 없는 관련 인력도 작전의 흐름과 상황을 쉽고 정확하게 이어받아, 각자의 자리에서 빠르게 대응할 수 있도록 연결합니다.',
+    desc: 'PARALLAX는 현장과, 관제, 지휘부, 후속 투입 인력 사이의 정보 격차를 줄이는 경찰 작전 지원 서비스입니다. 현장에 없는 관련 인력도 작전의 흐름과 상황을 쉽고 정확하게 이어받아, 각자의 자리에서 빠르게 대응할 수 있도록 연결합니다.',
 
     // 02. 이미지 파일명 생성용 (확장자 및 경로 제외)
     imageKey: 'PARALLAX',
@@ -158,7 +175,7 @@ export const projects = [
     target: ['일반 대중', '특수/공공기관', '전시 관람객'],
 
     // 04. 외부 링크 (없으면 null)
-    link: 'http://localhost:5173/Capstone_B/',
+    link: '',
 
     // 05. 참여 학생 (표시 순서대로)
     memberIds: ['SHONYECHAN', 'KOHAEEUN', 'KIMLIA', 'KIMJIWOOK', 'LEESIHEON', 'JUNGJAEHOON', 'HANJUNGMIN'],
@@ -176,6 +193,7 @@ export const projects = [
 
     // 02. 이미지 파일명 생성용 (확장자 및 경로 제외)
     imageKey: 'COMPASS',
+    hoverImage: compassHoverImage,
     teamImageKey: 'COMPASS',
 
     // 03. 프로젝트 카테고리 (categories.js 참고)
@@ -184,7 +202,7 @@ export const projects = [
     target: ['일반 대중'],
 
     // 04. 외부 링크 (없으면 null)
-    link: 'http://localhost:5173/Capstone_B/',
+    link: 'https://yundaeun8291.github.io/compass-website/',
 
     // 05. 참여 학생 (표시 순서대로)
     memberIds: ['YOONCHAEWON', 'KIMAHYEON', 'KIMHAON', 'SHINYUJIN', 'YUNDAEUN', 'JANGHYEONJIN'],
@@ -202,6 +220,7 @@ export const projects = [
 
     // 02. 이미지 파일명 생성용 (확장자 및 경로 제외)
     imageKey: 'oreum',
+    hoverImage: oreumHoverImage,
     teamImageKey: 'OREUM',
 
     // 03. 프로젝트 카테고리 (categories.js 참고)
@@ -210,7 +229,7 @@ export const projects = [
     target: ['대학생/청년'],
 
     // 04. 외부 링크 (없으면 null)
-    link: 'http://localhost:5173/Capstone_B/',
+    link: 'https://yeonjuulee.github.io/oreum/',
 
     // 05. 참여 학생 (표시 순서대로)
     memberIds: ['BAEKKWIRI', 'BAEMINSEO', 'LEENAKYUNG', 'LEEYEONJU', 'LEEJUNSEOK', 'JEONYERIN'],
@@ -228,6 +247,7 @@ export const projects = [
 
     // 02. 이미지 파일명 생성용 (확장자 및 경로 제외)
     imageKey: 'EMORA',
+    hoverImage: emoraHoverImage,
     teamImageKey: 'EMORA',
 
     // 03. 프로젝트 카테고리 (categories.js 참고)
@@ -236,7 +256,7 @@ export const projects = [
     target: ['대학생/청년', '일반 대중'],
 
     // 04. 외부 링크 (없으면 null)
-    link: 'http://localhost:5173/Capstone_B/',
+    link: 'https://emora2026.github.io/emora________/',
 
     // 05. 참여 학생 (표시 순서대로)
     memberIds: ['CHOYUNJEONG', 'KIMHEEJUNG', 'PARKMINSEO', 'LEEYUJIN', 'LEEJIYOUNG', 'CHOISEOYUN'],
@@ -262,7 +282,7 @@ export const projects = [
     target: ['대학생/청년', '일반 대중', '전시 관람객'],
 
     // 04. 외부 링크 (없으면 null)
-    link: 'http://localhost:5173/Capstone_B/',
+    link: 'https://jalga-settlement-showing.hjkwahk.chatgpt.site/#home',
 
     // 05. 참여 학생 (표시 순서대로)
     memberIds: ['KWAHKHYOJIN', 'KIMMINCHAN', 'KIMTAEYUN', 'LEESUYOUNG', 'CHUNGHOEYOON', 'JOTAEHEE'],
@@ -288,7 +308,7 @@ export const projects = [
     target: ['전시 관람객'],
 
     // 04. 외부 링크 (없으면 null)
-    link: 'http://localhost:5173/Capstone_B/',
+    link: '',
 
     // 05. 참여 학생 (표시 순서대로)
     memberIds: ['LEEJUNE', 'NOHNAMSU', 'BAECHAEWON', 'ONSEOYOUNG', 'LEEJAEBEOM', 'LEEHYUNGGYU', 'YUNSEOJIN'],
@@ -306,6 +326,7 @@ export const projects = [
 
     // 02. 이미지 파일명 생성용 (확장자 및 경로 제외)
     imageKey: 'MALMOI',
+    hoverImage: malmoiHoverImage,
     teamImageKey: 'MALMOE',
 
     // 03. 프로젝트 카테고리 (categories.js 참고)
@@ -314,7 +335,7 @@ export const projects = [
     target: ['일반 대중'],
 
     // 04. 외부 링크 (없으면 null)
-    link: 'http://localhost:5173/Capstone_B/',
+    link: 'https://leeyoujoungg.github.io/Malmoi/',
 
     // 05. 참여 학생 (표시 순서대로)
     memberIds: ['JOGANGHEE', 'GOSEOHYUN', 'MINMYEONGHYE', 'LEEYOUJUNG', 'LIMHYUNAH', 'JANGYOONHEE', 'CHOISONGJOO', 'CHOISEUNGJIN'],
@@ -328,10 +349,11 @@ export const projects = [
     name: 'LIMEN',
     team: 'SNOOZE',
     slogan: '흐름 속에서, 나의 선택을 마주하다',
-    desc: 'LIMEN는 ‘내가 고른 방향은 정말 나만의 선택일까?’를 묻는 몰입형미디어아트입니다. 4면 영상과 관객 움직임에 반응하는 인터랙션으로 자신과 환경의 영향 관계를 경험하고, 전시 후 웹 AWAKE에서 일상의 선택을 돌아봅니다.',
+    desc: 'LIMEN은 ‘내가 고른 방향은 정말 나만의 선택일까?’를 묻는 몰입형미디어아트입니다. 4면 영상과 관객 움직임에 반응하는 인터랙션으로 자신과 환경의 영향 관계를 경험하고, 전시 후 웹 AWAKE에서 일상의 선택을 돌아봅니다.',
 
     // 02. 이미지 파일명 생성용 (확장자 및 경로 제외)
     imageKey: 'LIMEN',
+    hoverImage: limenHoverImage,
     teamImageKey: 'LIMEN',
 
     // 03. 프로젝트 카테고리 (categories.js 참고)
@@ -340,7 +362,7 @@ export const projects = [
     target: ['일반 대중', '전시 관람객'],
 
     // 04. 외부 링크 (없으면 null)
-    link: 'http://localhost:5173/Capstone_B/',
+    link: 'https://snooze.design',
 
     // 05. 참여 학생 (표시 순서대로)
     memberIds: ['LEECHAEYEON', 'KIMNOHEUN', 'KIMHYEONGI', 'BAEJEONGHUN', 'SIMHEAMIN', 'YUGISANG', 'CHOGAYEON'],
@@ -358,6 +380,7 @@ export const projects = [
 
     // 02. 이미지 파일명 생성용 (확장자 및 경로 제외)
     imageKey: 'GONGMYEONGCHE',
+    hoverImage: gongmyeongcheHoverImage,
     teamImageKey: 'RESONATOR',
 
     // 03. 프로젝트 카테고리 (categories.js 참고)
@@ -366,7 +389,7 @@ export const projects = [
     target: ['일반 대중', '전시 관람객'],
 
     // 04. 외부 링크 (없으면 null)
-    link: 'http://localhost:5173/Capstone_B/',
+    link: 'https://gongmyeongche.vercel.app/',
 
     // 05. 참여 학생 (표시 순서대로)
     memberIds: ['HONGSUNGJU', 'KIMJIHEON', 'MOONYEJI', 'PARKBIJU', 'LEEHYEWON', 'IMSOYUN', 'JEONYEJIN', 'JOUNGDAHYEON'],
@@ -380,10 +403,11 @@ export const projects = [
     name: 'FEELD',
     team: '잇다 IT-DA',
     slogan: '우리가 기록한 자연을, 당신의 감각으로',
-    desc: 'FEELD는 우리가 경험한 자연의 감각을 디지털 공간으로 확장하는 인터랙티브 미디어아트입니다. 실제 숲을 촬영한 3D 공간과 현장의 소리로 자연을 재구성하고(FIELD), 관객이 자연물에 손을 가까이 가져가면(FEEL) 접촉한 곳부터 숲의 색이 번져 나옵니다(FILL). 관객의 감각과 움직임에 따라 다르게 펼쳐지는 숲을 경험합니다.',
+    desc: 'FEELD는 실제 숲의 3D 공간과 현장음으로 재구성한 인터랙티브 미디어 아트입니다. 관객이 자연물에 손을 가까이 가져가면, 접촉한 곳부터 숲의 색이 번져 나와 자연의 감각을 새롭게 경험할 수 있습니다.',
 
     // 02. 이미지 파일명 생성용 (확장자 및 경로 제외)
     imageKey: 'FEELD',
+    hoverImage: feeldHoverImage,
     teamImageKey: 'ITDA',
 
     // 03. 프로젝트 카테고리 (categories.js 참고)
@@ -392,7 +416,7 @@ export const projects = [
     target: ['아동/청소년', '대학생/청년', '시니어', '일반 대중', '전시 관람객'],
 
     // 04. 외부 링크 (없으면 null)
-    link: 'http://localhost:5173/Capstone_B/',
+    link: 'https://feeld.pages.dev',
 
     // 05. 참여 학생 (표시 순서대로)
     memberIds: ['JUNYOUNGSEO', 'KANGMINKYUNG', 'KOYEBUM', 'KIMDAYUN', 'SONSEOYOON', 'LEEHYEYOON', 'JUNGHYEJIN'],
@@ -406,10 +430,11 @@ export const projects = [
     name: '인생정거장',
     team: 'MOMO',
     slogan: '삶에는 정해진 하나의 모습이나 정답이 없다',
-    desc: "「인생정거장」은 불확실한 미래를 준비하는 '레디코어' 트렌드에서 출발한 3D 모션그래픽 프로젝션 맵핑 작품이다. 졸업, 취업, 독립, 여행, 방황, 도약 등 각기 다른 삶의 전환점을 하나의 풍경으로 잇는다. 관객의 박수에 반응하는 인터랙션으로 몰입감을 높이며, 삶에 정해진 정답은 없으며 저마다의 선택과 속도가 존중받아야 한다는 메시지를 전한다.",
+    desc: "「인생정거장」은 불확실한 미래를 준비하는 ‘레디코어’ 트렌드에서 출발한 3D 맵핑 작품입니다. 졸업, 취업, 독립, 여행 등 삶의 전환점을 하나의 풍경으로 연결합니다. 참여형 인터랙션으로 몰입감을 높이며, 삶에 정답은 없고 각자의 선택과 속도가 존중받아야 한다는 메시지를 전합니다.",
 
     // 02. 이미지 파일명 생성용 (확장자 및 경로 제외)
     imageKey: 'LIFESTATION',
+    hoverImage: lifeStationHoverImage,
     teamImageKey: 'LIFESTATION',
 
     // 03. 프로젝트 카테고리 (categories.js 참고)
@@ -418,7 +443,7 @@ export const projects = [
     target: ['대학생/청년', '일반 대중', '전시 관람객'],
 
     // 04. 외부 링크 (없으면 null)
-    link: 'http://localhost:5173/Capstone_B/',
+    link: 'https://yejinhaa00.github.io/Life-Station/',
 
     // 05. 참여 학생 (표시 순서대로)
     memberIds: ['JUNGSIJIN', 'KANGDAYEON', 'MOONSOYEON', 'PARKYEJI', 'CHOBOGYEONG', 'HAYEJIN'],
@@ -436,6 +461,7 @@ export const projects = [
 
     // 02. 이미지 파일명 생성용 (확장자 및 경로 제외)
     imageKey: 'SEESAW',
+    hoverImage: seesawHoverImage,
     teamImageKey: 'SEESAW',
 
     // 03. 프로젝트 카테고리 (categories.js 참고)
@@ -444,7 +470,7 @@ export const projects = [
     target: ['일반 대중', '전시 관람객'],
 
     // 04. 외부 링크 (없으면 null)
-    link: 'http://localhost:5173/Capstone_B/',
+    link: 'https://remnant-seesaw-journey-1031.rladntjd9980.chatgpt.site',
 
     // 05. 참여 학생 (표시 순서대로)
     memberIds: ['KIMWOOSUNG', 'KANGMINJUN', 'KIMMINSEO', 'MOONJIHOON', 'PARKYEIN', 'SHINUIHYO', 'JANGSEWON'],

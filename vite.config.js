@@ -3,12 +3,12 @@ import { defineConfig } from 'vite'
 import { copyFile, mkdir } from 'node:fs/promises'
 import { resolve } from 'node:path'
 
-// Pages serves these directories directly, including on refresh.
-function githubPagesRoutes() {
+// Directory indexes let static hosts serve direct visits and reloads.
+function staticRouteIndexes() {
   const routes = ['project', 'student', 'credit', 'curriculum', 'syncopate', 'guestbook']
 
   return {
-    name: 'github-pages-routes',
+    name: 'static-route-indexes',
     apply: 'build',
     async writeBundle(options) {
       const outputDir = resolve(options.dir)
@@ -24,5 +24,5 @@ function githubPagesRoutes() {
 // https://vite.dev/config/
 export default defineConfig({
   base: "/Capstone_B/",
-  plugins: [react(), githubPagesRoutes()],
+  plugins: [react(), staticRouteIndexes()],
 })

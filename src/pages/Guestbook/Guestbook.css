@@ -84,7 +84,7 @@ html.gb-page-scrollbar-hidden::-webkit-scrollbar {
 .gb-hero__title {
   margin: 0;
   color: var(--gb-pink);
-  font-family: var(--font-family);
+  font-family: var(--font-display);
   font-size: clamp(48px, 15vw, 100px);
   font-weight: 600;
   line-height: 1.1;

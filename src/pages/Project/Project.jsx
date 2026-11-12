@@ -2,11 +2,12 @@ import createMediaQueryStore from '../../utils/createMediaQueryStore.js'
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react'
 import { flushSync } from 'react-dom'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { usePageTransitionReady } from '../../components/PageTransition/PageTransitionContext.js'
+import { usePageTransitionImagesReady, usePageTransitionReady } from '../../components/PageTransition/PageTransitionContext.js'
 import { categories, projects } from '../../data/index.js'
 import { imageBackgroundStyle } from '../../data/dataUtils.js'
 import { shuffle } from '../../utils/shuffle.js'
 import useScrollReveal from '../../utils/useScrollReveal.js'
+import waitForImage from '../../utils/waitForImage.js'
 import projectLinkIcon from '../../assets/projects/linkIcon.svg'
 import './Project.css'
 
@@ -31,19 +32,33 @@ function isExternalProjectLink(link) {
   }
 }
 
-function cardImageStyle(project, hoverImage) {
-  const style = imageBackgroundStyle(project.cardImage)
-  return hoverImage ? {
-    ...style,
-    backgroundImage: `var(--project-hover-background, ${style.backgroundImage})`,
-    '--project-hover-source': imageBackgroundStyle(hoverImage).backgroundImage,
-  } : style
+function ProjectThumbnail({ className, project, hoverReady }) {
+  return (
+    <span className={className} style={imageBackgroundStyle(project.cardImage)}>
+      {project.hoverImage && (
+        <span
+          aria-hidden="true"
+          className={`project-hover-image${hoverReady ? ' is-ready' : ''}`}
+          style={imageBackgroundStyle(project.hoverImage)}
+        />
+      )}
+    </span>
+  )
+}
+
+function reportProjectImageError(event) {
+  const image = event.currentTarget
+  console.warn('[Project image] Load or decode failed', {
+    projectId: image.closest('[data-project-id]')?.dataset.projectId,
+    url: image.currentSrc || image.src,
+  })
 }
 
 export default function Project() {
   const location = useLocation()
   const navigate = useNavigate()
   const pageReady = usePageTransitionReady()
+  const reportImagesReady = usePageTransitionImagesReady()
   const requestedProjectId = new URLSearchParams(location.search).get('projectId')
   const [shuffledProjects] = useState(() => shuffle(projects.map((project, originalIndex) => ({ project, originalIndex }))))
   const isMobile = useSyncExternalStore(subscribeToMobileViewport, getMobileViewport)
@@ -51,7 +66,7 @@ export default function Project() {
   const [selectedFilters, setSelectedFilters] = useState([])
   const [openFilter, setOpenFilter] = useState(null)
   const [activeDetailIndex, setActiveDetailIndex] = useState(null)
-  const [loadedHoverImages, setLoadedHoverImages] = useState({})
+  const [readyHoverImages, setReadyHoverImages] = useState({})
   const [isListVisible, setIsListVisible] = useState(false)
   const [gridUpdating, setGridUpdating] = useState(false)
   const [indexY, setIndexY] = useState(0)
@@ -130,18 +145,29 @@ export default function Project() {
     : detailProjectOrder[(detailPosition + 1) % detailProjectOrder.length]?.project
 
   useEffect(() => {
-    let active = true
-    projects.forEach((project) => {
-      if (!project.hoverImage) return
-      const image = new Image()
-      image.src = project.hoverImage
-      // Keep the original image until the hover asset is decoded and ready to paint.
-      image.decode().then(() => {
-        if (active) setLoadedHoverImages((loaded) => ({ ...loaded, [project.id]: project.hoverImage }))
-      }).catch(() => {})
+    const controller = new AbortController()
+    const { signal } = controller
+    const requests = new Map()
+    const preload = (src, priority) => {
+      if (!requests.has(src)) {
+        const image = new Image()
+        image.fetchPriority = priority
+        requests.set(src, waitForImage(image, signal, src))
+      }
+      return requests.get(src)
+    }
+
+    const cardImages = projects.filter(project => project.cardImage).map(({ cardImage }) => preload(cardImage, 'auto'))
+    const hoverImages = projects.filter(project => project.hoverImage).map(async ({ id, hoverImage }) => {
+      if (await preload(hoverImage, 'low') && !signal.aborted) {
+        setReadyHoverImages(ready => ({ ...ready, [id]: true }))
+      }
     })
-    return () => { active = false }
-  }, [])
+    Promise.all([...cardImages, ...hoverImages]).then(() => {
+      if (!signal.aborted) reportImagesReady?.()
+    })
+    return () => controller.abort()
+  }, [reportImagesReady])
 
   const getOrbitalTheta = useCallback((index) => {
     const state = carouselRef.current
@@ -489,7 +515,7 @@ export default function Project() {
   }, [calcRadius, displayProjects, isMobile, updateCarousel])
 
   useEffect(() => {
-    if (isMobile) return undefined
+    if (isMobile || !pageReady) return undefined
     const carouselState = carouselRef.current
     let animationId
     const animate = (now) => {
@@ -528,7 +554,7 @@ export default function Project() {
       cancelAnimationFrame(animationId)
       carouselState.lastFrame = 0
     }
-  }, [clearHoveredCard, findHoveredImageAtPoint, isMobile, updateCarousel])
+  }, [clearHoveredCard, findHoveredImageAtPoint, isMobile, pageReady, updateCarousel])
 
   useEffect(() => {
     if (isMobile) return undefined
@@ -542,7 +568,7 @@ export default function Project() {
   }, [calcRadius, isMobile, updateCarousel])
 
   useEffect(() => {
-    if (isMobile) return undefined
+    if (isMobile || !pageReady) return undefined
     const projectList = projectListRef.current
     if (!projectList) return undefined
 
@@ -554,7 +580,7 @@ export default function Project() {
     )
     observer.observe(projectList)
     return () => observer.disconnect()
-  }, [isMobile])
+  }, [isMobile, pageReady])
 
   useEffect(() => {
     if (!gridUpdating) return undefined
@@ -764,8 +790,8 @@ export default function Project() {
                   }}
                 >
                   <button className="project-hit" type="button" aria-label={`${project.name} 상세 보기`}>
-                    <span className="project-face" style={cardImageStyle(project, loadedHoverImages[project.id])} />
-                    <span className="project-face back" style={cardImageStyle(project, loadedHoverImages[project.id])} />
+                    <ProjectThumbnail className="project-face" project={project} hoverReady={readyHoverImages[project.id]} />
+                    <ProjectThumbnail className="project-face back" project={project} hoverReady={readyHoverImages[project.id]} />
                   </button>
                   <div className="card-label">
                     <div className="team-label">{project.team}</div>
@@ -852,7 +878,7 @@ export default function Project() {
                       aria-label={`${project.team} ${project.name}`}
                       onClick={() => openProjectById(project.id)}
                     >
-                      <span className="list-card-media" style={cardImageStyle(project, loadedHoverImages[project.id])} />
+                      <ProjectThumbnail className="list-card-media" project={project} hoverReady={readyHoverImages[project.id]} />
                       <span className="list-card-caption">
                         <span className="list-card-name">{project.name}</span>
                         <span className="list-card-keywords">{isMobile ? project.team : project.tags.join(' · ')}</span>
@@ -943,22 +969,31 @@ export default function Project() {
                   ))}
                 </dl>
                 <div className="detail-media">
-                  {activeDetail.image && <img src={activeDetail.image} alt={`${activeDetail.name} 대표 이미지`} />}
+                  {activeDetail.image && <img src={activeDetail.image} alt={`${activeDetail.name} 대표 이미지`} fetchPriority="high" onError={reportProjectImageError} />}
                 </div>
                
               </article>
 
-              <article className="detail-section detail-team" aria-label="팀 소개">
+              <article className="detail-section detail-team" aria-label="팀 소개" data-project-id={activeDetail.id}>
                 <div className="detail-team-info">
                   {activeDetail.team && <h2 className="team-title"><span>TEAM</span>{activeDetail.team}</h2>}
                   <div className={`detail-handwriting${activeDetail.handwritingImage ? ' has-image' : ''}`}>
                     {activeDetail.handwritingImage && (
-                      <img src={activeDetail.handwritingImage} alt={activeDetail.handwritingAlt || '팀 손글씨'} />
+                      <img src={activeDetail.handwritingImage} alt={activeDetail.handwritingAlt || '팀 손글씨'} decoding="async" onError={reportProjectImageError} />
                     )}
                   </div>
                 </div>
                 <div className="detail-media detail-team-media">
-                  {activeDetail.teamImage && <img src={activeDetail.teamImage} alt={`${activeDetail.team || activeDetail.name} 팀 사진`} />}
+                  {activeDetail.teamImage && (
+                    <img
+                      src={activeDetail.teamImage}
+                      alt={`${activeDetail.team || activeDetail.name} 팀 사진`}
+                      width={activeDetail.teamImageSize?.[0]}
+                      height={activeDetail.teamImageSize?.[1]}
+                      decoding="async"
+                      onError={reportProjectImageError}
+                    />
+                  )}
                 </div>
                 <div className="members">
                   {(activeDetail.members || []).map(({ studentId, name, role }) => (

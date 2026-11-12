@@ -23,7 +23,7 @@
     background: white;
     color: var(--ink);
     min-height: 100%;
-    font-family: var(--font-family);
+    font-family: var(--font-body);
     overflow: hidden;
 }
 

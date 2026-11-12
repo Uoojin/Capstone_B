@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { usePageTransitionReady } from '../../components/PageTransition/PageTransitionContext.js'
+import { usePageTransitionImagesReady, usePageTransitionReady } from '../../components/PageTransition/PageTransitionContext.js'
 import { projects, students } from '../../data/index.js'
-import { imageBackgroundStyle } from '../../data/dataUtils.js'
 import { matchesHangulName } from './hangulSearch.js'
 import { shuffle } from '../../utils/shuffle.js'
 import useScrollReveal from '../../utils/useScrollReveal.js'
+import waitForImage from '../../utils/waitForImage.js'
 import './Student.css'
 
 const roles = ['ALL', 'DESIGNER', 'PLANNER', 'PROGRAMMER']
@@ -14,6 +14,7 @@ const cardBackColors = ['#FD00A0', '#00BFA3', '#8223A5', '#1D9F10', '#F7A600', '
 export default function Student() {
   const location = useLocation()
   const pageReady = usePageTransitionReady()
+  const reportImagesReady = usePageTransitionImagesReady()
   const requestedStudentId = new URLSearchParams(location.search).get('studentId')
   const studentCardsRef = useRef(new Map())
   const gridRef = useRef(null)
@@ -29,6 +30,16 @@ export default function Student() {
   const navigate = useNavigate()
   const sidebarRef = useRef(null)
   const menuRef = useRef(null)
+
+  useEffect(() => {
+    const controller = new AbortController()
+    const { signal } = controller
+    const images = gridRef.current.querySelectorAll('.student-img-photo')
+    Promise.all(Array.from(images, image => waitForImage(image, signal))).then(() => {
+      if (!signal.aborted) reportImagesReady?.()
+    })
+    return () => controller.abort()
+  }, [reportImagesReady])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -157,7 +168,7 @@ export default function Student() {
     <main className="student-page">
       <section className="student-content" aria-label="Student list">
         <div className="student-grid" ref={gridRef}>
-          {displayStudents.map((item) =>
+          {displayStudents.map(item =>
             item.isEmpty ? (
               <div key={item.id} className="student-empty-card" />
             ) : (
@@ -172,7 +183,15 @@ export default function Student() {
                   aria-label={`${item.name} card`}
                 >
                   <span className="card-face card-front">
-                    <span className="student-img-placeholder" style={imageBackgroundStyle(item.image)} />
+                    {item.image ? (
+                      <img
+                        className="student-img-placeholder student-img-photo"
+                        src={item.image}
+                        alt=""
+                        loading="eager"
+                        decoding="async"
+                      />
+                    ) : <span className="student-img-placeholder" />}
                   </span>
 
                   <span className="card-face card-back" style={{ backgroundColor: backColors[item.studentId] }}>

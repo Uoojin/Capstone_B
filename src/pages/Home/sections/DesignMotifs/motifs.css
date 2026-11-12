@@ -1,9 +1,4 @@
-@property --rotate-transform {
-    syntax: "<angle>";
-    initial-value: 0rad;
-    inherits: false;
-}
-
+/* Animate rotation directly so WebKit composites it with translate and scale. */
 .design-motifs .fig0 {
     position: absolute;
     left: calc(29.17% + 20.5px);
@@ -79,7 +74,7 @@
 }
 
 .design-motifs [data-node-id="14018:17989"] {
-    transform: rotate(var(--rotate-transform, 0rad));
+    transform: rotate(0rad);
     animation: home-design-motifs-kf_14018_17989_rotate_0 8s linear, home-design-motifs-kf_14018_17989_scale_0 8s linear;
     animation-iteration-count: infinite;
 }
@@ -109,7 +104,7 @@
 }
 
 .design-motifs [data-node-id="14018:18040"] {
-    transform: rotate(var(--rotate-transform, 0rad));
+    transform: rotate(0rad);
     animation: home-design-motifs-kf_14018_18040_rotate_0 8s linear, home-design-motifs-kf_14018_18040_scale_0 8s linear;
     animation-iteration-count: infinite;
 }
@@ -346,7 +341,7 @@
 }
 
 .design-motifs [data-node-id="14021:18251"] {
-    transform: rotate(var(--rotate-transform, 0rad));
+    transform: rotate(0rad);
     animation: home-design-motifs-kf_14021_18251_rotate_0 2s linear;
     animation-iteration-count: infinite;
 }
@@ -382,7 +377,7 @@
 }
 
 .design-motifs [data-node-id="14021:18297"] {
-    transform: rotate(var(--rotate-transform, 0rad));
+    transform: rotate(0rad);
     animation: home-design-motifs-kf_14021_18297_rotate_0 2s linear;
     animation-iteration-count: infinite;
 }
@@ -456,7 +451,7 @@
 }
 
 .design-motifs [data-node-id="14021:18617"] {
-    transform: rotate(var(--rotate-transform, 0rad));
+    transform: rotate(0rad);
     animation: home-design-motifs-kf_14021_18617_rotate_0 8s linear, home-design-motifs-kf_14021_18617_scale_0 8s linear;
     animation-iteration-count: infinite;
 }
@@ -734,49 +729,49 @@
 }
 
 .design-motifs [data-node-id="14021:18681"] {
-    transform: rotate(var(--rotate-transform, -6.282928rad));
+    transform: rotate(0rad);
     animation: home-design-motifs-kf_14021_18681_rotate_0 8s linear, home-design-motifs-kf_14021_18681_translate_0 8s linear, home-design-motifs-kf_14021_18681_scale_0 8s linear;
     animation-iteration-count: infinite;
 }
 
 .design-motifs [data-node-id="14021:18691"] {
-    transform: rotate(var(--rotate-transform, -6.28353rad));
+    transform: rotate(0rad);
     animation: home-design-motifs-kf_14021_18691_rotate_0 8s linear, home-design-motifs-kf_14021_18691_translate_0 8s linear, home-design-motifs-kf_14021_18691_scale_0 8s linear;
     animation-iteration-count: infinite;
 }
 
 .design-motifs [data-node-id="14021:18701"] {
-    transform: rotate(var(--rotate-transform, -6.282928rad));
+    transform: rotate(0rad);
     animation: home-design-motifs-kf_14021_18701_rotate_0 8s linear, home-design-motifs-kf_14021_18701_translate_0 8s linear, home-design-motifs-kf_14021_18701_scale_0 8s linear;
     animation-iteration-count: infinite;
 }
 
 .design-motifs [data-node-id="14021:18711"] {
-    transform: rotate(var(--rotate-transform, -6.28353rad));
+    transform: rotate(0rad);
     animation: home-design-motifs-kf_14021_18711_rotate_0 8s linear, home-design-motifs-kf_14021_18711_translate_0 8s linear, home-design-motifs-kf_14021_18711_scale_0 8s linear;
     animation-iteration-count: infinite;
 }
 
 .design-motifs [data-node-id="14021:18721"] {
-    transform: rotate(var(--rotate-transform, -6.282928rad));
+    transform: rotate(0rad);
     animation: home-design-motifs-kf_14021_18721_rotate_0 8s linear, home-design-motifs-kf_14021_18721_translate_0 8s linear, home-design-motifs-kf_14021_18721_scale_0 8s linear;
     animation-iteration-count: infinite;
 }
 
 .design-motifs [data-node-id="14021:18731"] {
-    transform: rotate(var(--rotate-transform, -6.28353rad));
+    transform: rotate(0rad);
     animation: home-design-motifs-kf_14021_18731_rotate_0 8s linear, home-design-motifs-kf_14021_18731_translate_0 8s linear, home-design-motifs-kf_14021_18731_scale_0 8s linear;
     animation-iteration-count: infinite;
 }
 
 .design-motifs [data-node-id="14021:18741"] {
-    transform: rotate(var(--rotate-transform, -6.282928rad));
+    transform: rotate(0rad);
     animation: home-design-motifs-kf_14021_18741_rotate_0 8s linear, home-design-motifs-kf_14021_18741_translate_0 8s linear, home-design-motifs-kf_14021_18741_scale_0 8s linear;
     animation-iteration-count: infinite;
 }
 
 .design-motifs [data-node-id="14021:18751"] {
-    transform: rotate(var(--rotate-transform, -6.28353rad));
+    transform: rotate(0rad);
     animation: home-design-motifs-kf_14021_18751_rotate_0 8s linear, home-design-motifs-kf_14021_18751_translate_0 8s linear, home-design-motifs-kf_14021_18751_scale_0 8s linear;
     animation-iteration-count: infinite;
 }
@@ -787,69 +782,69 @@
 }
 
 .design-motifs [data-node-id="14021:18765"] {
-    transform: rotate(var(--rotate-transform, -6.283003rad));
+    transform: rotate(0rad);
     animation: home-design-motifs-kf_14021_18765_rotate_0 8s linear, home-design-motifs-kf_14021_18765_translate_0 8s linear, home-design-motifs-kf_14021_18765_scale_0 8s linear;
     animation-iteration-count: infinite;
 }
 
 .design-motifs [data-node-id="14021:18775"] {
-    transform: rotate(var(--rotate-transform, -6.283605rad));
+    transform: rotate(0rad);
     animation: home-design-motifs-kf_14021_18775_rotate_0 8s linear, home-design-motifs-kf_14021_18775_translate_0 8s linear, home-design-motifs-kf_14021_18775_scale_0 8s linear;
     animation-iteration-count: infinite;
 }
 
 .design-motifs [data-node-id="14021:18785"] {
-    transform: rotate(var(--rotate-transform, -6.283207rad));
+    transform: rotate(0rad);
     animation: home-design-motifs-kf_14021_18785_rotate_0 8s linear, home-design-motifs-kf_14021_18785_translate_0 8s linear, home-design-motifs-kf_14021_18785_scale_0 8s linear;
     animation-iteration-count: infinite;
 }
 
 .design-motifs [data-node-id="14021:18795"] {
-    transform: rotate(var(--rotate-transform, -6.282994rad));
+    transform: rotate(0rad);
     animation: home-design-motifs-kf_14021_18795_rotate_0 8s linear, home-design-motifs-kf_14021_18795_translate_0 8s linear, home-design-motifs-kf_14021_18795_scale_0 8s linear;
     animation-iteration-count: infinite;
 }
 
 .design-motifs [data-node-id="14021:18805"] {
-    transform: rotate(var(--rotate-transform, -6.283596rad));
+    transform: rotate(0rad);
     animation: home-design-motifs-kf_14021_18805_rotate_0 8s linear, home-design-motifs-kf_14021_18805_translate_0 8s linear, home-design-motifs-kf_14021_18805_scale_0 8s linear;
     animation-iteration-count: infinite;
 }
 
 .design-motifs [data-node-id="14021:18815"] {
-    transform: rotate(var(--rotate-transform, -6.283198rad));
+    transform: rotate(0rad);
     animation: home-design-motifs-kf_14021_18815_rotate_0 8s linear, home-design-motifs-kf_14021_18815_translate_0 8s linear, home-design-motifs-kf_14021_18815_scale_0 8s linear;
     animation-iteration-count: infinite;
 }
 
 .design-motifs [data-node-id="14021:18825"] {
-    transform: rotate(var(--rotate-transform, -6.282799rad));
+    transform: rotate(0rad);
     animation: home-design-motifs-kf_14021_18825_rotate_0 8s linear, home-design-motifs-kf_14021_18825_translate_0 8s linear, home-design-motifs-kf_14021_18825_scale_0 8s linear;
     animation-iteration-count: infinite;
 }
 
 .design-motifs [data-node-id="14021:18835"] {
-    transform: rotate(var(--rotate-transform, -6.283401rad));
+    transform: rotate(0rad);
     animation: home-design-motifs-kf_14021_18835_rotate_0 8s linear, home-design-motifs-kf_14021_18835_translate_0 8s linear, home-design-motifs-kf_14021_18835_scale_0 8s linear;
     animation-iteration-count: infinite;
 }
 
 @keyframes home-design-motifs-kf_14018_17989_rotate_0 {
     0% {
-        --rotate-transform: 0rad;
+        transform: rotate(0rad);
     }
 
     1.25% {
         animation-timing-function: cubic-bezier(0.578, 0, 0.534, 1);
-        --rotate-transform: 0rad;
+        transform: rotate(0rad);
     }
 
     43.75% {
-        --rotate-transform: -6.283rad;
+        transform: rotate(-6.283rad);
     }
 
     100% {
-        --rotate-transform: -6.283rad;
+        transform: rotate(-6.283rad);
     }
 }
 
@@ -1086,20 +1081,20 @@
 
 @keyframes home-design-motifs-kf_14018_18040_rotate_0 {
     0% {
-        --rotate-transform: 0rad;
+        transform: rotate(0rad);
     }
 
     1.25% {
         animation-timing-function: cubic-bezier(0.578, 0, 0.534, 1);
-        --rotate-transform: 0rad;
+        transform: rotate(0rad);
     }
 
     43.75% {
-        --rotate-transform: -6.283rad;
+        transform: rotate(-6.283rad);
     }
 
     100% {
-        --rotate-transform: -6.283rad;
+        transform: rotate(-6.283rad);
     }
 }
 
@@ -1367,16 +1362,16 @@
 
 @keyframes home-design-motifs-kf_14021_18251_rotate_0 {
     0% {
-        --rotate-transform: 0rad;
+        transform: rotate(0rad);
     }
 
     2.5% {
         animation-timing-function: cubic-bezier(0, 0, 0.034, 1);
-        --rotate-transform: 0rad;
+        transform: rotate(0rad);
     }
 
     100% {
-        --rotate-transform: -12.566rad;
+        transform: rotate(-12.566rad);
     }
 }
 
@@ -1603,11 +1598,11 @@
 @keyframes home-design-motifs-kf_14021_18297_rotate_0 {
     0% {
         animation-timing-function: cubic-bezier(0, 0, 0.034, 1);
-        --rotate-transform: 0rad;
+        transform: rotate(0rad);
     }
 
     100% {
-        --rotate-transform: -12.566rad;
+        transform: rotate(-12.566rad);
     }
 }
 
@@ -1838,15 +1833,15 @@
 @keyframes home-design-motifs-kf_14021_18617_rotate_0 {
     0% {
         animation-timing-function: cubic-bezier(0, 0, 0.207, 1);
-        --rotate-transform: 0rad;
+        transform: rotate(0rad);
     }
 
     43.75% {
-        --rotate-transform: -6.283rad;
+        transform: rotate(-6.283rad);
     }
 
     100% {
-        --rotate-transform: -6.283rad;
+        transform: rotate(-6.283rad);
     }
 }
 
@@ -2120,20 +2115,20 @@
 
 @keyframes home-design-motifs-kf_14021_18681_rotate_0 {
     0% {
-        --rotate-transform: -6.282928rad;
+        transform: rotate(-6.282928rad);
     }
 
     3.75% {
         animation-timing-function: cubic-bezier(0.578, 0, 0.181, 1);
-        --rotate-transform: -6.282928rad;
+        transform: rotate(-6.282928rad);
     }
 
     37.5% {
-        --rotate-transform: 7.2e-05rad;
+        transform: rotate(7.2e-05rad);
     }
 
     100% {
-        --rotate-transform: 7.2e-05rad;
+        transform: rotate(7.2e-05rad);
     }
 }
 
@@ -2173,20 +2168,20 @@
 
 @keyframes home-design-motifs-kf_14021_18691_rotate_0 {
     0% {
-        --rotate-transform: -6.28353rad;
+        transform: rotate(-6.28353rad);
     }
 
     3.75% {
         animation-timing-function: cubic-bezier(0.578, 0, 0.181, 1);
-        --rotate-transform: -6.28353rad;
+        transform: rotate(-6.28353rad);
     }
 
     37.5% {
-        --rotate-transform: 0.00047rad;
+        transform: rotate(0.00047rad);
     }
 
     100% {
-        --rotate-transform: 0.00047rad;
+        transform: rotate(0.00047rad);
     }
 }
 
@@ -2226,20 +2221,20 @@
 
 @keyframes home-design-motifs-kf_14021_18701_rotate_0 {
     0% {
-        --rotate-transform: -6.282928rad;
+        transform: rotate(-6.282928rad);
     }
 
     3.75% {
         animation-timing-function: cubic-bezier(0.578, 0, 0.181, 1);
-        --rotate-transform: -6.282928rad;
+        transform: rotate(-6.282928rad);
     }
 
     37.5% {
-        --rotate-transform: 7.2e-05rad;
+        transform: rotate(7.2e-05rad);
     }
 
     100% {
-        --rotate-transform: 7.2e-05rad;
+        transform: rotate(7.2e-05rad);
     }
 }
 
@@ -2279,20 +2274,20 @@
 
 @keyframes home-design-motifs-kf_14021_18711_rotate_0 {
     0% {
-        --rotate-transform: -6.28353rad;
+        transform: rotate(-6.28353rad);
     }
 
     3.75% {
         animation-timing-function: cubic-bezier(0.578, 0, 0.181, 1);
-        --rotate-transform: -6.28353rad;
+        transform: rotate(-6.28353rad);
     }
 
     37.5% {
-        --rotate-transform: 0.00047rad;
+        transform: rotate(0.00047rad);
     }
 
     100% {
-        --rotate-transform: 0.00047rad;
+        transform: rotate(0.00047rad);
     }
 }
 
@@ -2332,20 +2327,20 @@
 
 @keyframes home-design-motifs-kf_14021_18721_rotate_0 {
     0% {
-        --rotate-transform: -6.282928rad;
+        transform: rotate(-6.282928rad);
     }
 
     3.75% {
         animation-timing-function: cubic-bezier(0.578, 0, 0.181, 1);
-        --rotate-transform: -6.282928rad;
+        transform: rotate(-6.282928rad);
     }
 
     37.5% {
-        --rotate-transform: 7.2e-05rad;
+        transform: rotate(7.2e-05rad);
     }
 
     100% {
-        --rotate-transform: 7.2e-05rad;
+        transform: rotate(7.2e-05rad);
     }
 }
 
@@ -2385,20 +2380,20 @@
 
 @keyframes home-design-motifs-kf_14021_18731_rotate_0 {
     0% {
-        --rotate-transform: -6.28353rad;
+        transform: rotate(-6.28353rad);
     }
 
     3.75% {
         animation-timing-function: cubic-bezier(0.578, 0, 0.181, 1);
-        --rotate-transform: -6.28353rad;
+        transform: rotate(-6.28353rad);
     }
 
     37.5% {
-        --rotate-transform: 0.00047rad;
+        transform: rotate(0.00047rad);
     }
 
     100% {
-        --rotate-transform: 0.00047rad;
+        transform: rotate(0.00047rad);
     }
 }
 
@@ -2438,20 +2433,20 @@
 
 @keyframes home-design-motifs-kf_14021_18741_rotate_0 {
     0% {
-        --rotate-transform: -6.282928rad;
+        transform: rotate(-6.282928rad);
     }
 
     3.75% {
         animation-timing-function: cubic-bezier(0.578, 0, 0.181, 1);
-        --rotate-transform: -6.282928rad;
+        transform: rotate(-6.282928rad);
     }
 
     37.5% {
-        --rotate-transform: 7.2e-05rad;
+        transform: rotate(7.2e-05rad);
     }
 
     100% {
-        --rotate-transform: 7.2e-05rad;
+        transform: rotate(7.2e-05rad);
     }
 }
 
@@ -2491,20 +2486,20 @@
 
 @keyframes home-design-motifs-kf_14021_18751_rotate_0 {
     0% {
-        --rotate-transform: -6.28353rad;
+        transform: rotate(-6.28353rad);
     }
 
     3.75% {
         animation-timing-function: cubic-bezier(0.578, 0, 0.181, 1);
-        --rotate-transform: -6.28353rad;
+        transform: rotate(-6.28353rad);
     }
 
     37.5% {
-        --rotate-transform: 0.00047rad;
+        transform: rotate(0.00047rad);
     }
 
     100% {
-        --rotate-transform: 0.00047rad;
+        transform: rotate(0.00047rad);
     }
 }
 
@@ -2563,20 +2558,20 @@
 
 @keyframes home-design-motifs-kf_14021_18765_rotate_0 {
     0% {
-        --rotate-transform: -6.283003rad;
+        transform: rotate(-6.283003rad);
     }
 
     3.75% {
         animation-timing-function: cubic-bezier(0.578, 0, 0.181, 1);
-        --rotate-transform: -6.283003rad;
+        transform: rotate(-6.283003rad);
     }
 
     37.5% {
-        --rotate-transform: -3e-06rad;
+        transform: rotate(-3e-06rad);
     }
 
     100% {
-        --rotate-transform: -3e-06rad;
+        transform: rotate(-3e-06rad);
     }
 }
 
@@ -2616,20 +2611,20 @@
 
 @keyframes home-design-motifs-kf_14021_18775_rotate_0 {
     0% {
-        --rotate-transform: -6.283605rad;
+        transform: rotate(-6.283605rad);
     }
 
     3.75% {
         animation-timing-function: cubic-bezier(0.578, 0, 0.181, 1);
-        --rotate-transform: -6.283605rad;
+        transform: rotate(-6.283605rad);
     }
 
     37.5% {
-        --rotate-transform: 0.000395rad;
+        transform: rotate(0.000395rad);
     }
 
     100% {
-        --rotate-transform: 0.000395rad;
+        transform: rotate(0.000395rad);
     }
 }
 
@@ -2669,20 +2664,20 @@
 
 @keyframes home-design-motifs-kf_14021_18785_rotate_0 {
     0% {
-        --rotate-transform: -6.283207rad;
+        transform: rotate(-6.283207rad);
     }
 
     3.75% {
         animation-timing-function: cubic-bezier(0.578, 0, 0.181, 1);
-        --rotate-transform: -6.283207rad;
+        transform: rotate(-6.283207rad);
     }
 
     37.5% {
-        --rotate-transform: -0.000207rad;
+        transform: rotate(-0.000207rad);
     }
 
     100% {
-        --rotate-transform: -0.000207rad;
+        transform: rotate(-0.000207rad);
     }
 }
 
@@ -2722,20 +2717,20 @@
 
 @keyframes home-design-motifs-kf_14021_18795_rotate_0 {
     0% {
-        --rotate-transform: -6.282994rad;
+        transform: rotate(-6.282994rad);
     }
 
     3.75% {
         animation-timing-function: cubic-bezier(0.578, 0, 0.181, 1);
-        --rotate-transform: -6.282994rad;
+        transform: rotate(-6.282994rad);
     }
 
     37.5% {
-        --rotate-transform: 6e-06rad;
+        transform: rotate(6e-06rad);
     }
 
     100% {
-        --rotate-transform: 6e-06rad;
+        transform: rotate(6e-06rad);
     }
 }
 
@@ -2775,20 +2770,20 @@
 
 @keyframes home-design-motifs-kf_14021_18805_rotate_0 {
     0% {
-        --rotate-transform: -6.283596rad;
+        transform: rotate(-6.283596rad);
     }
 
     3.75% {
         animation-timing-function: cubic-bezier(0.578, 0, 0.181, 1);
-        --rotate-transform: -6.283596rad;
+        transform: rotate(-6.283596rad);
     }
 
     37.5% {
-        --rotate-transform: 0.000404rad;
+        transform: rotate(0.000404rad);
     }
 
     100% {
-        --rotate-transform: 0.000404rad;
+        transform: rotate(0.000404rad);
     }
 }
 
@@ -2828,20 +2823,20 @@
 
 @keyframes home-design-motifs-kf_14021_18815_rotate_0 {
     0% {
-        --rotate-transform: -6.283198rad;
+        transform: rotate(-6.283198rad);
     }
 
     3.75% {
         animation-timing-function: cubic-bezier(0.578, 0, 0.181, 1);
-        --rotate-transform: -6.283198rad;
+        transform: rotate(-6.283198rad);
     }
 
     37.5% {
-        --rotate-transform: -0.000198rad;
+        transform: rotate(-0.000198rad);
     }
 
     100% {
-        --rotate-transform: -0.000198rad;
+        transform: rotate(-0.000198rad);
     }
 }
 
@@ -2881,20 +2876,20 @@
 
 @keyframes home-design-motifs-kf_14021_18825_rotate_0 {
     0% {
-        --rotate-transform: -6.282799rad;
+        transform: rotate(-6.282799rad);
     }
 
     3.75% {
         animation-timing-function: cubic-bezier(0.578, 0, 0.181, 1);
-        --rotate-transform: -6.282799rad;
+        transform: rotate(-6.282799rad);
     }
 
     37.5% {
-        --rotate-transform: 0.000201rad;
+        transform: rotate(0.000201rad);
     }
 
     100% {
-        --rotate-transform: 0.000201rad;
+        transform: rotate(0.000201rad);
     }
 }
 
@@ -2934,20 +2929,20 @@
 
 @keyframes home-design-motifs-kf_14021_18835_rotate_0 {
     0% {
-        --rotate-transform: -6.283401rad;
+        transform: rotate(-6.283401rad);
     }
 
     3.75% {
         animation-timing-function: cubic-bezier(0.578, 0, 0.181, 1);
-        --rotate-transform: -6.283401rad;
+        transform: rotate(-6.283401rad);
     }
 
     37.5% {
-        --rotate-transform: -0.000401rad;
+        transform: rotate(-0.000401rad);
     }
 
     100% {
-        --rotate-transform: -0.000401rad;
+        transform: rotate(-0.000401rad);
     }
 }
 

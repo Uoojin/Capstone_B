@@ -7,24 +7,14 @@
 }
 
 :root {
-  --font-family-en: 'Helvetica Neue', 'Pretendard';
-  --font-family-ko: 'Pretendard';
+  --font-display: Arial, sans-serif;
+  --font-body: "Pretendard", sans-serif;
 }
 
-[data-text-font='en'] {
-  --font-family: var(--font-family-en);
-  font-family: var(--font-family) !important;
+[data-font='display'] {
+  font-family: var(--font-display);
 }
-[data-text-font='ko'] {
-  --font-family: var(--font-family-ko);
-  font-family: var(--font-family) !important;
-}
-input, textarea, select, option { font-family: var(--font-family); }
-/* The generated outline must mirror the family of its complete HTML label. */
-[data-text-font] .home-rounded-stroke-layer text { font-family: var(--font-family) !important; }
 
-/* Page-specific exception, including the Project dialog in the top layer. */
-:is(.project-page, .credit, .student-page, .detail-view),
-:is(.project-page, .credit, .student-page, .detail-view) * {
-  font-family: 'Pretendard', sans-serif !important;
+input, textarea, select, option {
+  font-family: var(--font-body);
 }

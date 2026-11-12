@@ -362,7 +362,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'serin030614@gmail.com',
-    profileUrl: 'https://www.behance.net/kwonserin',
+    profileUrl: ' https://www.behance.net/serinkwon',
 
     // 05. 참여 프로젝트
     projectId: 'project-03',
@@ -385,7 +385,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'sm507noh@gmail.com',
-    profileUrl: 'https://www.behance.net/nohseungmin',
+    profileUrl: 'https://sm507noh.github.io/portfolio/',
 
     // 05. 참여 프로젝트
     projectId: 'project-03',
@@ -477,7 +477,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'rlgus2022@naver.com',
-    profileUrl: 'https://www.linkedin.com/in/kihyun-kim-aa4740424?utm_source=share_via&utm_content=profile&utm_medium=member_ios',
+    profileUrl: ' https://portfolio-kihyun.vercel.app/',
 
     // 05. 참여 프로젝트
     projectId: 'project-04',
@@ -611,7 +611,7 @@ export const students = [
 
     // 03. 세부전공 및 자기소개 (역할 필터: DESIGNER / PLANNER / PROGRAMMER)
     role: 'PLANNER',
-    interview: '새로운 발견을 설계하는 기획자 김유란입니다.',
+    interview: '핵심을 발견하는 기획자 김유란입니다.',
 
     // 04. 연락처 및 포트폴리오
     contact: 'knewrun25@gmail.com',
@@ -638,7 +638,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'ejik0318@gmail.com',
-    profileUrl: 'https://www.behance.net/0c628505',
+    profileUrl: ' https://kyumin-design.github.io/',
 
     // 05. 참여 프로젝트
     projectId: 'project-05',
@@ -891,7 +891,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'jungmin2209@naver.com',
-    profileUrl: 'https://hangnar.github.io/portfolio/',
+    profileUrl: ' https://hungry-hanjungmin.vercel.app/',
 
     // 05. 참여 프로젝트
     projectId: 'project-06',
@@ -937,7 +937,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'kwzzah@gmail.com',
-    profileUrl: 'https://www.linkedin.com/in/%EC%95%84%ED%98%84-%EA%B9%80-6b751b447/',
+    profileUrl: 'https://nancoolhae.github.io/portfolio/',
 
     // 05. 참여 프로젝트
     projectId: 'project-07',
@@ -1052,7 +1052,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'oatrice100@gmail.com',
-    profileUrl: 'https://www.linkedin.com/in/귀리-undefined-340766447 ',
+    profileUrl: ' https://oat100.github.io/portfolio/',
 
     // 05. 참여 프로젝트
     projectId: 'project-08',
@@ -1167,7 +1167,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'jeonyerin2006@naver.com',
-    profileUrl: 'https://www.figma.com/proto/3V12B5QC6FR90yRddFjKlx/PORTFOLIO?node-id=378-336&viewport=209%2C311%2C0.05&t=m8nauu7dKAIKY47G-1&scaling=min-zoom&content-scaling=fixed&page-id=378%3A335',
+    profileUrl: ' https://www.behance.net/0b4bb32b ',
 
     // 05. 참여 프로젝트
     projectId: 'project-08',
@@ -1834,7 +1834,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'noeun0815@naver.com',
-    profileUrl: 'https://www.behance.net/9a64c210/moodboards',
+    profileUrl: ' https://www.behance.net/9a64c210/moodboards',
 
     // 05. 참여 프로젝트
     projectId: 'project-13',
@@ -1857,7 +1857,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'dokgiworker@gmail.com',
-    profileUrl: 'https://www.behance.net/wjdgns426532af',
+    profileUrl: ' https://eolgani.com/',
 
     // 05. 참여 프로젝트
     projectId: 'project-13',
@@ -1880,7 +1880,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'wjdgns4265@naver.com',
-    profileUrl: 'https://www.behance.net/wjdgns426532af/projects',
+    profileUrl: ' https://eolgani.com/',
 
     // 05. 참여 프로젝트
     projectId: 'project-13',
@@ -1903,7 +1903,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'tlagpals134@naver.com',
-    profileUrl: 'https://www.behance.net/b06bac24/projects',
+    profileUrl: ' https://eolgani.com/',
 
     // 05. 참여 프로젝트
     projectId: 'project-13',
@@ -1972,7 +1972,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'jacobsungju@naver.com',
-    profileUrl: 'https://www.linkedin.com/in/sungju-hong-5523a0447/',
+    profileUrl: ' https://app.notion.com/p/jacobsungju/DESK-BUSKER-40f78daea0818117a699dd92787bd38f ',
 
     // 05. 참여 프로젝트
     projectId: 'project-14',
@@ -2363,7 +2363,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'moonsy553@gmail.com',
-    profileUrl: 'https://www.behance.net/c8f88382 ',
+    profileUrl: 'https://app.notion.com/p/415148b0b88281a1a92af4a7bcedbc40?source=copy_link',
 
     // 05. 참여 프로젝트
     projectId: 'project-16',
@@ -2478,7 +2478,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'opuskyle@gmail.com',
-    profileUrl: 'https://www.behance.net/19f17247',
+    profileUrl: 'https://is.gd/KYLEportfolio',
 
     // 05. 참여 프로젝트
     projectId: 'project-17',
@@ -2524,7 +2524,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'jihoon031214@naver.com',
-    profileUrl: 'https://www.behance.net/36e26ded',
+    profileUrl: 'https://jihoon-portfolio.mjmjj.chatgpt.site',
 
     // 05. 참여 프로젝트
     projectId: 'project-17',
@@ -2593,7 +2593,7 @@ export const students = [
 
     // 04. 연락처 및 포트폴리오
     contact: 'nnk1225@gmail.com',
-    profileUrl: 'https://www.instagram.com/se1i.z/?utm_source=ig_web_button_share_sheet',
+    profileUrl: 'https://se1i.web.app/',
 
     // 05. 참여 프로젝트
     projectId: 'project-17',

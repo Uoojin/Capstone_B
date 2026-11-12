@@ -9,6 +9,25 @@ const projectImages = Object.fromEntries(
 const validStudentNameId = (id) => typeof id === 'string' && /^[a-z][a-z0-9]*$/i.test(id)
 const temporaryStudentId = (id) => /^student-(00[1-9]|0[1-9]\d|10\d|11[0-3])$/.test(id)
 const projectNumber = (id) => /^project-\d{2}$/.test(id) ? id.slice(-2) : null
+const teamPhotoSizes = {
+  team01_LETSSYNC: [1562, 1649],
+  team02_AQUI: [1562, 1649],
+  team03_CHAK: [1447, 1070],
+  team04_PLEV: [1562, 1649],
+  team05_HAELON: [2006, 1649],
+  team06_PARALLAX: [1562, 1649],
+  team07_COMPASS: [2006, 1649],
+  team08_OREUM: [1314, 1319],
+  team09_EMORA: [1562, 1649],
+  team10_JALGAGYE: [1615, 1319],
+  team11_POPING: [1971, 1649],
+  team12_MALMOE: [1562, 1649],
+  team13_LIMEN: [950, 923],
+  team14_RESONATOR: [1562, 1649],
+  team15_ITDA: [1250, 1319],
+  team16_LIFESTATION: [1766, 1661],
+  team17_SEESAW: [1562, 1649],
+}
 
 // BASE_URL preserves the /Capstone_B/ deployment prefix; root deployments use /assets/.
 function assetPath(folder, filename, baseUrl) {
@@ -17,6 +36,7 @@ function assetPath(folder, filename, baseUrl) {
 
 export function getProjectImages(project, baseUrl = import.meta.env?.BASE_URL || '/') {
   const number = projectNumber(project.id)
+  const teamPhoto = number && validKey(project.teamImageKey) ? `team${number}_${project.teamImageKey}` : null
   const projectPath = (suffix = '') => number && validProjectImageKey(project.imageKey)
     ? projectImages[`../assets/projects/project${number}_${project.imageKey}${suffix}.webp`.normalize('NFC')] || null
     : null
@@ -26,9 +46,8 @@ export function getProjectImages(project, baseUrl = import.meta.env?.BASE_URL ||
     image,
     handwritingImage: projectPath('_hand'),
     handwritingAlt: project.name ? `${project.name} 팀 손글씨` : '',
-    teamImage: number && validKey(project.teamImageKey)
-      ? assetPath('teams', `team${number}_${project.teamImageKey}`, baseUrl)
-      : null,
+    teamImage: teamPhoto ? assetPath('teams', teamPhoto, baseUrl) : null,
+    teamImageSize: teamPhotoSizes[teamPhoto],
   }
 }
 

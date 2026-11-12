@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:cafe24": "vite build --config vite.cafe24.config.js",
     "lint": "eslint .",
     "preview": "vite preview"
   },

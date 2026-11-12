@@ -1,19 +1,21 @@
 import { useCallback, useLayoutEffect, useRef, useState } from 'react'
 import { createPortal, flushSync } from 'react-dom'
 import { Routes, useLocation } from 'react-router-dom'
-import { PageTransitionReadyContext } from './PageTransitionContext.js'
+import { PageTransitionImagesReadyContext, PageTransitionReadyContext } from './PageTransitionContext.js'
 import './PageTransition.css'
 
-// One sequential wave: preserve each hop, finish as soon as the fifth lands.
+// Finish on the last hop of a wave, repeating it while card images load.
 const HOP = 540
 const STAGGER = 140
 const LIFT = 54
 const MARK_COUNT = 5
 const WAVE_MS = STAGGER * (MARK_COUNT - 1) + HOP
+const MAX_IMAGE_WAIT_MS = 12000
 const LOADING_DESTINATIONS = new Set(['/', '/project', '/student', '/syncopate', '/guestbook', '/curriculum', '/credit'])
 const SHAPES = ['circle', 'triangle', 'sparkle', 'square']
 const TURNS = { circle: 0, triangle: 120, sparkle: 90, square: 90 }
 const pathOf = location => location.pathname.replace(/\/+$/, '') || '/'
+const needsCardImages = path => path === '/project' || path === '/student'
 
 function Shape({ kind }) {
   return <svg viewBox="0 0 26 26" aria-hidden="true">
@@ -64,7 +66,7 @@ function lockTransition(layer) {
   }
 }
 
-function LoadingScreen({ kind, dark, onFinish }) {
+function LoadingScreen({ kind, dark, canFinish, onFinish }) {
   const ref = useRef(null)
   useLayoutEffect(() => {
     const layer = ref.current
@@ -72,9 +74,9 @@ function LoadingScreen({ kind, dark, onFinish }) {
     const marks = Array.from(layer.querySelectorAll('.route-loading__mark'))
     const dots = layer.querySelector('.route-loading__dots')
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    const duration = WAVE_MS
     const start = performance.now()
     let raf
+    let previousWave = 0
     let previousDots = 4
     const easeOut = t => 1 - Math.pow(1 - t, 2.4)
     const easeInOut = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
@@ -88,12 +90,13 @@ function LoadingScreen({ kind, dark, onFinish }) {
     }
     const tick = now => {
       const elapsed = now - start
-      if (elapsed >= duration) {
+      const wave = Math.floor(elapsed / WAVE_MS)
+      if (wave > previousWave && canFinish(now)) {
         flushSync(onFinish)
         return
       }
+      previousWave = wave
       if (!reduce) {
-        const wave = Math.floor(elapsed / WAVE_MS)
         const local = elapsed - wave * WAVE_MS
         marks.forEach((mark, i) => {
           const t = local - i * STAGGER
@@ -112,7 +115,7 @@ function LoadingScreen({ kind, dark, onFinish }) {
       cancelAnimationFrame(raf)
       unlock()
     }
-  }, [kind, onFinish])
+  }, [kind, canFinish, onFinish])
 
   return createPortal(
     <div className={`route-loading${dark ? ' route-loading--pink' : ''}`} data-shape={kind} ref={ref} tabIndex={-1}>
@@ -129,17 +132,37 @@ function LoadingScreen({ kind, dark, onFinish }) {
 export default function PageTransitionRoutes({ children }) {
   const location = useLocation()
   const [displayed, setDisplayed] = useState(location)
-  const [transition, setTransition] = useState(null)
+  const [transition, setTransition] = useState(() =>
+    needsCardImages(pathOf(location)) && !location.state?.skipPageTransition && !document.querySelector('.first-splash')
+      ? { kind: SHAPES[Math.floor(Math.random() * SHAPES.length)], dark: false }
+      : null,
+  )
+  const displayedPath = pathOf(displayed)
   const destination = useRef(location)
-  const running = useRef(false)
-  const previous = useRef({ kind: null, dark: true })
+  const running = useRef(Boolean(transition))
+  const previous = useRef(transition ?? { kind: null, dark: true })
+  const readyPath = useRef(null)
+  const imageWaitStart = useRef(null)
 
   useLayoutEffect(() => {
+    const nextPath = pathOf(location)
+    const waitForCards = needsCardImages(nextPath)
+    if (waitForCards && (imageWaitStart.current === null || nextPath !== pathOf(destination.current))) {
+      imageWaitStart.current = performance.now()
+    }
     destination.current = location
-    if (running.current) return // A history change retargets this same animation.
-    if (pathOf(location) === pathOf(displayed) || !LOADING_DESTINATIONS.has(pathOf(location)) ||
+    if (running.current) {
+      // Keep the overlay while a new image destination mounts beneath it.
+      if (waitForCards && location !== displayed) {
+        if (nextPath !== displayedPath) readyPath.current = null
+        // eslint-disable-next-line react-hooks/set-state-in-effect -- Mount the destination under the overlay before paint.
+        setDisplayed(location)
+      }
+      return
+    }
+    if (nextPath === displayedPath || !LOADING_DESTINATIONS.has(nextPath) ||
       location.state?.skipPageTransition || document.querySelector('.first-splash')) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- Synchronize Router's external location before paint; never flash the destination beneath an unfinished transition.
+      if (nextPath !== displayedPath) readyPath.current = null
       setDisplayed(location)
       return
     }
@@ -148,18 +171,34 @@ export default function PageTransitionRoutes({ children }) {
     previous.current = next
     running.current = true
     setTransition(next)
-  }, [location, displayed])
+    if (waitForCards) {
+      readyPath.current = null
+      setDisplayed(location)
+    }
+  }, [location, displayed, displayedPath])
+
+  const reportImagesReady = useCallback(() => {
+    readyPath.current = displayedPath
+  }, [displayedPath])
+
+  const canFinish = useCallback(now => {
+    const path = pathOf(destination.current)
+    return !needsCardImages(path) || readyPath.current === path || now - imageWaitStart.current >= MAX_IMAGE_WAIT_MS
+  }, [])
 
   const finish = useCallback(() => {
     running.current = false
+    imageWaitStart.current = null
     setDisplayed(destination.current)
     setTransition(null)
   }, [])
 
   return <>
     <PageTransitionReadyContext.Provider value={!transition && location.key === displayed.key}>
-      <Routes location={displayed}>{children}</Routes>
+      <PageTransitionImagesReadyContext.Provider value={reportImagesReady}>
+        <Routes location={displayed}>{children}</Routes>
+      </PageTransitionImagesReadyContext.Provider>
     </PageTransitionReadyContext.Provider>
-    {transition && <LoadingScreen kind={transition.kind} dark={transition.dark} onFinish={finish} />}
+    {transition && <LoadingScreen kind={transition.kind} dark={transition.dark} canFinish={canFinish} onFinish={finish} />}
   </>
 }

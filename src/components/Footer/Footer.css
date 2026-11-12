@@ -17,6 +17,7 @@
 }
 
 .site-footer__brand {
+  font-family: var(--font-display);
   grid-area: brand;
   align-self: center;
   color: #fd00a0;

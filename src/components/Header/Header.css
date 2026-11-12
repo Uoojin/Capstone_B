@@ -16,6 +16,7 @@
 }
 
 .site-header .site-logo {
+  font-family: var(--font-display);
   display: inline-flex;
   align-items: center;
   justify-content: center;

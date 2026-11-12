@@ -133,6 +133,11 @@
   border-radius: 16px;
 }
 
+.student-img-photo {
+  background: none;
+  object-fit: cover;
+}
+
 .student-card:hover .student-img-placeholder {
   opacity: 0.9;
 }

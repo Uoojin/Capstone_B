@@ -9,7 +9,7 @@
   overflow: hidden;
   position: relative;
   user-select: none;
-  font-family: var(--font-family);
+  font-family: var(--font-body);
   cursor: default;
 }
 

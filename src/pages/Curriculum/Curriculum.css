@@ -33,7 +33,7 @@
   width: min(900px, 44vw);
   margin: 0 auto;
   color: var(--curriculum-pink);
-  font-family: var(--font-family);
+  font-family: var(--font-display);
   font-size: clamp(58px, calc(150 / 20.48 * var(--curriculum-hero-unit)), 150px);
   line-height: 0.91;
   font-weight: 800;

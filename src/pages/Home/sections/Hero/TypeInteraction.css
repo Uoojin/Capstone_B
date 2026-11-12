@@ -27,7 +27,7 @@
     height: 12px;
     border-radius: 50%;
     color: #fff;
-    font-family: var(--font-family);
+    font-family: var(--font-body);
     font-size: 0;
     font-weight: 600;
     line-height: 1;
@@ -44,7 +44,7 @@
     left: 0;
     z-index: 2;
     color: #fd00a0;
-    font-family: var(--font-family);
+    font-family: var(--font-body);
     font-size: 14px;
     font-weight: 500;
     line-height: 1.4;
