@@ -46,7 +46,7 @@ export const careers = [
 ]
 
 // Add the supplied SVG URLs here; empty values preserve the current artwork.
-export const curriculumArtwork = { symbolsSrc: '', titleSrc: '' }
+export const curriculumArtwork = { titleSrc: '' }
 
 // Transcribed from the supplied convergence hover reference.
 export const convergenceEducation = [

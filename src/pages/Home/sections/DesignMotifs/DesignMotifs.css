@@ -37,25 +37,6 @@
     padding: clamp(8px, .8vw, 16px) clamp(13px, 1.25vw, 24px)
 }
 
-.design-motifs .header-actions {
-    display: flex;
-    align-items: stretch;
-    color: #fd00a0
-}
-
-.design-motifs .header-actions span {
-    border: 1px solid #fd00a0;
-    padding: clamp(8px, .8vw, 16px) clamp(13px, 1.25vw, 24px);
-    border-radius: 999px
-}
-
-.design-motifs .header-actions .plus {
-    font-size: 1.6em;
-    line-height: .6;
-    padding-inline: .45em;
-    font-weight: 300
-}
-
 .design-motifs .side-label {
     font-family: var(--font-display);
     position: absolute;
@@ -186,28 +167,6 @@
     animation: home-design-motifs-desc .65s var(--motif-ease) both
 }
 
-.design-motifs .page-count {
-    position: absolute;
-    bottom: 4%;
-    right: 3.125%;
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    color: #b7b7b7;
-    font-size: 10px;
-    letter-spacing: .05em
-}
-
-.design-motifs .page-count span:first-child {
-    color: #fd00a0
-}
-
-.design-motifs .count-line {
-    width: 28px;
-    height: 1px;
-    background: #ddd
-}
-
 .design-motifs .sr-only {
     position: absolute;
     width: 1px;
@@ -283,11 +242,6 @@
         animation: none
         
     }
-
-    .design-motifs .page-count {
-        bottom: 24px;
-        right: 20px
-    }
 }
 
 @media(prefers-reduced-motion:reduce) {
@@ -345,8 +299,7 @@
 .design-motifs .side-label,
 .design-motifs .object-holder,
 .design-motifs .motif-nav,
-.design-motifs .description,
-.design-motifs .page-count {
+.design-motifs .description {
     z-index: 1
 }
 
@@ -420,14 +373,6 @@
     color: #fd00a0
 }
 
-.design-motifs.page--pink .header-actions {
-    color: #fff
-}
-
-.design-motifs.page--pink .header-actions span {
-    border-color: #fff
-}
-
 .design-motifs.page--pink .nav-track button {
     color: rgba(255, 255, 255, .25)
 }
@@ -447,18 +392,6 @@
 .design-motifs.page--pink .particle {
     color: #fff;
     opacity: .2
-}
-
-.design-motifs.page--pink .page-count {
-    color: rgba(255, 255, 255, .55)
-}
-
-.design-motifs.page--pink .page-count span:first-child {
-    color: #fff
-}
-
-.design-motifs.page--pink .count-line {
-    background: rgba(255, 255, 255, .45)
 }
 
 .design-motifs.page--pink .color-toggle {
@@ -481,21 +414,6 @@
 
 .design-motifs .display-toggles .color-toggle {
     position: static
-}
-
-.design-motifs .particle-toggle {
-    padding: 7px 0;
-    border: 0;
-    background: none;
-    color: inherit;
-    font: 600 10px var(--font-body);
-    letter-spacing: .04em;
-    cursor: pointer
-}
-
-.design-motifs .particle-toggle:focus-visible {
-    outline: 2px solid currentColor;
-    outline-offset: 4px
 }
 
 @media(max-width:700px) {

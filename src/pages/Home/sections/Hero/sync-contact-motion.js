@@ -41,10 +41,6 @@ export function createArtworkMasks(size, angles, sampleSize = 4) {
     };
 }
 
-export function artworkTouches(a, b) {
-    return !!artworkContact(a, b);
-}
-
 export function artworkContact(a, b) {
     if (!a || !b) return null;
     if (a.parts || b.parts) {

@@ -68,10 +68,6 @@ a {
   background: #fff;
 }
 
-.home-empty {
-  min-height: calc(100vh - var(--site-header-height));
-}
-
 .body-detail-open {
   overflow: hidden;
 }

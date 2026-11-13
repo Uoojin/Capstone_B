@@ -1,12 +1,4 @@
 /* Animate rotation directly so WebKit composites it with translate and scale. */
-.design-motifs .fig0 {
-    position: absolute;
-    left: calc(29.17% + 20.5px);
-    width: 435.001px;
-    height: 435.001px;
-    top: calc(50% - 0.5px);
-    transform: translateX(-50%) translateY(-50%)
-}
 
 .design-motifs .fig1 {
     position: absolute;
